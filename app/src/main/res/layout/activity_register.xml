@@ -23,6 +23,18 @@
         android.support.design:layout_constraintLeft_toLeftOf="parent"
         android.support.design:layout_constraintRight_toRightOf="parent"
         ></ImageView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/imgvwLogoWithText">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
     <TextView
         android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
@@ -33,10 +45,11 @@
         android:layout_marginTop="@dimen/dimen_30dp"
         android.support.design:layout_constraintLeft_toLeftOf="parent"
         android.support.design:layout_constraintRight_toRightOf="parent"
-        android.support.design:layout_constraintTop_toBottomOf="@+id/imgvwLogoWithText">
+       android.support.design:layout_constraintTop_toTopOf="parent">
 
     </TextView>
     <View
+        android:id="@+id/viewSignUp"
         android:layout_width="@dimen/dimen_100dp"
         android:layout_height="@dimen/dimen_2dp"
         android:background="#D1453E"
@@ -45,5 +58,231 @@
         android.support.design:layout_constraintRight_toRightOf="parent"
         android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUp"></View>
 
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputLayoutFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:hint="@string/firstName"
+       android.support.design:layout_constraintTop_toBottomOf="@+id/viewSignUp"
+
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edtTxtFirstName"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_10sp"
+            android:ems="10"
+            android:scrollbars="vertical"
+
+            android:singleLine="true"
+            app:layout_constraintTop_toTopOf="@+id/parent1"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputLayoutLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:hint="@string/lastName"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutFirstName"
+
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edtTxtLastName"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_10sp"
+            android:ems="10"
+            android:scrollbars="vertical"
+
+            android:singleLine="true"
+            app:layout_constraintTop_toTopOf="@+id/parent1"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputLayoutMobileNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:hint="@string/mobileNo"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutLastName"
+
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edtTxtMobileNo"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_10sp"
+            android:ems="10"
+            android:scrollbars="vertical"
+            android:inputType="phone"
+            android:singleLine="true"
+            app:layout_constraintTop_toTopOf="@+id/parent1"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputLayoutEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:hint="@string/email"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutMobileNo"
+
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edtTxtEmail"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_10sp"
+            android:ems="10"
+            android:scrollbars="vertical"
+            android:inputType="phone"
+            android:singleLine="true"
+            app:layout_constraintTop_toTopOf="@+id/parent1"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputLayoutPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:hint="@string/password"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
+
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edtTxtPassword"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_10sp"
+            android:ems="10"
+            android:scrollbars="vertical"
+            android:inputType="phone"
+            android:singleLine="true"
+            app:layout_constraintTop_toTopOf="@+id/parent1"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputLayoutConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:hint="@string/confirmpassword"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutPassword"
+
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edtTxtConfirmPassword"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_10sp"
+            android:ems="10"
+            android:scrollbars="vertical"
+            android:inputType="phone"
+            android:singleLine="true"
+            app:layout_constraintTop_toTopOf="@+id/parent1"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            />
+    </android.support.design.widget.TextInputLayout>
+<TextView
+    android:id="@+id/tvcreateaccount"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/createanaccount"
+    android:layout_marginTop="@dimen/dimen_10dp"
+    android.support.design:layout_constraintLeft_toLeftOf="parent"
+    android.support.design:layout_constraintRight_toRightOf="parent"
+    android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutConfirmPassword">
+
+</TextView>
+    <TextView
+        android:id="@+id/tvtermscondition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/termscondition"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/tvcreateaccount">
+
+    </TextView>
+        <TextView
+            android:id="@+id/tvSignUpSend"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/signup"
+            android:gravity="center"
+            style="@style/Style_TextView_FontBold"
+            android:textSize="@dimen/font_14sp"
+            android:textColor="@color/whiteColor"
+            android:background="@drawable/round_green_corner"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvtermscondition">
+
+        </TextView>
+<TextView
+    android:id="@+id/tvalready"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_10dp"
+    android:text="Already have an Account?"
+    android:textColor="@color/colorPrimaryDark"
+    android.support.design:layout_constraintLeft_toLeftOf="parent"
+    android.support.design:layout_constraintRight_toRightOf="parent"
+    android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUpSend">
+
+</TextView>
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="Login"
+            android:textColor="@color/redColor"
+            android:layout_marginRight="@dimen/dimen_10dp"
+          android.support.design:layout_constraintLeft_toRightOf="@+id/tvalready"
+
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUpSend">
+
+        </TextView>
+    </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
 </layout>

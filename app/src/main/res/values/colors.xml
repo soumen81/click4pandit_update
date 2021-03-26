@@ -17,5 +17,6 @@
     <color name="redColor">#ff0000</color>
     <color name="blueColor">#28A4EC</color>
     <color name="transparency">#F9F9F9</color>
+    <color name="buttonColor">#D1453E</color>
 
 </resources>
