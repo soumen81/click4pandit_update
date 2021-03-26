@@ -8,6 +8,7 @@ import com.autumntechcreation.click4panditcustomer.network.AppExecutors;
 import com.autumntechcreation.click4panditcustomer.network.Webservice;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
 import com.autumntechcreation.click4panditcustomer.splash.SplashRepository;
+import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterRepository;
 import com.autumntechcreation.click4panditcustomer.util.AppConstants;
@@ -51,5 +52,11 @@ public class AppModule {
     @Singleton
     LoginRepository provideLoginRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new LoginRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    DashBoardRepository provideDashBoardRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new DashBoardRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }
