@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="whiteColor">#ffffff</color>
+    <color name="greenColor">#1cb396</color>
+    <color name="attendencebackground">#1c88c7</color>
+    <color name="circlebackground">#10b08e</color>
+    <color name="buttonborder">#1bb392</color>
+    <color name="colorAshLighter">#EBEBF1</color>
+    <color name="colorAshLighterDip">#bebcbd</color>
+    <color name="colorAshLight">#f8f8f8</color>
+    <color name="colorBadge">#9f9d9e</color>
+    <color name="yellowColor">#ea940a</color>
+    <color name="redColor">#ff0000</color>
+    <color name="blueColor">#28A4EC</color>
+    <color name="transparency">#F9F9F9</color>
+
+</resources>

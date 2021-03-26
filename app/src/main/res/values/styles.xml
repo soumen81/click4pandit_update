@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:actionMenuTextColor">@color/whiteColor</item>
+
+
+    </style>
+    <style name="Style_TextView_FontBold">
+        <item name="fontFamily">@font/opensans_bold</item>
+    </style>
+    <style name="Style_TextView_FontBoldItalic">
+        <item name="fontFamily">@font/opensans_bolditalic</item>
+    </style>
+    <style name="Style_TextView_FontExtraBold">
+        <item name="fontFamily">@font/opensans_extrabold</item>
+    </style>
+    <style name="Style_TextView_FontExtraBoldItalic">
+        <item name="fontFamily">@font/opensans_extrabolditalic</item>
+    </style>
+    <style name="Style_TextView_FontItalic">
+        <item name="fontFamily">@font/opensans_italic</item>
+    </style>
+    <style name="Style_TextView_FontLight">
+        <item name="fontFamily">@font/opensans_light</item>
+    </style>
+    <style name="Style_TextView_FontLightItalic">
+        <item name="fontFamily">@font/opensans_lightitalic</item>
+    </style>
+    <style name="Style_TextView_FontRegular">
+        <item name="fontFamily">@font/opensans_regular</item>
+    </style>
+    <style name="Style_TextView_FontSemiBold">
+        <item name="fontFamily">@font/opensans_semibold</item>
+    </style>
+    <style name="Style_TextView_FontSemiBoldItalic">
+        <item name="fontFamily">@font/opensans_semibolditalic</item>
+    </style>
+</resources>

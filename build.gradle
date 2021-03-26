@@ -1,0 +1,48 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.google.gms:google-services:4.1.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+ext.deps = [:]
+def versions = [:]
+versions.lifecycle = "1.1.1"
+versions.roomVersion = "1.1.1"
+versions.support = "28.0.0-rc02"
+versions.supportLibraryVersion = "28.0.0-rc02"
+versions.kotlin = "1.2.20"
+versions.navigation = "1.0.0-alpha05"
+versions.min_sdk = 21
+versions.target_sdk = 28
+versions.constraint_layout = "1.0.2"
+versions.glide = "4.3.1"
+versions.circleView="2.2.0"
+versions.recyclerView="26.1.0"
+versions.map="15.0.1"
+versions.timberVersion = "4.6.1"
+versions.retrofitVersion = "2.3.0"
+versions.okhttpVersion = "3.4.1"
+versions.daggerVersion = "2.15"
+versions.map="16.0.0"
+ext.versions = versions

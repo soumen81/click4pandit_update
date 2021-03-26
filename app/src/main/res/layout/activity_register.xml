@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="RegisterViewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.register.RegisterViewModel" />
+    </data>
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/imgvwLogoWithText"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:src="@drawable/ic_logowithtext"
+        android.support.design:layout_constraintTop_toTopOf="parent"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+        ></ImageView>
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SignUp"
+        style="@style/Style_TextView_FontBold"
+        android:textSize="@dimen/font_18sp"
+        android:layout_marginTop="@dimen/dimen_30dp"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/imgvwLogoWithText">
+
+    </TextView>
+    <View
+        android:layout_width="@dimen/dimen_100dp"
+        android:layout_height="@dimen/dimen_2dp"
+        android:background="#D1453E"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUp"></View>
+
+</android.support.constraint.ConstraintLayout>
+</layout>
