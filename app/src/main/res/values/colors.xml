@@ -18,5 +18,6 @@
     <color name="blueColor">#28A4EC</color>
     <color name="transparency">#F9F9F9</color>
     <color name="buttonColor">#D1453E</color>
+    <color name="blackColor">#000000</color>
 
 </resources>
