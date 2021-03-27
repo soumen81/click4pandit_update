@@ -2,7 +2,9 @@ package com.autumntechcreation.click4panditcustomer.di.module;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.splash.SplashScreenActivity;
+import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordAcitivity;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardActivity;
+import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordActivity;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
 
@@ -22,6 +24,13 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract LoginActivity contributeLoginActivity();
+
     @ContributesAndroidInjector
     abstract DashBoardActivity contributeDashBoardActivity();
+
+    @ContributesAndroidInjector
+    abstract ForgetPasswordActivity contributeForgetPasswordActivity();
+
+    @ContributesAndroidInjector
+    abstract ChangePasswordAcitivity contributeChangePasswordAcitivity();
 }

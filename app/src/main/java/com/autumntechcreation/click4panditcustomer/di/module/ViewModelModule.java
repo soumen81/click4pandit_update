@@ -6,7 +6,9 @@ import android.arch.lifecycle.ViewModelProvider;
 import com.autumntechcreation.click4panditcustomer.MainViewModel;
 import com.autumntechcreation.click4panditcustomer.di.qualifiers.ViewModelKey;
 import com.autumntechcreation.click4panditcustomer.splash.SplashViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterViewModel;
 import com.autumntechcreation.click4panditcustomer.viewmodel.ProjectViewModelFactory;
@@ -44,4 +46,14 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DashBoardViewModel.class)
     abstract ViewModel bindDashBoardViewModel(DashBoardViewModel dashBoardViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ForgetPasswordViewModel.class)
+    abstract ViewModel bindForgetPasswordViewModel(ForgetPasswordViewModel forgetPasswordViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChangePasswordViewModel.class)
+    abstract ViewModel bindChangePasswordViewModel(ChangePasswordViewModel changePasswordViewModel);
 }

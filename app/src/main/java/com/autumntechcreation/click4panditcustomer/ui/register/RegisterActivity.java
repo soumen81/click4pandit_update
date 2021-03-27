@@ -1,14 +1,18 @@
 package com.autumntechcreation.click4panditcustomer.ui.register;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.ActivityRegisterBinding;
+import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 
 import javax.inject.Inject;
 
@@ -31,5 +35,14 @@ public class RegisterActivity extends AppCompatActivity {
         mActivityRegisterBinding.setLifecycleOwner(this);
         mActivityRegisterBinding.setRegisterViewModel(mRegisterViewModel);
 
+
+
+        mRegisterViewModel.getonClickLoginPage().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(@Nullable Void _) {
+                Intent in=new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(in);
+            }
+        });
     }
 }

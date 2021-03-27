@@ -14,6 +14,152 @@
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/imgvwLogoWithText"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:src="@drawable/ic_logowithtext"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+        android.support.design:layout_constraintTop_toTopOf="parent"></ImageView>
+
+
+
+        <TextView
+            android:id="@+id/tvLogin"
+            style="@style/Style_TextView_FontBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:text="@string/login"
+            android:textSize="@dimen/font_18sp"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+           android.support.design:layout_constraintTop_toBottomOf="@+id/imgvwLogoWithText">
+
+        </TextView>
+
+        <View
+            android:id="@+id/viewLogin"
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_2dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:background="#D1453E"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvLogin"></View>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputLayoutEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/email"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/viewLogin"
+
+            >
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtTxtEmail"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+
+                android:inputType="textEmailAddress"
+                android:scrollbars="vertical"
+                android:singleLine="true"
+                android:textSize="@dimen/font_10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputLayoutPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/password"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
+
+            >
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edtTxtPassword"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:scrollbars="vertical"
+                android:singleLine="true"
+                android:textSize="@dimen/font_10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:id="@+id/tvForgetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgetpassword"
+            style="@style/Style_TextView_FontRegular"
+            android:onClick="@{(v) -> LoginViewModel.onClickGoToForgetPassword(v)}"
+            android:textColor="@color/colorBadge"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutPassword"
+            android.support.design:layout_constraintRight_toRightOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/tvLoginSend"
+            style="@style/Style_TextView_FontBold"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/round_red_corner"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginBottom="@dimen/dimen_50dp"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+           android.support.design:layout_constraintBottom_toBottomOf="parent">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvDonotaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/donothaveaccount"
+            android:textSize="@dimen/font_12sp"
+            style="@style/Style_TextView_FontRegular"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvLoginSend"></TextView>
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup"
+            style="@style/Style_TextView_FontRegular"
+            android:onClick="@{(v) -> LoginViewModel.onClickGoToSignUp(v)}"
+            android:layout_marginLeft="@dimen/dimen_5dp"
+            android:textColor="@color/buttonColor"
+            android:textSize="@dimen/font_12sp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvLoginSend"
+            android.support.design:layout_constraintLeft_toRightOf="@+id/tvDonotaccount"
+            ></TextView>
+
+
 
 </android.support.constraint.ConstraintLayout>
 </layout>

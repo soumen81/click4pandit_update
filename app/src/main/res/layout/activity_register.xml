@@ -13,7 +13,8 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/whiteColor">
 
         <ImageView
             android:id="@+id/imgvwLogoWithText"
@@ -35,6 +36,7 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/whiteColor"
                 android:orientation="vertical">
 
                 <TextView
@@ -223,6 +225,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10dp"
+                    style="@style/Style_TextView_FontRegular"
                     android:text="@string/createanaccount"
                     android.support.design:layout_constraintLeft_toLeftOf="parent"
                     android.support.design:layout_constraintRight_toRightOf="parent"
@@ -237,6 +240,7 @@
                     android:layout_marginLeft="@dimen/dimen_5dp"
                     android:layout_marginTop="@dimen/dimen_5dp"
                     android:autoLink="web"
+                    style="@style/Style_TextView_FontRegular"
                     android:text="@string/termscondition"
                     android:textColor="@color/buttonColor"
                     android.support.design:layout_constraintStart_toStartOf="@+id/tvcreateaccount"
@@ -251,6 +255,7 @@
                     android:layout_marginLeft="@dimen/dimen_5dp"
                     android:layout_marginTop="@dimen/dimen_5dp"
                     android:text="@string/amperson"
+                    style="@style/Style_TextView_FontRegular"
                     android.support.design:layout_constraintLeft_toRightOf="@+id/tvtermscondition"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/tvcreateaccount">
 
@@ -263,6 +268,7 @@
                     android:layout_marginLeft="@dimen/dimen_5dp"
                     android:layout_marginTop="@dimen/dimen_5dp"
                     android:autoLink="web"
+                    style="@style/Style_TextView_FontRegular"
                     android:text="@string/privacypolicy"
                     android:textColor="@color/buttonColor"
                     android.support.design:layout_constraintLeft_toRightOf="@+id/tvamperson"
@@ -292,8 +298,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10dp"
+                    style="@style/Style_TextView_FontRegular"
                     android:text="Already have an Account?"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/blackColor"
                     android.support.design:layout_constraintLeft_toLeftOf="parent"
                     android.support.design:layout_constraintRight_toRightOf="parent"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUpSend">
@@ -307,6 +314,8 @@
                     android:layout_marginLeft="@dimen/dimen_10dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:text="Login"
+                    style="@style/Style_TextView_FontRegular"
+                    android:onClick="@{(v) -> RegisterViewModel.onClickGoToLogin(v)}"
                     android:textColor="@color/redColor"
                     android.support.design:layout_constraintLeft_toRightOf="@+id/tvalready"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUpSend">

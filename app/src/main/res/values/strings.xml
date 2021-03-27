@@ -9,8 +9,18 @@
     <string name="createanaccount">By creating an account,you agree to our</string>
     <string name="termscondition">Terms &amp; conditions</string>
     <string name="privacypolicy">privacy policy </string>
+    <string name="donothaveaccount">Do not have an account?</string>
 
     <string name="signup">Sign Up</string>
     <string name="amperson">&amp;</string>
     <string name="login">Login</string>
+    <string name="forgetpassword">Forget Password?</string>
+    <string name="resetpassword">Enter the email address associated with </string>
+    <string name="resetpassword2">your account to reset your password.</string>
+    <string name="submit">Submit</string>
+    <string name="changepassword">Change Password</string>
+    <string name="oldpassword">Old Password</string>
+    <string name="newpassword">New Password</string>
+    <string name="confirm">Confirm</string>
+
 </resources>

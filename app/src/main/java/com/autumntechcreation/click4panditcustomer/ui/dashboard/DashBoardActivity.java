@@ -1,15 +1,20 @@
 package com.autumntechcreation.click4panditcustomer.ui.dashboard;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.ActivityDashboardBinding;
+import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
 
 import javax.inject.Inject;
 
@@ -31,5 +36,21 @@ public class DashBoardActivity extends AppCompatActivity {
         mDashBoardViewModel = ViewModelProviders.of(this,viewModelFactory).get(DashBoardViewModel.class);
         mActivityDashboardBinding.setLifecycleOwner(this);
         mActivityDashboardBinding.setDashBoardViewModel(mDashBoardViewModel);
+
+
+        mDashBoardViewModel.getonClickLoginPage().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(@Nullable Void _) {
+                Intent in=new Intent(DashBoardActivity.this, LoginActivity.class);
+                startActivity(in);
+            }
+        });
+        mDashBoardViewModel.getonClickRegisterPage().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(@Nullable Void _) {
+                Intent in=new Intent(DashBoardActivity.this, RegisterActivity.class);
+                startActivity(in);
+            }
+        });
     }
 }
