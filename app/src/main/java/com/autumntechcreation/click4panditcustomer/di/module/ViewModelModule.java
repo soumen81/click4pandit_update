@@ -9,6 +9,7 @@ import com.autumntechcreation.click4panditcustomer.splash.SplashViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterViewModel;
 import com.autumntechcreation.click4panditcustomer.viewmodel.ProjectViewModelFactory;
@@ -54,6 +55,6 @@ public abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ChangePasswordViewModel.class)
-    abstract ViewModel bindChangePasswordViewModel(ChangePasswordViewModel changePasswordViewModel);
+    @ViewModelKey(HomeViewModel.class)
+    abstract ViewModel bindHomeViewModel(HomeViewModel homeViewModel);
 }
