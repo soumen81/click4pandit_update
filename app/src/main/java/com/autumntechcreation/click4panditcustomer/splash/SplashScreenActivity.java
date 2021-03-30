@@ -1,20 +1,17 @@
 package com.autumntechcreation.click4panditcustomer.splash;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Window;
 
-import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.ActivitySplashBinding;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardActivity;
-import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
-import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
 
 import javax.inject.Inject;
 

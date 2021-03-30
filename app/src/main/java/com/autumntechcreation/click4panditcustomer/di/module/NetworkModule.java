@@ -1,6 +1,6 @@
 package com.autumntechcreation.click4panditcustomer.di.module;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.autumntechcreation.click4panditcustomer.BuildConfig;
 import com.autumntechcreation.click4panditcustomer.network.LiveDataCallAdapterFactory;

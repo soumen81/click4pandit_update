@@ -1,6 +1,6 @@
 package com.autumntechcreation.click4panditcustomer.network;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 import java.lang.reflect.Type;
 import java.util.concurrent.atomic.AtomicBoolean;

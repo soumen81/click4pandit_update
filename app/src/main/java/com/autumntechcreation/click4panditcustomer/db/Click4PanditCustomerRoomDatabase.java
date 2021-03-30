@@ -1,10 +1,10 @@
 package com.autumntechcreation.click4panditcustomer.db;
 
-import android.arch.persistence.db.SupportSQLiteOpenHelper;
-import android.arch.persistence.room.DatabaseConfiguration;
-import android.arch.persistence.room.InvalidationTracker;
-import android.arch.persistence.room.RoomDatabase;
-import android.support.annotation.NonNull;
+import androidx.sqlite.db.SupportSQLiteOpenHelper;
+import androidx.room.DatabaseConfiguration;
+import androidx.room.InvalidationTracker;
+import androidx.room.RoomDatabase;
+import androidx.annotation.NonNull;
 
 public class Click4PanditCustomerRoomDatabase extends RoomDatabase {
     @NonNull

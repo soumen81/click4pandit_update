@@ -1,8 +1,8 @@
 package com.autumntechcreation.click4panditcustomer.ui.home;
 
-import android.arch.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Window;
 
 import javax.inject.Inject;

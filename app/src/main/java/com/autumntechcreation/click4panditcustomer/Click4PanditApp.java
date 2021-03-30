@@ -2,7 +2,7 @@ package com.autumntechcreation.click4panditcustomer;
 
 import android.app.Activity;
 import android.app.Application;
-import android.support.constraint.BuildConfig;
+
 
 import com.autumntechcreation.click4panditcustomer.di.AppInjector;
 import com.autumntechcreation.click4panditcustomer.network.ConnectivityReceiver;

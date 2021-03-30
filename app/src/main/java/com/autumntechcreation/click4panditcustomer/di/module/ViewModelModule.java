@@ -1,12 +1,11 @@
 package com.autumntechcreation.click4panditcustomer.di.module;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.autumntechcreation.click4panditcustomer.MainViewModel;
 import com.autumntechcreation.click4panditcustomer.di.qualifiers.ViewModelKey;
 import com.autumntechcreation.click4panditcustomer.splash.SplashViewModel;
-import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;

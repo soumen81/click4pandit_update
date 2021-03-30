@@ -1,15 +1,14 @@
 package com.autumntechcreation.click4panditcustomer.ui.changepassword;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Window;
 
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.ActivityChangepasswordBinding;
-import com.autumntechcreation.click4panditcustomer.ui.register.RegisterViewModel;
 
 import javax.inject.Inject;
 

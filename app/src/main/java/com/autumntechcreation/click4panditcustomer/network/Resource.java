@@ -1,7 +1,7 @@
 package com.autumntechcreation.click4panditcustomer.network;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import static com.autumntechcreation.click4panditcustomer.network.Status.ERROR;
 import static com.autumntechcreation.click4panditcustomer.network.Status.LOADING;

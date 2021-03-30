@@ -1,6 +1,6 @@
 package com.autumntechcreation.click4panditcustomer;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 
 import javax.inject.Inject;
 
