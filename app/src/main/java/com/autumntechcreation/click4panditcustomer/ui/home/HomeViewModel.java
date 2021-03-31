@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 public class HomeViewModel extends ViewModel {
     @Inject
-    public HomeViewModel(){
-
+    public HomeViewModel() {
     }
+
 }

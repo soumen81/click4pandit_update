@@ -8,8 +8,11 @@ import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.view.View;
 import android.view.Window;
 
+import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.ActivityLoginBinding;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordActivity;
@@ -46,6 +49,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable Void _) {
                 Intent in=new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+                startActivity(in);
+            }
+        });
+
+        mActivityLoginBinding.tvLoginSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(in);
             }
         });

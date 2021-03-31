@@ -5,7 +5,6 @@ import com.autumntechcreation.click4panditcustomer.splash.SplashScreenActivity;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordAcitivity;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardActivity;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordActivity;
-import com.autumntechcreation.click4panditcustomer.ui.home.HomeActivity;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
 
@@ -14,7 +13,7 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityModule {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = FragmentBuildersModule.class)
     abstract MainActivity contributeMainActivity();
 
     @ContributesAndroidInjector
@@ -35,6 +34,5 @@ public abstract class ActivityModule {
     @ContributesAndroidInjector
     abstract ChangePasswordAcitivity contributeChangePasswordAcitivity();
 
-    @ContributesAndroidInjector
-    abstract HomeActivity contributeHomeActivity();
+
 }

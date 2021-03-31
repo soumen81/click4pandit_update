@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.google.gms:google-services:4.1.0'
-
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha05"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -45,6 +45,6 @@ versions.map="15.0.1"
 versions.timberVersion = "4.6.1"
 versions.retrofitVersion = "2.3.0"
 versions.okhttpVersion = "3.4.1"
-versions.daggerVersion = "2.15"
+versions.daggerVersion = "2.16"
 versions.map="16.0.0"
 ext.versions = versions

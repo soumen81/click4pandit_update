@@ -11,6 +11,7 @@ import com.autumntechcreation.click4panditcustomer.splash.SplashRepository;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardRepository;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordRepository;
+import com.autumntechcreation.click4panditcustomer.ui.home.HomeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterRepository;
 import com.autumntechcreation.click4panditcustomer.util.AppConstants;
@@ -72,5 +73,11 @@ public class AppModule {
     @Singleton
     ChangePasswordRepository provideChangePasswordRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new ChangePasswordRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    HomeRepository provideHomeRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new HomeRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }
