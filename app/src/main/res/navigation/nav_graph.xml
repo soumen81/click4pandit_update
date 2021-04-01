@@ -10,10 +10,17 @@
         android:name="com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragmentFragment_to_choosePackageFragment"
+            app:destination="@id/choosePackageFragment" />
     </fragment>
 
     <activity
         android:id="@+id/mainActivity"
         android:name="com.autumntechcreation.click4panditcustomer.MainActivity"
         android:label="MainActivity" />
+    <fragment
+        android:id="@+id/choosePackageFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragment"
+        android:label="ChoosePackageFragment" />
 </navigation>

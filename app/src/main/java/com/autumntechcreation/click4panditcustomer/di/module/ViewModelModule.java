@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.autumntechcreation.click4panditcustomer.MainViewModel;
 import com.autumntechcreation.click4panditcustomer.di.qualifiers.ViewModelKey;
 import com.autumntechcreation.click4panditcustomer.splash.SplashViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
@@ -56,4 +57,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(HomeViewModel.class)
     abstract ViewModel bindHomeViewModel(HomeViewModel homeViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChoosePackageViewModel.class)
+    abstract ViewModel bindChoosePackageViewModel(ChoosePackageViewModel choosePackageViewModel);
 }

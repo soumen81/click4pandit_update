@@ -34,4 +34,13 @@
     <string name="divineexperience">Divine Experience </string>
     <string name="choosepuja">Choose your Puja </string>
     <string name="viewpackage">View Packages </string>
+    <string name="pickpuja">Pick your Puja Packages at</string>
+    <string name="economical">an Economical Price</string>
+    <string name="samagries">Samagries are now available at</string>
+    <string name="doorstep">your door steps.</string>
+    <string name="choosepackage">Choose your Packages For Your Puja</string>
+    <string name="standardpackage">Standard Package</string>
+    <string name="economypackage">Economy Package</string>
+    <string name="premiumpackage">Premium Package</string>
+    <string name="rupee">20A8</string>
 </resources>

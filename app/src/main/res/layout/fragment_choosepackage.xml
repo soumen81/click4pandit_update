@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="ChoosePackageViewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/buttonColor">
+        <ImageView
+            android:id="@+id/imgvwPandit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_100dp"
+            android:src="@drawable/panditji"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+        </ImageView>
+        <TextView
+            android:id="@+id/tvPickPuja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/whiteColor"
+            style="@style/Style_TextView_FontBold"
+            android:text="@string/pickpuja"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgvwPandit">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvEconomical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Style_TextView_FontBold"
+            android:textColor="@color/whiteColor"
+            android:text="@string/economical"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPickPuja">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvSamagries"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/whiteColor"
+            android:text="@string/samagries"
+            style="@style/Style_TextView_FontRegular"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEconomical">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvDoorstep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/whiteColor"
+            android:text="@string/doorstep"
+            style="@style/Style_TextView_FontRegular"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSamagries">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvChoosePackage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/yellowColor"
+            android:text="@string/choosepackage"
+            style="@style/Style_TextView_FontRegular"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginTop="@dimen/dimen_40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        </TextView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/dimen_200dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/round_white_corner"
+            app:layout_constraintTop_toBottomOf="@+id/tvChoosePackage"
+            >
+            <TextView
+                android:id="@+id/tvStandardPackage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/standardpackage"
+                style="@style/Style_TextView_FontRegular"
+                android:textColor="@color/blackColor"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+            <TextView
+                android:id="@+id/tvStandardAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rupee"
+                style="@style/Style_TextView_FontRegular"
+                android:textColor="@color/buttonColor"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+               app:layout_constraintLeft_toRightOf="@+id/tvStandardPackage"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvCategoies"
+            android:layout_width="@dimen/dimen_200dp"
+            android:layout_height="@dimen/dimen_40dp"
+            style="@style/Style_TextView_FontRegular"
+            android:drawablePadding="@dimen/dimen_10dp"
+            android:drawableRight="@drawable/ic_dropdown"
+            android:background="@drawable/round_white_corner"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTypesPuja">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvViewPackages"
+            android:layout_width="@dimen/dimen_150dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:background="@drawable/round_black_corner"
+            android:gravity="center"
+            style="@style/Style_TextView_FontBold"
+            android:textSize="@dimen/font_12sp"
+            android:textColor="@color/whiteColor"
+            android:text="@string/viewpackage"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCategoies">
+
+        </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

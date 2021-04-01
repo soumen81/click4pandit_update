@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.databinding.DataBindingUtil;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 
 import android.content.Intent;
@@ -39,7 +42,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
     @Inject
     public ViewModelProvider.Factory viewModelFactory;
-
+    private NavHostFragment host = NavHostFragment.create(R.navigation.nav_graph);
+    NavController navController;
     ActivityMainBinding activityMainBinding;
     DrawerLayout drawerLayout;
     private MenuItem selectedItem;
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+
 
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         AndroidInjection.inject(this);
@@ -66,15 +70,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView=(NavigationView)findViewById(R.id.activity_home_bnView);
         View hView = navigationView.getHeaderView(0);
 
-       // setSupportActionBar(activityMainBinding.toolbar);
 
 
+        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, host).setPrimaryNavigationFragment(host).commit();
 
         activityMainBinding.imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
 
+                navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment);
+                navController.navigate(R.id.homeFragmentFragment);
             }
         });
 
@@ -108,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-        Static.replaceFragment(R.id.nav_host_fragment, getSupportFragmentManager(), new HomeFragment(), false, false);
+
 
 
 
@@ -137,43 +142,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void selectFragment(MenuItem item) {
         switch (item.getItemId()) {
-          /*  case R.id.menu_dashboard:
-                tabSelected = 0;
-                Static.replaceFragment(R.id.nav_host_fragment, getSupportFragmentManager(), new DashBoardFragment(), false, false);
 
-                break;*/
 
 
 
             case R.id.menu_home:
 
-                HomeFragment homeFragment=new HomeFragment();
 
-                tabSelected = 0;
-                Static.replaceFragment(R.id.nav_host_fragment, getSupportFragmentManager(), homeFragment, false, false);
-
+                NavHostFragment navHostFragment = (NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                navHostFragment.getNavController().navigate(R.id.homeFragmentFragment);
 
                 break;
 
             case R.id.menu_profile:
-                HomeFragment homeFragment1=new HomeFragment();
 
-                tabSelected = 1;
 
-                Static.replaceFragment(R.id.nav_host_fragment, getSupportFragmentManager(),  homeFragment1, false, false);
+                NavHostFragment navHostFragment2 = (NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                navHostFragment2.getNavController().navigate(R.id.choosePackageFragment);
+
                 break;
 
             case R.id.menu_order:
-                tabSelected = 2;
-                HomeFragment homeFragment2=new HomeFragment();
-                Static.replaceFragment(R.id.nav_host_fragment, getSupportFragmentManager(),  homeFragment2, false, false);
+
                 break;
 
             case R.id.menu_settings:
 
-                tabSelected = 3;
-                HomeFragment homeFragment3=new HomeFragment();
-                Static.replaceFragment(R.id.nav_host_fragment, getSupportFragmentManager(),  homeFragment3, false, false);
+
                 break;
 
         }
@@ -207,10 +202,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-            Static.doExitApp(MainActivity.this);
-        } else {
+
+        if (getFragmentManager().getBackStackEntryCount()>0) {
+
+            getFragmentManager().popBackStack();
+        }
+        else {
+
             super.onBackPressed();
         }
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        return Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp();
+    }
+
 }

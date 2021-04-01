@@ -1,5 +1,6 @@
 package com.autumntechcreation.click4panditcustomer.di.module;
 
+import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragment;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
 
 import dagger.Module;
@@ -10,4 +11,7 @@ public abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract HomeFragment contributeHomeFragment();
+
+    @ContributesAndroidInjector
+    abstract ChoosePackageFragment contributeChoosePackageFragment();
 }
