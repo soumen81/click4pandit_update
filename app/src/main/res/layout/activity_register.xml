@@ -81,9 +81,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:inputType="textPassword"
                         android:scrollbars="vertical"
                         android:singleLine="true"
-
                         android:textSize="@dimen/font_10sp"
                         app:layout_constraintBottom_toBottomOf="@+id/parent1"
                         app:layout_constraintTop_toTopOf="@+id/parent1" />
@@ -107,9 +107,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:inputType="textPassword"
                         android:scrollbars="vertical"
                         android:singleLine="true"
-
                         android:textSize="@dimen/font_10sp"
                         app:layout_constraintBottom_toBottomOf="@+id/parent1"
                         app:layout_constraintTop_toTopOf="@+id/parent1" />
@@ -160,7 +160,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="phone"
+                        android:inputType="textEmailAddress"
                         android:scrollbars="vertical"
                         android:singleLine="true"
                         android:textSize="@dimen/font_10sp"
@@ -186,7 +186,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="phone"
+                        android:inputType="textPassword"
                         android:scrollbars="vertical"
                         android:singleLine="true"
                         android:textSize="@dimen/font_10sp"
@@ -212,7 +212,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="phone"
+                        android:inputType="textPassword"
                         android:scrollbars="vertical"
                         android:singleLine="true"
                         android:textSize="@dimen/font_10sp"

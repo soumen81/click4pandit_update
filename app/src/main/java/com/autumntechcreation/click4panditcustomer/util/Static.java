@@ -9,6 +9,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.autumntechcreation.click4panditcustomer.R;
 
+import java.math.BigDecimal;
+import java.text.Format;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class Static {
@@ -22,7 +26,10 @@ public class Static {
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
 
-
+    public static String getIndianRupee(String value) {
+        Format format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+        return format.format(new BigDecimal(value));
+    }
 
 
 

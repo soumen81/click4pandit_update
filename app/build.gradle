@@ -5,7 +5,7 @@ apply plugin: "androidx.navigation.safeargs"
 android {
     compileSdkVersion versions.target_sdk
     defaultConfig {
-        applicationId "com.gamut.farvisionapprovalr2"
+        applicationId "com.autumntechcreation.click4panditcustomer"
         minSdkVersion versions.min_sdk
         targetSdkVersion versions.target_sdk
         versionCode 1

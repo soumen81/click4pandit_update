@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+
+   >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_80dp"
+        android:background="@color/yellowColor"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvPackageName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/standardpackage"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/tvPackagePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_5dp"
+            android:text="2100"
+            android:textColor="@color/buttonColor"
+            android:textSize="@dimen/font_14sp"
+            app:layout_constraintLeft_toRightOf="@+id/tvPackageName"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/inclusive"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPackageName">
+
+        </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/clHeader">
+
+        <TextView
+            android:id="@+id/tvNoPandit"
+            style="@style/Style_TextView_FontBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/nopandit"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+        <TextView
+            android:id="@+id/tvPanditValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blackColor"
+            android:text="@string/Rs"
+            style="@style/Style_TextView_FontBold"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginTop="@dimen/dimen_13dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/tvNoProcedure"
+            style="@style/Style_TextView_FontBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/procedure"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNoPandit"></TextView>
+
+        <TextView
+            android:id="@+id/tvNoProcedureName"
+            style="@style/Style_TextView_FontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="Ganesh puja,Shiv Parivar Pujan\n Durga Puja,Basanti Puja,Kalsh Puja\n Saraswati Puja"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNoProcedure"></TextView>
+
+        <TextView
+            android:id="@+id/tvNoPujaSamgries"
+            style="@style/Style_TextView_FontBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/pujasamgries"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNoProcedureName"></TextView>
+
+        <TextView
+            android:id="@+id/tvNoPujaSamgriesValues"
+            style="@style/Style_TextView_FontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="Haldi,Abir,Gulal,Mango Leave,Tulasi,BottleGhee,Kapdra\n will be brought by us."
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNoPujaSamgries"></TextView>
+
+        <TextView
+            android:id="@+id/tvYajaman"
+            style="@style/Style_TextView_FontBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="@string/yajaman"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNoPujaSamgriesValues"></TextView>
+
+        <TextView
+            android:id="@+id/tvYajamanValue"
+            style="@style/Style_TextView_FontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="has to keep house items like vesels,Oil,lamps,mats,bowls,chowki,plates\nphotos you will be receiving details to do list after booking."
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvYajaman"></TextView>
+        <CheckBox
+            android:id="@+id/cbHeaven"
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_margin="@dimen/dimen_10dp"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvYajamanValue"></CheckBox>
+
+        <TextView
+            android:id="@+id/tvRequireHeaven"
+            style="@style/Style_TextView_FontBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_5dp"
+            android:layout_marginTop="@dimen/dimen_13dp"
+            android:text="@string/requireheaven"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintLeft_toRightOf="@+id/cbHeaven"
+            app:layout_constraintTop_toBottomOf="@+id/tvYajamanValue"></TextView>
+        <TextView
+            android:id="@+id/tvHeavenValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blackColor"
+            android:text="@string/Rs1"
+            style="@style/Style_TextView_FontBold"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginTop="@dimen/dimen_13dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvYajamanValue"></TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

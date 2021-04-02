@@ -107,6 +107,7 @@
                                         android:layout_width="@dimen/dimen_20dp"
                                         android:layout_height="@dimen/dimen_20dp"
                                         android:layout_alignParentRight="true"
+                                        android:visibility="gone"
                                         android:layout_centerVertical="true"
                                         android:layout_marginRight="@dimen/_10sdp"
                                         android:src="@drawable/bell" />
@@ -123,7 +124,7 @@
                         android:id="@+id/view1"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_2dp"
-                        android:background="@color/greenColor"
+                        android:background="@color/buttonColor"
                         app:layout_constraintTop_toBottomOf="@+id/llDashBoard" />
 
 

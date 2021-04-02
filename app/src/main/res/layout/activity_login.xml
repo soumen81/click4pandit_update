@@ -127,10 +127,10 @@
             android:text="@string/login"
             android:textColor="@color/whiteColor"
             android:textSize="@dimen/font_14sp"
-            android:layout_marginBottom="@dimen/dimen_50dp"
+
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
-           android.support.design:layout_constraintBottom_toBottomOf="parent">
+          android.support.design:layout_constraintTop_toBottomOf="@+id/tvForgetPassword">
 
         </TextView>
         <TextView
@@ -143,7 +143,9 @@
             style="@style/Style_TextView_FontRegular"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/tvLoginSend"></TextView>
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvLoginSend">
+
+        </TextView>
         <TextView
             android:id="@+id/tvSignUp"
             android:layout_width="wrap_content"
@@ -157,7 +159,9 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             android.support.design:layout_constraintTop_toBottomOf="@+id/tvLoginSend"
             android.support.design:layout_constraintLeft_toRightOf="@+id/tvDonotaccount"
-            ></TextView>
+            >
+
+        </TextView>
 
 
 

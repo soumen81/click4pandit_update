@@ -43,4 +43,14 @@
     <string name="economypackage">Economy Package</string>
     <string name="premiumpackage">Premium Package</string>
     <string name="rupee">20A8</string>
+    <string name="inclusive">Inclusive of Samgri + 1 Pandit</string>
+    <string name="nopandit">No of Pandits:1</string>
+    <string name="procedure">Procedure</string>
+    <string name="pujasamgries">Puja Samagries</string>
+    <string name="yajaman">Yajaman</string>
+    <string name="requireheaven">Do you require heaven?</string>
+    <string name="Rs">\u20B9 2700</string>
+    <string name="Rs1">\u20B9 4100</string>
+    <string name="Rs2">\u20B9 3100</string>
+    <string name="Rs3">\u20B9 3400</string>
 </resources>

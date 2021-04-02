@@ -20,5 +20,5 @@
     <color name="buttonColor">#D1453E</color>
     <color name="blackColor">#000000</color>
     <color name="rippcolor">#801bb392</color>
-
+    <color name="editTextBorderColor">#e0e0e0</color>
 </resources>
