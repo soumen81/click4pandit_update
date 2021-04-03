@@ -1,6 +1,5 @@
-package com.autumntechcreation.click4panditcustomer.ui.home;
+package com.autumntechcreation.click4panditcustomer.ui.bookpuja;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,60 +9,53 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
-import com.autumntechcreation.click4panditcustomer.databinding.FragmentHomeBinding;
+import com.autumntechcreation.click4panditcustomer.databinding.FragmentBookingpujaBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
+
 
 import javax.inject.Inject;
 
 import static androidx.navigation.Navigation.findNavController;
 
-
-public class HomeFragment  extends Fragment implements Injectable {
+public class BookingPujaFragment extends Fragment implements Injectable {
     @Inject
     public ViewModelProvider.Factory viewModelFactory;
-     FragmentHomeBinding mFragmentHomeBinding;
-    HomeViewModel mHomeViewModel;
+    FragmentBookingpujaBinding mFragmentBookingpujaBinding;
+    BookingPujaViewModel mBookingPujaViewModel;
+
     private View mView;
     NavController navController;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mFragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
-        mFragmentHomeBinding.setLifecycleOwner(this);
+        mFragmentBookingpujaBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_bookingpuja, container, false);
+        mFragmentBookingpujaBinding.setLifecycleOwner(this);
 
-        return mFragmentHomeBinding.getRoot();
-
+        return mFragmentBookingpujaBinding.getRoot();
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mView = view;
-
         navController=findNavController(mView);
-        ((MainActivity) getActivity()).setToolbar(true,false,false,true);
+        ((MainActivity) getActivity()).setToolbar(false,true,false,true);
     }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mHomeViewModel = ViewModelProviders.of(HomeFragment.this, viewModelFactory).get(HomeViewModel.class);
-        mFragmentHomeBinding.setHomeViewModel(mHomeViewModel);
-
-
-        mFragmentHomeBinding.tvViewPackages.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // Navigation.findNavController(mView).navigate(HomeFr)
-                findNavController(mView).navigate(HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment());
-            }
-        });
+        mBookingPujaViewModel = ViewModelProviders.of(BookingPujaFragment.this, viewModelFactory).get(BookingPujaViewModel.class);
+        mFragmentBookingpujaBinding.setBookingPujaViewModel(mBookingPujaViewModel);
 
     }
+
+
 }

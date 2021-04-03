@@ -53,4 +53,13 @@
     <string name="Rs1">\u20B9 4100</string>
     <string name="Rs2">\u20B9 3100</string>
     <string name="Rs3">\u20B9 3400</string>
+    <string name="panditsavailable">Pandits Available at Your</string>
+    <string name="convenience">Convenience</string>
+    <string name="transparency">100% transparency for Customers</string>
+    <string name="hasslefree">and Hassle-Free Experience</string>
+    <string name="bookpuja">Book your Puja</string>
+    <string name="location">Location</string>
+    <string name="language">Language</string>
+    <string name="date">March 10,2021</string>
+    <string name="time">10:30 PM</string>
 </resources>

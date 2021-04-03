@@ -35,7 +35,7 @@
                     android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-
+                        android:id="@+id/clToolBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
@@ -54,18 +54,17 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="?attr/actionBarSize"
                                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                                app:theme="@style/ToolbarTheme">
+                                app:theme="@style/ToolbarTheme"
+                                >
 
                                 <ImageButton
                                     android:id="@+id/imgvw_back"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="@dimen/dimen_30dp"
+                                    android:layout_height="@dimen/dimen_30dp"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="left|start"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:src="@drawable/ic_arrow_back_black_24dp"
-                                    android:visibility="gone" />
+                                    android:background="@drawable/ic_whiteback"
+                                    android:visibility="visible" />
 
                                 <ImageButton
                                     android:id="@+id/txt_menu"
@@ -74,7 +73,7 @@
                                     android:background="@drawable/ripple_effect"
                                     android:paddingRight="@dimen/dimen_15dp"
                                     android:src="@drawable/ic_menu"
-                                    android:visibility="visible" />
+                                    android:visibility="gone" />
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
@@ -158,6 +157,7 @@
                 app:headerLayout="@layout/nav_header_main"
                 app:itemBackground="@drawable/ripple_effect_nav"
                 app:itemIconTint="@drawable/drawer_item"
+                android:visibility="gone"
                 app:itemTextAppearance="@style/Style_TextView"
                 app:itemTextColor="@drawable/drawer_item"
                 design:menu="@menu/bottom_nav_items" />

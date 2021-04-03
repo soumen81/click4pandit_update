@@ -22,5 +22,13 @@
     <fragment
         android:id="@+id/choosePackageFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragment"
-        android:label="ChoosePackageFragment" />
+        android:label="ChoosePackageFragment" >
+        <action
+            android:id="@+id/action_choosePackageFragment_to_bookingPujaFragment"
+            app:destination="@id/bookingPujaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingPujaFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment"
+        android:label="BookingPujaFragment" />
 </navigation>

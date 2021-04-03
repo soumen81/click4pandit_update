@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 public class ChoosePackageViewModel extends ViewModel {
     private SingleLiveEvent<Void> mclickStandardPackage = new SingleLiveEvent<>();
+    private SingleLiveEvent<Void> mclickViewPackage = new SingleLiveEvent<>();
     @Inject
     public ChoosePackageViewModel() {
     }
@@ -25,5 +26,16 @@ public class ChoosePackageViewModel extends ViewModel {
     }
     public SingleLiveEvent<Void> getonClickStandardPackage() {
         return mclickStandardPackage;
+    }
+
+
+
+    public void onClickViewPackage(View view) {
+        Log.e("Click",view.getId()+"");
+        mclickViewPackage.call();
+
+    }
+    public SingleLiveEvent<Void> getonClickViewPackage() {
+        return mclickViewPackage;
     }
 }

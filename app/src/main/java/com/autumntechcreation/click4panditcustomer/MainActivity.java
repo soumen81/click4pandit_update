@@ -15,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         HasSupportFragmentInjector, ConnectivityReceiver.ConnectivityReceiverListener {
 
 
-
     @Inject
     DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
     @Inject
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private MainViewModel mMainViewModel;
     FragmentManager fragmentManager;
     private int tabSelected = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .get(MainViewModel.class);
         activityMainBinding.setLifecycleOwner(this);
         activityMainBinding.setMainViewModel(mMainViewModel);
-        NavigationView navigationView=(NavigationView)findViewById(R.id.activity_home_bnView);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.activity_home_bnView);
         View hView = navigationView.getHeaderView(0);
-
 
 
         fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, host).setPrimaryNavigationFragment(host).commit();
@@ -93,28 +93,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         });
+        activityMainBinding.imgvwBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
-        selectedItem =activityMainBinding.activityHomeBnView.getMenu().getItem(0);
+        selectedItem = activityMainBinding.activityHomeBnView.getMenu().getItem(0);
         selectFragment(selectedItem);
 
 
         activityMainBinding.txtMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     //drawer is open
                     drawerLayout.closeDrawer(GravityCompat.START);
-                }
-                else {
+                } else {
                     drawerLayout.openDrawer(GravityCompat.START);
                 }
             }
         });
-
-
-
-
-
 
 
     }
@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onNetworkConnectionChanged(boolean isConnected) {
 
     }
-
 
 
     @Override
@@ -137,19 +136,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
-
-
     private void selectFragment(MenuItem item) {
         switch (item.getItemId()) {
-
-
 
 
             case R.id.menu_home:
 
 
-                NavHostFragment navHostFragment = (NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                 navHostFragment.getNavController().navigate(R.id.homeFragmentFragment);
 
                 break;
@@ -157,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_profile:
 
 
-                NavHostFragment navHostFragment2 = (NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                NavHostFragment navHostFragment2 = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                 navHostFragment2.getNavController().navigate(R.id.choosePackageFragment);
 
                 break;
@@ -203,10 +197,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
 
-        if (getFragmentManager().getBackStackEntryCount()>0) {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
 
             getFragmentManager().popBackStack();
         }
+
         else {
 
             super.onBackPressed();
@@ -217,5 +212,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onSupportNavigateUp() {
         return Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp();
     }
+
+
+    public  void setToolbar(Boolean isMenu, Boolean isBack, Boolean isLockDrawer,Boolean backGround) {
+        if (isMenu) {
+            activityMainBinding.txtMenu.setVisibility(View.VISIBLE);
+        } else {
+            activityMainBinding.txtMenu.setVisibility(View.GONE);
+        }
+        if (isBack) {
+            activityMainBinding.imgvwBack.setVisibility(View.VISIBLE);
+        } else {
+            activityMainBinding.imgvwBack.setVisibility(View.GONE);
+        }
+        if (isLockDrawer) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        if(backGround){
+            activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#D1453E"));
+            //activityMainBinding.imgvwBack.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }else{
+            activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#FFFFFF"));
+          //  activityMainBinding.imgvwBack.setBackgroundColor(Color.parseColor("#000000"));
+        }
+
+    }
+
 
 }
