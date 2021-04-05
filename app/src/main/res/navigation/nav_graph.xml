@@ -30,5 +30,29 @@
     <fragment
         android:id="@+id/bookingPujaFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment"
-        android:label="BookingPujaFragment" />
+        android:label="BookingPujaFragment" >
+        <action
+            android:id="@+id/action_bookingPujaFragment_to_orderSummaryFragment"
+            app:destination="@id/orderSummaryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderSummaryFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryFragment"
+        android:label="OrderSummaryFragment" >
+        <action
+            android:id="@+id/action_orderSummaryFragment_to_billingDetailsFragment"
+            app:destination="@id/billingDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/billingDetailsFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsFragment"
+        android:label="BillingDetailsFragment" >
+        <action
+            android:id="@+id/action_billingDetailsFragment_to_differentPujaLocationFragment"
+            app:destination="@id/differentPujaLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/differentPujaLocationFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationFragment"
+        android:label="DifferentPujaLocationFragment" />
 </navigation>

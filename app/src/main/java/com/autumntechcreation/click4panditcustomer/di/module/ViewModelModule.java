@@ -6,12 +6,15 @@ import androidx.lifecycle.ViewModelProvider;
 import com.autumntechcreation.click4panditcustomer.MainViewModel;
 import com.autumntechcreation.click4panditcustomer.di.qualifiers.ViewModelKey;
 import com.autumntechcreation.click4panditcustomer.splash.SplashViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterViewModel;
 import com.autumntechcreation.click4panditcustomer.viewmodel.ProjectViewModelFactory;
 
@@ -68,4 +71,19 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(BookingPujaViewModel.class)
     abstract ViewModel bindBookingPujaViewModel(BookingPujaViewModel bookingPujaViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(OrderSummaryViewModel.class)
+    abstract ViewModel bindOrderSummaryViewModel(OrderSummaryViewModel orderSummaryViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BillingDetailsViewModel.class)
+    abstract ViewModel bindBillingDetailsViewModel(BillingDetailsViewModel billingDetailsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DifferentPujaLocationViewModel.class)
+    abstract ViewModel bindDifferentPujaLocationViewModel(DifferentPujaLocationViewModel differentPujaLocationViewModel);
 }

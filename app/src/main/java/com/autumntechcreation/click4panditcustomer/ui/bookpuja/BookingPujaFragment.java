@@ -55,6 +55,13 @@ public class BookingPujaFragment extends Fragment implements Injectable {
         mBookingPujaViewModel = ViewModelProviders.of(BookingPujaFragment.this, viewModelFactory).get(BookingPujaViewModel.class);
         mFragmentBookingpujaBinding.setBookingPujaViewModel(mBookingPujaViewModel);
 
+        mBookingPujaViewModel.getOnClickBookPackage().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(Void aVoid) {
+                findNavController(mView).navigate(BookingPujaFragmentDirections.actionBookingPujaFragmentToOrderSummaryFragment());
+            }
+        });
+
     }
 
 

@@ -8,10 +8,12 @@ import com.autumntechcreation.click4panditcustomer.network.AppExecutors;
 import com.autumntechcreation.click4panditcustomer.network.Webservice;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
 import com.autumntechcreation.click4panditcustomer.splash.SplashRepository;
+import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaRepository;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageRepository;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardRepository;
+import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationRepository;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
@@ -100,5 +102,17 @@ public class AppModule {
     @Singleton
     OrderSummaryRepository provideOrderSummaryRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new OrderSummaryRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    BillingDetailsRepository provideBillingDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new BillingDetailsRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    DifferentPujaLocationRepository provideDifferentPujaLocationRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new DifferentPujaLocationRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

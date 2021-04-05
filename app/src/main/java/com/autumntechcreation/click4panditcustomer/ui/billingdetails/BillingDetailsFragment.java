@@ -1,4 +1,4 @@
-package com.autumntechcreation.click4panditcustomer.ui.ordersummary;
+package com.autumntechcreation.click4panditcustomer.ui.billingdetails;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,31 +16,31 @@ import androidx.navigation.NavController;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
-import com.autumntechcreation.click4panditcustomer.databinding.FragmentOrdersummeryBinding;
+import com.autumntechcreation.click4panditcustomer.databinding.FragmentBillingdetailsBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment;
-import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragmentDirections;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentDirections;
 
 import javax.inject.Inject;
 
 import static androidx.navigation.Navigation.findNavController;
 
-public class OrderSummaryFragment extends Fragment implements Injectable {
+public class BillingDetailsFragment extends Fragment implements Injectable {
     @Inject
     public ViewModelProvider.Factory viewModelFactory;
-    OrderSummaryViewModel mOrderSummaryViewModel;
-    FragmentOrdersummeryBinding mFragmentOrdersummeryBinding;
+    BillingDetailsViewModel mBillingDetailsViewModel;
+    FragmentBillingdetailsBinding mFragmentBillingdetailsBinding;
     private View mView;
     NavController navController;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mFragmentOrdersummeryBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_ordersummery, container, false);
-        mFragmentOrdersummeryBinding.setLifecycleOwner(this);
+        mFragmentBillingdetailsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_billingdetails, container, false);
+        mFragmentBillingdetailsBinding.setLifecycleOwner(this);
 
-        return mFragmentOrdersummeryBinding.getRoot();
+        return mFragmentBillingdetailsBinding.getRoot();
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -54,15 +54,15 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mOrderSummaryViewModel = ViewModelProviders.of(OrderSummaryFragment.this, viewModelFactory).get(OrderSummaryViewModel.class);
-        mFragmentOrdersummeryBinding.setOrderSummeryViewModel(mOrderSummaryViewModel);
+        mBillingDetailsViewModel = ViewModelProviders.of(BillingDetailsFragment.this, viewModelFactory).get(BillingDetailsViewModel.class);
+        mFragmentBillingdetailsBinding.setBillingDetailsViewModel(mBillingDetailsViewModel);
 
-
-        mOrderSummaryViewModel.getOnClickConfirmOrder().observe(this, new Observer<Void>() {
+        mBillingDetailsViewModel.getOnClickBillingDiffLocation().observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void aVoid) {
-                findNavController(mView).navigate(OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment());
+                findNavController(mView).navigate(BillingDetailsFragmentDirections.actionBillingDetailsFragmentToDifferentPujaLocationFragment());
             }
         });
+
     }
-}
+    }

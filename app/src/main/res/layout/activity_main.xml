@@ -157,7 +157,6 @@
                 app:headerLayout="@layout/nav_header_main"
                 app:itemBackground="@drawable/ripple_effect_nav"
                 app:itemIconTint="@drawable/drawer_item"
-                android:visibility="gone"
                 app:itemTextAppearance="@style/Style_TextView"
                 app:itemTextColor="@drawable/drawer_item"
                 design:menu="@menu/bottom_nav_items" />
