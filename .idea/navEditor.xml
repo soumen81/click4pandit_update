@@ -17,6 +17,15 @@
                             <option name="y" value="-39" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_billingDetailsFragment_to_differentPujaLocationFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -74,6 +83,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="editprofileFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="615" />
+                            <option name="y" value="321" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="homeFragmentFragment">
                     <value>
                       <LayoutPositions>
@@ -124,6 +145,30 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="profileFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="303" />
+                            <option name="y" value="350" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="settingsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="614" />
+                            <option name="y" value="630" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

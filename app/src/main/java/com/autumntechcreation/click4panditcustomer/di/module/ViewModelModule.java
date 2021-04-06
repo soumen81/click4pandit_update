@@ -11,11 +11,14 @@ import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewMo
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsViewModel;
 import com.autumntechcreation.click4panditcustomer.viewmodel.ProjectViewModelFactory;
 
 import dagger.Binds;
@@ -86,4 +89,19 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DifferentPujaLocationViewModel.class)
     abstract ViewModel bindDifferentPujaLocationViewModel(DifferentPujaLocationViewModel differentPujaLocationViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProfileViewModel.class)
+    abstract ViewModel bindProfileViewModel(ProfileViewModel profileViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SettingsViewModel.class)
+    abstract ViewModel bindSettingsViewModel(SettingsViewModel settingsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(EditProfileViewModel.class)
+    abstract ViewModel bindEditProfileViewModel(EditProfileViewModel editProfileViewModel);
 }

@@ -312,8 +312,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_right_arrow" />
-                            <entry key="sourceFile" value="C:\Users\AUTUMN TECH\Downloads\right-arrow.svg" />
+                            <entry key="outputName" value="ic_edit" />
+                            <entry key="sourceFile" value="C:\Users\AUTUMN TECH\Downloads\edit.svg" />
                           </map>
                         </option>
                       </PersistentState>

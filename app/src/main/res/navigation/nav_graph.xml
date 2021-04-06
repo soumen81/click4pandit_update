@@ -55,4 +55,20 @@
         android:id="@+id/differentPujaLocationFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationFragment"
         android:label="DifferentPujaLocationFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_editprofileFragment"
+            app:destination="@id/editprofileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/editprofileFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.editprofile.EditprofileFragment"
+        android:label="EditprofileFragment" />
 </navigation>

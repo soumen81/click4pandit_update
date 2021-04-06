@@ -14,10 +14,12 @@ import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePassw
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageRepository;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardRepository;
 import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationRepository;
+import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileRepository;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryRepository;
+import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileRepository;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterRepository;
 import com.autumntechcreation.click4panditcustomer.util.AppConstants;
 
@@ -114,5 +116,17 @@ public class AppModule {
     @Singleton
     DifferentPujaLocationRepository provideDifferentPujaLocationRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new DifferentPujaLocationRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    ProfileRepository provideProfileRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new ProfileRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    EditProfileRepository provideEditProfileRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new EditProfileRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

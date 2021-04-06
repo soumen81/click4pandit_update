@@ -4,8 +4,11 @@ import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDeta
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragment;
 import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationFragment;
+import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditprofileFragment;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryFragment;
+import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment;
+import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -30,4 +33,13 @@ public abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract DifferentPujaLocationFragment contributeDifferentPujaLocationFragment();
+
+    @ContributesAndroidInjector
+    abstract ProfileFragment contributeProfileFragment();
+
+    @ContributesAndroidInjector
+    abstract SettingsFragment contributeSettingsFragment();
+
+    @ContributesAndroidInjector
+    abstract EditprofileFragment contributeEditprofileFragment();
 }

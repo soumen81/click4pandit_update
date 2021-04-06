@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private MainViewModel mMainViewModel;
     FragmentManager fragmentManager;
     private int tabSelected = 0;
+    boolean isHomeFragment=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,30 +143,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.menu_home:
 
-
+                tabSelected = 0;
                 NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                 navHostFragment.getNavController().navigate(R.id.homeFragmentFragment);
+               // isHomeFragment=true;
 
                 break;
 
             case R.id.menu_profile:
 
-
-                NavHostFragment navHostFragment2 = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                navHostFragment2.getNavController().navigate(R.id.choosePackageFragment);
+                tabSelected = 1;
+                NavHostFragment navHostFragmentProfile = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                navHostFragmentProfile.getNavController().navigate(R.id.profileFragment);
+               // isHomeFragment=false;
 
                 break;
 
             case R.id.menu_order:
+                tabSelected = 2;
+                NavHostFragment navHostFragmentOrders= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                navHostFragmentOrders.getNavController().navigate(R.id.settingsFragment);
+               // isHomeFragment=false;
 
                 break;
 
             case R.id.menu_settings:
+                tabSelected = 3;
+                NavHostFragment navHostFragmentSettings= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                navHostFragmentSettings.getNavController().navigate(R.id.settingsFragment);
+                //isHomeFragment=false;
 
+                break;
+                case R.id.menu_signout:
+                    tabSelected = 4;
+                    NavHostFragment navHostFragmentSignout= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                    navHostFragmentSignout.getNavController().navigate(R.id.settingsFragment);
+                   // isHomeFragment=false;
 
                 break;
 
         }
+
     }
 
     @Override

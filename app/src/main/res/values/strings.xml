@@ -95,4 +95,12 @@
     <string name="additionalinfo">Additional Information</string>
     <string name="differentpujalocation">Different Puja Location</string>
     <string name="save">Save</string>
+    <string name="howwework">How We work</string>
+    <string name="termsofuse">Terms of Use</string>
+    <string name="faq">FAQ</string>
+    <string name="cancellansandrefund">Cancellation and Refund</string>
+    <string name="contactus">Contact Us</string>
+    <string name="name">Name</string>
+    <string name="editprofile">Edit Profile</string>
+
 </resources>
