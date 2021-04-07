@@ -26,7 +26,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dimen_10dp">
 
             <TextView
                 android:id="@+id/tvProfile"
@@ -70,6 +71,7 @@
                 android:layout_marginTop="@dimen/dimen_20dp"
                 android:layout_marginRight="@dimen/dimen_20dp"
                 android:hint="@string/name"
+                android:textColorHint="@color/colorBadge"
                 android.support.design:layout_constraintTop_toBottomOf="@+id/imgVwProfile"
 
                 >
@@ -96,7 +98,7 @@
                 android:layout_marginRight="@dimen/dimen_20dp"
                 android:hint="@string/mobileNo"
                 android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutName"
-
+                android:textColorHint="@color/colorBadge"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -120,6 +122,7 @@
                 android:layout_marginTop="@dimen/dimen_20dp"
                 android:layout_marginRight="@dimen/dimen_20dp"
                 android:hint="@string/email"
+                android:textColorHint="@color/colorBadge"
                 android.support.design:layout_constraintTop_toBottomOf="@+id/inputMobileNo"
 
                 >
@@ -133,6 +136,7 @@
                     android:inputType="text"
                     android:scrollbars="vertical"
                     android:singleLine="true"
+                    android:textColorHint="@color/colorBadge"
                     android:textSize="@dimen/font_10sp"
                     app:layout_constraintBottom_toBottomOf="@+id/parent1"
                     app:layout_constraintTop_toTopOf="@+id/parent1" />
@@ -155,6 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:textColorHint="@color/colorBadge"
                     android:inputType="text"
                     android:scrollbars="vertical"
                     android:singleLine="true"
@@ -172,7 +177,7 @@
                 android:layout_marginRight="@dimen/dimen_20dp"
                 android:hint="@string/state"
                 android.support.design:layout_constraintTop_toBottomOf="@+id/inputAddress"
-
+                android:textColorHint="@color/colorBadge"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -197,7 +202,7 @@
                 android:layout_marginRight="@dimen/dimen_20dp"
                 android:hint="@string/city"
                 android.support.design:layout_constraintTop_toBottomOf="@+id/inputState"
-
+                android:textColorHint="@color/colorBadge"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -222,7 +227,7 @@
                 android:layout_marginRight="@dimen/dimen_20dp"
                 android:hint="@string/pincode"
                 android.support.design:layout_constraintTop_toBottomOf="@+id/inputCity"
-
+                android:textColorHint="@color/colorBadge"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText

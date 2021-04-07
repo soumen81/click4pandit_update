@@ -18,9 +18,11 @@ import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileRep
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
+import com.autumntechcreation.click4panditcustomer.ui.orders.OrderRepository;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryRepository;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileRepository;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterRepository;
+import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutRepository;
 import com.autumntechcreation.click4panditcustomer.util.AppConstants;
 
 import javax.inject.Singleton;
@@ -128,5 +130,17 @@ public class AppModule {
     @Singleton
     EditProfileRepository provideEditProfileRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new EditProfileRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    OrderRepository provideOrderRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new OrderRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    SignOutRepository provideSignOutRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new SignOutRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

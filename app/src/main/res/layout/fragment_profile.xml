@@ -27,7 +27,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dimen_10dp">
 
     <TextView
         android:id="@+id/tvProfile"
@@ -80,7 +81,7 @@
         android:layout_marginRight="@dimen/dimen_20dp"
         android:hint="@string/name"
         android.support.design:layout_constraintTop_toBottomOf="@+id/imgVwProfile"
-
+        android:textColorHint="@color/colorBadge"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -105,7 +106,7 @@
         android:layout_marginRight="@dimen/dimen_20dp"
         android:hint="@string/mobileNo"
         android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutName"
-
+        android:textColorHint="@color/colorBadge"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -131,7 +132,7 @@
         android:layout_marginRight="@dimen/dimen_20dp"
         android:hint="@string/email"
         android.support.design:layout_constraintTop_toBottomOf="@+id/inputMobileNo"
-
+        android:textColorHint="@color/colorBadge"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -157,7 +158,7 @@
         android:layout_marginRight="@dimen/dimen_20dp"
         android:hint="@string/address"
         android.support.design:layout_constraintTop_toBottomOf="@+id/inputEmail"
-
+        android:textColorHint="@color/colorBadge"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -184,7 +185,7 @@
         android:layout_marginRight="@dimen/dimen_20dp"
         android:hint="@string/state"
         android.support.design:layout_constraintTop_toBottomOf="@+id/inputAddress"
-
+        android:textColorHint="@color/colorBadge"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -210,7 +211,7 @@
         android:layout_marginRight="@dimen/dimen_20dp"
         android:hint="@string/city"
         android.support.design:layout_constraintTop_toBottomOf="@+id/inputState"
-
+        android:textColorHint="@color/colorBadge"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -236,7 +237,7 @@
         android:layout_marginRight="@dimen/dimen_20dp"
         android:hint="@string/pincode"
         android.support.design:layout_constraintTop_toBottomOf="@+id/inputCity"
-
+        android:textColorHint="@color/colorBadge"
         >
 
         <com.google.android.material.textfield.TextInputEditText

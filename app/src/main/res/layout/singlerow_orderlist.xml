@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+        <variable
+            name="viewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.orders.OrderViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_5dp"
+        android:onClick="@{(v) -> viewModel.onClickOrderList(v,position)}"
+        android:padding="@dimen/dimen_10dp"
+        android:background="@drawable/dialog_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/tvOrderNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/orderno"
+            style="@style/Style_TextView_FontBold"
+            android:textSize="@dimen/font_14sp"
+            android:textColor="@color/blackColor"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="@dimen/dimen_5dp"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/tvOrderNoValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#223355"
+            style="@style/Style_TextView_FontRegular"
+            android:textSize="@dimen/font_14sp"
+            android:textColor="@color/blackColor"
+            app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintLeft_toRightOf="@+id/tvOrderNo"
+            android:layout_margin="@dimen/dimen_5dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/tvPujaName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ganeshpuja"
+            style="@style/Style_TextView_FontBold"
+            android:textSize="@dimen/font_14sp"
+            android:textColor="@color/buttonColor"
+           app:layout_constraintTop_toBottomOf="@+id/tvOrderNo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="@dimen/dimen_5dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/tvDateandTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/datetimevalue"
+            android:textSize="@dimen/font_14sp"
+            style="@style/Style_TextView_FontRegular"
+            android:textColor="@color/blackColor"
+            app:layout_constraintTop_toBottomOf="@+id/tvPujaName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="@dimen/dimen_5dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/tvPaymentStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/paid"
+            style="@style/Style_TextView_FontBold"
+            android:textSize="@dimen/font_14sp"
+            android:textColor="@color/blackColor"
+            app:layout_constraintTop_toBottomOf="@+id/tvDateandTime"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total1"
+            android:textAllCaps="true"
+            style="@style/Style_TextView_FontBold"
+            android:textSize="@dimen/font_14sp"
+            android:textColor="@color/blackColor"
+            app:layout_constraintTop_toBottomOf="@+id/tvDateandTime"
+           app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            ></TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

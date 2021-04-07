@@ -58,6 +58,7 @@
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginRight="@dimen/dimen_20dp"
             android:hint="@string/email"
+            android:textColorHint="@color/colorBadge"
             android.support.design:layout_constraintTop_toBottomOf="@+id/viewLogin"
 
             >
@@ -86,7 +87,7 @@
             android:layout_marginRight="@dimen/dimen_20dp"
             android:hint="@string/password"
             android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
-
+            android:textColorHint="@color/colorBadge"
             >
 
             <com.google.android.material.textfield.TextInputEditText

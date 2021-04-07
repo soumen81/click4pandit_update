@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_order:
                 tabSelected = 2;
                 NavHostFragment navHostFragmentOrders= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                navHostFragmentOrders.getNavController().navigate(R.id.settingsFragment);
+                navHostFragmentOrders.getNavController().navigate(R.id.orderFragment);
                // isHomeFragment=false;
 
                 break;
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 case R.id.menu_signout:
                     tabSelected = 4;
                     NavHostFragment navHostFragmentSignout= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                    navHostFragmentSignout.getNavController().navigate(R.id.settingsFragment);
+                    navHostFragmentSignout.getNavController().navigate(R.id.signOutFragment);
                    // isHomeFragment=false;
 
                 break;

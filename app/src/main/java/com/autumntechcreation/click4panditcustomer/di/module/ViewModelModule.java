@@ -15,10 +15,14 @@ import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileVie
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsFragment;
+import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.orders.OrderViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutViewModel;
 import com.autumntechcreation.click4panditcustomer.viewmodel.ProjectViewModelFactory;
 
 import dagger.Binds;
@@ -104,4 +108,19 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(EditProfileViewModel.class)
     abstract ViewModel bindEditProfileViewModel(EditProfileViewModel editProfileViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(OrderViewModel.class)
+    abstract ViewModel bindOrderViewModel(OrderViewModel orderViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(OrderDetailsViewModel.class)
+    abstract ViewModel bindOrderDetailsViewModel(OrderDetailsViewModel orderDetailsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SignOutViewModel.class)
+    abstract ViewModel bindSignOutViewModel(SignOutViewModel signOutViewModel);
 }

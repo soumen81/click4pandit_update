@@ -14,7 +14,8 @@
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+   >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/whiteColor"
+        android:paddingBottom="@dimen/dimen_10dp"
         android:orientation="vertical">
 
         <TextView
@@ -56,7 +58,7 @@
             android:id="@+id/inputLayoutFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/blackColor"
+            android:textColorHint="@color/colorBadge"
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginRight="@dimen/dimen_20dp"
@@ -83,7 +85,7 @@
             android:id="@+id/inputLayoutLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/blackColor"
+            android:textColorHint="@color/colorBadge"
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_marginTop="@dimen/dimen_10dp"
             android:layout_marginRight="@dimen/dimen_20dp"
@@ -109,7 +111,7 @@
             android:id="@+id/inputLayoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/blackColor"
+            android:textColorHint="@color/colorBadge"
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_marginTop="@dimen/dimen_10dp"
             android:layout_marginRight="@dimen/dimen_20dp"
@@ -138,7 +140,7 @@
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_marginTop="@dimen/dimen_10dp"
             android:layout_marginRight="@dimen/dimen_20dp"
-            android:textColorHint="@color/blackColor"
+            android:textColorHint="@color/colorBadge"
             android:hint="@string/alternatemobileno"
             android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
 
@@ -164,7 +166,7 @@
             android:id="@+id/inputLayoutAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/blackColor"
+            android:textColorHint="@color/colorBadge"
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginRight="@dimen/dimen_20dp"
@@ -190,7 +192,7 @@
             android:id="@+id/inputLayoutState"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/blackColor"
+            android:textColorHint="@color/colorBadge"
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginRight="@dimen/dimen_20dp"
@@ -217,7 +219,7 @@
             android:id="@+id/inputLayoutCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/blackColor"
+            android:textColorHint="@color/colorBadge"
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginRight="@dimen/dimen_20dp"
@@ -244,7 +246,7 @@
             android:id="@+id/inputLayoutPincode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/blackColor"
+            android:textColorHint="@color/colorBadge"
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginRight="@dimen/dimen_20dp"
@@ -259,6 +261,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+
                 android:inputType="text"
                 android:scrollbars="vertical"
                 android:singleLine="true"
@@ -313,6 +316,7 @@
             android:layout_width="@dimen/dimen_120dp"
             android:layout_height="@dimen/dimen_40dp"
             android:layout_marginTop="@dimen/dimen_10dp"
+
             android:background="@drawable/round_yellow_corner"
             android:gravity="center"
             android:text="@string/proceedtopay"

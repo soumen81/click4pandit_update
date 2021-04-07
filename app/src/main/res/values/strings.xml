@@ -102,5 +102,12 @@
     <string name="contactus">Contact Us</string>
     <string name="name">Name</string>
     <string name="editprofile">Edit Profile</string>
+    <string name="orderno">Order No</string>
+    <string name="paid">Paid</string>
+    <string name="total1">TOTAL \u20B9 4,000.00</string>
+    <string name="orderdetails">Order Details</string>
+    <string name="panditname">Pandit Vishnu Mohan</string>
+    <string name="paidamount">The Amount is Paid</string>
+    <string name="thankyou">Thank you using our application! </string>
 
 </resources>

@@ -90,5 +90,5 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$versions.navigation"
     implementation "androidx.navigation:navigation-ui:$versions.navigation"
 
-
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }
