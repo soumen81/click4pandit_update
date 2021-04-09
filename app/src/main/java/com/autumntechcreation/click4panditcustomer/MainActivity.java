@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             activityMainBinding.imgvwWhiteback.setImageResource(R.drawable.ic_whiteback);
         }else{
             activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#FFFFFF"));
-            activityMainBinding.imgvwWhiteback.setImageResource(R.drawable.ic_backblack);
+            activityMainBinding.imgvwWhiteback.setImageResource(R.drawable.ic_back);
         }
 
 

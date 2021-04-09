@@ -36,7 +36,7 @@ public class HomeFragment  extends Fragment implements Injectable {
     HomeViewModel mHomeViewModel;
     private View mView;
     NavController navController;
-    private int[]mImager={R.drawable.pandit1,R.drawable.panditya,R.drawable.pandit3,R.drawable.pandit4,R.drawable.dog};
+    private int[]mImager={R.drawable.pandit1,R.drawable.pandit2,R.drawable.pandit3,R.drawable.pandit4,R.drawable.pandit5};
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
     @Nullable
     @Override

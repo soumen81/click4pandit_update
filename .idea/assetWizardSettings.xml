@@ -311,8 +311,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_backblack" />
-                            <entry key="sourceFile" value="C:\Users\AUTUMN TECH\Downloads\edit.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_back" />
+                            <entry key="sourceFile" value="C:\Users\AUTUMN TECH\Downloads\back.svg" />
                           </map>
                         </option>
                       </PersistentState>
