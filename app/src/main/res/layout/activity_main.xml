@@ -54,17 +54,24 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="?attr/actionBarSize"
                                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                                app:theme="@style/ToolbarTheme"
-                                >
 
-                                <ImageButton
-                                    android:id="@+id/imgvw_back"
-                                    android:layout_width="@dimen/dimen_30dp"
-                                    android:layout_height="@dimen/dimen_30dp"
+                                >
+                                <!--  app:theme="@style/ToolbarTheme"-->
+                                <ImageView
+                                    android:id="@+id/imgvw_Whiteback"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="left|start"
-                                    android:background="@drawable/ic_whiteback"
-                                    android:visibility="visible" />
+                                     />
+                               <!-- <ImageView
+                                    android:id="@+id/imgvwBlackback"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="left|start"
+                                    android:src="@drawable/ic_backblack"
+                                    android:visibility="gone" />-->
 
                                 <ImageButton
                                     android:id="@+id/txt_menu"
@@ -86,7 +93,7 @@
                                         style="@style/Style_TextView_FontRegular"
                                         android:layout_width="@dimen/dimen_100dp"
                                         android:layout_height="@dimen/dimen_30dp"
-                                        android:layout_marginLeft="@dimen/dimen_40dp"
+                                        android:layout_marginLeft="@dimen/dimen_50dp"
                                         android:layout_marginTop="@dimen/dimen_5dp"
                                         android:src="@drawable/ic_logowithtext"
                                         android:textSize="@dimen/font_14sp"
@@ -157,6 +164,7 @@
                 app:headerLayout="@layout/nav_header_main"
                 app:itemBackground="@drawable/ripple_effect_nav"
                 app:itemIconTint="@drawable/drawer_item"
+
                 app:itemTextAppearance="@style/Style_TextView"
                 app:itemTextColor="@drawable/drawer_item"
                 design:menu="@menu/bottom_nav_items" />

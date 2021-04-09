@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         });
-        activityMainBinding.imgvwBack.setOnClickListener(new View.OnClickListener() {
+        activityMainBinding.imgvwWhiteback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -235,13 +235,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public  void setToolbar(Boolean isMenu, Boolean isBack, Boolean isLockDrawer,Boolean backGround) {
         if (isMenu) {
             activityMainBinding.txtMenu.setVisibility(View.VISIBLE);
+
         } else {
             activityMainBinding.txtMenu.setVisibility(View.GONE);
         }
         if (isBack) {
-            activityMainBinding.imgvwBack.setVisibility(View.VISIBLE);
+            activityMainBinding.imgvwWhiteback.setVisibility(View.VISIBLE);
+
         } else {
-            activityMainBinding.imgvwBack.setVisibility(View.GONE);
+            activityMainBinding.imgvwWhiteback.setVisibility(View.GONE);
+
         }
         if (isLockDrawer) {
             drawerLayout.closeDrawer(GravityCompat.START);
@@ -250,11 +253,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if(backGround){
             activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#D1453E"));
-            //activityMainBinding.imgvwBack.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            activityMainBinding.imgvwWhiteback.setImageResource(R.drawable.ic_whiteback);
         }else{
             activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#FFFFFF"));
-          //  activityMainBinding.imgvwBack.setBackgroundColor(Color.parseColor("#000000"));
+            activityMainBinding.imgvwWhiteback.setImageResource(R.drawable.ic_backblack);
         }
+
 
     }
 

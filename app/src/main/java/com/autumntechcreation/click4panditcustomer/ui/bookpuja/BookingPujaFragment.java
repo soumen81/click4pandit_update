@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +20,8 @@ import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentBookingpujaBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
+import com.synnapps.carouselview.ImageClickListener;
+import com.synnapps.carouselview.ImageListener;
 
 
 import javax.inject.Inject;
@@ -29,7 +33,8 @@ public class BookingPujaFragment extends Fragment implements Injectable {
     public ViewModelProvider.Factory viewModelFactory;
     FragmentBookingpujaBinding mFragmentBookingpujaBinding;
     BookingPujaViewModel mBookingPujaViewModel;
-
+    private int[]mImager={R.drawable.pandit1,R.drawable.pandit2,R.drawable.pandit3,R.drawable.pandit4,R.drawable.dog};
+    private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
     private View mView;
     NavController navController;
     @Nullable
@@ -55,6 +60,22 @@ public class BookingPujaFragment extends Fragment implements Injectable {
         mBookingPujaViewModel = ViewModelProviders.of(BookingPujaFragment.this, viewModelFactory).get(BookingPujaViewModel.class);
         mFragmentBookingpujaBinding.setBookingPujaViewModel(mBookingPujaViewModel);
 
+
+
+        mFragmentBookingpujaBinding.carousal.setImageListener(new ImageListener() {
+            @Override
+            public void setImageForPosition(int position, ImageView imageView) {
+                imageView.setImageResource(mImager[position]);
+            }
+        });
+
+        mFragmentBookingpujaBinding.carousal.setImageClickListener(new ImageClickListener() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(getActivity(),mImagetitle[position],Toast.LENGTH_SHORT).show();
+            }
+        });
+        mFragmentBookingpujaBinding.carousal.setPageCount(mImager.length);
         mBookingPujaViewModel.getOnClickBookPackage().observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void aVoid) {

@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +27,8 @@ import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
+import com.synnapps.carouselview.ImageClickListener;
+import com.synnapps.carouselview.ImageListener;
 
 import javax.inject.Inject;
 
@@ -37,6 +41,8 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
     ChoosePackageViewModel mChoosePackageViewModel;
     private View mView;
     NavController navController;
+    private int[]mImager={R.drawable.pandit1,R.drawable.pandit2,R.drawable.pandit3,R.drawable.pandit4,R.drawable.dog};
+    private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,6 +69,20 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
         mFragmentChoosepackageBinding.setChoosePackageViewModel(mChoosePackageViewModel);
 
 
+        mFragmentChoosepackageBinding.carousal.setImageListener(new ImageListener() {
+            @Override
+            public void setImageForPosition(int position, ImageView imageView) {
+                imageView.setImageResource(mImager[position]);
+            }
+        });
+
+        mFragmentChoosepackageBinding.carousal.setImageClickListener(new ImageClickListener() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(getActivity(),mImagetitle[position],Toast.LENGTH_SHORT).show();
+            }
+        });
+        mFragmentChoosepackageBinding.carousal.setPageCount(mImager.length);
         mChoosePackageViewModel.getonClickStandardPackage().observe(this, new Observer<Void>() {
             @Override
             public void onChanged(@Nullable Void _) {

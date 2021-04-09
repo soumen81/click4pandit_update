@@ -52,7 +52,7 @@ public class OrderFragment extends Fragment implements Injectable {
         super.onViewCreated(view, savedInstanceState);
         mView = view;
         navController=findNavController(mView);
-        ((MainActivity) getActivity()).setToolbar(false,true,false,true);
+        ((MainActivity) getActivity()).setToolbar(false,true,false,false);
     }
 
     @Override
