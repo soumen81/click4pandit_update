@@ -44,5 +44,10 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(in);
             }
         });
+
+       /* mRegisterViewModel.getRegisterResult(mActivityRegisterBinding.edtTxtFirstName.getText().toString(),mActivityRegisterBinding.edtTxtLastName.getText().toString(),
+                "",mActivityRegisterBinding.edtTxtEmail.getText().toString(),mActivityRegisterBinding.edtTxtMobileNo.getText().toString(),
+                mActivityRegisterBinding.edtTxtPassword.getText().toString(),mActivityRegisterBinding.edtTxtConfirmPassword.getText().toString(),"CUST")
+                .observe(this, this::handlePendingApprovalListing);*/
     }
 }
