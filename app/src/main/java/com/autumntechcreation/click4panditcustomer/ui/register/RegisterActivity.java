@@ -31,8 +31,11 @@ public class RegisterActivity extends AppCompatActivity {
         mActivityRegisterBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
 
         AndroidInjection.inject(this);
+
+
         mRegisterViewModel = ViewModelProviders.of(this,viewModelFactory).get(RegisterViewModel.class);
         mActivityRegisterBinding.setLifecycleOwner(this);
+
         mActivityRegisterBinding.setRegisterViewModel(mRegisterViewModel);
 
 
