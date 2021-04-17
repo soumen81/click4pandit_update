@@ -33,7 +33,7 @@
     android.support.design:layout_constraintLeft_toLeftOf="parent"
     android.support.design:layout_constraintBottom_toBottomOf="parent"
     android.support.design:layout_constraintTop_toTopOf="parent"></ImageView>
-    <TextView
+<!--    <TextView
         android:id="@+id/tvthankyou"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,6 +44,6 @@
         android.support.design:layout_constraintLeft_toLeftOf="parent"
         android.support.design:layout_constraintRight_toRightOf="parent"
         android.support.design:layout_constraintTop_toBottomOf="@+id/imgvwPandit"
-        ></TextView>
+        ></TextView>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
