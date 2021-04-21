@@ -3,6 +3,7 @@ package com.autumntechcreation.click4panditcustomer.util;
 public class AllUrlsAndConfig {
     public static String SIGNUP="/api/NonFnctnlCncrn/SignUp";
     public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";
+    public static String LOGIN="/api/NonFnctnlCncrn/Login";
 
 
 
@@ -15,4 +16,11 @@ public class AllUrlsAndConfig {
     public static final String PASSWORDFORSIGNUP="PwdForSignUp";
     public static final String CONFIRMPASSWORDFORSIGNUP="ConfirmPwdSignUp";
     public static final String ENTITYTYPEABRV="EntityTypAbrv";
+
+    //Parameter for Login
+    public static final String LOGONID="LogonId";
+    public static final String PASSWORD="Pwd";
+    public static final String DOREMEMBERME="DoRememberMe";
+    public static final String ENTITYTYPEFORLOGIN="EntityTypAbrvforLogin";
+
 }

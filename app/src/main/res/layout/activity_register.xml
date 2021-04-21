@@ -16,6 +16,21 @@
         android:layout_height="match_parent"
         android:background="@color/whiteColor">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:fitsSystemWindows="true"
+
+           >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/whiteColor"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dimen_10dp">
+
         <ImageView
             android:id="@+id/imgvwLogoWithText"
             android:layout_width="wrap_content"
@@ -26,18 +41,7 @@
             android.support.design:layout_constraintRight_toRightOf="parent"
             android.support.design:layout_constraintTop_toTopOf="parent"></ImageView>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fillViewport="true"
-            android:fitsSystemWindows="true"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/imgvwLogoWithText">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/whiteColor"
-                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvSignUp"
@@ -47,9 +51,9 @@
                     android:layout_marginTop="@dimen/dimen_30dp"
                     android:text="SignUp"
                     android:textSize="@dimen/font_18sp"
-                    android.support.design:layout_constraintLeft_toLeftOf="parent"
                     android.support.design:layout_constraintRight_toRightOf="parent"
-                    android.support.design:layout_constraintTop_toTopOf="parent">
+                    android.support.design:layout_constraintLeft_toLeftOf="parent"
+                   android.support.design:layout_constraintTop_toBottomOf="@+id/imgvwLogoWithText">
 
                 </TextView>
 
@@ -82,7 +86,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="textPassword"
+                        android:inputType="text"
                         android:scrollbars="vertical"
                         android:singleLine="true"
                         android:textSize="@dimen/font_10sp"
@@ -109,7 +113,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="textPassword"
+                        android:inputType="text"
                         android:scrollbars="vertical"
                         android:singleLine="true"
                         android:textSize="@dimen/font_10sp"
@@ -136,6 +140,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:maxLength="13"
                         android:inputType="number"
                         android:scrollbars="vertical"
                         android:singleLine="true"
@@ -152,8 +157,8 @@
                     android:layout_marginLeft="@dimen/dimen_20dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:layout_marginRight="@dimen/dimen_20dp"
-                    android:textColorHint="@color/colorBadge"
                     android:hint="@string/email"
+                    android:textColorHint="@color/colorBadge"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutMobileNo"
 
                     >
@@ -178,11 +183,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_20dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
-                    android:textColorHint="@color/colorBadge"
                     android:layout_marginRight="@dimen/dimen_20dp"
                     android:hint="@string/password"
+                    android:textColorHint="@color/colorBadge"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
-
+                    app:passwordToggleDrawable="@drawable/show_password_selector"
+                    app:passwordToggleEnabled="true"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -194,6 +200,7 @@
                         android:inputType="textPassword"
                         android:scrollbars="vertical"
                         android:singleLine="true"
+
                         android:textSize="@dimen/font_10sp"
                         app:layout_constraintBottom_toBottomOf="@+id/parent1"
                         app:layout_constraintTop_toTopOf="@+id/parent1" />
@@ -203,13 +210,14 @@
                     android:id="@+id/inputLayoutConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorBadge"
                     android:layout_marginLeft="@dimen/dimen_20dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:layout_marginRight="@dimen/dimen_20dp"
                     android:hint="@string/confirmpassword"
+                    android:textColorHint="@color/colorBadge"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutPassword"
-
+                    app:passwordToggleDrawable="@drawable/show_password_selector"
+                    app:passwordToggleEnabled="true"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -221,6 +229,8 @@
                         android:inputType="textPassword"
                         android:scrollbars="vertical"
                         android:singleLine="true"
+                        app:passwordToggleDrawable="@drawable/show_password_selector"
+                        app:passwordToggleEnabled="true"
                         android:textSize="@dimen/font_10sp"
                         app:layout_constraintBottom_toBottomOf="@+id/parent1"
                         app:layout_constraintTop_toTopOf="@+id/parent1" />
@@ -228,10 +238,10 @@
 
                 <TextView
                     android:id="@+id/tvcreateaccount"
+                    style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10dp"
-                    style="@style/Style_TextView_FontRegular"
                     android:text="@string/createanaccount"
                     android.support.design:layout_constraintLeft_toLeftOf="parent"
                     android.support.design:layout_constraintRight_toRightOf="parent"
@@ -241,12 +251,12 @@
 
                 <TextView
                     android:id="@+id/tvtermscondition"
+                    style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_5dp"
                     android:layout_marginTop="@dimen/dimen_5dp"
                     android:autoLink="web"
-                    style="@style/Style_TextView_FontRegular"
                     android:text="@string/termscondition"
                     android:textColor="@color/buttonColor"
                     android.support.design:layout_constraintStart_toStartOf="@+id/tvcreateaccount"
@@ -256,12 +266,12 @@
 
                 <TextView
                     android:id="@+id/tvamperson"
+                    style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_5dp"
                     android:layout_marginTop="@dimen/dimen_5dp"
                     android:text="@string/amperson"
-                    style="@style/Style_TextView_FontRegular"
                     android.support.design:layout_constraintLeft_toRightOf="@+id/tvtermscondition"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/tvcreateaccount">
 
@@ -269,12 +279,12 @@
 
                 <TextView
                     android:id="@+id/tvprivacypolicy"
+                    style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_5dp"
                     android:layout_marginTop="@dimen/dimen_5dp"
                     android:autoLink="web"
-                    style="@style/Style_TextView_FontRegular"
                     android:text="@string/privacypolicy"
                     android:textColor="@color/buttonColor"
                     android.support.design:layout_constraintLeft_toRightOf="@+id/tvamperson"
@@ -290,6 +300,7 @@
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:background="@drawable/round_red_corner"
                     android:gravity="center"
+                    android:onClick="@{(v) -> RegisterViewModel.clickForRegister(v)}"
                     android:text="@string/signup"
                     android:textColor="@color/whiteColor"
                     android:textSize="@dimen/font_14sp"
@@ -301,10 +312,10 @@
 
                 <TextView
                     android:id="@+id/tvalready"
+                    style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10dp"
-                    style="@style/Style_TextView_FontRegular"
                     android:text="Already have an Account?"
                     android:textColor="@color/blackColor"
                     android.support.design:layout_constraintLeft_toLeftOf="parent"
@@ -315,13 +326,13 @@
 
                 <TextView
                     android:id="@+id/tvLogin"
+                    style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_10dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
-                    android:text="Login"
-                    style="@style/Style_TextView_FontRegular"
                     android:onClick="@{(v) -> RegisterViewModel.onClickGoToLogin(v)}"
+                    android:text="Login"
                     android:textColor="@color/redColor"
                     android.support.design:layout_constraintLeft_toRightOf="@+id/tvalready"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUpSend">

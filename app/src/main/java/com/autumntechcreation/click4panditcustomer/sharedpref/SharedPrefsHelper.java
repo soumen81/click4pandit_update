@@ -1,25 +1,29 @@
 package com.autumntechcreation.click4panditcustomer.sharedpref;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.autumntechcreation.click4panditcustomer.R;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
 public class SharedPrefsHelper {
-    public static String PREF_KEY_ACCESS_TOKEN = "access-token";
-    public static String PREF_KEY_FISCAL_YEAR_ID = "fiscal-year-id";
-    public static String PREF_KEY_FISCAL_YEAR_PERIOD_BY_DATE_ID="fiscal-year-period-by-date";
-    public static String PREF_KEY_FISCAL_YEAR_ID_LAST_UPDATE = "fiscal-year-id-last-updated";
-    public static String USER_ID = "user-id";
-    public static String TENANT_ID = "tenantId";
-    public static String EMPLOYEE_ID = "emp-id";
+    public static String USERNAME = "userName";
+    public static String MOBILE = "mobile";
+    public static String ENTERED_HOME_ACTIVITY = "ENTERED_HOME_ACTIVITY";
+
 
     private SharedPreferences mSharedPreferences;
 
     @Inject
     public SharedPrefsHelper(SharedPreferences sharedPreferences) {
         mSharedPreferences = sharedPreferences;
+    }
+
+    public static void getInstance(Context context){
+        context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE);
     }
 
     public void put(String key, String value) {
@@ -57,4 +61,13 @@ public class SharedPrefsHelper {
     public void deleteSavedData(String key) {
         mSharedPreferences.edit().remove(key).apply();
     }
+
+    public void deleteSavedData() {
+        //  mSharedPreferences.edit().remove(key).apply();
+        mSharedPreferences.edit().remove(ENTERED_HOME_ACTIVITY).apply();
+        mSharedPreferences.edit().remove(USERNAME).apply();
+        mSharedPreferences.edit().remove(MOBILE).apply();
+
+    }
+
 }

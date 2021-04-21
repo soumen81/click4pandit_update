@@ -35,7 +35,7 @@ public class DisplayDialog {
             mAlertDialog = new com.autumntechcreation.click4panditcustomer.loader.SpotsDialog(context, R.style.Custom);
             mAlertDialog.setMessage(message);
             mAlertDialog.setCanceledOnTouchOutside(false);
-            mAlertDialog.getWindow().setBackgroundDrawableResource(R.color.lightgrey);
+            mAlertDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
             mAlertDialog.show();
         }
         return mAlertDialog;

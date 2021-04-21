@@ -109,5 +109,9 @@
     <string name="panditname">Pandit Vishnu Mohan</string>
     <string name="paidamount">The Amount is Paid</string>
     <string name="thankyou">Thank you using our application! </string>
-
+    <string name="please_wait">Please Wait</string>
+    <string name="nointernet">No Internet</string>
+    <string name="nointernetdetails">We are unable to connect Internet,Please stay with us</string>
+    <string name="validation_error">Validation Error</string>
+    <string name="please_enter_valid_phone_number">Please enter Valid Phone Number</string>
 </resources>
