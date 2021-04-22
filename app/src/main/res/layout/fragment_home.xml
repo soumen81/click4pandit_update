@@ -122,43 +122,59 @@
                     android:textColor="@color/yellowColor"
                     android:textSize="@dimen/font_14sp"
                     android:layout_marginTop="@dimen/dimen_20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android.support.design:layout_constraintTop_toBottomOf="@+id/tvDivine">
 
                 </TextView>
 
-                <TextView
-                    android:id="@+id/tvTypesPuja"
+               <androidx.constraintlayout.widget.ConstraintLayout
+                   android:id="@+id/clTypesPuja"
+                   android:layout_width="@dimen/dimen_200dp"
+                   android:layout_height="@dimen/dimen_30dp"
+                   android:layout_marginTop="@dimen/dimen_20dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                   android:background="@drawable/round_white_corner"
+                   app:layout_constraintTop_toBottomOf="@+id/tvChoosePuja">
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/tvSpinTypeOfPuja"
+                    android:layout_width="@dimen/dimen_200dp"
+                    android:layout_height="@dimen/dimen_30dp"
                     style="@style/Style_TextView_FontRegular"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:spinnerMode="dropdown"
+                    android:drawablePadding="@dimen/dimen_10dp"
+                   android.support.design:layout_constraintTop_toTopOf="parent"
+                    >
+
+                </androidx.appcompat.widget.AppCompatSpinner>
+               </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clTypesCategories"
                     android:layout_width="@dimen/dimen_200dp"
                     android:layout_height="@dimen/dimen_30dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
-                    android:background="@drawable/round_white_corner"
-                    android:drawableRight="@drawable/ic_dropdown"
-                    android:drawablePadding="@dimen/dimen_10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvChoosePuja">
-
-                </TextView>
-
-                <TextView
-                    android:id="@+id/tvCategoies"
-                    style="@style/Style_TextView_FontRegular"
-                    android:layout_width="@dimen/dimen_200dp"
-                    android:layout_height="@dimen/dimen_30dp"
-                    android:layout_marginTop="@dimen/dimen_10dp"
                     android:background="@drawable/round_white_corner"
-                    android:drawableRight="@drawable/ic_dropdown"
-                    android:drawablePadding="@dimen/dimen_10dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTypesPuja">
+                    app:layout_constraintTop_toBottomOf="@+id/clTypesPuja">
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/tvSpinTypeCategories"
+                        android:layout_width="@dimen/dimen_200dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        style="@style/Style_TextView_FontRegular"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:spinnerMode="dropdown"
+                        android:drawablePadding="@dimen/dimen_10dp"
+                        android.support.design:layout_constraintTop_toTopOf="parent"
+                        >
 
-                </TextView>
-
+                    </androidx.appcompat.widget.AppCompatSpinner>
+                </androidx.constraintlayout.widget.ConstraintLayout>
                 <TextView
                     android:id="@+id/tvViewPackages"
                     style="@style/Style_TextView_FontBold"
@@ -172,7 +188,7 @@
                     android:textSize="@dimen/font_12sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvCategoies">
+                    app:layout_constraintTop_toBottomOf="@+id/clTypesCategories">
 
                 </TextView>
             </androidx.constraintlayout.widget.ConstraintLayout>

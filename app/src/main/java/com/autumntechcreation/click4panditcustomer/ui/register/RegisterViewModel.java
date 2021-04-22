@@ -25,10 +25,10 @@ public class RegisterViewModel extends ViewModel {
     }
 
 
-    public LiveData<Resource<RegisterResponse>> getRegisterResult(String firstName, String lastName, String mobile, String emalAddress, String loginForSignUp,
+    public LiveData<Resource<RegisterResponse>> getRegisterResult(String firstName, String lastName, String mobile, String loginForSignUp,
                                                                   String passwordForSignUp, String confirmPassForSignUp, String entityType) {
         mRegisterResponseResult = new MutableLiveData<>();
-        mRegisterResponseResult = mRegisterRepository.getRegistration(firstName, lastName, mobile, emalAddress, loginForSignUp, passwordForSignUp,
+        mRegisterResponseResult = mRegisterRepository.getRegistration(firstName, lastName, mobile, loginForSignUp, passwordForSignUp,
                 confirmPassForSignUp, entityType);
         return mRegisterResponseResult;
 

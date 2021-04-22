@@ -132,7 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
                             .show();
                 }else {
                     mRegisterViewModel.getRegisterResult(mActivityRegisterBinding.edtTxtFirstName.getText().toString(), mActivityRegisterBinding.edtTxtLastName.getText().toString(),
-                            "", mActivityRegisterBinding.edtTxtEmail.getText().toString(), mActivityRegisterBinding.edtTxtMobileNo.getText().toString(),
+                            mActivityRegisterBinding.edtTxtMobileNo.getText().toString(), mActivityRegisterBinding.edtTxtEmail.getText().toString(),
                             mActivityRegisterBinding.edtTxtPassword.getText().toString(), mActivityRegisterBinding.edtTxtConfirmPassword.getText().toString(), "CUST")
                             .observe(RegisterActivity.this, RegisterActivity.this::handleRegistration);
 

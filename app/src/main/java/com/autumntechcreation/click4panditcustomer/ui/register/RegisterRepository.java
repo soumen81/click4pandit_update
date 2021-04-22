@@ -29,7 +29,7 @@ public class RegisterRepository {
         this.mWebservice=webservice;
     }
 
-    public LiveData<Resource<RegisterResponse>> getRegistration(String firstName,String lastName,String mobile,String emalAddress,String loginForSignUp,
+    public LiveData<Resource<RegisterResponse>> getRegistration(String firstName,String lastName,String mobile,String loginForSignUp,
                                                                 String passwordForSignUp,String confirmPassForSignUp,String entityType) {
         return new NetworkBoundResource<RegisterResponse,RegisterResponse>(mAppExecutors) {
             private RegisterResponse resultsDb;
@@ -70,7 +70,7 @@ public class RegisterRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.FIRSTNAME, firstName);
                 jsonObject.addProperty(AllUrlsAndConfig.LASTNAME, lastName);
                 jsonObject.addProperty(AllUrlsAndConfig.MOBILE, mobile);
-                jsonObject.addProperty(AllUrlsAndConfig.EMAILADDRESS, emalAddress);
+                jsonObject.addProperty(AllUrlsAndConfig.EMAILADDRESS, " ");
                 jsonObject.addProperty(AllUrlsAndConfig.LOGINIDFORSIGNUP, loginForSignUp);
                 jsonObject.addProperty(AllUrlsAndConfig.PASSWORDFORSIGNUP, passwordForSignUp);
                 jsonObject.addProperty(AllUrlsAndConfig.CONFIRMPASSWORDFORSIGNUP, confirmPassForSignUp);

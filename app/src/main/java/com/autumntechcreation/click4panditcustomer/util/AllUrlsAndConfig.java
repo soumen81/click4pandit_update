@@ -4,7 +4,8 @@ public class AllUrlsAndConfig {
     public static String SIGNUP="/api/NonFnctnlCncrn/SignUp";
     public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";
     public static String LOGIN="/api/NonFnctnlCncrn/Login";
-
+    public static final String PUJATYPES = "/api/PujaCtgry/GetPujaCategories";
+    public static final String PUJACATEGORIES = "/api/PujaSubCtgry/GetPujaSubCtgryByPujaCtgryId";
 
 
     //Parameter for SignUp
@@ -22,5 +23,6 @@ public class AllUrlsAndConfig {
     public static final String PASSWORD="Pwd";
     public static final String DOREMEMBERME="DoRememberMe";
     public static final String ENTITYTYPEFORLOGIN="EntityTypAbrvforLogin";
+    public static final String PUJACATEGORYID="PujaCatgoryId";
 
 }
