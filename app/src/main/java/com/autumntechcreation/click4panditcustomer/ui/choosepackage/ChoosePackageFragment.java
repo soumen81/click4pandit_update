@@ -3,6 +3,7 @@ package com.autumntechcreation.click4panditcustomer.ui.choosepackage;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,12 +44,14 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
     NavController navController;
     private int[]mImager={R.drawable.pandit1,R.drawable.pandit2,R.drawable.pandit3,R.drawable.pandit4,R.drawable.pandit5};
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
+    int subCategoryId;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mFragmentChoosepackageBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_choosepackage, container, false);
         mFragmentChoosepackageBinding.setLifecycleOwner(this);
-
+    subCategoryId=ChoosePackageFragmentArgs.fromBundle(getArguments()).getSubCategoryId();
+        Log.e("SubCategoryId",""+subCategoryId);
         return mFragmentChoosepackageBinding.getRoot();
 
     }
@@ -58,6 +61,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
         mView = view;
         navController=findNavController(mView);
         ((MainActivity) getActivity()).setToolbar(false,true,false,true);
+
 
     }
 

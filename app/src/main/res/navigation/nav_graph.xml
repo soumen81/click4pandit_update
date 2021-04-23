@@ -10,9 +10,16 @@
         android:name="com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/fragment_home" >
+        <argument
+            android:name="subCategoryId"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+
         <action
             android:id="@+id/action_homeFragmentFragment_to_choosePackageFragment"
             app:destination="@id/choosePackageFragment" />
+
     </fragment>
 
     <activity
@@ -23,9 +30,16 @@
         android:id="@+id/choosePackageFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragment"
         android:label="ChoosePackageFragment" >
+        <argument
+            android:name="subCategoryId"
+            android:defaultValue="1"
+            app:argType="integer" />
         <action
             android:id="@+id/action_choosePackageFragment_to_bookingPujaFragment"
-            app:destination="@id/bookingPujaFragment" />
+            app:destination="@id/bookingPujaFragment" >
+
+
+        </action>
     </fragment>
     <fragment
         android:id="@+id/bookingPujaFragment"

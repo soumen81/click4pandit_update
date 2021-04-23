@@ -26,6 +26,7 @@ import com.autumntechcreation.click4panditcustomer.databinding.FragmentHomeBindi
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
+import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentDirections;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
@@ -48,6 +49,7 @@ public class HomeFragment  extends Fragment implements Injectable {
     HomeViewModel mHomeViewModel;
     private View mView;
     NavController navController;
+    int  pujaSubCategoryId;
     private int[]mImager={R.drawable.pandit1,R.drawable.pandit2,R.drawable.pandit3,R.drawable.pandit4,R.drawable.pandit5};
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
 
@@ -105,16 +107,15 @@ public class HomeFragment  extends Fragment implements Injectable {
         mFragmentHomeBinding.tvSpinTypeOfPuja.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int pujaCategoryId=mHomeViewModel.mPujaTypesList.getValue().data.get(position).pujaCtgryId;
+
+                int  pujaCategoryId = mHomeViewModel.mPujaTypesList.getValue().data.get(position).pujaCtgryId;
+
 
                 mHomeViewModel.getPujaCategoryList(pujaCategoryId).observe(getActivity(),HomeFragment.this::handlePujCategoryList);
 
-                mSpinPujaCategoryAdapter=new ArrayAdapter<String>(getActivity(),
-                        android.R.layout.simple_spinner_item, mListCategoryPuja);
-                // Specify the layout to use when the list of choices appears
-                mSpinPujaCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                // Apply the adapter to the spinner
-                mFragmentHomeBinding.tvSpinTypeCategories.setAdapter(mSpinPujaCategoryAdapter);
+
+
+
 
 
             }
@@ -124,9 +125,26 @@ public class HomeFragment  extends Fragment implements Injectable {
 
             }
         });
+        mSpinPujaCategoryAdapter=new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, mListCategoryPuja);
+        // Specify the layout to use when the list of choices appears
+        mSpinPujaCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        mFragmentHomeBinding.tvSpinTypeCategories.setAdapter(mSpinPujaCategoryAdapter);
 
+        mFragmentHomeBinding.tvSpinTypeCategories.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                  pujaSubCategoryId = mHomeViewModel.mPujaCategoryList.getValue().data.get(position).getPujaSubCtgryId();
+                    Log.e("SUBCATE",""+pujaSubCategoryId);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
 
@@ -149,8 +167,17 @@ public class HomeFragment  extends Fragment implements Injectable {
         mFragmentHomeBinding.tvViewPackages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Navigation.findNavController(mView).navigate(HomeFr)
-                findNavController(mView).navigate(HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment());
+
+
+           //  findNavController(mView).navigate(HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment());
+
+                HomeFragmentDirections.ActionHomeFragmentFragmentToChoosePackageFragment action =
+                        HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment();
+                action.setSubCategoryId(pujaSubCategoryId);
+                Navigation.findNavController(mView).navigate(action);
+
+
+
             }
         });
 
@@ -262,6 +289,7 @@ public class HomeFragment  extends Fragment implements Injectable {
                                 mListCategoryPuja.add(resource.data.get(i).getPujaSubCtgryDscr());
                                 pujaCategoryModellist.add(resource.data.get(i));
 
+
                             }
                             Log.e("LISSSST", mListCategoryPuja.size()+"");
 
@@ -272,6 +300,7 @@ public class HomeFragment  extends Fragment implements Injectable {
                     }
 
                     // mModuleDetailsViewModel.setUserWiseWidgetList(resource.data);
+
 
 
 
