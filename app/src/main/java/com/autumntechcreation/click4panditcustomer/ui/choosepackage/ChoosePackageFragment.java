@@ -3,6 +3,7 @@ package com.autumntechcreation.click4panditcustomer.ui.choosepackage;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,19 +20,33 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
+import com.autumntechcreation.click4panditcustomer.databinding.DialogChoosepackageDetailsBinding;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentChoosepackageBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
+import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
+import com.google.gson.Gson;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.inject.Inject;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -40,11 +55,13 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
     public ViewModelProvider.Factory viewModelFactory;
     FragmentChoosepackageBinding mFragmentChoosepackageBinding;
     ChoosePackageViewModel mChoosePackageViewModel;
+    DialogChoosepackageDetailsBinding mDialogChoosepackageDetailsBinding;
     private View mView;
     NavController navController;
     private int[]mImager={R.drawable.pandit1,R.drawable.pandit2,R.drawable.pandit3,R.drawable.pandit4,R.drawable.pandit5};
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
     int subCategoryId;
+    AlertDialog mDialogForChoosePackage = null;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -71,6 +88,16 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
 
         mChoosePackageViewModel = ViewModelProviders.of(ChoosePackageFragment.this, viewModelFactory).get(ChoosePackageViewModel.class);
         mFragmentChoosepackageBinding.setChoosePackageViewModel(mChoosePackageViewModel);
+
+
+        mDialogForChoosePackage = new AlertDialog.Builder(this.getActivity()).create();
+        mDialogChoosepackageDetailsBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_choosepackage_details, null, true);
+        mDialogChoosepackageDetailsBinding.setViewModel(mChoosePackageViewModel);
+        mDialogForChoosePackage.setView(mDialogChoosepackageDetailsBinding.getRoot());
+
+
+
+
 
 
         mFragmentChoosepackageBinding.carousal.setImageListener(new ImageListener() {
@@ -101,6 +128,25 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
         });
 
 
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        mFragmentChoosepackageBinding.rvChoosePackageList.setLayoutManager(llm);
+        mChoosePackageViewModel.init();
+
+        mChoosePackageViewModel.getPujaPackageList(subCategoryId).observe(getActivity(),ChoosePackageFragment.this::handlePujPackageList);
+
+
+        mChoosePackageViewModel.getSelectedChoosePackageListItem().observe(getActivity(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer position) {
+                mDialogForChoosePackage.show();
+
+                mDialogChoosepackageDetailsBinding.tvStandardPackage.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr());
+                mDialogChoosepackageDetailsBinding.tvStandardAmount.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString());
+                mDialogChoosepackageDetailsBinding.tvPujaDesc.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr());
+
+            }
+        });
     }
 
 
@@ -123,5 +169,82 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
        // EditText fragment_change_password_etOldPassword = dialogView.findViewById(R.id.fragment_change_password_etOldPassword);
 
         alertDialog.show();
+    }
+
+    private void handlePujPackageList(Resource<List<ChoosePackageListModel>> resource) {
+        if (resource != null) {
+            JSONObject jsonObject = null;
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Something went wrong")
+                            .show();
+                    break;
+                case LOADING:
+
+
+
+                    break;
+                case SUCCESS:
+
+                    Log.e("handleChoosePackageListStatus", "SUCCESS");
+                    Log.e("handleChoosePackageListStatus", resource.data + "");
+                    Log.e("handleChoosePackageListStatus", resource.message + "");
+                    Log.e("handleChoosePackageListStatus", resource.status + "");
+
+
+                    if (resource.data != null) {
+
+                        Log.e("handleChoosePackageListStatus_count", resource.data.size() + "");
+                        if (resource.data.size() == 0) {
+                            DisplayDialog.getInstance().dismissAlertDialog();
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Something went wrong")
+                                    .show();
+                        } else {
+                            Gson gson = new Gson();
+                            List<ChoosePackageListModel> list = resource.data;
+                            mChoosePackageViewModel.setChoosePackageListAdapter(list);
+                            List<PujaPrcdr> listPujaPrcdr;
+                            listPujaPrcdr = new ArrayList<>();
+                            String pujapcdrList="";
+                            for(int i=0;i<list.size();i++){
+                                ChoosePackageListModel choosePackageListModel=list.get(i);
+                                Log.e("listChoosePackageListModel----" + i, gson.toJson(choosePackageListModel));
+
+                                for (int j = 0; j < list.get(i).getPujaPrcdrList().size(); j++) {
+                                    PujaPrcdr pujaPrcdr=list.get(i).getPujaPrcdrList().get(j);
+                                    pujapcdrList=list.get(i).getPujaPrcdrList().get(j).getPujaPrcdrDscr();
+                                    pujaPrcdr.setPujaPrcdrDscr(pujapcdrList);
+                                    listPujaPrcdr.add(pujaPrcdr);
+
+                                }
+
+
+                               // mDialogChoosepackageDetailsBinding.tvPujaNameList.setText(str);
+
+                            }
+
+                            DisplayDialog.getInstance().dismissAlertDialog();
+
+                        }
+                    }
+
+                    // mModuleDetailsViewModel.setUserWiseWidgetList(resource.data);
+
+
+
+
+                    break;
+                default:
+
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
     }
 }

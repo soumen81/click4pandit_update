@@ -6,6 +6,7 @@ public class AllUrlsAndConfig {
     public static String LOGIN="/api/NonFnctnlCncrn/Login";
     public static final String PUJATYPES = "/api/PujaCtgry/GetPujaCategories";
     public static final String PUJACATEGORIES = "/api/PujaSubCtgry/GetPujaSubCtgryByPujaCtgryId";
+    public static final String PUJAPACKAGE = "/api/PujaPkg/GetPujaPkgByPujaSubCtgryId";
 
 
     //Parameter for SignUp
@@ -24,5 +25,8 @@ public class AllUrlsAndConfig {
     public static final String DOREMEMBERME="DoRememberMe";
     public static final String ENTITYTYPEFORLOGIN="EntityTypAbrvforLogin";
     public static final String PUJACATEGORYID="PujaCatgoryId";
+
+    //Parameter for ChoosePackage
+    public static final String PUJAPACKAGESUBCATEGORYID="PujaSubCtgryId";
 
 }

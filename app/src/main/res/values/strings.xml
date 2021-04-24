@@ -114,4 +114,5 @@
     <string name="nointernetdetails">We are unable to connect Internet,Please stay with us</string>
     <string name="validation_error">Validation Error</string>
     <string name="please_enter_valid_phone_number">Please enter Valid Phone Number</string>
+    <string name="rupeesign">\u20B9</string>
 </resources>

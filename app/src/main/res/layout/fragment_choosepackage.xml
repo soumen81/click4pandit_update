@@ -118,183 +118,21 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/tvDoorstep">
 
         </TextView>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clStandardPackage"
-            android:layout_width="@dimen/dimen_200dp"
-            android:layout_height="@dimen/dimen_40dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvChoosePackageList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:onClick="@{(v) -> ChoosePackageViewModel.onClickStandardPackage(v)}"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:background="@drawable/round_white_corner"
             app:layout_constraintTop_toBottomOf="@+id/tvChoosePackage"
-            >
-            <TextView
-                android:id="@+id/tvStandardPackage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/standardpackage"
-                style="@style/Style_TextView_FontRegular"
-                android:textColor="@color/blackColor"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                android:layout_marginTop="@dimen/dimen_5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:textColor="@color/blackColor"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvStandardPackage"
-                android:text="@string/inclusive"></TextView>
-            <TextView
-                android:id="@+id/tvStandardAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Rs"
-                style="@style/Style_TextView_FontRegular"
-                android:textColor="@color/buttonColor"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                android:layout_marginTop="@dimen/dimen_5dp"
-               app:layout_constraintLeft_toRightOf="@+id/tvStandardPackage"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-            <ImageView
-                android:layout_width="@dimen/dimen_15dp"
-                android:layout_height="@dimen/dimen_15dp"
-                android:src="@drawable/ic_plus"
-                android:layout_marginRight="@dimen/dimen_10dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-            </ImageView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clEconomyPackage"
-            android:layout_width="@dimen/dimen_200dp"
-            android:layout_height="@dimen/dimen_40dp"
-            android:layout_marginTop="@dimen/dimen_10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:background="@drawable/round_white_corner"
-            app:layout_constraintTop_toBottomOf="@+id/clStandardPackage"
+            app:setAdapter="@{ChoosePackageViewModel.getChoosepackageAdapter()}"
             >
-            <TextView
-                android:id="@+id/tvEconomyPackage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/standardpackage"
-                style="@style/Style_TextView_FontRegular"
-                android:textColor="@color/blackColor"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                android:layout_marginTop="@dimen/dimen_5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
-            </TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:textColor="@color/blackColor"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvEconomyPackage"
-                android:text="@string/inclusive"></TextView>
-            <TextView
-                android:id="@+id/tvEconomyAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Rs2"
-                style="@style/Style_TextView_FontRegular"
-                android:textColor="@color/buttonColor"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                android:layout_marginTop="@dimen/dimen_5dp"
-                app:layout_constraintLeft_toRightOf="@+id/tvEconomyPackage"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-            <ImageView
-                android:layout_width="@dimen/dimen_15dp"
-                android:layout_height="@dimen/dimen_15dp"
-                android:src="@drawable/ic_plus"
-                android:layout_marginRight="@dimen/dimen_10dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-            </ImageView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clPremiumPackage"
-            android:layout_width="@dimen/dimen_200dp"
-            android:layout_height="@dimen/dimen_40dp"
-            android:layout_marginTop="@dimen/dimen_10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:background="@drawable/round_white_corner"
-            app:layout_constraintTop_toBottomOf="@+id/clEconomyPackage"
-            >
-            <TextView
-                android:id="@+id/tvPremiumPackage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/standardpackage"
-                style="@style/Style_TextView_FontRegular"
-                android:textColor="@color/blackColor"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                android:layout_marginTop="@dimen/dimen_5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:textColor="@color/blackColor"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvPremiumPackage"
-                android:text="@string/inclusive"></TextView>
-            <TextView
-                android:id="@+id/tvPremiumAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Rs3"
-                style="@style/Style_TextView_FontRegular"
-                android:textColor="@color/buttonColor"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                android:layout_marginTop="@dimen/dimen_5dp"
-                app:layout_constraintLeft_toRightOf="@+id/tvPremiumPackage"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </TextView>
-            <ImageView
-                android:layout_width="@dimen/dimen_15dp"
-                android:layout_height="@dimen/dimen_15dp"
-                android:src="@drawable/ic_plus"
-                android:layout_marginRight="@dimen/dimen_10dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-            </ImageView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.recyclerview.widget.RecyclerView>
 
         <TextView
             android:id="@+id/tvViewPackages"
@@ -310,7 +148,7 @@
             android:layout_marginTop="@dimen/dimen_20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clPremiumPackage">
+            app:layout_constraintTop_toBottomOf="@+id/rvChoosePackageList">
 
         </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>

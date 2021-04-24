@@ -2,6 +2,7 @@ package com.autumntechcreation.click4panditcustomer.network;
 
 import androidx.lifecycle.LiveData;
 
+import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageListModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
@@ -46,6 +47,12 @@ public interface Webservice {
     @POST()
     LiveData<ApiResponse<List<PujaCategoryModel>>> getPujaCategoryList(@Url String apiname,
                                                                  @Body JsonObject jsonObject
+
+    );
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<List<ChoosePackageListModel>>> getPujaPackageList(@Url String apiname,
+                                                                           @Body JsonObject jsonObject
 
     );
 

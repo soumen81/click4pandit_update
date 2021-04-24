@@ -14,21 +14,27 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.autumntechcreation.click4panditcustomer.databinding.ActivityMainBinding;
 import com.autumntechcreation.click4panditcustomer.network.ConnectivityReceiver;
+import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
+import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.google.android.material.navigation.NavigationView;
 
 import javax.inject.Inject;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -51,7 +57,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentManager fragmentManager;
     private int tabSelected = 0;
     boolean isHomeFragment=true;
-
+    SharedPrefsHelper mSharedPrefsHelper;
+    private ProgressDialog mProgressDialog;
+    SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,9 +79,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         activityMainBinding.setMainViewModel(mMainViewModel);
         NavigationView navigationView = (NavigationView) findViewById(R.id.activity_home_bnView);
         View hView = navigationView.getHeaderView(0);
-
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("Loading");
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setIndeterminate(true);
 
         fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, host).setPrimaryNavigationFragment(host).commit();
+
+        sp = getSharedPreferences("login",MODE_PRIVATE);
+
 
         activityMainBinding.imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,12 +189,65 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
                 case R.id.menu_signout:
-                    tabSelected = 4;
+                    /*tabSelected = 4;
                     NavHostFragment navHostFragmentSignout= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                     navHostFragmentSignout.getNavController().navigate(R.id.signOutFragment);
                    // isHomeFragment=false;
 
-                break;
+                break;*/
+
+                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.WARNING_TYPE);
+                    sweetAlertDialog.setTitleText("Logout");
+                    sweetAlertDialog.setContentText("Do you want to logout?");
+                    sweetAlertDialog.setConfirmText("Yes");
+                    sweetAlertDialog.setCancelText("No");
+                    sweetAlertDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sweetAlertDialog.dismissWithAnimation();
+                        }
+                    });
+                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+
+
+                            // mProfileViewModel.deleteData();
+                            sweetAlertDialog.dismissWithAnimation();
+                            mProgressDialog.show();
+
+                            runOnUiThread(new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    final Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            //add your code here
+                                            mProgressDialog.dismiss();
+
+                                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+
+                                            // intent.putExtra("finish", true); // if you are checking for this in your other Activities
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                                                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                                                    Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            startActivity(intent);
+                                            overridePendingTransition(R.anim.anim_right_in, R.anim.anim_left_out);
+                                            finish();
+                                            sp.edit().putBoolean("logged",false).apply();
+                                        }
+                                    }, 1000);
+
+                                }
+                            });
+
+
+                        }
+                    });
+                    sweetAlertDialog.show();
+                    break;
 
         }
 
@@ -261,6 +328,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+
+
 
 
 }

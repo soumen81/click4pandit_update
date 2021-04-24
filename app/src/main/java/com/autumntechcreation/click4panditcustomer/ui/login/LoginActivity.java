@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import androidx.databinding.DataBindingUtil;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     public ViewModelProvider.Factory viewModelFactory;
     ActivityLoginBinding mActivityLoginBinding;
     LoginViewModel mLoginViewModel;
+    SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,10 @@ public class LoginActivity extends AppCompatActivity {
         mLoginViewModel = ViewModelProviders.of(this,viewModelFactory).get(LoginViewModel.class);
         mActivityLoginBinding.setLifecycleOwner(this);
         mActivityLoginBinding.setLoginViewModel(mLoginViewModel);
+
+        sp = getSharedPreferences("login",MODE_PRIVATE);
+
+
 
         mLoginViewModel.getonClickSignUpPage().observe(this, new Observer<Void>() {
             @Override
@@ -145,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
                         mLoginViewModel.storeMobileNo(mobileNo);
                         Intent in=new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(in);
+                        sp.edit().putBoolean("logged",true).apply();
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;
