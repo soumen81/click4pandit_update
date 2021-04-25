@@ -2,6 +2,8 @@ package com.autumntechcreation.click4panditcustomer.network;
 
 import androidx.lifecycle.LiveData;
 
+import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLanguageModel;
+import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLocationModel;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageListModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
@@ -55,5 +57,15 @@ public interface Webservice {
                                                                            @Body JsonObject jsonObject
 
     );
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<List<BookingLocationModel>>> getLocationList(@Url String apiname,
+                                                                      @Body JsonObject jsonObject
 
+    );
+
+    @GET()
+    LiveData<ApiResponse<List<BookingLanguageModel>>> getLanguageList(@Url String apiname
+
+    );
 }

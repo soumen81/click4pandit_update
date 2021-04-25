@@ -94,7 +94,12 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
         mDialogChoosepackageDetailsBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_choosepackage_details, null, true);
         mDialogChoosepackageDetailsBinding.setViewModel(mChoosePackageViewModel);
         mDialogForChoosePackage.setView(mDialogChoosepackageDetailsBinding.getRoot());
-
+        mDialogChoosepackageDetailsBinding.tvChoosePackageConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialogForChoosePackage.dismiss();
+            }
+        });
 
 
 
@@ -139,11 +144,41 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
         mChoosePackageViewModel.getSelectedChoosePackageListItem().observe(getActivity(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer position) {
+
+                String procedures="",pujaSamagries="",Yajaman="";
+                ChoosePackageListModel choosePackageListModel=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position);
+
+                for(int i=0;i<choosePackageListModel.getPujaPrcdrList().size();i++){
+                    if(i==0){
+                        procedures =choosePackageListModel.getPujaPrcdrList().get(i).getPujaPrcdrDscr();
+                    }else {
+                        procedures = procedures + "," + choosePackageListModel.getPujaPrcdrList().get(i).getPujaPrcdrDscr();
+                    }
+                }
+
+                for(int i=0;i<choosePackageListModel.getPujaSamagriDesdlvrList().size();i++){
+                    if(i==0){
+                        pujaSamagries =choosePackageListModel.getPujaSamagriDesdlvrList().get(i).getPujaSamagriDelvryDscr();
+                    }else {
+                        pujaSamagries = pujaSamagries + "," + choosePackageListModel.getPujaSamagriDesdlvrList().get(i).getPujaSamagriDelvryDscr();
+                    }
+                }
+
+                for(int i=0;i<choosePackageListModel.getPujasamagriHHList().size();i++){
+                    if(i==0){
+                        Yajaman =choosePackageListModel.getPujasamagriHHList().get(i).getPujaSamagriHHDscr();
+                    }else {
+                        Yajaman = Yajaman + "," + choosePackageListModel.getPujasamagriHHList().get(i).getPujaSamagriHHDscr();
+                    }
+                }
                 mDialogForChoosePackage.show();
 
                 mDialogChoosepackageDetailsBinding.tvStandardPackage.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr());
                 mDialogChoosepackageDetailsBinding.tvStandardAmount.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString());
                 mDialogChoosepackageDetailsBinding.tvPujaDesc.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr());
+                mDialogChoosepackageDetailsBinding.tvPujaProcedureList.setText(procedures);
+                mDialogChoosepackageDetailsBinding.tvPujaSamagriList.setText(pujaSamagries);
+                mDialogChoosepackageDetailsBinding.tvYajamanNameList.setText(Yajaman);
 
             }
         });
@@ -210,6 +245,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                             mChoosePackageViewModel.setChoosePackageListAdapter(list);
                             List<PujaPrcdr> listPujaPrcdr;
                             listPujaPrcdr = new ArrayList<>();
+
                             String pujapcdrList="";
                             for(int i=0;i<list.size();i++){
                                 ChoosePackageListModel choosePackageListModel=list.get(i);

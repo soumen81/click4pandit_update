@@ -7,7 +7,8 @@ public class AllUrlsAndConfig {
     public static final String PUJATYPES = "/api/PujaCtgry/GetPujaCategories";
     public static final String PUJACATEGORIES = "/api/PujaSubCtgry/GetPujaSubCtgryByPujaCtgryId";
     public static final String PUJAPACKAGE = "/api/PujaPkg/GetPujaPkgByPujaSubCtgryId";
-
+    public static final String LOCATIONLIST ="/api/Lcn/SrchBySubLcltyMinThreeChars";
+    public static final String LANGUAGELIST ="/api/Lang/GetLangMasterList";
 
     //Parameter for SignUp
     public static final String FIRSTNAME="FirstName";
@@ -28,5 +29,8 @@ public class AllUrlsAndConfig {
 
     //Parameter for ChoosePackage
     public static final String PUJAPACKAGESUBCATEGORYID="PujaSubCtgryId";
+    //Parameter of Location
+    public static final String SUBLCITYMINTHREECHARS="SubLcltyMinThreeChars";
+
 
 }

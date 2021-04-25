@@ -13,8 +13,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.autumntechcreation.click4panditcustomer.R;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
@@ -73,4 +77,25 @@ public class Static {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+    public static String[] getYearMonthDate(String inputDate) {
+        return inputDate.split("-");
+    }
+    public static String curentDate() {
+        return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+    }
+    public static long dateToTimestamp(String input) {
+        //  String str_date=mCalender+"-"+day+"-"+yr;
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = formatter.parse(input);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long output = date.getTime() / 1000L;
+        String str = Long.toString(output);
+        return Long.parseLong(str) * 1000;
+    }
+
 }
