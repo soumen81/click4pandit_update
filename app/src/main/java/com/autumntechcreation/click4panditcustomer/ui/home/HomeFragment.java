@@ -49,6 +49,7 @@ public class HomeFragment  extends Fragment implements Injectable {
     HomeViewModel mHomeViewModel;
     private View mView;
     NavController navController;
+    String pujaName="";
     int  pujaSubCategoryId;
     private int[]mImager={R.drawable.pandit1,R.drawable.pandit2,R.drawable.pandit3,R.drawable.pandit4,R.drawable.pandit5};
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
@@ -138,6 +139,8 @@ public class HomeFragment  extends Fragment implements Injectable {
 
                   pujaSubCategoryId = mHomeViewModel.mPujaCategoryList.getValue().data.get(position).getPujaSubCtgryId();
                     Log.e("SUBCATE",""+pujaSubCategoryId);
+                  pujaName = mHomeViewModel.mPujaCategoryList.getValue().data.get(position).getPujaSubCtgryDscr();
+                Log.e("PUJANAME",""+pujaName);
             }
 
             @Override
@@ -169,11 +172,12 @@ public class HomeFragment  extends Fragment implements Injectable {
             public void onClick(View v) {
 
 
-           //  findNavController(mView).navigate(HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment());
+                Log.e("SUBCATE",""+pujaSubCategoryId);           //  findNavController(mView).navigate(HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment());
 
                 HomeFragmentDirections.ActionHomeFragmentFragmentToChoosePackageFragment action =
                         HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment();
                 action.setSubCategoryId(pujaSubCategoryId);
+                action.setPujaName(pujaName);
                 Navigation.findNavController(mView).navigate(action);
 
 

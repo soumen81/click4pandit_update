@@ -32,6 +32,7 @@ import com.autumntechcreation.click4panditcustomer.databinding.FragmentBookingpu
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
+import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentArgs;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.util.Static;
@@ -63,7 +64,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
     private View mView;
     NavController navController;
-
+    String procedure,pujaName,pujaAmount,pujaDesc,pujaSamagri,yajaman;
     ArrayAdapter<String> mSpinLocationAdapter;
     List<String> mListLocation = new ArrayList<>();
     ArrayList<BookingLocationModel> bookingLocationModellist = new ArrayList<BookingLocationModel>();
@@ -76,6 +77,19 @@ public class BookingPujaFragment extends Fragment implements Injectable {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mFragmentBookingpujaBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_bookingpuja, container, false);
         mFragmentBookingpujaBinding.setLifecycleOwner(this);
+        procedure= ChoosePackageFragmentArgs.fromBundle(getArguments()).getProcedure();
+        Log.e("Procedure",""+procedure);
+        pujaName= ChoosePackageFragmentArgs.fromBundle(getArguments()).getPujaName();
+        Log.e("PujaName",""+pujaName);
+        pujaAmount= ChoosePackageFragmentArgs.fromBundle(getArguments()).getAmount();
+        Log.e("PujaAmount",""+pujaAmount);
+        pujaDesc= ChoosePackageFragmentArgs.fromBundle(getArguments()).getPackageDesc();
+        Log.e("PujaDesc",""+pujaDesc);
+        pujaSamagri= ChoosePackageFragmentArgs.fromBundle(getArguments()).getPujaSamagries();
+        Log.e("PujaSamagries",""+pujaSamagri);
+        yajaman= ChoosePackageFragmentArgs.fromBundle(getArguments()).getYajaman();
+        Log.e("Yajaman",""+yajaman);
+
 
         return mFragmentBookingpujaBinding.getRoot();
     }

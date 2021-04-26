@@ -20,6 +20,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
@@ -30,6 +31,7 @@ import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
+import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragmentDirections;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
@@ -62,6 +64,9 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
     int subCategoryId;
     AlertDialog mDialogForChoosePackage = null;
+    String pujaName;
+    String pujaAmount,pujaDesc;
+    String procedures="",pujaSamagries="",Yajaman="";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,9 +74,17 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
         mFragmentChoosepackageBinding.setLifecycleOwner(this);
     subCategoryId=ChoosePackageFragmentArgs.fromBundle(getArguments()).getSubCategoryId();
         Log.e("SubCategoryId",""+subCategoryId);
+
+
+        pujaName=ChoosePackageFragmentArgs.fromBundle(getArguments()).getPujaName();
+        Log.e("PUJANAME",""+pujaName);
+
+
+
         return mFragmentChoosepackageBinding.getRoot();
 
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -125,12 +138,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                 showCustomChoosePackageDialog();
             }
         });
-         mChoosePackageViewModel.getonClickViewPackage().observe(this, new Observer<Void>() {
-            @Override
-            public void onChanged(@Nullable Void _) {
-                findNavController(mView).navigate(ChoosePackageFragmentDirections.actionChoosePackageFragmentToBookingPujaFragment());
-            }
-        });
+
 
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -145,7 +153,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
             @Override
             public void onChanged(Integer position) {
 
-                String procedures="",pujaSamagries="",Yajaman="";
+
                 ChoosePackageListModel choosePackageListModel=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position);
 
                 for(int i=0;i<choosePackageListModel.getPujaPrcdrList().size();i++){
@@ -172,6 +180,9 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                     }
                 }
                 mDialogForChoosePackage.show();
+                String packageTypeIdDesc=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr();
+                 pujaAmount= mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString();
+                 pujaDesc= mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr();
 
                 mDialogChoosepackageDetailsBinding.tvStandardPackage.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr());
                 mDialogChoosepackageDetailsBinding.tvStandardAmount.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString());
@@ -179,6 +190,26 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                 mDialogChoosepackageDetailsBinding.tvPujaProcedureList.setText(procedures);
                 mDialogChoosepackageDetailsBinding.tvPujaSamagriList.setText(pujaSamagries);
                 mDialogChoosepackageDetailsBinding.tvYajamanNameList.setText(Yajaman);
+
+            }
+        });
+
+
+
+        mChoosePackageViewModel.getonClickViewPackage().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(@Nullable Void _) {
+
+                ChoosePackageFragmentDirections.ActionChoosePackageFragmentToBookingPujaFragment action=
+                        ChoosePackageFragmentDirections.actionChoosePackageFragmentToBookingPujaFragment();
+                action.setPujaName(pujaName);
+                action.setAmount(pujaAmount);
+                action.setPackageDesc(pujaDesc);
+                action.setProcedure(procedures);
+                action.setPujaSamagries(pujaSamagries);
+                action.setYajaman(Yajaman);
+
+                Navigation.findNavController(mView).navigate(action);
 
             }
         });

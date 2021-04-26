@@ -14,7 +14,11 @@
             android:name="subCategoryId"
             android:defaultValue="0"
             app:argType="integer" />
-
+        <argument
+            android:name="pujaName"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
 
         <action
             android:id="@+id/action_homeFragmentFragment_to_choosePackageFragment"
@@ -34,6 +38,38 @@
             android:name="subCategoryId"
             android:defaultValue="1"
             app:argType="integer" />
+        <argument
+            android:name="pujaName"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="procedure"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+        android:name="pujaSamagries"
+        android:defaultValue="0"
+        app:argType="string"
+        app:nullable="true" />
+        <argument
+            android:name="yajaman"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="amount"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="packageDesc"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
+
+
         <action
             android:id="@+id/action_choosePackageFragment_to_bookingPujaFragment"
             app:destination="@id/bookingPujaFragment" >
@@ -45,6 +81,38 @@
         android:id="@+id/bookingPujaFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment"
         android:label="BookingPujaFragment" >
+        <argument
+            android:name="pujaName"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="procedure"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="pujaSamagries"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="yajaman"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="amount"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="packageDesc"
+            android:defaultValue="0"
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/action_bookingPujaFragment_to_orderSummaryFragment"
             app:destination="@id/orderSummaryFragment" />
