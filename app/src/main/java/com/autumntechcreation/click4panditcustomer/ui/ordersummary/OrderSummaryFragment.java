@@ -1,6 +1,7 @@
 package com.autumntechcreation.click4panditcustomer.ui.ordersummary;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragmentDirections;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentArgs;
+import com.autumntechcreation.click4panditcustomer.util.Static;
 
 import javax.inject.Inject;
 
@@ -33,6 +36,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
     FragmentOrdersummeryBinding mFragmentOrdersummeryBinding;
     private View mView;
     NavController navController;
+    String pujaName,pujaAmount,pujaDesc,procedure,pujaSamagri,yajaman,locationName,languageName,pujaDate,pujaTime,packageTypeIdDesc;
 
     @Nullable
     @Override
@@ -40,6 +44,28 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         mFragmentOrdersummeryBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_ordersummery, container, false);
         mFragmentOrdersummeryBinding.setLifecycleOwner(this);
 
+        pujaName= OrderSummaryFragmentArgs.fromBundle(getArguments()).getPujaName();
+        Log.e("PujaName",""+pujaName);
+        pujaAmount= OrderSummaryFragmentArgs.fromBundle(getArguments()).getAmount();
+        Log.e("pujaAmount",""+pujaAmount);
+        pujaDesc= OrderSummaryFragmentArgs.fromBundle(getArguments()).getPackageDesc();
+        Log.e("pujaDesc",""+pujaDesc);
+        procedure= OrderSummaryFragmentArgs.fromBundle(getArguments()).getProcedure();
+        Log.e("Procedure",""+procedure);
+        pujaSamagri= OrderSummaryFragmentArgs.fromBundle(getArguments()).getPujaSamagries();
+        Log.e("pujaSamagri",""+pujaSamagri);
+        yajaman= OrderSummaryFragmentArgs.fromBundle(getArguments()).getYajaman();
+        Log.e("Yajaman",""+yajaman);
+        locationName= OrderSummaryFragmentArgs.fromBundle(getArguments()).getPujaLocation();
+        Log.e("LocationName",""+locationName);
+        languageName= OrderSummaryFragmentArgs.fromBundle(getArguments()).getPujaLanguage();
+        Log.e("LanguageName",""+languageName);
+        pujaDate= OrderSummaryFragmentArgs.fromBundle(getArguments()).getPujaDate();
+        Log.e("PujaDate",""+pujaDate);
+        pujaTime= OrderSummaryFragmentArgs.fromBundle(getArguments()).getPujaTime();
+        Log.e("pujaTime",""+pujaTime);
+        packageTypeIdDesc= OrderSummaryFragmentArgs.fromBundle(getArguments()).getPackageTypeIdDesc();
+        Log.e("packageTypeIdDesc",""+packageTypeIdDesc);
         return mFragmentOrdersummeryBinding.getRoot();
     }
     @Override
@@ -64,5 +90,44 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
                 findNavController(mView).navigate(OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment());
             }
         });
+
+        mFragmentOrdersummeryBinding.tvPujaNameValue.setText(pujaName);
+        mFragmentOrdersummeryBinding.tvPackageValue.setText(packageTypeIdDesc);
+        mFragmentOrdersummeryBinding.tvPanditDetails.setText(pujaDesc);
+        mFragmentOrdersummeryBinding.tvPriestPreferenceValue.setText(languageName);
+        mFragmentOrdersummeryBinding.tvAllPujaSamagriesValue.setText(pujaSamagri);
+        mFragmentOrdersummeryBinding.tvDakshinaValue.setText(procedure);
+        mFragmentOrdersummeryBinding.tvAllPujaSamagriesValue.setText(pujaSamagri);
+        mFragmentOrdersummeryBinding.tvHavanValue.setText(yajaman );
+        mFragmentOrdersummeryBinding.tvDateTimeValue.setText(pujaDate+" " + "at"+" "+ pujaTime );
+        mFragmentOrdersummeryBinding.tvSubTotalValue.setText(pujaAmount );
+
+
+            // the String to int conversion happens here
+            double cgst = Double.parseDouble(pujaAmount)*9/100;
+
+            // print out the value after the conversion
+            System.out.println("int i = " + cgst);
+            double cgstvalue=Static.roundAvoid(cgst,2);
+            mFragmentOrdersummeryBinding.tvCgstValue.setText(Double.toString(cgstvalue));
+
+
+            // the String to int conversion happens here
+            double sgst = Double.parseDouble(pujaAmount)*9/100;
+
+            // print out the value after the conversion
+            System.out.println("int i = " + sgst);
+        double sgstvalue=Static.roundAvoid(sgst,2);
+        mFragmentOrdersummeryBinding.tvSgstValue.setText(Double.toString(sgstvalue));
+
+
+
+
+            double dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
+
+        mFragmentOrdersummeryBinding.tvTotalValue.setText(Double.toString(dd));
+
+
+
     }
 }

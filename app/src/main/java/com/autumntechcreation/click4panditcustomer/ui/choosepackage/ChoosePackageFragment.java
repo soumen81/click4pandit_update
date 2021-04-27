@@ -65,7 +65,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
     int subCategoryId;
     AlertDialog mDialogForChoosePackage = null;
     String pujaName;
-    String pujaAmount,pujaDesc;
+    String pujaAmount,pujaDesc,packageTypeIdDesc;
     String procedures="",pujaSamagries="",Yajaman="";
     @Nullable
     @Override
@@ -180,7 +180,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                     }
                 }
                 mDialogForChoosePackage.show();
-                String packageTypeIdDesc=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr();
+                 packageTypeIdDesc=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr();
                  pujaAmount= mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString();
                  pujaDesc= mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr();
 
@@ -208,7 +208,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                 action.setProcedure(procedures);
                 action.setPujaSamagries(pujaSamagries);
                 action.setYajaman(Yajaman);
-
+                action.setPackageTypeIdDesc(packageTypeIdDesc);
                 Navigation.findNavController(mView).navigate(action);
 
             }

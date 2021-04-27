@@ -136,7 +136,7 @@
             android:id="@+id/tvDakshina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dakshina"
+            android:text="@string/procedure"
             style="@style/Style_TextView_FontBold"
             android:layout_margin="@dimen/dimen_10dp"
             android:textColor="@color/blackColor"
@@ -148,20 +148,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dakshina"
+            android:maxLines="5"
+            android:ellipsize="end"
+            android:layout_marginLeft="@dimen/dimen_10dp"
             style="@style/Style_TextView_FontRegular"
-            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_12sp"
-            app:layout_constraintStart_toEndOf="@+id/tvDakshina"
-            app:layout_constraintLeft_toRightOf="@+id/tvDakshina"
-            app:layout_constraintTop_toBottomOf="@+id/tvPanditDetails"></TextView>
+           app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDakshina"></TextView>
         <TextView
             android:id="@+id/tvAllPujaSamagries"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Style_TextView_FontBold"
             android:text="@string/allpujasamagries"
-            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_40dp"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_12sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -171,61 +174,67 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dakshina"
+            android:maxLines="5"
+            android:ellipsize="end"
             style="@style/Style_TextView_FontRegular"
-            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_12sp"
-            app:layout_constraintStart_toEndOf="@+id/tvAllPujaSamagries"
-            app:layout_constraintLeft_toRightOf="@+id/tvAllPujaSamagries"
-            app:layout_constraintTop_toBottomOf="@+id/tvDakshinaValue"></TextView>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAllPujaSamagries"></TextView>
         <TextView
             android:id="@+id/tvHavan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/havan"
             style="@style/Style_TextView_FontBold"
-            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_40dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_12sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAllPujaSamagries"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/tvAllPujaSamagriesValue"></TextView>
 
         <TextView
             android:id="@+id/tvHavanValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/included"
+            android:maxLines="5"
+            android:ellipsize="end"
             style="@style/Style_TextView_FontRegular"
-           android:layout_margin="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+           android:layout_marginLeft="@dimen/dimen_10dp"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_12sp"
-            app:layout_constraintStart_toEndOf="@+id/tvHavan"
-            app:layout_constraintLeft_toRightOf="@+id/tvHavan"
-            app:layout_constraintTop_toBottomOf="@+id/tvAllPujaSamagriesValue"></TextView>
+           app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHavan"></TextView>
 
         <TextView
             android:id="@+id/tvPriestPreference"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/priestpreference"
-            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_40dp"
             style="@style/Style_TextView_FontBold"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_12sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvHavan"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/tvHavanValue"></TextView>
         <TextView
             android:id="@+id/tvPriestPreferenceValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hindi"
+            android:layout_marginTop="@dimen/dimen_5dp"
             style="@style/Style_TextView_FontRegular"
-           android:layout_margin="@dimen/dimen_10dp"
+           android:layout_marginLeft="@dimen/dimen_10dp"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_14sp"
-            app:layout_constraintStart_toEndOf="@+id/tvPriestPreference"
-            app:layout_constraintLeft_toRightOf="@+id/tvPriestPreference"
-            app:layout_constraintTop_toBottomOf="@+id/tvHavanValue"></TextView>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPriestPreference"></TextView>
         <View
             android:id="@+id/viewPreference"
             android:layout_width="@dimen/dimen_200dp"
@@ -234,7 +243,7 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@color/blackColor"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPriestPreference"
+            app:layout_constraintTop_toBottomOf="@+id/tvPriestPreferenceValue"
             ></View>
         <TextView
             android:id="@+id/tvDateTime"

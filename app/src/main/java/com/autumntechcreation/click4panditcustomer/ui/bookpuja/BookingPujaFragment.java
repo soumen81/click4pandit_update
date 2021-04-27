@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
@@ -72,6 +74,9 @@ public class BookingPujaFragment extends Fragment implements Injectable {
     ArrayAdapter<String> mSpinLanguageAdapter;
     List<String> mListLanguage = new ArrayList<>();
     ArrayList<BookingLanguageModel> bookingLanguageModellist = new ArrayList<BookingLanguageModel>();
+    String locName="",pujaLang="",pujaDate="",pujaTime="",packageTypeIdDesc="";
+    SimpleDateFormat sdf;
+     Calendar calendar;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -89,6 +94,8 @@ public class BookingPujaFragment extends Fragment implements Injectable {
         Log.e("PujaSamagries",""+pujaSamagri);
         yajaman= ChoosePackageFragmentArgs.fromBundle(getArguments()).getYajaman();
         Log.e("Yajaman",""+yajaman);
+        packageTypeIdDesc= ChoosePackageFragmentArgs.fromBundle(getArguments()).getPackageTypeIdDesc();
+        Log.e("packageTypeIdDesc",""+packageTypeIdDesc);
 
 
         return mFragmentBookingpujaBinding.getRoot();
@@ -124,12 +131,6 @@ public class BookingPujaFragment extends Fragment implements Injectable {
             }
         });
         mFragmentBookingpujaBinding.carousal.setPageCount(mImager.length);
-        mBookingPujaViewModel.getOnClickBookPackage().observe(this, new Observer<Void>() {
-            @Override
-            public void onChanged(Void aVoid) {
-                findNavController(mView).navigate(BookingPujaFragmentDirections.actionBookingPujaFragmentToOrderSummaryFragment());
-            }
-        });
 
 
 
@@ -168,6 +169,53 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                 showTimePicker();
             }
         });
+
+
+
+        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                locName= mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        mFragmentBookingpujaBinding.tvSpinTypeOfLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+             pujaLang=mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position).getLangMasterName();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        mBookingPujaViewModel.getOnClickBookPackage().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(Void aVoid) {
+                BookingPujaFragmentDirections.ActionBookingPujaFragmentToOrderSummaryFragment action=
+                        BookingPujaFragmentDirections.actionBookingPujaFragmentToOrderSummaryFragment();
+                action.setPujaName(pujaName);
+                action.setAmount(pujaAmount);
+                action.setPackageDesc(pujaDesc);
+                action.setProcedure(procedure);
+                action.setPujaSamagries(pujaSamagri);
+                action.setYajaman(yajaman);
+                action.setPujaLocation(locName);
+                action.setPujaLanguage(pujaLang);
+                action.setPujaDate(pujaDate);
+                action.setPujaTime(pujaTime);
+                action.setPackageTypeIdDesc(packageTypeIdDesc);
+                Navigation.findNavController(mView).navigate(action);
+            }
+        });
+
     }
 
     public void showTimePicker(){
@@ -182,6 +230,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                     @Override
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
                         mFragmentBookingpujaBinding.tvBookingTime.setText(sHour + ":" + sMinute);
+                        pujaTime=sHour + ":" + sMinute;
                     }
                 }, hour, minutes, true);
         picker.show();
@@ -191,7 +240,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
 
     public void showDatePicker() {
 
-        final Calendar calendar = Calendar.getInstance();
+         calendar = Calendar.getInstance();
         DatePickerDialog dialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker arg0, int year, int month, int day_of_month) {
@@ -199,8 +248,9 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                 calendar.set(Calendar.MONTH, (month-1));
                 calendar.set(Calendar.DAY_OF_MONTH, day_of_month);
                 String myFormat = "dd/MM/yyyy";
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
+                 sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
                 mFragmentBookingpujaBinding.tvBookingDate.setText(sdf.format(calendar.getTime()));
+                 pujaDate=sdf.format(calendar.getTime());
             }
         },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         dialog.getDatePicker().setMinDate(calendar.getTimeInMillis());// TODO: used to hide previous date,month and year
