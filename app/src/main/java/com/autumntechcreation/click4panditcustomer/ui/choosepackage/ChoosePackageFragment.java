@@ -67,6 +67,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
     String pujaName;
     String pujaAmount,pujaDesc,packageTypeIdDesc;
     String procedures="",pujaSamagries="",Yajaman="";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -190,6 +191,19 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                 mDialogChoosepackageDetailsBinding.tvPujaProcedureList.setText(procedures);
                 mDialogChoosepackageDetailsBinding.tvPujaSamagriList.setText(pujaSamagries);
                 mDialogChoosepackageDetailsBinding.tvYajamanNameList.setText(Yajaman);
+
+                List<ChoosePackageListModel> listChoosePackage=mChoosePackageViewModel.mChoosePackageList.getValue().data;
+                for(int i=0;i<listChoosePackage.size();i++){
+
+                    if(i==position) {
+                        listChoosePackage.get(position).isSelect=true;
+
+                    }else{
+                        listChoosePackage.get(position).isSelect=false;
+                    }
+                }
+                mChoosePackageViewModel.setChoosePackageListAdapter(listChoosePackage);
+
 
             }
         });

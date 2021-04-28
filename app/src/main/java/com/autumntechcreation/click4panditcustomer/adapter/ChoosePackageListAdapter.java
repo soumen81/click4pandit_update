@@ -1,5 +1,6 @@
 package com.autumntechcreation.click4panditcustomer.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -18,6 +19,7 @@ public class ChoosePackageListAdapter extends RecyclerView.Adapter<ChoosePackage
     private int layoutId;
     private List<ChoosePackageListModel> mChoosePackageListModel;
     private ChoosePackageViewModel mChoosePackageViewModel;
+
 
     public ChoosePackageListAdapter(int layoutId, ChoosePackageViewModel choosePackageViewModel){
         this.layoutId=layoutId;
@@ -40,6 +42,8 @@ public class ChoosePackageListAdapter extends RecyclerView.Adapter<ChoosePackage
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         myViewHolder.bind(mChoosePackageViewModel, i);
+
+
     }
 
     @Override
@@ -62,6 +66,7 @@ public class ChoosePackageListAdapter extends RecyclerView.Adapter<ChoosePackage
             binding.setVariable(BR.viewModel, viewModel);
             binding.setVariable(BR.position, position);
             binding.executePendingBindings();
+
         }
     }
 
