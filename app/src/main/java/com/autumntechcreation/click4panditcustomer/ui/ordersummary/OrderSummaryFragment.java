@@ -73,7 +73,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         super.onViewCreated(view, savedInstanceState);
         mView = view;
         navController=findNavController(mView);
-        ((MainActivity) getActivity()).setToolbar(false,true,false,false);
+        ((MainActivity) getActivity()).setToolbar(false,true,false,true);
     }
 
     @Override
@@ -102,29 +102,15 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         mFragmentOrdersummeryBinding.tvDateTimeValue.setText(pujaDate+" " + "at"+" "+ pujaTime );
         mFragmentOrdersummeryBinding.tvSubTotalValue.setText(pujaAmount );
 
-
-            // the String to int conversion happens here
-            double cgst = Double.parseDouble(pujaAmount)*9/100;
-
-            // print out the value after the conversion
-            System.out.println("int i = " + cgst);
+        double cgst = Double.parseDouble(pujaAmount)*9/100;
+        System.out.println("int i = " + cgst);
             double cgstvalue=Static.roundAvoid(cgst,2);
             mFragmentOrdersummeryBinding.tvCgstValue.setText(Double.toString(cgstvalue));
-
-
-            // the String to int conversion happens here
             double sgst = Double.parseDouble(pujaAmount)*9/100;
-
-            // print out the value after the conversion
             System.out.println("int i = " + sgst);
         double sgstvalue=Static.roundAvoid(sgst,2);
         mFragmentOrdersummeryBinding.tvSgstValue.setText(Double.toString(sgstvalue));
-
-
-
-
-            double dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
-
+        double dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
         mFragmentOrdersummeryBinding.tvTotalValue.setText(Double.toString(dd));
 
 

@@ -105,7 +105,11 @@ public class BookingPujaFragment extends Fragment implements Injectable {
         super.onViewCreated(view, savedInstanceState);
         mView = view;
         navController=findNavController(mView);
-        ((MainActivity) getActivity()).setToolbar(false,true,false,true);
+        try {
+            ((MainActivity) getActivity()).setToolbar(false, true, false, true);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -175,7 +179,11 @@ public class BookingPujaFragment extends Fragment implements Injectable {
         mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                locName= mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();
+                try {
+                    locName = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -186,7 +194,11 @@ public class BookingPujaFragment extends Fragment implements Injectable {
         mFragmentBookingpujaBinding.tvSpinTypeOfLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-             pujaLang=mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position).getLangMasterName();
+                try {
+                    pujaLang = mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position).getLangMasterName();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -199,20 +211,32 @@ public class BookingPujaFragment extends Fragment implements Injectable {
         mBookingPujaViewModel.getOnClickBookPackage().observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void aVoid) {
-                BookingPujaFragmentDirections.ActionBookingPujaFragmentToOrderSummaryFragment action=
-                        BookingPujaFragmentDirections.actionBookingPujaFragmentToOrderSummaryFragment();
-                action.setPujaName(pujaName);
-                action.setAmount(pujaAmount);
-                action.setPackageDesc(pujaDesc);
-                action.setProcedure(procedure);
-                action.setPujaSamagries(pujaSamagri);
-                action.setYajaman(yajaman);
-                action.setPujaLocation(locName);
-                action.setPujaLanguage(pujaLang);
-                action.setPujaDate(pujaDate);
-                action.setPujaTime(pujaTime);
-                action.setPackageTypeIdDesc(packageTypeIdDesc);
-                Navigation.findNavController(mView).navigate(action);
+
+                if (mFragmentBookingpujaBinding.tvSpinTypeOfLocation.getSelectedItem().toString().trim().equalsIgnoreCase("Location")) {
+                    Toast.makeText(getActivity(), "Please select the Location", Toast.LENGTH_SHORT).show();
+                }else if(mFragmentBookingpujaBinding.tvSpinTypeOfLanguage.getSelectedItem().toString().trim().equalsIgnoreCase("Language")){
+                    Toast.makeText(getActivity(), "Please select the Language", Toast.LENGTH_SHORT).show();
+                }else  if(mFragmentBookingpujaBinding.tvBookingDate.getText().equals("Choose Date")) {
+                    Toast.makeText(getActivity(), "Please select the Date", Toast.LENGTH_SHORT).show();
+                }else  if(mFragmentBookingpujaBinding.tvBookingTime.getText().equals("Choose Time")) {
+                    Toast.makeText(getActivity(), "Please select the Time", Toast.LENGTH_SHORT).show();
+                }else {
+
+                    BookingPujaFragmentDirections.ActionBookingPujaFragmentToOrderSummaryFragment action =
+                            BookingPujaFragmentDirections.actionBookingPujaFragmentToOrderSummaryFragment();
+                    action.setPujaName(pujaName);
+                    action.setAmount(pujaAmount);
+                    action.setPackageDesc(pujaDesc);
+                    action.setProcedure(procedure);
+                    action.setPujaSamagries(pujaSamagri);
+                    action.setYajaman(yajaman);
+                    action.setPujaLocation(locName);
+                    action.setPujaLanguage(pujaLang);
+                    action.setPujaDate(pujaDate);
+                    action.setPujaTime(pujaTime);
+                    action.setPackageTypeIdDesc(packageTypeIdDesc);
+                    Navigation.findNavController(mView).navigate(action);
+                }
             }
         });
 
@@ -298,6 +322,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
 
                                             bookingLocationModellist.clear();
                                             mListLocation.clear();
+                                            mListLocation.add(0,"Location");
                                             for (int i = 0; i < resource.data.size(); i++) {
                                                 mListLocation.add(resource.data.get(i).getSubLcltyName());
                                                 bookingLocationModellist.add(resource.data.get(i));
@@ -362,7 +387,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
 
                                             bookingLanguageModellist.clear();
                                             mListLanguage.clear();
-
+                                            mListLanguage.add(0,"Language");
                                             for (int i = 0; i < resource.data.size(); i++) {
                                                 mListLanguage.add(resource.data.get(i).getLangMasterName());
                                                 bookingLanguageModellist.add(resource.data.get(i));

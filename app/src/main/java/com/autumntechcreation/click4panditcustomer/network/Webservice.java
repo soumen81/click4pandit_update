@@ -8,6 +8,7 @@ import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackag
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
+import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
 import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig;
 import com.google.gson.JsonObject;
@@ -68,4 +69,12 @@ public interface Webservice {
     LiveData<ApiResponse<List<BookingLanguageModel>>> getLanguageList(@Url String apiname
 
     );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<OrderSummeryModel>> NewOrder(@Url String apiname,
+                                                   @Body JsonObject jsonObject
+
+    );
+
 }

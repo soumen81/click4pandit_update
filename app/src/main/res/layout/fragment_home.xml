@@ -144,7 +144,6 @@
                     style="@style/Style_TextView_FontRegular"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    android:spinnerMode="dropdown"
                     android:drawablePadding="@dimen/dimen_10dp"
                    android.support.design:layout_constraintTop_toTopOf="parent"
                     >
@@ -167,7 +166,6 @@
                         style="@style/Style_TextView_FontRegular"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        android:spinnerMode="dropdown"
                         android:drawablePadding="@dimen/dimen_10dp"
                         android.support.design:layout_constraintTop_toTopOf="parent"
                         >

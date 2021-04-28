@@ -51,6 +51,7 @@ public class HomeFragment  extends Fragment implements Injectable {
     NavController navController;
     String pujaName="";
     int  pujaSubCategoryId;
+    int  pujaCategoryId;
     private int[]mImager={R.drawable.pandit1,R.drawable.pandit2,R.drawable.pandit3,R.drawable.pandit4,R.drawable.pandit5};
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
 
@@ -108,13 +109,14 @@ public class HomeFragment  extends Fragment implements Injectable {
         mFragmentHomeBinding.tvSpinTypeOfPuja.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+try {
 
-                int  pujaCategoryId = mHomeViewModel.mPujaTypesList.getValue().data.get(position).pujaCtgryId;
+    pujaCategoryId = mHomeViewModel.mPujaTypesList.getValue().data.get(position).pujaCtgryId;
+    mHomeViewModel.getPujaCategoryList(pujaCategoryId).observe(getActivity(), HomeFragment.this::handlePujCategoryList);
 
-
-                mHomeViewModel.getPujaCategoryList(pujaCategoryId).observe(getActivity(),HomeFragment.this::handlePujCategoryList);
-
-
+}catch(Exception e){
+    e.printStackTrace();
+}
 
 
 
@@ -170,15 +172,20 @@ public class HomeFragment  extends Fragment implements Injectable {
         mFragmentHomeBinding.tvViewPackages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mFragmentHomeBinding.tvSpinTypeOfPuja.getSelectedItem().toString().trim().equalsIgnoreCase("Types of Puja")) {
+                    Toast.makeText(getActivity(), "Please select the Types of Puja", Toast.LENGTH_SHORT).show();
+                }else if(mFragmentHomeBinding.tvSpinTypeCategories.getSelectedItem().toString().trim().equalsIgnoreCase("Categories")){
+                    Toast.makeText(getActivity(), "Please select the Categories", Toast.LENGTH_SHORT).show();
+                }else {
 
+                    Log.e("SUBCATE", "" + pujaSubCategoryId);           //  findNavController(mView).navigate(HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment());
 
-                Log.e("SUBCATE",""+pujaSubCategoryId);           //  findNavController(mView).navigate(HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment());
-
-                HomeFragmentDirections.ActionHomeFragmentFragmentToChoosePackageFragment action =
-                        HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment();
-                action.setSubCategoryId(pujaSubCategoryId);
-                action.setPujaName(pujaName);
-                Navigation.findNavController(mView).navigate(action);
+                    HomeFragmentDirections.ActionHomeFragmentFragmentToChoosePackageFragment action =
+                            HomeFragmentDirections.actionHomeFragmentFragmentToChoosePackageFragment();
+                    action.setSubCategoryId(pujaSubCategoryId);
+                    action.setPujaName(pujaName);
+                    Navigation.findNavController(mView).navigate(action);
+                }
 
 
 
@@ -224,8 +231,11 @@ public class HomeFragment  extends Fragment implements Injectable {
 
                             //  ArrayList<EnterpriseModel> list1 = new ArrayList<EnterpriseModel>();
                             pujaTypesModellist.clear();
+                            mListTypesPuja.clear();
+                            mListTypesPuja.add(0,"Types of Puja");
                             for (int i = 0; i < resource.data.size(); i++) {
                                 mListTypesPuja.add(resource.data.get(i).getPujaCtgryDscr());
+
                                 pujaTypesModellist.add(resource.data.get(i));
 
                             }
@@ -289,6 +299,7 @@ public class HomeFragment  extends Fragment implements Injectable {
                             //  ArrayList<EnterpriseModel> list1 = new ArrayList<EnterpriseModel>();
                             pujaCategoryModellist.clear();
                             mListCategoryPuja.clear();
+                            mListCategoryPuja.add(0,"Categories");
                             for (int i = 0; i < resource.data.size(); i++) {
                                 mListCategoryPuja.add(resource.data.get(i).getPujaSubCtgryDscr());
                                 pujaCategoryModellist.add(resource.data.get(i));

@@ -115,4 +115,8 @@
     <string name="validation_error">Validation Error</string>
     <string name="please_enter_valid_phone_number">Please enter Valid Phone Number</string>
     <string name="rupeesign">\u20B9</string>
+    <string name="success">Success</string>
+    <string name="register">You have successsfully registered with us...</string>
+    <string name="typesofpuja">Types Of Puja</string>
+    <string name="categories">Categories</string>
 </resources>

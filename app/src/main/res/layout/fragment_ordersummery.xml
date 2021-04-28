@@ -164,7 +164,7 @@
             style="@style/Style_TextView_FontBold"
             android:text="@string/allpujasamagries"
             android:layout_marginLeft="@dimen/dimen_10dp"
-            android:layout_marginTop="@dimen/dimen_40dp"
+            android:layout_marginTop="@dimen/dimen_70dp"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_12sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -300,6 +300,17 @@
           app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewDateTimeValue"></TextView>
         <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rupeesign"
+            android:textColor="@color/blackColor"
+           android:layout_marginRight="@dimen/dimen_5dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintTop_toBottomOf="@+id/viewDateTimeValue"
+            app:layout_constraintRight_toLeftOf="@+id/tvSubTotalValue"
+            ></TextView>
+        <TextView
             android:id="@+id/tvCgst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -322,6 +333,17 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSubTotalValue"></TextView>
         <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rupeesign"
+            android:textColor="@color/blackColor"
+            android:layout_marginRight="@dimen/dimen_5dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubTotalValue"
+            app:layout_constraintRight_toLeftOf="@+id/tvCgstValue"
+            ></TextView>
+        <TextView
             android:id="@+id/tvSgst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -343,6 +365,18 @@
             android:textSize="@dimen/font_12sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCgstValue"></TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rupeesign"
+            android:textColor="@color/blackColor"
+            android:layout_marginRight="@dimen/dimen_5dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvCgstValue"
+            app:layout_constraintRight_toLeftOf="@+id/tvSgstValue"
+            ></TextView>
         <TextView
             android:id="@+id/tvTotal"
             android:layout_width="wrap_content"
@@ -365,6 +399,18 @@
             android:textSize="@dimen/font_12sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSgstValue"></TextView>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rupeesign"
+            android:textColor="@color/blackColor"
+            android:layout_marginRight="@dimen/dimen_5dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvSgstValue"
+            app:layout_constraintRight_toLeftOf="@+id/tvTotalValue"
+            ></TextView>
+
         <TextView
             android:id="@+id/tvConfirm"
             android:layout_width="@dimen/dimen_150dp"

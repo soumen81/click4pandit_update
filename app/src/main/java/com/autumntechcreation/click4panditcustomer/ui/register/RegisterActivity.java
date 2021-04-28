@@ -202,8 +202,31 @@ public class RegisterActivity extends AppCompatActivity {
                     String json = gson.toJson(resource.data);
                     Log.e("handleRegisterResponse", json + "");
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
-                        Intent in=new Intent(RegisterActivity.this, LoginActivity.class);
-                        startActivity(in);
+                        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText(this.getString(R.string.success))
+                                .setContentText(this.getString(R.string.register))
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        Intent in=new Intent(RegisterActivity.this, LoginActivity.class);
+                                        startActivity(in);
+                                    }
+                                })
+                                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        sweetAlertDialog.dismiss();
+                                    }
+                                })
+
+                                .show();
+
+                        mActivityRegisterBinding.edtTxtFirstName.setText("");
+                        mActivityRegisterBinding.edtTxtLastName.setText("");
+                        mActivityRegisterBinding.edtTxtMobileNo.setText("");
+                        mActivityRegisterBinding.edtTxtEmail.setText("");
+                        mActivityRegisterBinding.edtTxtPassword.setText("");
+                        mActivityRegisterBinding.edtTxtConfirmPassword.setText("");
 
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
