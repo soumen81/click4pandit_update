@@ -13,7 +13,7 @@ public class SharedPrefsHelper {
     public static String USERNAME = "userName";
     public static String MOBILE = "mobile";
     public static String ENTERED_HOME_ACTIVITY = "ENTERED_HOME_ACTIVITY";
-
+    public static String EMAIL = "email";
 
     private SharedPreferences mSharedPreferences;
 

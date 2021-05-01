@@ -421,6 +421,7 @@
             android:textSize="@dimen/font_12sp"
             android:textColor="@color/blackColor"
             android:onClick="@{(v) -> OrderSummeryViewModel.onClickConfirmOrder(v)}"
+
             android:text="@string/confirm"
             android:layout_marginTop="@dimen/dimen_20dp"
             app:layout_constraintLeft_toLeftOf="parent"

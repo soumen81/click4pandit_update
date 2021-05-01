@@ -90,6 +90,8 @@ public class LoginRepository {
     }
     public void storeMobileNo(String mobile){
         mSharedPrefsHelper.put(SharedPrefsHelper.MOBILE, mobile);
+    } public void storeEmail(String email){
+        mSharedPrefsHelper.put(SharedPrefsHelper.EMAIL, email);
     }
     public void deleteSharedPreference(){
         mSharedPrefsHelper.deleteSavedData();

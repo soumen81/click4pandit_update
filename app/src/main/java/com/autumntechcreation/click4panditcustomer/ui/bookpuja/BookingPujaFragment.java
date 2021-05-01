@@ -74,7 +74,9 @@ public class BookingPujaFragment extends Fragment implements Injectable {
     ArrayAdapter<String> mSpinLanguageAdapter;
     List<String> mListLanguage = new ArrayList<>();
     ArrayList<BookingLanguageModel> bookingLanguageModellist = new ArrayList<BookingLanguageModel>();
-    String locName="",pujaLang="",pujaDate="",pujaTime="",packageTypeIdDesc="";
+    String locName="",pujaLang="",pujaDate="",pujaTime="",packageTypeIdDesc="",
+            subcategoryName="",isAllSamagries="";
+    int subCategoryId,pujPackageId,locationId,languageId,noOfPandit;
     SimpleDateFormat sdf;
      Calendar calendar;
     @Nullable
@@ -82,20 +84,31 @@ public class BookingPujaFragment extends Fragment implements Injectable {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mFragmentBookingpujaBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_bookingpuja, container, false);
         mFragmentBookingpujaBinding.setLifecycleOwner(this);
-        procedure= ChoosePackageFragmentArgs.fromBundle(getArguments()).getProcedure();
+        procedure= BookingPujaFragmentArgs.fromBundle(getArguments()).getProcedure();
         Log.e("Procedure",""+procedure);
-        pujaName= ChoosePackageFragmentArgs.fromBundle(getArguments()).getPujaName();
+        pujaName= BookingPujaFragmentArgs.fromBundle(getArguments()).getPujaName();
         Log.e("PujaName",""+pujaName);
-        pujaAmount= ChoosePackageFragmentArgs.fromBundle(getArguments()).getAmount();
+        pujaAmount= BookingPujaFragmentArgs.fromBundle(getArguments()).getAmount();
         Log.e("PujaAmount",""+pujaAmount);
-        pujaDesc= ChoosePackageFragmentArgs.fromBundle(getArguments()).getPackageDesc();
+        pujaDesc= BookingPujaFragmentArgs.fromBundle(getArguments()).getPackageDesc();
         Log.e("PujaDesc",""+pujaDesc);
-        pujaSamagri= ChoosePackageFragmentArgs.fromBundle(getArguments()).getPujaSamagries();
+        pujaSamagri= BookingPujaFragmentArgs.fromBundle(getArguments()).getPujaSamagries();
         Log.e("PujaSamagries",""+pujaSamagri);
-        yajaman= ChoosePackageFragmentArgs.fromBundle(getArguments()).getYajaman();
+        yajaman= BookingPujaFragmentArgs.fromBundle(getArguments()).getYajaman();
         Log.e("Yajaman",""+yajaman);
-        packageTypeIdDesc= ChoosePackageFragmentArgs.fromBundle(getArguments()).getPackageTypeIdDesc();
+        packageTypeIdDesc= BookingPujaFragmentArgs.fromBundle(getArguments()).getPackageTypeIdDesc();
         Log.e("packageTypeIdDesc",""+packageTypeIdDesc);
+        subcategoryName= BookingPujaFragmentArgs.fromBundle(getArguments()).getSubCategoryName();
+        Log.e("subcategoryName",""+subcategoryName);
+        subCategoryId=BookingPujaFragmentArgs.fromBundle(getArguments()).getSubCategoryId();
+        Log.e("SubCategoryId",""+subCategoryId);
+        pujPackageId=BookingPujaFragmentArgs.fromBundle(getArguments()).getPujaPackageId();
+        Log.e("pujPackageId",""+pujPackageId);
+        isAllSamagries=BookingPujaFragmentArgs.fromBundle(getArguments()).getIsAllSamagries();
+        Log.e("isAllSamagries",""+isAllSamagries);
+        noOfPandit=BookingPujaFragmentArgs.fromBundle(getArguments()).getNoOfPandit();
+        Log.e("noOfPandit",""+noOfPandit);
+
 
 
         return mFragmentBookingpujaBinding.getRoot();
@@ -180,6 +193,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 try {
+                    locationId=mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
                     locName = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();
                 }catch (Exception e){
                     e.printStackTrace();
@@ -195,6 +209,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 try {
+                    locationId=mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position).getLangMasterId();
                     pujaLang = mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position).getLangMasterName();
                 }catch (Exception e){
                     e.printStackTrace();
@@ -235,6 +250,13 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                     action.setPujaDate(pujaDate);
                     action.setPujaTime(pujaTime);
                     action.setPackageTypeIdDesc(packageTypeIdDesc);
+                    action.setSubCategoryName(subcategoryName);
+                    action.setSubCategoryId(subCategoryId);
+                    action.setPujaPackageId(pujPackageId);
+                    action.setLocationId(locationId);
+                    action.setLanguageId(languageId);
+                    action.setIsAllSamagries(isAllSamagries);
+                    action.setNoOfPandit(noOfPandit);
                     Navigation.findNavController(mView).navigate(action);
                 }
             }
@@ -264,7 +286,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
 
     public void showDatePicker() {
 
-         calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
         DatePickerDialog dialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker arg0, int year, int month, int day_of_month) {
@@ -272,21 +294,24 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                 calendar.set(Calendar.MONTH, (month-1));
                 calendar.set(Calendar.DAY_OF_MONTH, day_of_month);
                 String myFormat = "dd/MM/yyyy";
-                 sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
+                sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
                 mFragmentBookingpujaBinding.tvBookingDate.setText(sdf.format(calendar.getTime()));
-                 pujaDate=sdf.format(calendar.getTime());
+                pujaDate=sdf.format(calendar.getTime());
             }
         },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         dialog.getDatePicker().setMinDate(calendar.getTimeInMillis());// TODO: used to hide previous date,month and year
-        calendar.add(Calendar.DAY_OF_MONTH, 6);
-        dialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());// TODO: used to hide future date,month and year
+        //calendar.add(Calendar.DAY_OF_MONTH, 3);
+
+        //dialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         dialog.show();
 
 
     }
 
 
-                    private void handleBookingLocationList(Resource<List<BookingLocationModel>> resource) {
+
+
+    private void handleBookingLocationList(Resource<List<BookingLocationModel>> resource) {
                         if (resource != null) {
                             JSONObject jsonObject = null;
                             switch (resource.status) {

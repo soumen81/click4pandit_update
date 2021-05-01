@@ -22,8 +22,8 @@
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clStandardPackage"
-            android:layout_width="@dimen/dimen_200dp"
-            android:layout_height="@dimen/dimen_40dp"
+            android:layout_width="@dimen/dimen_250dp"
+            android:layout_height="@dimen/dimen_50dp"
             android:layout_marginTop="@dimen/dimen_10dp"
             app:load_back="@{position}"
             android:onClick="@{(v) -> viewModel.onClickChoosePackage(v,position)}"

@@ -1,5 +1,6 @@
 package com.autumntechcreation.click4panditcustomer.ui.ordersummary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,13 +20,25 @@ import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentOrdersummeryBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
+import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment;
+import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragmentArgs;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragmentDirections;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentArgs;
+import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
+import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
+import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
 import com.autumntechcreation.click4panditcustomer.util.Static;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.inject.Inject;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -36,7 +49,9 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
     FragmentOrdersummeryBinding mFragmentOrdersummeryBinding;
     private View mView;
     NavController navController;
-    String pujaName,pujaAmount,pujaDesc,procedure,pujaSamagri,yajaman,locationName,languageName,pujaDate,pujaTime,packageTypeIdDesc;
+    String pujaName,pujaAmount,pujaDesc,procedure,pujaSamagri,yajaman,locationName,languageName,
+            pujaDate,pujaTime,packageTypeIdDesc,subcategoryName,isAllSamagries;
+    int subCategoryId,pujPackageId,locationId,languageId,noOfPandit;
 
     @Nullable
     @Override
@@ -66,6 +81,20 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         Log.e("pujaTime",""+pujaTime);
         packageTypeIdDesc= OrderSummaryFragmentArgs.fromBundle(getArguments()).getPackageTypeIdDesc();
         Log.e("packageTypeIdDesc",""+packageTypeIdDesc);
+        subcategoryName= OrderSummaryFragmentArgs.fromBundle(getArguments()).getSubCategoryName();
+        Log.e("subcategoryName",""+subcategoryName);
+        subCategoryId= OrderSummaryFragmentArgs.fromBundle(getArguments()).getSubCategoryId();
+        Log.e("SubCategoryId",""+subCategoryId);
+        pujPackageId=OrderSummaryFragmentArgs.fromBundle(getArguments()).getPujaPackageId();
+        Log.e("pujPackageId",""+pujPackageId);
+         locationId=BookingPujaFragmentArgs.fromBundle(getArguments()).getLocationId();
+        Log.e("locationId",""+locationId);
+        languageId=BookingPujaFragmentArgs.fromBundle(getArguments()).getLanguageId();
+        Log.e("languageId",""+languageId);
+        isAllSamagries=BookingPujaFragmentArgs.fromBundle(getArguments()).getIsAllSamagries();
+        Log.e("isAllSamagries",""+isAllSamagries);
+        noOfPandit=BookingPujaFragmentArgs.fromBundle(getArguments()).getNoOfPandit();
+        Log.e("noOfPandit",""+noOfPandit);
         return mFragmentOrdersummeryBinding.getRoot();
     }
     @Override
@@ -84,12 +113,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         mFragmentOrdersummeryBinding.setOrderSummeryViewModel(mOrderSummaryViewModel);
 
 
-        mOrderSummaryViewModel.getOnClickConfirmOrder().observe(this, new Observer<Void>() {
-            @Override
-            public void onChanged(Void aVoid) {
-                findNavController(mView).navigate(OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment());
-            }
-        });
+
 
         mFragmentOrdersummeryBinding.tvPujaNameValue.setText(pujaName);
         mFragmentOrdersummeryBinding.tvPackageValue.setText(packageTypeIdDesc);
@@ -110,10 +134,104 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
             System.out.println("int i = " + sgst);
         double sgstvalue=Static.roundAvoid(sgst,2);
         mFragmentOrdersummeryBinding.tvSgstValue.setText(Double.toString(sgstvalue));
+        double cgstsgst=cgstvalue+sgstvalue;
         double dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
         mFragmentOrdersummeryBinding.tvTotalValue.setText(Double.toString(dd));
+        String str=Static.convertNewDate(pujaDate)+"T"+pujaTime;
 
 
 
+        mOrderSummaryViewModel.getOnClickConfirmOrder().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(Void aVoid) {
+                // findNavController(mView).navigate(OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment());
+                mOrderSummaryViewModel.getNewOrderResult(languageId,languageName,Double.parseDouble(pujaAmount),cgstsgst,dd,pujaDesc,
+                        pujPackageId,noOfPandit,subcategoryName,subCategoryId,locationName,locationId,str).observe(getActivity(),OrderSummaryFragment.this::handleNewOrderGenerate);
+            }
+        });
+
+
+
+
+    }
+
+    private void handleNewOrderGenerate(Resource<OrderSummeryModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+
+                    break;
+                case LOADING:
+                    Log.e("handleRegisterResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleRegisterResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleRegisterResponse", resource.status + "");
+                    Log.e("handleRegisterResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleRegisterResponse", json + "");
+                    if ( resource.data.returnStatus.equals("SUCCESS")) {
+                        int  orderId=resource.data.orderId;
+                        int bkgId=resource.data.getBkgId();
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText(this.getString(R.string.success))
+                                .setContentText(this.getString(R.string.ordergenerate))
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+
+                                    }
+                                })
+                                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        sweetAlertDialog.dismiss();
+                                    }
+                                })
+
+                                .show();
+
+
+
+                    }
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
     }
 }

@@ -71,6 +71,10 @@ public class LoginViewModel extends ViewModel {
     public void storeMobileNo(String mobileNo) {
         mLoginRepository.storeMobileNo(mobileNo);
     }
+ public String storeEmail(String email) {
+        mLoginRepository.storeEmail(email);
+     return email;
+ }
 
     public void deleteSharedPreference() {
         mLoginRepository.deleteSharedPreference();

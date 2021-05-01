@@ -90,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                     mLoginViewModel.getLoginResult(mActivityLoginBinding.edtTxtEmail.getText().toString(),
                             mActivityLoginBinding.edtTxtPassword.getText().toString()).observe(LoginActivity.this,
                             LoginActivity.this::handleLoginResponse);
+
                 }
 
             }
@@ -150,6 +151,8 @@ public class LoginActivity extends AppCompatActivity {
                         String mobileNo=resource.data.mobile;
                         mLoginViewModel.storeUserName(userName);
                         mLoginViewModel.storeMobileNo(mobileNo);
+                        String emailAddress=mLoginViewModel.storeEmail(mActivityLoginBinding.edtTxtEmail.getText().toString());
+                        Log.e("emailAddress",emailAddress);
                         Intent in=new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(in);
                         sp.edit().putBoolean("logged",true).apply();

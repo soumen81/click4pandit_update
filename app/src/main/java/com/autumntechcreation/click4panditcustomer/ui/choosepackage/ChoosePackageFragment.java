@@ -65,16 +65,19 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
     int subCategoryId;
     AlertDialog mDialogForChoosePackage = null;
     String pujaName;
-    String pujaAmount,pujaDesc,packageTypeIdDesc;
-    String procedures="",pujaSamagries="",Yajaman="";
+    String pujaAmount,pujaDesc,packageTypeIdDesc,isAllSamagries;
+    int pujaPackageId,noOfPandit;
+    String procedures="",pujaSamagries="",Yajaman="",subCategoryName="";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mFragmentChoosepackageBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_choosepackage, container, false);
         mFragmentChoosepackageBinding.setLifecycleOwner(this);
-    subCategoryId=ChoosePackageFragmentArgs.fromBundle(getArguments()).getSubCategoryId();
+        subCategoryId=ChoosePackageFragmentArgs.fromBundle(getArguments()).getSubCategoryId();
         Log.e("SubCategoryId",""+subCategoryId);
+        subCategoryName=ChoosePackageFragmentArgs.fromBundle(getArguments()).getSubCategoryName();
+        Log.e("subCategoryName",""+subCategoryName);
 
 
         pujaName=ChoosePackageFragmentArgs.fromBundle(getArguments()).getPujaName();
@@ -181,10 +184,12 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                     }
                 }
                 mDialogForChoosePackage.show();
+                isAllSamagries=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getIsAllSamagriInclude();
+                noOfPandit=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getNoOfPandit();
                  packageTypeIdDesc=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr();
                  pujaAmount= mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString();
                  pujaDesc= mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr();
-
+                    pujaPackageId=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeId();
                 mDialogChoosepackageDetailsBinding.tvStandardPackage.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr());
                 mDialogChoosepackageDetailsBinding.tvStandardAmount.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString());
                 mDialogChoosepackageDetailsBinding.tvPujaDesc.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr());
@@ -192,6 +197,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                 mDialogChoosepackageDetailsBinding.tvPujaSamagriList.setText(pujaSamagries);
                 mDialogChoosepackageDetailsBinding.tvYajamanNameList.setText(Yajaman);
 
+                //For select background color change
                 List<ChoosePackageListModel> listChoosePackage=mChoosePackageViewModel.mChoosePackageList.getValue().data;
                 for(int i=0;i<listChoosePackage.size();i++){
 
@@ -223,6 +229,11 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                 action.setPujaSamagries(pujaSamagries);
                 action.setYajaman(Yajaman);
                 action.setPackageTypeIdDesc(packageTypeIdDesc);
+                action.setSubCategoryName(subCategoryName);
+                action.setSubCategoryId(subCategoryId);
+                action.setPujaPackageId(pujaPackageId);
+                action.setIsAllSamagries(isAllSamagries);
+                action.setNoOfPandit(noOfPandit);
                 Navigation.findNavController(mView).navigate(action);
 
             }

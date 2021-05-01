@@ -32,13 +32,13 @@
     <string name="accessibility">Accessibility to Puja Samagris</string>
     <string name="andeasy">An Easy and Economic choice for a  </string>
     <string name="divineexperience">Divine Experience </string>
-    <string name="choosepuja">Choose your Puja </string>
-    <string name="viewpackage">View Packages </string>
-    <string name="pickpuja">Pick your Puja Packages at</string>
-    <string name="economical">an Economical Price</string>
-    <string name="samagries">Samagries are now available at</string>
-    <string name="doorstep">your door steps.</string>
-    <string name="choosepackage">Choose your Packages For Your Puja</string>
+    <string name="choosepuja">Pick your Puja </string>
+    <string name="viewpackage">Confirm </string>
+    <string name="pickpuja">Experienced Pandits,Reasonable Dakshina </string>
+    <string name="economical"> And Multiple Choices</string>
+    <string name="samagries">All your Puja Requirements Ranging </string>
+    <string name="doorstep">From Pandits To Samagri Fulfilled</string>
+    <string name="choosepackage">Pick your Package</string>
     <string name="standardpackage">Standard Package</string>
     <string name="economypackage">Economy Package</string>
     <string name="premiumpackage">Premium Package</string>
@@ -53,10 +53,10 @@
     <string name="Rs1">\u20B9 4100</string>
     <string name="Rs2">\u20B9 3100</string>
     <string name="Rs3">\u20B9 3400</string>
-    <string name="panditsavailable">Pandits Available at Your</string>
-    <string name="convenience">Convenience</string>
-    <string name="transparency">100% transparency for Customers</string>
-    <string name="hasslefree">and Hassle-Free Experience</string>
+    <string name="panditsavailable">Book your Puja Now!!! From the Comfort  </string>
+    <string name="convenience">Of Your Home</string>
+    <string name="transparency">You are Only One Click Away From</string>
+    <string name="hasslefree">A Divine experience</string>
     <string name="bookpuja">Book your Puja</string>
     <string name="location">Location</string>
     <string name="language">Language</string>
@@ -119,4 +119,8 @@
     <string name="register">You have successsfully registered with us...</string>
     <string name="typesofpuja">Types Of Puja</string>
     <string name="categories">Categories</string>
+    <string name="yourpuja">Your Puja, Just Got Easy!</string>
+    <string name="pickpujagot">Pick The Perfect Puja And Pandit </string>
+    <string name="foryourself">For Yourselft In Less Than A Minute</string>
+    <string name="ordergenerate">Your Order has been generated Successfully</string>
 </resources>

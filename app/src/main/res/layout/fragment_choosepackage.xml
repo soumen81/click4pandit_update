@@ -55,7 +55,7 @@
             android:id="@+id/tvPickPuja"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/whiteColor"
+            android:textColor="@color/blackColor"
             style="@style/Style_TextView_FontBold"
             android:text="@string/pickpuja"
             android:textSize="@dimen/font_12sp"
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Style_TextView_FontBold"
-            android:textColor="@color/whiteColor"
+            android:textColor="@color/blackColor"
             android:text="@string/economical"
             android:textSize="@dimen/font_12sp"
 

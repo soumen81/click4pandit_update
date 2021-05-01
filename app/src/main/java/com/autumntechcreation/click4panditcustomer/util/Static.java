@@ -101,4 +101,21 @@ public class Static {
         double scale = Math.pow(10, places);
         return Math.round(value * scale) / scale;
     }
+
+
+    public static String convertNewDate(String strDate) {
+        SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
+        try {
+            date = formatter1.parse(strDate);
+        } catch (ParseException e) {
+
+
+            e.printStackTrace();
+        }
+        SimpleDateFormat formatter3 = new SimpleDateFormat("yyyy-MM-dd");
+        strDate = formatter3.format(date);
+        System.out.println("Date Format with MM/dd/yyyy : " + strDate);
+        return strDate;
+    }
 }

@@ -34,8 +34,10 @@ public class OrderSummaryRepository {
 
     }
 
-    public LiveData<Resource<OrderSummeryModel>> getRegistration(String firstName, String lastName, String mobile, String loginForSignUp,
-                                                                String passwordForSignUp, String confirmPassForSignUp, String entityType) {
+    public LiveData<Resource<OrderSummeryModel>> getOrderGenerate(int languageId, String pujaLanguageName, double amount, double cgstsgst,
+                                                                double totalAmount, String pkgDesc, int pujaPackageId,int noOfPandit,
+                                                                  String subCategoryName,int subCategoryId,String locationName,int locationId,
+                                                                  String dateTime) {
         return new NetworkBoundResource<OrderSummeryModel,OrderSummeryModel>(mAppExecutors) {
             private OrderSummeryModel resultsDb;
             @Override
@@ -72,30 +74,50 @@ public class OrderSummaryRepository {
 
                 Log.e("URL",url);
                 JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty(AllUrlsAndConfig.BKGSTSID, firstName);
-                jsonObject.addProperty(AllUrlsAndConfig.CNCDT, lastName);
-                jsonObject.addProperty(AllUrlsAndConfig.CNCFLG, mobile);
-                jsonObject.addProperty(AllUrlsAndConfig.CURID, " ");
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGBKGDT, loginForSignUp);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGBKGTIMEONLY, passwordForSignUp);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGID, confirmPassForSignUp);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, entityType);
+                jsonObject.addProperty(AllUrlsAndConfig.BKGSTSID, 1001);
+                jsonObject.addProperty(AllUrlsAndConfig.CNCDT, dateTime);//Booking and date
+                jsonObject.addProperty(AllUrlsAndConfig.CNCFLG, "N");
+                jsonObject.addProperty(AllUrlsAndConfig.CURID, 1001);
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGBKGDT, dateTime);
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGBKGTIMEONLY, "");
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGID, 0);
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERID, languageId);//LanguageID
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGLANGMASTERNAME, pujaLanguageName);//Language name
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPKGAMT, amount);//amount
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPKGTAXAMT, cgstsgst);//cgest+sgst
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPKGTOTALAMT, totalAmount);//total amount
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGALLSAMGRIFLG, "Y");
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGDESC, pkgDesc);//packagedesc
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGID, pujaPackageId);//packageId
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGNOOFPANDIT, noOfPandit);
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGNOTE, "");
+               jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGTYPEDSCR, pkgDesc);
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGTYPEID, pujaPackageId);
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJASUBCTGRYDSCR, subCategoryName);//Subtcategoryname
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJASUBCTGRYID, subCategoryId);//subcategoryid
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGSUBLCLTYNAME, locationName);//LocationName
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGSUBLCLTYID, locationId);//Locationid
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTMASTERID, 1);
+                jsonObject.addProperty(AllUrlsAndConfig.DELFLG, "N");
+                jsonObject.addProperty(AllUrlsAndConfig.ISGUESTUSER, "N");
+                jsonObject.addProperty(AllUrlsAndConfig.LOGONIDD, getEmail());//emailid
+                jsonObject.addProperty(AllUrlsAndConfig.ORGLSTAMP, dateTime);//date
+                jsonObject.addProperty(AllUrlsAndConfig.ORGLUSER, dateTime);
+                jsonObject.addProperty(AllUrlsAndConfig.TAXTYPID, 1001);
+                jsonObject.addProperty(AllUrlsAndConfig.UPDTSTAMP, dateTime);//date
+                jsonObject.addProperty(AllUrlsAndConfig.UPDTUSER, "");
 
                 return mWebservice.NewOrder(url,jsonObject);
 
             }
         }.asLiveData();
+    }
+
+    public String getUserName(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.USERNAME, null);
+
+    }public String getEmail(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.EMAIL, null);
+
     }
 }
