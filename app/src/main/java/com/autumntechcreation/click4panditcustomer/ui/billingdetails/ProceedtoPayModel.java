@@ -6,19 +6,19 @@ import com.google.gson.annotations.SerializedName;
 public class ProceedtoPayModel {
     @SerializedName("returnStatus")
     @Expose
-    private String returnStatus;
+    public String returnStatus;
     @SerializedName("returnErrMsg")
     @Expose
-    private Object returnErrMsg;
+    public Object returnErrMsg;
     @SerializedName("firstName")
     @Expose
-    private Object firstName;
+    public Object firstName;
     @SerializedName("lastName")
     @Expose
-    private Object lastName;
+    public Object lastName;
     @SerializedName("mobile")
     @Expose
-    private Object mobile;
+    public Object mobile;
 
     public String getReturnStatus() {
         return returnStatus;

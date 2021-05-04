@@ -15,16 +15,27 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentBillingdetailsBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
+import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragmentArgs;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentDirections;
+import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryFragment;
+import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryFragmentDirections;
+import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
+import com.autumntechcreation.click4panditcustomer.util.Static;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.inject.Inject;
 
@@ -40,7 +51,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     private View mView;
     NavController navController;
     int orderId,bkgId;
-    String orderAmount,shippingAddress,shippingCity,shippingState,shippingPincode;
+    String orderAmount,shippingAddress,shippingCity,shippingState,shippingPincode,pujaDatetime;
 
     @Nullable
     @Override
@@ -60,6 +71,9 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingPinCode().length()>0) {
             shippingPincode = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingPinCode();
             Log.e("SHIPPINGPINCODE", shippingPincode);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
+            pujaDatetime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();
+            Log.e("PUJADATETIME", pujaDatetime);
         }
 
 
@@ -148,9 +162,78 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                         Log.e("ORDERAMOUNT",orderAmount);
                     }
 
+                    mBillingDetailsViewModel.getProceedPayResult(pujaDatetime,bkgId,mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString(),
+                            mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString(),mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),
+                            mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString(),mFragmentBillingdetailsBinding.edtTxtCity.getText().toString(),
+                            mFragmentBillingdetailsBinding.edtTxtState.getText().toString(),mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString(),Double.parseDouble(orderAmount),
+                            orderId).observe(getActivity(), BillingDetailsFragment.this::handleProceedToPay);
+
+
                 }
             }
         });
             mFragmentBillingdetailsBinding.tvLocation.setText(shippingAddress+","+shippingState+","+shippingCity+","+shippingPincode);
+    }
+
+
+    private void handleProceedToPay(Resource<ProceedtoPayModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+
+                    break;
+                case LOADING:
+                    Log.e("handleRegisterResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleRegisterResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleRegisterResponse", resource.status + "");
+                    Log.e("handleRegisterResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleRegisterResponse", json + "");
+                    if ( resource.data.returnStatus.equals("SUCCESS")) {
+
+
+
+                    }
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
     }
     }

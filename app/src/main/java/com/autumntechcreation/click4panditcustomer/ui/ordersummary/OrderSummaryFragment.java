@@ -51,7 +51,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
     private View mView;
     NavController navController;
     String pujaName,pujaAmount,pujaDesc,procedure,pujaSamagri,yajaman,locationName,languageName,
-            pujaDate,pujaTime,packageTypeIdDesc,subcategoryName,isAllSamagries;
+            pujaDate,pujaTime,packageTypeIdDesc,subcategoryName,isAllSamagries,pujaDateTime;
     int subCategoryId,pujPackageId,locationId,languageId,noOfPandit;
     double dd;
     @Nullable
@@ -138,7 +138,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         double cgstsgst=cgstvalue+sgstvalue;
          dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
         mFragmentOrdersummeryBinding.tvTotalValue.setText(Double.toString(dd));
-        String str=Static.convertNewDate(pujaDate)+"T"+pujaTime;
+         pujaDateTime=Static.convertNewDate(pujaDate)+"T"+pujaTime;
 
 
 
@@ -147,7 +147,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
             public void onChanged(Void aVoid) {
                 // findNavController(mView).navigate(OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment());
                 mOrderSummaryViewModel.getNewOrderResult(languageId,languageName,Double.parseDouble(pujaAmount),cgstsgst,dd,pujaDesc,
-                        pujPackageId,noOfPandit,subcategoryName,subCategoryId,locationName,locationId,str).observe(getActivity(),OrderSummaryFragment.this::handleNewOrderGenerate);
+                        pujPackageId,noOfPandit,subcategoryName,subCategoryId,locationName,locationId,pujaDateTime).observe(getActivity(),OrderSummaryFragment.this::handleNewOrderGenerate);
             }
         });
 
@@ -211,11 +211,14 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
-                                       OrderSummaryFragmentDirections.ActionOrderSummaryFragmentToBillingDetailsFragment action=
+                                        sDialog.dismiss();
+
+                                        OrderSummaryFragmentDirections.ActionOrderSummaryFragmentToBillingDetailsFragment action=
                                                OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment();
                                        action.setOrderId(orderId);
                                        action.setBkgId(bkgId);
                                        action.setOrderAmount(String.valueOf(dd));
+                                       action.setDateTime(pujaDateTime);
                                         Navigation.findNavController(mView).navigate(action);
                                     }
                                 })

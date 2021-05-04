@@ -23,7 +23,7 @@ public class BillingDetailsRepository {
     private AppExecutors mAppExecutors;
     Webservice mWebservice;
     SharedPrefsHelper mSharedPrefsHelper;
-
+    boolean isShippingAddress=false;
 
     @Inject
     public BillingDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
@@ -32,8 +32,9 @@ public class BillingDetailsRepository {
         this.mSharedPrefsHelper = sharedPrefsHelper;
 
     }
-    public LiveData<Resource<ProceedtoPayModel>> getProceedtoPay(String firstName, String lastName, String mobile, String loginForSignUp,
-                                                                String passwordForSignUp, String confirmPassForSignUp, String entityType) {
+    public LiveData<Resource<ProceedtoPayModel>> getProceedtoPay(String pujaDateTime, int custBkgId, String firstName, String lastName,
+                                                                String address, String mobileNo, String city,String state,String pincode,
+                                                                 double orderAmount,int orderId) {
         return new NetworkBoundResource<ProceedtoPayModel,ProceedtoPayModel>(mAppExecutors) {
             private ProceedtoPayModel resultsDb;
             @Override
@@ -73,51 +74,66 @@ public class BillingDetailsRepository {
                 JsonObject jsonOObjectBillingAddress = new JsonObject();
 
 
-                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.CUSTPUJABILLINGADDRID, firstName);
-                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.CUSTPUJABILLINGADDRID, lastName);
-                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.MOBILE, mobile);
-                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.EMAILADDRESS, getEmail());
-                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.LOGINIDFORSIGNUP, loginForSignUp);
-                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.PASSWORDFORSIGNUP, passwordForSignUp);
-                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.CONFIRMPASSWORDFORSIGNUP, confirmPassForSignUp);
-                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.ENTITYTYPEABRV, entityType);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.CUSTPUJABILLINGADDRID, 0);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.UPDATESTAMP, pujaDateTime);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.UPDATEUSER, "");
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.ORGLSTAMPP, pujaDateTime);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.ORGLUSERR, "");
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.DELFLGG, "N");
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.CUSTMASTERIDD, 1);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.CUSTBKGIDD, custBkgId);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.FIRSTNAMEE, firstName);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.LASTNAMEE, lastName);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.ADDR1, address);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.ADDR2, "");
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.ADDR3, "");
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.MOB1, mobileNo);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.MOB2, "0");
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.EMAILADDR, getEmail());
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.CITYID, 1001);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.CITYDESCR, city);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.STID, 1001);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.STDESCR, state);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.COUNTRYID, 1001);
+                jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.POSTAL, pincode);
                 jsonObject.add("BillingAddrModel",jsonOObjectBillingAddress);
 
                 JsonObject jsonObjectCustBkgSummaryDataModel=new JsonObject();
 
-                jsonObjectCustBkgSummaryDataModel.addProperty(AllUrlsAndConfig.ISGUESTUSERR,"");
+                jsonObjectCustBkgSummaryDataModel.addProperty(AllUrlsAndConfig.ISGUESTUSERR,"N");
                 jsonObjectCustBkgSummaryDataModel.addProperty(AllUrlsAndConfig.LOGONI,getEmail());
-                jsonObjectCustBkgSummaryDataModel.addProperty(AllUrlsAndConfig.CUSBKGIDD,"");
-                jsonObjectCustBkgSummaryDataModel.addProperty(AllUrlsAndConfig.ORDERAMOUNT,"");
-                jsonObjectCustBkgSummaryDataModel.addProperty(AllUrlsAndConfig.ORDERID,"");
+                jsonObjectCustBkgSummaryDataModel.addProperty(AllUrlsAndConfig.CUSBKGIDD,custBkgId);
+                jsonObjectCustBkgSummaryDataModel.addProperty(AllUrlsAndConfig.ORDERAMOUNT,orderAmount);
+                jsonObjectCustBkgSummaryDataModel.addProperty(AllUrlsAndConfig.ORDERID,orderId);
                 jsonObject.add("CustBkgSummaryDataModel",jsonObjectCustBkgSummaryDataModel);
 
-                JsonObject jsonObjectPujaAddlInfoModel=new JsonObject();
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CUSTPUJAADDINFOID,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.UPDATSTAMP,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.UPDATUSER,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ORGLSTAP,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ORIGINALUSER,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.DELETEFLG,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CUSTMASTERIDDDD,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CUSTBKGGID,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.FIRSTTNAME,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.LASTTNAME,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.MOBBI1,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.MOBBI2,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.EMAIL,getEmail());
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ADDDR1,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ADDDR2,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ADDDR3,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CITYIDD,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CITYDESCRR,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.STIDD,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.STDESCRR,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.COUNTRYIDD,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.POSTALL,"");
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.PUJAADDINFODESCR,"");
-                jsonObject.add("PujaAddlInfoModel",jsonObjectPujaAddlInfoModel);
-
+                   JsonObject jsonObjectPujaAddlInfoModel = new JsonObject();
+                   String str=null;
+                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CUSTPUJAADDINFOID, str);
+                  // jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CUSTPUJAADDINFOID, "null");
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.UPDATSTAMP, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.UPDATUSER, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ORGLSTAP, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ORIGINALUSER, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.DELETEFLG, "N");
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CUSTMASTERIDDDD, 1);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CUSTBKGGID, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.FIRSTTNAME, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.LASTTNAME, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.MOBBI1, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.MOBBI2, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.EMAIL, "");
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ADDDR1, "");
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ADDDR2, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ADDDR3, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CITYIDD, 1001);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CITYDESCRR, "");
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.STIDD, 1001);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.STDESCRR, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.COUNTRYIDD, 1001);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.POSTALL, str);
+                   jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.PUJAADDINFODESCR, str);
+                   jsonObject.add("PujaAddlInfoModel", jsonObjectPujaAddlInfoModel);
 
                 return mWebservice.ProceedtoPay(url,jsonObject);
 
