@@ -10,6 +10,9 @@ public class AllUrlsAndConfig {
     public static final String LOCATIONLIST ="/api/Lcn/SrchBySubLcltyMinThreeChars";
     public static final String LANGUAGELIST ="/api/Lang/GetLangMasterList";
     public static final String NEWORDER ="/api/CustomerBkgOrder/NewOrder";
+    public static final String FORGETPASSWORD ="/api/NonFnctnlCncrn/ForgotPassword";
+    public static final String TRIGGERMAIL ="/api/TriggerMail/SendMailForSetNewPassWord";
+    public static final String PROCEEDTOPAY ="/api/CustomerBkgOrder/ProceedToPay";
 
 
     //Parameter for SignUp
@@ -67,5 +70,63 @@ public class AllUrlsAndConfig {
     public static final String UPDTSTAMP="UpdtStamp";
     public static final String UPDTUSER="UpdtUser";
 
+//Parameter for Forgot Password
+    public static final String LOGONIDDD="LogonId";
+    public static final String ENTITYTYPABRV="EntityTypAbrv";
+    public static final String SETNEWPASSWORDLINK="SetNewPasswordLink";
+
+    //Parameter for Billing Address...
+    public static final String CUSTPUJABILLINGADDRID="CustPujaBillingAddrId";
+    public static final String UPDATESTAMP="UpdtStamp";
+    public static final String UPDATEUSER="UpdtUser";
+    public static final String ORGLSTAMPP="OrglStamp";
+    public static final String ORGLUSERR="OrglUser";
+    public static final String DELFLGG="DelFlg";
+    public static final String CUSTMASTERIDD="CustMasterId";
+    public static final String CUSTBKGIDD="CustBkgId";
+    public static final String FIRSTNAMEE="FirstName";
+    public static final String LASTNAMEE="LastName";
+    public static final String ADDR1="Addr1";
+    public static final String ADDR2="Addr2";
+    public static final String ADDR3="Addr3";
+    public static final String MOB1="Mob1";
+    public static final String MOB2="Mob2";
+    public static final String EMAILADDR="EmailAddr";
+    public static final String CITYID="CtyId";
+    public static final String CITYDESCR="CityDescr";
+    public static final String STID="StId";
+    public static final String STDESCR="StDescr";
+    public static final String COUNTRYID="CntryId";
+    public static final String POSTAL="Postal";
+
+    public static final String ISGUESTUSERR="IsGuestUser";
+    public static final String LOGONI="LogonId";
+    public static final String CUSBKGIDD="CustBkgId";
+    public static final String ORDERAMOUNT="OrderAmount";
+    public static final String ORDERID="OrderId";
+
+    public static final String CUSTPUJAADDINFOID="CustPujaAddlInfoId";
+    public static final String UPDATSTAMP="UpdtStamp";
+    public static final String UPDATUSER="UpdtUser";
+    public static final String ORGLSTAP="OrglStamp";
+    public static final String ORIGINALUSER="OrglUser";
+    public static final String DELETEFLG="DelFlg";
+    public static final String CUSTMASTERIDDDD="CustMasterId";
+    public static final String CUSTBKGGID="CustBkgId";
+    public static final String FIRSTTNAME="FirstName";
+    public static final String LASTTNAME="LastName";
+    public static final String MOBBI1="Mob1";
+    public static final String MOBBI2="Mob2";
+    public static final String EMAIL="EmailAddr";
+    public static final String ADDDR1="Addr1";
+    public static final String ADDDR2="Addr2";
+    public static final String ADDDR3="Addr3";
+    public static final String CITYIDD="CtyId";
+    public static final String CITYDESCRR="CityDescr";
+    public static final String STIDD="StId";
+    public static final String STDESCRR="StDescr";
+    public static final String COUNTRYIDD="CntryId";
+    public static final String POSTALL="Postal";
+    public static final String PUJAADDINFODESCR="PujaAddlInfoDscr";
 
 }

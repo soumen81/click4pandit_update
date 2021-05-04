@@ -16,7 +16,7 @@ import javax.inject.Inject;
 public class OrderSummaryViewModel extends ViewModel {
     private SingleLiveEvent<Void> mclickConfirmOrder = new SingleLiveEvent<>();
     OrderSummaryRepository mOrderSummaryRepository;
-    private LiveData<Resource<OrderSummeryModel>> mOrderSummeryModelResponse;
+    public LiveData<Resource<OrderSummeryModel>> mOrderSummeryModelResponse;
     @Inject
     public OrderSummaryViewModel(OrderSummaryRepository orderSummaryRepository) {
         this.mOrderSummaryRepository=orderSummaryRepository;

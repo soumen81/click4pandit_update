@@ -293,6 +293,18 @@
             android:name="noOfPandit"
             android:defaultValue="1"
             app:argType="integer" />
+        <argument
+            android:name="orderId"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="bkgId"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="orderAmount"
+            android:defaultValue="0"
+            app:argType="string" />
         <action
             android:id="@+id/action_orderSummaryFragment_to_billingDetailsFragment"
             app:destination="@id/billingDetailsFragment" />
@@ -301,6 +313,34 @@
         android:id="@+id/billingDetailsFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsFragment"
         android:label="BillingDetailsFragment" >
+        <argument
+            android:name="orderId"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="bkgId"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="orderAmount"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingAddress"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingState"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingCity"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingPinCode"
+            android:defaultValue="0"
+            app:argType="string" />
         <action
             android:id="@+id/action_billingDetailsFragment_to_differentPujaLocationFragment"
             app:destination="@id/differentPujaLocationFragment" />
@@ -308,7 +348,27 @@
     <fragment
         android:id="@+id/differentPujaLocationFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationFragment"
-        android:label="DifferentPujaLocationFragment" />
+        android:label="DifferentPujaLocationFragment" >
+        <argument
+            android:name="shippingAddress"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingState"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingCity"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingPinCode"
+            android:defaultValue="0"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_differentPujaLocationFragment_to_billingDetailsFragment"
+            app:destination="@id/billingDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment"

@@ -123,4 +123,6 @@
     <string name="pickpujagot">Pick The Perfect Puja And Pandit </string>
     <string name="foryourself">For Yourselft In Less Than A Minute</string>
     <string name="ordergenerate">Your Order has been generated Successfully</string>
+    <string name="checkmail">Reset password link has been sent to registered email address</string>
+    <string name="forgetsuccess">Forget Password Successfully done.</string>
 </resources>

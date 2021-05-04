@@ -2,9 +2,12 @@ package com.autumntechcreation.click4panditcustomer.network;
 
 import androidx.lifecycle.LiveData;
 
+import com.autumntechcreation.click4panditcustomer.ui.billingdetails.ProceedtoPayModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLanguageModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLocationModel;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageListModel;
+import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordModel;
+import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.TriggerMailModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
@@ -74,6 +77,25 @@ public interface Webservice {
     @POST()
     LiveData<ApiResponse<OrderSummeryModel>> NewOrder(@Url String apiname,
                                                    @Body JsonObject jsonObject
+
+    );
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<ForgetPasswordModel>> ForgetPassword(@Url String apiname,
+                                                              @Body JsonObject jsonObject
+
+    );
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<TriggerMailModel>> TriggerMail(@Url String apiname,
+                                                           @Body JsonObject jsonObject
+
+    );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<ProceedtoPayModel>> ProceedtoPay(@Url String apiname,
+                                                         @Body JsonObject jsonObject
 
     );
 

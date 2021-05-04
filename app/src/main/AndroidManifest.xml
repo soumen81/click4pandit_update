@@ -4,11 +4,12 @@
     package="com.autumntechcreation.click4panditcustomer">
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
 
-
+    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Always required on api < 21, needed to keep a wake lock while your job is running -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <!-- Required on api < 21 if you are using setRequiredNetworkType(int) -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

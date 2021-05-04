@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
@@ -52,7 +53,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
     String pujaName,pujaAmount,pujaDesc,procedure,pujaSamagri,yajaman,locationName,languageName,
             pujaDate,pujaTime,packageTypeIdDesc,subcategoryName,isAllSamagries;
     int subCategoryId,pujPackageId,locationId,languageId,noOfPandit;
-
+    double dd;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -135,7 +136,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         double sgstvalue=Static.roundAvoid(sgst,2);
         mFragmentOrdersummeryBinding.tvSgstValue.setText(Double.toString(sgstvalue));
         double cgstsgst=cgstvalue+sgstvalue;
-        double dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
+         dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
         mFragmentOrdersummeryBinding.tvTotalValue.setText(Double.toString(dd));
         String str=Static.convertNewDate(pujaDate)+"T"+pujaTime;
 
@@ -210,7 +211,12 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
-
+                                       OrderSummaryFragmentDirections.ActionOrderSummaryFragmentToBillingDetailsFragment action=
+                                               OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment();
+                                       action.setOrderId(orderId);
+                                       action.setBkgId(bkgId);
+                                       action.setOrderAmount(String.valueOf(dd));
+                                        Navigation.findNavController(mView).navigate(action);
                                     }
                                 })
                                 .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
