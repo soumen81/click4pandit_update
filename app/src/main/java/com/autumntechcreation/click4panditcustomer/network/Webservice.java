@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.ProceedtoPayModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLanguageModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLocationModel;
+import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordModel;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageListModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.TriggerMailModel;
@@ -96,6 +97,12 @@ public interface Webservice {
     @POST()
     LiveData<ApiResponse<ProceedtoPayModel>> ProceedtoPay(@Url String apiname,
                                                          @Body JsonObject jsonObject
+
+    );
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<ChangePasswordModel>> ChangePassword(@Url String apiname,
+                                                              @Body JsonObject jsonObject
 
     );
 

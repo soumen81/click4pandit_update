@@ -11,6 +11,8 @@ import javax.inject.Singleton;
 @Singleton
 public class SharedPrefsHelper {
     public static String USERNAME = "userName";
+    public static String FIRSTNAME = "firstName";
+    public static String LASTNAME = "lastName";
     public static String MOBILE = "mobile";
     public static String ENTERED_HOME_ACTIVITY = "ENTERED_HOME_ACTIVITY";
     public static String EMAIL = "email";

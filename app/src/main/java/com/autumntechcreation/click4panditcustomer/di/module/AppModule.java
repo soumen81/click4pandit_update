@@ -12,6 +12,7 @@ import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDeta
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaRepository;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageRepository;
+import com.autumntechcreation.click4panditcustomer.ui.contactus.ContactUsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardRepository;
 import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationRepository;
 import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileRepository;
@@ -142,5 +143,10 @@ public class AppModule {
     @Singleton
     SignOutRepository provideSignOutRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new SignOutRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+    @Provides
+    @Singleton
+    ContactUsRepository provideContactUsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new ContactUsRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

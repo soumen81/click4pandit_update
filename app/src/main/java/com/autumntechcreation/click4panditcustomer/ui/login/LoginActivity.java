@@ -149,8 +149,12 @@ public class LoginActivity extends AppCompatActivity {
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
                         String userName=resource.data.firstName + resource.data.lastName;
                         String mobileNo=resource.data.mobile;
+                        String firstName=resource.data.firstName;
+                        String lastName=resource.data.lastName;
                         mLoginViewModel.storeUserName(userName);
                         mLoginViewModel.storeMobileNo(mobileNo);
+                        mLoginViewModel.storefirstName(firstName);
+                        mLoginViewModel.storelastName(lastName);
                         String emailAddress=mLoginViewModel.storeEmail(mActivityLoginBinding.edtTxtEmail.getText().toString());
                         Log.e("emailAddress",emailAddress);
                         Intent in=new Intent(LoginActivity.this, MainActivity.class);

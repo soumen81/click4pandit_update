@@ -349,6 +349,35 @@
             android:name="dateTime"
             android:defaultValue="0"
             app:argType="string" />
+        <argument
+            android:name="statusShippingId"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="shippingFname"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingLname"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingemail"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="shippingMobile"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="additionalInfo"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingBkgId"
+            android:defaultValue="1"
+            app:argType="integer" />
         <action
             android:id="@+id/action_billingDetailsFragment_to_differentPujaLocationFragment"
             app:destination="@id/differentPujaLocationFragment" />
@@ -389,6 +418,36 @@
             android:name="dateTime"
             android:defaultValue="0"
             app:argType="string" />
+        <argument
+            android:name="statusShippingId"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="shippingFname"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingLname"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingemail"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="shippingMobile"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="additionalInfo"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="shippingBkgId"
+            android:defaultValue="1"
+            app:argType="integer" />
+
         <action
             android:id="@+id/action_differentPujaLocationFragment_to_billingDetailsFragment"
             app:destination="@id/billingDetailsFragment" />

@@ -1,5 +1,6 @@
 package com.autumntechcreation.click4panditcustomer.ui.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentSettingsBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
+import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordAcitivity;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
 
@@ -53,6 +55,13 @@ public class SettingsFragment extends Fragment implements Injectable {
         super.onActivityCreated(savedInstanceState);
 
 
+        mFragmentSettingsBinding.tvChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(getActivity(), ChangePasswordAcitivity.class);
+                startActivity(in);
+            }
+        });
     }
 
 

@@ -66,6 +66,10 @@ public class LoginViewModel extends ViewModel {
 
     public void storeUserName(String userName) {
         mLoginRepository.storeUserName(userName);
+    } public void storefirstName(String firstName) {
+        mLoginRepository.storefirstName(firstName);
+    } public void storelastName(String lastName) {
+        mLoginRepository.storelastName(lastName);
     }
 
     public void storeMobileNo(String mobileNo) {

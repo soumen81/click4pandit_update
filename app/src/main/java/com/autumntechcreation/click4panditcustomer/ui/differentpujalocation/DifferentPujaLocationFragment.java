@@ -1,6 +1,7 @@
 package com.autumntechcreation.click4panditcustomer.ui.differentpujalocation;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentDifferentpujalocationBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsFragment;
+import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsFragmentArgs;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsViewModel;
 
 import javax.inject.Inject;
@@ -35,12 +37,30 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
     DifferentPujaLocationViewModel mDifferentPujaLocationViewModel;
     private View mView;
     NavController navController;
+    String pujaDatetime,shippingorderAmount;
+    int shippingbkgId,shippingorderId;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mFragmentDifferentpujalocationBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_differentpujalocation, container, false);
         mFragmentDifferentpujalocationBinding.setLifecycleOwner(this);
-
+        if(DifferentPujaLocationFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
+            pujaDatetime = DifferentPujaLocationFragmentArgs.fromBundle(getArguments()).getDateTime();
+            Log.e("PUJADATETIME", pujaDatetime);
+        }
+        if(DifferentPujaLocationFragmentArgs.fromBundle(getArguments()).getBkgId()>0) {
+            shippingbkgId = DifferentPujaLocationFragmentArgs.fromBundle(getArguments()).getShippingBkgId();
+            Log.e("bkgId", "" + shippingbkgId);
+        }
+        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderId()>0) {
+            shippingorderId = BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderId();
+            Log.e("shippingorderId", "" + shippingorderId);
+        }
+        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount().length()>0){
+           shippingorderAmount=BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount();
+            Log.e("SHIPPINGORDERAMOUNT",shippingorderAmount);
+        }
         return mFragmentDifferentpujalocationBinding.getRoot();
     }
     @Override
@@ -119,6 +139,16 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                     action.setShippingState(mFragmentDifferentpujalocationBinding.edtTxtState.getText().toString());
                     action.setShippingCity(mFragmentDifferentpujalocationBinding.edtTxtCity.getText().toString());
                     action.setShippingPinCode(mFragmentDifferentpujalocationBinding.edtTxtPincode.getText().toString());
+                    action.setShippingFname(mFragmentDifferentpujalocationBinding.edtTxtFirstName.getText().toString());
+                    action.setShippingLname(mFragmentDifferentpujalocationBinding.edtTxtLastName.getText().toString());
+                    action.setShippingemail(mFragmentDifferentpujalocationBinding.edtTxtEmail.getText().toString());
+                    action.setAdditionalInfo(mFragmentDifferentpujalocationBinding.edtTxtAdditionalInfo.getText().toString());
+                    action.setShippingMobile(mFragmentDifferentpujalocationBinding.edtAlternateMobileNo.getText().toString());
+                    action.setDateTime(pujaDatetime);
+                    action.setShippingBkgId(shippingbkgId);
+                    action.setOrderAmount(shippingorderAmount);
+                    action.setOrderId(shippingorderId);
+                    action.setStatusShippingId(1);
                     Navigation.findNavController(mView).navigate(action);
                 }
             }

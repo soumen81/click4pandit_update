@@ -13,6 +13,7 @@ public class AllUrlsAndConfig {
     public static final String FORGETPASSWORD ="/api/NonFnctnlCncrn/ForgotPassword";
     public static final String TRIGGERMAIL ="/api/TriggerMail/SendMailForSetNewPassWord";
     public static final String PROCEEDTOPAY ="/api/CustomerBkgOrder/ProceedToPay";
+    public static final String CHANGEPASSWORD ="/api/NonFnctnlCncrn/ChangePassword";
 
 
     //Parameter for SignUp
@@ -128,5 +129,12 @@ public class AllUrlsAndConfig {
     public static final String COUNTRYIDD="CntryId";
     public static final String POSTALL="Postal";
     public static final String PUJAADDINFODESCR="PujaAddlInfoDscr";
+
+    //Parameter for Change Password
+    public static final String LOGONIDDDD="LogonId";
+    public static final String OLDPASSWORD ="OldPwd";
+    public static final String NEWPASSWORD ="NewPwd";
+    public static final String CONFIRMPASSWORD ="ConfirmNewPwd";
+    public static final String ENTITYTPEABRV ="EntityTypAbrv";
 
 }

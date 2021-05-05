@@ -48,7 +48,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
         <TextView
-            android:id="@+id/tvHowWeWork"
+            android:id="@+id/tvChangePass"
             style="@style/Style_TextView_FontBold"
             android:layout_width="@dimen/dimen_250dp"
             android:layout_height="@dimen/dimen_40dp"
@@ -56,7 +56,7 @@
             android:background="@drawable/round_yellow_corner"
             android:drawableRight="@drawable/ic_arrowblack"
             android:gravity="center"
-            android:text="@string/howwework"
+            android:text="@string/changepassword"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_14sp"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
@@ -77,7 +77,7 @@
             android:textSize="@dimen/font_14sp"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/tvHowWeWork">
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvChangePass">
         </TextView>
         <TextView
             android:id="@+id/tvTermsOfUse"
@@ -88,7 +88,7 @@
             android:background="@drawable/round_yellow_corner"
             android:drawableRight="@drawable/ic_arrowblack"
             android:gravity="center"
-            android:text="@string/termsofuse"
+            android:text="@string/termscondition"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_14sp"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
@@ -96,7 +96,7 @@
             android.support.design:layout_constraintTop_toBottomOf="@+id/tvPrivacypolicy">
         </TextView>
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/tvFaq"
             style="@style/Style_TextView_FontBold"
             android:layout_width="@dimen/dimen_250dp"
@@ -111,7 +111,7 @@
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
             android.support.design:layout_constraintTop_toBottomOf="@+id/tvTermsOfUse">
-        </TextView>
+        </TextView>-->
         <TextView
             android:id="@+id/tvCancellationandRefund"
             style="@style/Style_TextView_FontBold"
@@ -121,12 +121,12 @@
             android:background="@drawable/round_yellow_corner"
             android:drawableRight="@drawable/ic_arrowblack"
             android:gravity="center"
-            android:text="@string/cancellansandrefund"
+            android:text="@string/refundpolicy"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_14sp"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/tvFaq">
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvTermsOfUse">
         </TextView>
         <TextView
             android:id="@+id/tvContactUs"

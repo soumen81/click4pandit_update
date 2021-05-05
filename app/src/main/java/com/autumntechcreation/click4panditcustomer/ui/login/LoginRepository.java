@@ -87,6 +87,10 @@ public class LoginRepository {
 
     public void storeUserName(String userName){
         mSharedPrefsHelper.put(SharedPrefsHelper.USERNAME, userName);
+    } public void storefirstName(String firstName){
+        mSharedPrefsHelper.put(SharedPrefsHelper.FIRSTNAME, firstName);
+    } public void storelastName(String firstName){
+        mSharedPrefsHelper.put(SharedPrefsHelper.LASTNAME, firstName);
     }
     public void storeMobileNo(String mobile){
         mSharedPrefsHelper.put(SharedPrefsHelper.MOBILE, mobile);
