@@ -19,6 +19,7 @@ import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentSettingsBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordAcitivity;
+import com.autumntechcreation.click4panditcustomer.ui.contactus.ContactUsActivity;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
 
@@ -59,6 +60,13 @@ public class SettingsFragment extends Fragment implements Injectable {
             @Override
             public void onClick(View v) {
                 Intent in=new Intent(getActivity(), ChangePasswordAcitivity.class);
+                startActivity(in);
+            }
+        });
+        mFragmentSettingsBinding.tvContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(getActivity(), ContactUsActivity.class);
                 startActivity(in);
             }
         });
