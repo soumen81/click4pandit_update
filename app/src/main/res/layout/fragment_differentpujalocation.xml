@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:scrollbars="vertical"
                 android:singleLine="true"
                 android:textSize="@dimen/font_10sp"

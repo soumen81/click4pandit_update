@@ -36,6 +36,7 @@ import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
+import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryActivity;
 import com.google.gson.Gson;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
@@ -158,59 +159,71 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
             public void onChanged(Integer position) {
 
 
-                ChoosePackageListModel choosePackageListModel=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position);
+                ChoosePackageListModel choosePackageListModel = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position);
 
-                for(int i=0;i<choosePackageListModel.getPujaPrcdrList().size();i++){
-                    if(i==0){
-                        procedures =choosePackageListModel.getPujaPrcdrList().get(i).getPujaPrcdrDscr();
-                    }else {
-                        procedures = procedures + "," + choosePackageListModel.getPujaPrcdrList().get(i).getPujaPrcdrDscr();
+
+                if (choosePackageListModel.getPujaPkgDscr().equalsIgnoreCase("On Enquiry") ||
+                        choosePackageListModel.getPujaSamagriDesdlvrList().size() == 0 ||
+                        choosePackageListModel.getPujaSamagriDesdlvrList() == null) {
+                    mDialogForChoosePackage.dismiss();
+                    mFragmentChoosepackageBinding.tvViewPackages.setVisibility(View.GONE);
+                    Intent in = new Intent(getActivity(), SendEnquiryActivity.class);
+                    startActivity(in);
+                } else {
+
+
+                    for (int i = 0; i < choosePackageListModel.getPujaPrcdrList().size(); i++) {
+                        if (i == 0) {
+                            procedures = choosePackageListModel.getPujaPrcdrList().get(i).getPujaPrcdrDscr();
+                        } else {
+                            procedures = procedures + "," + choosePackageListModel.getPujaPrcdrList().get(i).getPujaPrcdrDscr();
+                        }
                     }
-                }
 
-                for(int i=0;i<choosePackageListModel.getPujaSamagriDesdlvrList().size();i++){
+               /* for(int i=0;i<choosePackageListModel.getPujaSamagriDesdlvrList().size();i++){
                     if(i==0){
                         pujaSamagries =choosePackageListModel.getPujaSamagriDesdlvrList().get(i).getPujaSamagriDelvryDscr();
                     }else {
                         pujaSamagries = pujaSamagries + "," + choosePackageListModel.getPujaSamagriDesdlvrList().get(i).getPujaSamagriDelvryDscr();
                     }
-                }
+                }*/
 
-                for(int i=0;i<choosePackageListModel.getPujasamagriHHList().size();i++){
-                    if(i==0){
-                        Yajaman =choosePackageListModel.getPujasamagriHHList().get(i).getPujaSamagriHHDscr();
-                    }else {
-                        Yajaman = Yajaman + "," + choosePackageListModel.getPujasamagriHHList().get(i).getPujaSamagriHHDscr();
+                    for (int i = 0; i < choosePackageListModel.getPujasamagriHHList().size(); i++) {
+                        if (i == 0) {
+                            Yajaman = choosePackageListModel.getPujasamagriHHList().get(i).getPujaSamagriHHDscr();
+                        } else {
+                            Yajaman = Yajaman + "," + choosePackageListModel.getPujasamagriHHList().get(i).getPujaSamagriHHDscr();
+                        }
                     }
-                }
-                mDialogForChoosePackage.show();
-                isAllSamagries=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getIsAllSamagriInclude();
-                noOfPandit=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getNoOfPandit();
-                 packageTypeIdDesc=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr();
-                 pujaAmount= mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString();
-                 pujaDesc= mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr();
-                    pujaPackageId=mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeId();
-                mDialogChoosepackageDetailsBinding.tvStandardPackage.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr());
-                mDialogChoosepackageDetailsBinding.tvStandardAmount.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString());
-                mDialogChoosepackageDetailsBinding.tvPujaDesc.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr());
-                mDialogChoosepackageDetailsBinding.tvPujaProcedureList.setText(procedures);
-                mDialogChoosepackageDetailsBinding.tvPujaSamagriList.setText(pujaSamagries);
-                mDialogChoosepackageDetailsBinding.tvYajamanNameList.setText(Yajaman);
+                    mDialogForChoosePackage.show();
+                    isAllSamagries = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getIsAllSamagriInclude();
+                    noOfPandit = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getNoOfPandit();
+                    packageTypeIdDesc = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr();
+                    pujaAmount = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString();
+                    pujaDesc = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr();
+                    pujaPackageId = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeId();
+                    mDialogChoosepackageDetailsBinding.tvStandardPackage.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr());
+                    mDialogChoosepackageDetailsBinding.tvStandardAmount.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString());
+                    mDialogChoosepackageDetailsBinding.tvPujaDesc.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr());
+                    mDialogChoosepackageDetailsBinding.tvPujaProcedureList.setText(procedures);
+                    mDialogChoosepackageDetailsBinding.tvPujaSamagriList.setText(pujaSamagries);
+                    mDialogChoosepackageDetailsBinding.tvYajamanNameList.setText(Yajaman);
 
-                //For select background color change
-                List<ChoosePackageListModel> listChoosePackage=mChoosePackageViewModel.mChoosePackageList.getValue().data;
-                for(int i=0;i<listChoosePackage.size();i++){
+                    //For select background color change
+                    List<ChoosePackageListModel> listChoosePackage = mChoosePackageViewModel.mChoosePackageList.getValue().data;
+                    for (int i = 0; i < listChoosePackage.size(); i++) {
 
-                    if(i==position) {
-                        listChoosePackage.get(position).isSelect=true;
+                        if (i == position) {
+                            listChoosePackage.get(position).isSelect = true;
 
-                    }else{
-                        listChoosePackage.get(position).isSelect=false;
+                        } else {
+                            listChoosePackage.get(position).isSelect = false;
+                        }
                     }
+                    mChoosePackageViewModel.setChoosePackageListAdapter(listChoosePackage);
+
+
                 }
-                mChoosePackageViewModel.setChoosePackageListAdapter(listChoosePackage);
-
-
             }
         });
 
@@ -299,6 +312,9 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                             Gson gson = new Gson();
                             List<ChoosePackageListModel> list = resource.data;
                             mChoosePackageViewModel.setChoosePackageListAdapter(list);
+
+
+
                             List<PujaPrcdr> listPujaPrcdr;
                             listPujaPrcdr = new ArrayList<>();
 
@@ -306,7 +322,9 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                             for(int i=0;i<list.size();i++){
                                 ChoosePackageListModel choosePackageListModel=list.get(i);
                                 Log.e("listChoosePackageListModel----" + i, gson.toJson(choosePackageListModel));
+                                if(list.get(i).getPujaPkgDscr().equalsIgnoreCase("On Enquiry")){
 
+                                }
                                 for (int j = 0; j < list.get(i).getPujaPrcdrList().size(); j++) {
                                     PujaPrcdr pujaPrcdr=list.get(i).getPujaPrcdrList().get(j);
                                     pujapcdrList=list.get(i).getPujaPrcdrList().get(j).getPujaPrcdrDscr();

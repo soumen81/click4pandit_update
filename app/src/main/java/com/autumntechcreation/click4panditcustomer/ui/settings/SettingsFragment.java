@@ -20,8 +20,11 @@ import com.autumntechcreation.click4panditcustomer.databinding.FragmentSettingsB
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordAcitivity;
 import com.autumntechcreation.click4panditcustomer.ui.contactus.ContactUsActivity;
+import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyActivity;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyActivity;
+import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionActivity;
 
 import javax.inject.Inject;
 
@@ -48,7 +51,7 @@ public class SettingsFragment extends Fragment implements Injectable {
         super.onViewCreated(view, savedInstanceState);
         mView = view;
         navController=findNavController(mView);
-        ((MainActivity) getActivity()).setToolbar(false,true,false,false);
+        ((MainActivity) getActivity()).setToolbar(false,true,false,true);
     }
 
     @Override
@@ -67,6 +70,26 @@ public class SettingsFragment extends Fragment implements Injectable {
             @Override
             public void onClick(View v) {
                 Intent in=new Intent(getActivity(), ContactUsActivity.class);
+                startActivity(in);
+            }
+        });
+        mFragmentSettingsBinding.tvPrivacypolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(getActivity(), PrivacyPolicyActivity.class);
+                startActivity(in);
+            }
+        });
+        mFragmentSettingsBinding.tvRefundPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(getActivity(), RefundPolicyActivity.class);
+                startActivity(in);
+            }
+        }); mFragmentSettingsBinding.tvTermsOfUse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(getActivity(), TermsConditionActivity.class);
                 startActivity(in);
             }
         });

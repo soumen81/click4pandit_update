@@ -14,6 +14,7 @@ public class AllUrlsAndConfig {
     public static final String TRIGGERMAIL ="/api/TriggerMail/SendMailForSetNewPassWord";
     public static final String PROCEEDTOPAY ="/api/CustomerBkgOrder/ProceedToPay";
     public static final String CHANGEPASSWORD ="/api/NonFnctnlCncrn/ChangePassword";
+    public static final String SENDENQUIRY ="/api/TriggerMail/SendEmailForPujaEnquiry";
 
 
     //Parameter for SignUp
@@ -136,5 +137,15 @@ public class AllUrlsAndConfig {
     public static final String NEWPASSWORD ="NewPwd";
     public static final String CONFIRMPASSWORD ="ConfirmNewPwd";
     public static final String ENTITYTPEABRV ="EntityTypAbrv";
+
+    //Parameter for Send Enquiry
+    public static final String ADDRESS="Address";
+    public static final String EMAILADDRR="EmailAddr";
+    public static final String MOBILEE="Mobile";
+    public static final String NAMEE="Name";
+    public static final String PUJANAME="PujaName";
+    public static final String REQUIREMENTS="Requirements";
+
+
 
 }

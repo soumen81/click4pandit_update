@@ -14,6 +14,7 @@ import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
+import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryModel;
 import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig;
 import com.google.gson.JsonObject;
 
@@ -103,6 +104,13 @@ public interface Webservice {
     @POST()
     LiveData<ApiResponse<ChangePasswordModel>> ChangePassword(@Url String apiname,
                                                               @Body JsonObject jsonObject
+
+    );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<SendEnquiryModel>> sendEnquiry(@Url String apiname,
+                                                     @Body JsonObject jsonObject
 
     );
 

@@ -113,7 +113,7 @@
             android.support.design:layout_constraintTop_toBottomOf="@+id/tvTermsOfUse">
         </TextView>-->
         <TextView
-            android:id="@+id/tvCancellationandRefund"
+            android:id="@+id/tvRefundPolicy"
             style="@style/Style_TextView_FontBold"
             android:layout_width="@dimen/dimen_250dp"
             android:layout_height="@dimen/dimen_40dp"
@@ -142,7 +142,7 @@
             android:textSize="@dimen/font_14sp"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/tvCancellationandRefund">
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvRefundPolicy">
         </TextView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

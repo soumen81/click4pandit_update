@@ -21,10 +21,14 @@ import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsF
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionViewModel;
 import com.autumntechcreation.click4panditcustomer.viewmodel.ProjectViewModelFactory;
 
 import dagger.Binds;
@@ -135,4 +139,23 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ContactUsViewModel.class)
     abstract ViewModel bindContactUsViewModel(ContactUsViewModel contactUsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PrivacyPolicyViewModel.class)
+    abstract ViewModel bindPrivacyPolicyViewModel(PrivacyPolicyViewModel privacyPolicyViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RefundPolicyViewModel.class)
+    abstract ViewModel bindRefundPolicyViewModel(RefundPolicyViewModel refundPolicyViewModel);
+    @Binds
+    @IntoMap
+    @ViewModelKey(TermsConditionViewModel.class)
+    abstract ViewModel bindTermsConditionViewModel(TermsConditionViewModel termsConditionViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SendEnquiryViewModel.class)
+    abstract ViewModel bindSendEnquiryViewModel(SendEnquiryViewModel sendEnquiryViewModel);
 }

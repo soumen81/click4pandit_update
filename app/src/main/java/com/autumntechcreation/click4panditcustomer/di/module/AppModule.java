@@ -21,9 +21,13 @@ import com.autumntechcreation.click4panditcustomer.ui.home.HomeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderRepository;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryRepository;
+import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyRepository;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileRepository;
+import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyRepository;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterRepository;
+import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutRepository;
+import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionRepository;
 import com.autumntechcreation.click4panditcustomer.util.AppConstants;
 
 import javax.inject.Singleton;
@@ -148,5 +152,27 @@ public class AppModule {
     @Singleton
     ContactUsRepository provideContactUsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new ContactUsRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+    @Provides
+    @Singleton
+    PrivacyPolicyRepository providePrivacyPolicyRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new PrivacyPolicyRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    RefundPolicyRepository provideRefundPolicyRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new RefundPolicyRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    TermsConditionRepository provideTermsConditionRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new TermsConditionRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+    @Provides
+    @Singleton
+    SettingsRepository provideSettingsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new SettingsRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

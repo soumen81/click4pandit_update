@@ -7,7 +7,11 @@ import com.autumntechcreation.click4panditcustomer.ui.contactus.ContactUsActivit
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardActivity;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordActivity;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
+import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyActivity;
+import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyActivity;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
+import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryActivity;
+import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -37,6 +41,18 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract ContactUsActivity contributeContactUsActivity();
+
+    @ContributesAndroidInjector
+    abstract PrivacyPolicyActivity contributePrivacyPolicyActivity();
+
+    @ContributesAndroidInjector
+    abstract RefundPolicyActivity contributeRefundPolicyActivity();
+
+    @ContributesAndroidInjector
+    abstract TermsConditionActivity contributeTermsConditionActivity();
+
+    @ContributesAndroidInjector
+    abstract SendEnquiryActivity contributeSendEnquiryActivity();
 
 
 }

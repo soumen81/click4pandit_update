@@ -129,4 +129,7 @@
     <string name="changepasswordgenerate">Change Password Successfully done.</string>
     <string name="wrongemailid">Wrong EmailId.</string>
     <string name="refundpolicy">Refund Policy</string>
+    <string name="bhumipuja">Bhoomi Puja</string>
+    <string name="requirements">Requirements</string>
+    <string name="contactusoon">Successfully submited your requirements, we will contact with you soon</string>
 </resources>
