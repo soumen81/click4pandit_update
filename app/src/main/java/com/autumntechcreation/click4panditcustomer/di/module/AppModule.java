@@ -10,6 +10,7 @@ import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
 import com.autumntechcreation.click4panditcustomer.splash.SplashRepository;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaRepository;
+import com.autumntechcreation.click4panditcustomer.ui.cashfree.CashFreeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageRepository;
 import com.autumntechcreation.click4panditcustomer.ui.contactus.ContactUsRepository;
@@ -174,5 +175,10 @@ public class AppModule {
     @Singleton
     SettingsRepository provideSettingsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new SettingsRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+    @Provides
+    @Singleton
+    CashFreeRepository provideCashFreeRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new CashFreeRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

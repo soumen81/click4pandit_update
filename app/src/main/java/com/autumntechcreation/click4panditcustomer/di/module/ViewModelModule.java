@@ -8,6 +8,7 @@ import com.autumntechcreation.click4panditcustomer.di.qualifiers.ViewModelKey;
 import com.autumntechcreation.click4panditcustomer.splash.SplashViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.cashfree.CashFreeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.contactus.ContactUsViewModel;
@@ -158,4 +159,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SendEnquiryViewModel.class)
     abstract ViewModel bindSendEnquiryViewModel(SendEnquiryViewModel sendEnquiryViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CashFreeViewModel.class)
+    abstract ViewModel bindCashFreeViewModel(CashFreeViewModel cashFreeViewModel);
 }

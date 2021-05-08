@@ -15,6 +15,8 @@ public class AllUrlsAndConfig {
     public static final String PROCEEDTOPAY ="/api/CustomerBkgOrder/ProceedToPay";
     public static final String CHANGEPASSWORD ="/api/NonFnctnlCncrn/ChangePassword";
     public static final String SENDENQUIRY ="/api/TriggerMail/SendEmailForPujaEnquiry";
+    public static final String CASFREETOKEN ="/api/PaymentGateway/GetToken";
+
 
 
     //Parameter for SignUp
@@ -145,6 +147,12 @@ public class AllUrlsAndConfig {
     public static final String NAMEE="Name";
     public static final String PUJANAME="PujaName";
     public static final String REQUIREMENTS="Requirements";
+
+    //Parameter for CashFree Token
+    public static final String ORDERCURRENCY="orderCurrency";
+    public static final String ORDERIDD="orderId";
+    public static final String ORDERAMT="orderAmount";
+
 
 
 

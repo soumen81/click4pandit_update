@@ -2,6 +2,7 @@ package com.autumntechcreation.click4panditcustomer.network;
 
 import androidx.lifecycle.LiveData;
 
+import com.autumntechcreation.click4panditcustomer.ui.billingdetails.CashFreeTokenModel;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.ProceedtoPayModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLanguageModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLocationModel;
@@ -111,6 +112,12 @@ public interface Webservice {
     @POST()
     LiveData<ApiResponse<SendEnquiryModel>> sendEnquiry(@Url String apiname,
                                                      @Body JsonObject jsonObject
+
+    );
+ @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<CashFreeTokenModel>> cashFreeToken(@Url String apiname,
+                                                          @Body JsonObject jsonObject
 
     );
 

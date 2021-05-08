@@ -1,5 +1,7 @@
 package com.autumntechcreation.click4panditcustomer.ui.billingdetails;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -33,16 +35,29 @@ import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryF
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
 import com.autumntechcreation.click4panditcustomer.util.Static;
+import com.cashfree.pg.CFPaymentService;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+import static android.content.ContentValues.TAG;
 import static androidx.navigation.Navigation.findNavController;
+import static com.cashfree.pg.CFPaymentService.PARAM_APP_ID;
+import static com.cashfree.pg.CFPaymentService.PARAM_CUSTOMER_EMAIL;
+import static com.cashfree.pg.CFPaymentService.PARAM_CUSTOMER_NAME;
+import static com.cashfree.pg.CFPaymentService.PARAM_CUSTOMER_PHONE;
+import static com.cashfree.pg.CFPaymentService.PARAM_ORDER_AMOUNT;
+import static com.cashfree.pg.CFPaymentService.PARAM_ORDER_CURRENCY;
+import static com.cashfree.pg.CFPaymentService.PARAM_ORDER_ID;
+import static com.cashfree.pg.CFPaymentService.PARAM_ORDER_NOTE;
 
 public class BillingDetailsFragment extends Fragment implements Injectable {
     @Inject
@@ -85,6 +100,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         navController=findNavController(mView);
         ((MainActivity) getActivity()).setToolbar(false,true,false,false);
     }
+
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -249,6 +266,30 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
             }
         });
 
+
+
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == Activity.RESULT_OK){
+
+
+            //Same request code for all payment APIs.
+            Log.d(TAG, "ReqCode : " + CFPaymentService.REQ_CODE);
+            Log.d(TAG, "API Response : ");
+            //Prints all extras. Replace with app logic.
+            if (data != null) {
+                Bundle bundle = data.getExtras();
+                if (bundle != null)
+                    for (String key : bundle.keySet()) {
+                        if (bundle.getString(key) != null) {
+                            Log.d(TAG, key + " : " + bundle.getString(key));
+                        }
+                    }
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 
@@ -307,6 +348,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
                                         sDialog.dismiss();
+                                        mBillingDetailsViewModel.getCashFreeToken("INR",String.valueOf(orderId),orderAmount).observe(getActivity(), BillingDetailsFragment.this::handleCashFreeToken);
                                     }
                                 }).show();
 
@@ -321,4 +363,103 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
             }
         }
     }
+
+
+    private void handleCashFreeToken(Resource<CashFreeTokenModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+
+                    break;
+                case LOADING:
+                    Log.e("handleCashFreeTokenResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleCashFreeTokenResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleCashFreeTokenResponse", resource.status + "");
+                    Log.e("handleCashFreeTokenResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleCashFreeTokenResponse", json + "");
+                    if ( resource.data.status.equals("OK")) {
+                        String cashFreeToken=resource.data.cftoken;
+                        Log.e("CFTOKEN",cashFreeToken);
+                        Log.e("GETINPUT", String.valueOf(getInputParams()));
+
+                        CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
+                        cfPaymentService.setOrientation(0);
+                        cfPaymentService.doPayment(getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
+
+
+                    }
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    }
+
+    private Map<String, String> getInputParams() {
+
+
+
+
+      String appId = "6159303c6dd0fdc88e24a424f39516";
+        String strorderId = String.valueOf(orderId);
+        String strorderAmount = orderAmount;
+        String orderNote = "Puja";
+        String customerName = mBillingDetailsViewModel.getFirstName()+" "+mBillingDetailsViewModel.getLastName();
+        String customerPhone = mBillingDetailsViewModel.getMobile();
+        String customerEmail = mBillingDetailsViewModel.getEmail();
+
+
+        Map<String, String> params = new HashMap<>();
+
+        params.put(PARAM_APP_ID, appId);
+        params.put(PARAM_ORDER_ID, strorderId);
+        params.put(PARAM_ORDER_AMOUNT, strorderAmount);
+        params.put(PARAM_ORDER_NOTE, orderNote);
+        params.put(PARAM_CUSTOMER_NAME, customerName);
+        params.put(PARAM_CUSTOMER_PHONE, customerPhone);
+        params.put(PARAM_CUSTOMER_EMAIL, customerEmail);
+        params.put(PARAM_ORDER_CURRENCY, "INR");
+
+        return params;
+    }
+
+
+
     }

@@ -23,6 +23,7 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.autumntechcreation.click4panditcustomer.databinding.ActivityMainBinding;
 import com.autumntechcreation.click4panditcustomer.network.ConnectivityReceiver;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     SharedPrefsHelper mSharedPrefsHelper;
     private ProgressDialog mProgressDialog;
     SharedPreferences sp;
+    TextView userName,txtInitial,email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +81,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         activityMainBinding.setMainViewModel(mMainViewModel);
         NavigationView navigationView = (NavigationView) findViewById(R.id.activity_home_bnView);
         View hView = navigationView.getHeaderView(0);
+
+        userName=hView.findViewById(R.id.txt_Email);
+        txtInitial=hView.findViewById(R.id.tvInitial);
+        email= hView.findViewById(R.id.txtname);
+        userName.setText("Hi"+" "+mMainViewModel.getFirstName());
+        email.setText(mMainViewModel.getEmail());
+
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage("Loading");
         mProgressDialog.setCancelable(false);
@@ -87,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, host).setPrimaryNavigationFragment(host).commit();
 
         sp = getSharedPreferences("login",MODE_PRIVATE);
+
 
 
         activityMainBinding.imgHome.setOnClickListener(new View.OnClickListener() {
@@ -321,6 +331,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(backGround){
             activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#D1453E"));
             activityMainBinding.imgvwWhiteback.setImageResource(R.drawable.ic_whiteback);
+            activityMainBinding.rlHeader.setBackgroundColor(Color.parseColor("#D1453E"));
+            activityMainBinding.header.setBackgroundColor(Color.parseColor("#D1453E"));
+            activityMainBinding.imgvwWhiteback.setBackgroundColor(Color.parseColor("#D1453E"));
         }else{
             activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#FFFFFF"));
             activityMainBinding.rlHeader.setBackgroundColor(Color.parseColor("#FFFFFF"));

@@ -12,6 +12,7 @@ import com.autumntechcreation.click4panditcustomer.network.NetworkBoundResource;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.network.Webservice;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
+import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
 import com.autumntechcreation.click4panditcustomer.util.AbsentLiveData;
 import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig;
@@ -249,6 +250,61 @@ public class BillingDetailsRepository {
                 jsonObject.add("PujaAddlInfoModel", jsonObjectPujaAddlInfoModel);
 
                 return mWebservice.ProceedtoPay(url,jsonObject);
+
+            }
+        }.asLiveData();
+    }
+
+
+
+
+
+
+
+
+
+    public LiveData<Resource<CashFreeTokenModel>> getCashFreeToken(String orderCurrency, String orderId,String orderAmount) {
+        return new NetworkBoundResource<CashFreeTokenModel,CashFreeTokenModel>(mAppExecutors) {
+            private CashFreeTokenModel resultsDb;
+            @Override
+            protected void saveCallResult(@NonNull CashFreeTokenModel data) {
+                resultsDb=data;
+            }
+
+            @Override
+            protected boolean shouldFetch(@Nullable CashFreeTokenModel data) {
+                return true;
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<CashFreeTokenModel>loadFromDb() {
+                if (resultsDb == null) {
+                    return AbsentLiveData.create();
+                }else {
+                    return new LiveData<CashFreeTokenModel>() {
+                        @Override
+                        protected void onActive() {
+                            super.onActive();
+                            setValue(resultsDb);
+                        }
+                    };
+                }
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<CashFreeTokenModel>> createCall() {
+
+                String url= AllUrlsAndConfig.BASE_URL+AllUrlsAndConfig.CASFREETOKEN;
+
+                Log.e("URL",url);
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty(AllUrlsAndConfig.ORDERCURRENCY, orderCurrency);
+                jsonObject.addProperty(AllUrlsAndConfig.ORDERIDD, orderId);
+                jsonObject.addProperty(AllUrlsAndConfig.ORDERAMT, orderAmount);
+
+                return mWebservice.cashFreeToken(url,jsonObject);
 
             }
         }.asLiveData();

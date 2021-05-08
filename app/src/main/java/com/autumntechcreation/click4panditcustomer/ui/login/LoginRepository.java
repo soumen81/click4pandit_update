@@ -97,6 +97,19 @@ public class LoginRepository {
     } public void storeEmail(String email){
         mSharedPrefsHelper.put(SharedPrefsHelper.EMAIL, email);
     }
+
+    public String getUserName(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.USERNAME, null);
+
+    }  public String getFirstName(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.FIRSTNAME, null);
+
+    }
+
+    public String getEmail(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.EMAIL, null);
+    }
+
     public void deleteSharedPreference(){
         mSharedPrefsHelper.deleteSavedData();
     }

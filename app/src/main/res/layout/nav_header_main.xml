@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    xmlns:design="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="MainViewModel"
+            type="com.autumntechcreation.click4panditcustomer.MainViewModel" />
+    </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,7 +79,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/txt_name"
+            android:id="@+id/txtname"
             style="@style/Style_TextView_FontRegular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,10 +94,10 @@
             app:autoSizeTextType="uniform"
             app:layout_constraintLeft_toRightOf="@+id/clProfileImg"
 
-            app:layout_constraintTop_toBottomOf="@+id/txt_designation" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_Email" />
 
         <TextView
-            android:id="@+id/txt_designation"
+            android:id="@+id/txt_Email"
             style="@style/Style_TextView_FontRegular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

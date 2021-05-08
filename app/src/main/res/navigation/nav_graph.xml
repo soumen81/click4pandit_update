@@ -378,9 +378,17 @@
             android:name="shippingBkgId"
             android:defaultValue="1"
             app:argType="integer" />
+        <argument
+            android:name="cashFreeToken"
+            android:defaultValue="0"
+            app:argType="string" />
         <action
             android:id="@+id/action_billingDetailsFragment_to_differentPujaLocationFragment"
             app:destination="@id/differentPujaLocationFragment" />
+
+        <action
+            android:id="@+id/action_billingDetailsFragment_to_cashFreeFragment"
+            app:destination="@id/cashFreeFragment" />
     </fragment>
     <fragment
         android:id="@+id/differentPujaLocationFragment"
@@ -484,4 +492,15 @@
         android:id="@+id/signOutFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.signout.SignOutFragment"
         android:label="SignOutFragment" />
+    <fragment
+        android:id="@+id/cashFreeFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.cashfree.CashFreeFragment"
+        android:label="CashFreeFragment" >
+    <argument
+        android:name="cashFreeToken"
+        android:defaultValue="0"
+        app:argType="string" />
+    </fragment>
+
+
 </navigation>

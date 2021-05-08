@@ -17,6 +17,7 @@ public class BillingDetailsViewModel extends ViewModel {
     private SingleLiveEvent<Void> mclickonClickBillingDiffLocation = new SingleLiveEvent<>();
     BillingDetailsRepository mBillingDetailsRepository;
     public LiveData<Resource<ProceedtoPayModel>> mProceedtoPayModelResponse;
+    public LiveData<Resource<CashFreeTokenModel>> mCashFreeTokenResponse;
     @Inject
     public BillingDetailsViewModel(BillingDetailsRepository billingDetailsRepository) {
         this.mBillingDetailsRepository=billingDetailsRepository;
@@ -42,6 +43,11 @@ public class BillingDetailsViewModel extends ViewModel {
                 mobileNo, city,state,pincode,orderAmount,orderId,shippingFirstName,shippingLastName,shippingMobileNo,shippingEmailId,shippingAddress,
                 shippingPostalCode,additionalInfo);
         return mProceedtoPayModelResponse;
+
+    } public LiveData<Resource<CashFreeTokenModel>> getCashFreeToken(String orderCurrency, String orderId,String orderAmount) {
+        mCashFreeTokenResponse = new MutableLiveData<>();
+        mCashFreeTokenResponse = mBillingDetailsRepository.getCashFreeToken(orderCurrency,orderId,orderAmount);
+        return mCashFreeTokenResponse;
 
     }
 

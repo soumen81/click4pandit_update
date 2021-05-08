@@ -16,6 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clHeaderContactUs"
         android:layout_width="match_parent"
+        android:background="@color/buttonColor"
         android:layout_height="@dimen/dimen_40dp"
         android.support.design:layout_constraintTop_toTopOf="parent"
         android.support.design:layout_constraintLeft_toLeftOf="parent"

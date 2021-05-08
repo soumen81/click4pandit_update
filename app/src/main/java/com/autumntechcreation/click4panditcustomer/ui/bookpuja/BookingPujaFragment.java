@@ -275,8 +275,15 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                        mFragmentBookingpujaBinding.tvBookingTime.setText(sHour + ":" + sMinute);
-                        pujaTime=sHour + ":" + sMinute;
+
+
+                        int hour = sHour % 12;
+                        if (hour == 0)
+                            hour = 12;
+                        mFragmentBookingpujaBinding.tvBookingTime.setText(String.format("%02d:%02d %s", hour, sMinute, sHour < 12 ? "am" : "pm"));
+                        //mFragmentBookingpujaBinding.tvBookingTime.setText(sHour + ":" + sMinute);
+                       // pujaTime=sHour + ":" + sMinute;
+                        pujaTime=String.format("%02d:%02d", hour, sMinute);
                     }
                 }, hour, minutes, true);
         picker.show();
@@ -291,14 +298,14 @@ public class BookingPujaFragment extends Fragment implements Injectable {
             @Override
             public void onDateSet(DatePicker arg0, int year, int month, int day_of_month) {
                 calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, (month-1));
+                calendar.set(Calendar.MONTH, (month));
                 calendar.set(Calendar.DAY_OF_MONTH, day_of_month);
                 String myFormat = "dd/MM/yyyy";
                 sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
                 mFragmentBookingpujaBinding.tvBookingDate.setText(sdf.format(calendar.getTime()));
                 pujaDate=sdf.format(calendar.getTime());
             }
-        },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)-1);
         dialog.getDatePicker().setMinDate(calendar.getTimeInMillis());// TODO: used to hide previous date,month and year
         //calendar.add(Calendar.DAY_OF_MONTH, 3);
 

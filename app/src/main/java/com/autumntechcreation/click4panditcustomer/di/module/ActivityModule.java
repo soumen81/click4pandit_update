@@ -2,6 +2,7 @@ package com.autumntechcreation.click4panditcustomer.di.module;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.splash.SplashScreenActivity;
+import com.autumntechcreation.click4panditcustomer.ui.cashfree.CashFreeFragment;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordAcitivity;
 import com.autumntechcreation.click4panditcustomer.ui.contactus.ContactUsActivity;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardActivity;
@@ -53,6 +54,8 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract SendEnquiryActivity contributeSendEnquiryActivity();
+
+
 
 
 }

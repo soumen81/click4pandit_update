@@ -6,7 +6,7 @@
 
     <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Always required on api < 21, needed to keep a wake lock while your job is running -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -77,6 +77,9 @@
             android:name=".ui.sendenquiry.SendEnquiryActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <!--Only add it if you need Auto OTP reading feature-->
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

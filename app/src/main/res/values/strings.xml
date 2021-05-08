@@ -62,7 +62,7 @@
     <string name="language">Language</string>
     <string name="date">March 10,2021</string>
     <string name="time">10:30 PM</string>
-    <string name="ordersummray">Order Summray</string>
+    <string name="ordersummray">Order Summary</string>
     <string name="pujaname">Puja Name</string>
     <string name="amount">Amount</string>
     <string name="ganeshpuja">Ganesh Puja</string>
@@ -132,4 +132,5 @@
     <string name="bhumipuja">Bhoomi Puja</string>
     <string name="requirements">Requirements</string>
     <string name="contactusoon">Successfully submited your requirements, we will contact with you soon</string>
+    <string name="cashfreetokengenerate">CashFree Token generated succefully...</string>
 </resources>
