@@ -1,6 +1,7 @@
 package com.autumntechcreation.click4panditcustomer;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -62,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ProgressDialog mProgressDialog;
     SharedPreferences sp;
     TextView userName,txtInitial,email;
+    String TAG="SoumenBokachoda";
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,6 +146,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d(TAG, "API Response : ");
+        //Prints all extras. Replace with app logic.
+        if (data != null) {
+
+             bundle = data.getExtras();
+
+        }
+        Log.e("SOUMMMMMEN","onActivityResult");
+    }
+    public Bundle returnPaymentDetails(){
+
+        return bundle;
     }
 
     @Override

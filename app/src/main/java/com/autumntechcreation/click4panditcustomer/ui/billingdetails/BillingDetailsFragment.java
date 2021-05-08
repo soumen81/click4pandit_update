@@ -269,28 +269,26 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
 
     }
+
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onResume() {
+        super.onResume();
 
-        if (resultCode == Activity.RESULT_OK){
+        String orderID="";
+        Log.e("SOUMMMMMEN","Frag");
+        ((MainActivity)getActivity()).returnPaymentDetails();
+        Bundle bundle=((MainActivity)getActivity()).returnPaymentDetails();
+        if (bundle != null)
+             orderID=bundle.getString("orderId");
+        Log.e("OrderIddd",orderID);
+            for (String key : bundle.keySet()) {
+                if (bundle.getString(key) != null) {
+                    Log.d(TAG, key + " : " + bundle.getString(key));
 
-
-            //Same request code for all payment APIs.
-            Log.d(TAG, "ReqCode : " + CFPaymentService.REQ_CODE);
-            Log.d(TAG, "API Response : ");
-            //Prints all extras. Replace with app logic.
-            if (data != null) {
-                Bundle bundle = data.getExtras();
-                if (bundle != null)
-                    for (String key : bundle.keySet()) {
-                        if (bundle.getString(key) != null) {
-                            Log.d(TAG, key + " : " + bundle.getString(key));
-                        }
-                    }
+                }
             }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
     }
+
 
 
     private void handleProceedToPay(Resource<ProceedtoPayModel> resource) {
@@ -418,7 +416,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
                         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
                         cfPaymentService.setOrientation(0);
-                        cfPaymentService.doPayment(getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
+                        cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
 
 
                     }
@@ -433,11 +431,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     }
 
     private Map<String, String> getInputParams() {
-
-
-
-
-      String appId = "6159303c6dd0fdc88e24a424f39516";
+        String appId = "6159303c6dd0fdc88e24a424f39516";
         String strorderId = String.valueOf(orderId);
         String strorderAmount = orderAmount;
         String orderNote = "Puja";
