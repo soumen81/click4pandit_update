@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
 import com.autumntechcreation.click4panditcustomer.util.SingleLiveEvent;
+import com.google.gson.JsonObject;
 
 import javax.inject.Inject;
 
@@ -18,6 +19,8 @@ public class BillingDetailsViewModel extends ViewModel {
     BillingDetailsRepository mBillingDetailsRepository;
     public LiveData<Resource<ProceedtoPayModel>> mProceedtoPayModelResponse;
     public LiveData<Resource<CashFreeTokenModel>> mCashFreeTokenResponse;
+    public LiveData<Resource<UpdatedInvoicesModel>> mUpdateInvoiceResponse;
+    public LiveData<Resource<SendEmailForCustInvoiceModel>> mSendEmailInvoiceResponse;
     @Inject
     public BillingDetailsViewModel(BillingDetailsRepository billingDetailsRepository) {
         this.mBillingDetailsRepository=billingDetailsRepository;
@@ -48,6 +51,16 @@ public class BillingDetailsViewModel extends ViewModel {
         mCashFreeTokenResponse = new MutableLiveData<>();
         mCashFreeTokenResponse = mBillingDetailsRepository.getCashFreeToken(orderCurrency,orderId,orderAmount);
         return mCashFreeTokenResponse;
+
+    }public LiveData<Resource<UpdatedInvoicesModel>> getUpdateInvoice(int orderId) {
+        mUpdateInvoiceResponse = new MutableLiveData<>();
+        mUpdateInvoiceResponse = mBillingDetailsRepository.updateinvoice(orderId);
+        return mUpdateInvoiceResponse;
+
+    }public LiveData<Resource<SendEmailForCustInvoiceModel>> getSendEmailInvoice(CustBkg custBkg, CustInvoice custInvoice) {
+        mSendEmailInvoiceResponse = new MutableLiveData<>();
+        mSendEmailInvoiceResponse = mBillingDetailsRepository.sendCustomerInvoice(custBkg,custInvoice);
+        return mSendEmailInvoiceResponse;
 
     }
 

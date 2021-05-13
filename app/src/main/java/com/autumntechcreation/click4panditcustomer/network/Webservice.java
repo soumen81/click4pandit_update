@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData;
 
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.CashFreeTokenModel;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.ProceedtoPayModel;
+import com.autumntechcreation.click4panditcustomer.ui.billingdetails.SendEmailForCustInvoiceModel;
+import com.autumntechcreation.click4panditcustomer.ui.billingdetails.UpdatedInvoicesModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLanguageModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLocationModel;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordModel;
@@ -114,10 +116,23 @@ public interface Webservice {
                                                      @Body JsonObject jsonObject
 
     );
- @Headers({"Content-Type:application/json"})
+    @Headers({"Content-Type:application/json"})
     @POST()
     LiveData<ApiResponse<CashFreeTokenModel>> cashFreeToken(@Url String apiname,
                                                           @Body JsonObject jsonObject
+
+    );
+
+     @Headers({"Content-Type:application/json"})
+     @POST()
+    LiveData<ApiResponse<UpdatedInvoicesModel>> updateInvoice(@Url String apiname,
+                                                              @Body JsonObject jsonObject
+
+    );
+     @Headers({"Content-Type:application/json"})
+     @POST()
+    LiveData<ApiResponse<SendEmailForCustInvoiceModel>> sendEmailForInvoice(@Url String apiname,
+                                                                      @Body JsonObject jsonObject
 
     );
 

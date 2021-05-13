@@ -26,6 +26,11 @@ public class PujaTypesModel {
     @Expose
     public String pujaCtgryDscr;
 
+
+
+
+
+
     public Integer getPujaCtgryId() {
         return pujaCtgryId;
     }

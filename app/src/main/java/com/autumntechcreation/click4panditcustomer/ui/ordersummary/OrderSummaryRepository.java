@@ -74,7 +74,7 @@ public class OrderSummaryRepository {
 
                 Log.e("URL",url);
                 JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty(AllUrlsAndConfig.BKGSTSID, 1001);
+                jsonObject.addProperty(AllUrlsAndConfig.BKGSTSID, 1002);
                 jsonObject.addProperty(AllUrlsAndConfig.CNCDT, dateTime);//Booking and date
                 jsonObject.addProperty(AllUrlsAndConfig.CNCFLG, "N");
                 jsonObject.addProperty(AllUrlsAndConfig.CURID, 1001);

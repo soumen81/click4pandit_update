@@ -53,7 +53,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
     String pujaName,pujaAmount,pujaDesc,procedure,pujaSamagri,yajaman,locationName,languageName,
             pujaDate,pujaTime,packageTypeIdDesc,subcategoryName,isAllSamagries,pujaDateTime;
     int subCategoryId,pujPackageId,locationId,languageId,noOfPandit;
-    double dd;
+    double dd,finalAmount;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -137,7 +137,8 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         mFragmentOrdersummeryBinding.tvSgstValue.setText(Double.toString(sgstvalue));
         double cgstsgst=cgstvalue+sgstvalue;
          dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
-        mFragmentOrdersummeryBinding.tvTotalValue.setText(Double.toString(dd));
+          finalAmount=Static.roundAvoid(dd,2);
+        mFragmentOrdersummeryBinding.tvTotalValue.setText(Double.toString(finalAmount));
          pujaDateTime=Static.convertNewDate(pujaDate)+"T"+pujaTime;
 
 
@@ -146,7 +147,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
             @Override
             public void onChanged(Void aVoid) {
                 // findNavController(mView).navigate(OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment());
-                mOrderSummaryViewModel.getNewOrderResult(languageId,languageName,Double.parseDouble(pujaAmount),cgstsgst,dd,pujaDesc,
+                mOrderSummaryViewModel.getNewOrderResult(languageId,languageName,Double.parseDouble(pujaAmount),cgstsgst,finalAmount,pujaDesc,
                         pujPackageId,noOfPandit,subcategoryName,subCategoryId,locationName,locationId,pujaDateTime).observe(getActivity(),OrderSummaryFragment.this::handleNewOrderGenerate);
             }
         });
@@ -217,7 +218,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
                                                OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment();
                                        action.setOrderId(orderId);
                                        action.setBkgId(bkgId);
-                                       action.setOrderAmount(String.valueOf(dd));
+                                       action.setOrderAmount(String.valueOf(finalAmount));
                                        action.setDateTime(pujaDateTime);
                                         Navigation.findNavController(mView).navigate(action);
                                     }

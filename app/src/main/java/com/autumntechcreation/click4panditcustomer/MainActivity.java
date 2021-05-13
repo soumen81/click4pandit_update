@@ -330,8 +330,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Static.deleteCache(MainActivity.this);
+    }
 
-    public  void setToolbar(Boolean isMenu, Boolean isBack, Boolean isLockDrawer,Boolean backGround) {
+    public  void setToolbar(Boolean isMenu, Boolean isBack, Boolean isLockDrawer, Boolean backGround) {
         if (isMenu) {
             activityMainBinding.txtMenu.setVisibility(View.VISIBLE);
 

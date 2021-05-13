@@ -16,6 +16,9 @@ import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
 import com.autumntechcreation.click4panditcustomer.util.AbsentLiveData;
 import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import javax.inject.Inject;
@@ -305,6 +308,107 @@ public class BillingDetailsRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.ORDERAMT, orderAmount);
 
                 return mWebservice.cashFreeToken(url,jsonObject);
+
+            }
+        }.asLiveData();
+    }
+    public LiveData<Resource<UpdatedInvoicesModel>> updateinvoice(int orderId) {
+        return new NetworkBoundResource<UpdatedInvoicesModel,UpdatedInvoicesModel>(mAppExecutors) {
+            private UpdatedInvoicesModel resultsDb;
+            @Override
+            protected void saveCallResult(@NonNull UpdatedInvoicesModel data) {
+                resultsDb=data;
+            }
+
+            @Override
+            protected boolean shouldFetch(@Nullable UpdatedInvoicesModel data) {
+                return true;
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<UpdatedInvoicesModel>loadFromDb() {
+                if (resultsDb == null) {
+                    return AbsentLiveData.create();
+                }else {
+                    return new LiveData<UpdatedInvoicesModel>() {
+                        @Override
+                        protected void onActive() {
+                            super.onActive();
+                            setValue(resultsDb);
+                        }
+                    };
+                }
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<UpdatedInvoicesModel>> createCall() {
+
+                String url= AllUrlsAndConfig.BASE_URL+AllUrlsAndConfig.UPDATEINVOICE;
+
+                Log.e("URL",url);
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty(AllUrlsAndConfig.LOGONIDDDDD, getEmail());
+                jsonObject.addProperty(AllUrlsAndConfig.ORDERIDDD, orderId);
+
+
+                return mWebservice.updateInvoice(url,jsonObject);
+
+            }
+        }.asLiveData();
+    }
+
+
+    public LiveData<Resource<SendEmailForCustInvoiceModel>> sendCustomerInvoice(CustBkg custBkg, CustInvoice custInvoice) {
+        return new NetworkBoundResource<SendEmailForCustInvoiceModel,SendEmailForCustInvoiceModel>(mAppExecutors) {
+            private SendEmailForCustInvoiceModel resultsDb;
+            @Override
+            protected void saveCallResult(@NonNull SendEmailForCustInvoiceModel data) {
+                resultsDb=data;
+            }
+
+            @Override
+            protected boolean shouldFetch(@Nullable SendEmailForCustInvoiceModel data) {
+                return true;
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<SendEmailForCustInvoiceModel>loadFromDb() {
+                if (resultsDb == null) {
+                    return AbsentLiveData.create();
+                }else {
+                    return new LiveData<SendEmailForCustInvoiceModel>() {
+                        @Override
+                        protected void onActive() {
+                            super.onActive();
+                            setValue(resultsDb);
+                        }
+                    };
+                }
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<SendEmailForCustInvoiceModel>> createCall() {
+
+                String url= AllUrlsAndConfig.BASE_URL+AllUrlsAndConfig.SENDCUSTOMERFORCUSTINVOICE;
+
+                Log.e("URL",url);
+                JsonObject jsonObject = new JsonObject();
+                Gson gson = new Gson();
+                JsonElement jelem = gson.fromJson(gson.toJson(custBkg), JsonElement.class);
+                JsonObject jobj = jelem.getAsJsonObject();
+
+                JsonElement jelemInvoice = gson.fromJson(gson.toJson(custInvoice), JsonElement.class);
+                JsonObject jobj2 = jelemInvoice.getAsJsonObject();
+
+                jsonObject.add("custBkg", jobj);
+                jsonObject.add("custInvoice", jobj2);
+
+
+                return mWebservice.sendEmailForInvoice(url,jsonObject);
 
             }
         }.asLiveData();

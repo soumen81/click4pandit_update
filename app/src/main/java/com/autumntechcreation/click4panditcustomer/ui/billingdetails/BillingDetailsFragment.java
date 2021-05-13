@@ -69,7 +69,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     int orderId,bkgId,shippingbkgId,shippingOrderId;
     String orderAmount,shippingAddress,shippingCity,shippingState,shippingPincode,pujaDatetime,shippingFirstName,
     shippingLastName,shippingemail,shippingAlternateMobile,shippingAdditionalInfo,shippingOrderAmount;
-
+    String paymentorderID = "";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -255,6 +255,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
                     }
                     else{
+                        mFragmentBillingdetailsBinding.tvLocation.setVisibility(View.GONE);
+                        mFragmentBillingdetailsBinding.imgvwLoc.setVisibility(View.GONE);
                         mBillingDetailsViewModel.getProceedToPayForBillingAddress(pujaDatetime,bkgId,mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString(),mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString(),mFragmentBillingdetailsBinding.edtTxtCity.getText().toString(),
@@ -273,20 +275,27 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     @Override
     public void onResume() {
         super.onResume();
+    try {
 
-        String orderID="";
-        Log.e("SOUMMMMMEN","Frag");
-        ((MainActivity)getActivity()).returnPaymentDetails();
-        Bundle bundle=((MainActivity)getActivity()).returnPaymentDetails();
+        Log.e("SOUMMMMMEN", "Frag");
+        ((MainActivity) getActivity()).returnPaymentDetails();
+        Bundle bundle = ((MainActivity) getActivity()).returnPaymentDetails();
         if (bundle != null)
-             orderID=bundle.getString("orderId");
-        Log.e("OrderIddd",orderID);
-            for (String key : bundle.keySet()) {
-                if (bundle.getString(key) != null) {
-                    Log.d(TAG, key + " : " + bundle.getString(key));
+            paymentorderID = bundle.getString("orderId");
+        if(paymentorderID.length()>0){
+            mBillingDetailsViewModel.getUpdateInvoice(Integer.parseInt(paymentorderID)).observe(getActivity(),BillingDetailsFragment.this::handleUpdateInvoice);
+        }
 
-                }
+        Log.e("OrderIddd", paymentorderID);
+        for (String key : bundle.keySet()) {
+            if (bundle.getString(key) != null) {
+                Log.d(TAG, key + " : " + bundle.getString(key));
+
             }
+        }
+    }catch (Exception e){
+        e.printStackTrace();
+    }
     }
 
 
@@ -419,6 +428,68 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                         cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
 
 
+
+                    }
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    }
+    private void handleUpdateInvoice(Resource<UpdatedInvoicesModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+
+                    break;
+                case LOADING:
+                    Log.e("handleCashFreeTokenResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleCashFreeTokenResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleCashFreeTokenResponse", resource.status + "");
+                    Log.e("handleCashFreeTokenResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleCashFreeTokenResponse", json + "");
+                    if ( resource.data.returnStatus.equals("SUCCESS")) {
+                        CustBkg custBkg=resource.data.custInvoiceAsEmail.getCustBkg();
+                        CustInvoice  custInvoice= resource.data.custInvoiceAsEmail.getCustInvoice();
+                        mBillingDetailsViewModel.getSendEmailInvoice(custBkg,custInvoice).observe(getActivity(),BillingDetailsFragment.this::handlegetSendEmailInvoice);
+
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;
@@ -430,6 +501,80 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         }
     }
 
+
+
+
+
+    private void handlegetSendEmailInvoice(Resource<SendEmailForCustInvoiceModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+
+                    break;
+                case LOADING:
+                    Log.e("handleCashFreeTokenResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleCashFreeTokenResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleCashFreeTokenResponse", resource.status + "");
+                    Log.e("handleCashFreeTokenResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleCashFreeTokenResponse", json + "");
+                    if ( resource.data.returnStatus.equals("SUCCESS")) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText(this.getString(R.string.success))
+                                .setContentText(this.getString(R.string.paymentsuccess))
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismiss();
+
+                                    }
+                                }).show();
+
+
+                    }
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    }
     private Map<String, String> getInputParams() {
         String appId = "6159303c6dd0fdc88e24a424f39516";
         String strorderId = String.valueOf(orderId);
