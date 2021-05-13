@@ -133,5 +133,5 @@
     <string name="requirements">Requirements</string>
     <string name="contactusoon">Successfully submited your requirements, we will contact with you soon</string>
     <string name="cashfreetokengenerate">CashFree Token generated succefully...</string>
-    <string name="paymentsuccess">Payment Successfully Received</string>
+    <string name="paymentsuccess">Payment Successfully\n Received</string>
 </resources>

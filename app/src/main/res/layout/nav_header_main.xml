@@ -88,7 +88,7 @@
             android:singleLine="true"
             android:text="hhhdfdsafad"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@android:color/white"
+            android:textColor="@color/blackColor"
             android:textSize="@dimen/font_10sp"
             app:autoSizeStepGranularity="1sp"
             app:autoSizeTextType="uniform"
@@ -103,12 +103,16 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_10dp"
             android:text="fgrgfrfgr"
-            android:textColor="@color/whiteColor"
+            android:textColor="@color/blackColor"
             android:textSize="@dimen/font_12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/clProfileImg"
             app:layout_constraintTop_toTopOf="parent" />
-
+<View
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_1dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:background="@color/blackColor"></View>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

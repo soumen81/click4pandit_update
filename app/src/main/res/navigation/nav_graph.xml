@@ -389,6 +389,9 @@
         <action
             android:id="@+id/action_billingDetailsFragment_to_cashFreeFragment"
             app:destination="@id/cashFreeFragment" />
+        <action
+            android:id="@+id/action_billingDetailsFragment_to_homeFragmentFragment"
+            app:destination="@id/homeFragmentFragment" />
     </fragment>
     <fragment
         android:id="@+id/differentPujaLocationFragment"

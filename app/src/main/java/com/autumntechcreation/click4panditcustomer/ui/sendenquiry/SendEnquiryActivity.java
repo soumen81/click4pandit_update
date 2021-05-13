@@ -47,7 +47,12 @@ public class SendEnquiryActivity extends AppCompatActivity {
         mActivitySendenquiryBinding.setLifecycleOwner(this);
         mActivitySendenquiryBinding.setSendEnquiryViewModel(mSendEnquiryViewModel);
 
-
+        mActivitySendenquiryBinding.imgbackPrivacyPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mActivitySendenquiryBinding.tvSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

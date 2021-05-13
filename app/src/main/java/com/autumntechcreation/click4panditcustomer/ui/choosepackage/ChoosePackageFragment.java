@@ -176,23 +176,23 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                         if (i == 0) {
                             procedures = choosePackageListModel.getPujaPrcdrList().get(i).getPujaPrcdrDscr();
                         } else {
-                            procedures = procedures + "," + choosePackageListModel.getPujaPrcdrList().get(i).getPujaPrcdrDscr();
+                            procedures = procedures + "," +" "+ choosePackageListModel.getPujaPrcdrList().get(i).getPujaPrcdrDscr();
                         }
                     }
 
-               /* for(int i=0;i<choosePackageListModel.getPujaSamagriDesdlvrList().size();i++){
+                for(int i=0;i<choosePackageListModel.getPujaSamagriDesdlvrList().size();i++){
                     if(i==0){
                         pujaSamagries =choosePackageListModel.getPujaSamagriDesdlvrList().get(i).getPujaSamagriDelvryDscr();
                     }else {
-                        pujaSamagries = pujaSamagries + "," + choosePackageListModel.getPujaSamagriDesdlvrList().get(i).getPujaSamagriDelvryDscr();
+                        pujaSamagries = pujaSamagries + "," +" "+ choosePackageListModel.getPujaSamagriDesdlvrList().get(i).getPujaSamagriDelvryDscr();
                     }
-                }*/
+                }
 
                     for (int i = 0; i < choosePackageListModel.getPujasamagriHHList().size(); i++) {
                         if (i == 0) {
                             Yajaman = choosePackageListModel.getPujasamagriHHList().get(i).getPujaSamagriHHDscr();
                         } else {
-                            Yajaman = Yajaman + "," + choosePackageListModel.getPujasamagriHHList().get(i).getPujaSamagriHHDscr();
+                            Yajaman = Yajaman + "," +" "+ choosePackageListModel.getPujasamagriHHList().get(i).getPujaSamagriHHDscr();
                         }
                     }
                     mDialogForChoosePackage.show();

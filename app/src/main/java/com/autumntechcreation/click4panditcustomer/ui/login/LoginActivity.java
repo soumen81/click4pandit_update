@@ -158,9 +158,9 @@ public class LoginActivity extends AppCompatActivity {
                         String emailAddress=mLoginViewModel.storeEmail(mActivityLoginBinding.edtTxtEmail.getText().toString());
                         Log.e("emailAddress",emailAddress);
                         Intent in=new Intent(LoginActivity.this, MainActivity.class);
-
                         startActivity(in);
                         sp.edit().putBoolean("logged",true).apply();
+                        finish();
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;

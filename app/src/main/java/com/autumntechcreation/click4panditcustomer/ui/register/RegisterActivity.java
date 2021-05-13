@@ -57,6 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onChanged(@Nullable Void _) {
                 Intent in=new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(in);
+                finish();
             }
         });
 

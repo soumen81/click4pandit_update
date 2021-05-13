@@ -13,6 +13,7 @@
         android:checkableBehavior="single">
 
         <item
+            android:visible="false"
             android:id="@+id/menu_profile"
             android:icon="@drawable/user"
             android:title="@string/profile" />
@@ -22,6 +23,7 @@
         android:checkableBehavior="single">
 
         <item
+            android:visible="false"
             android:id="@+id/menu_order"
             android:icon="@drawable/orders"
             android:title="@string/order" />

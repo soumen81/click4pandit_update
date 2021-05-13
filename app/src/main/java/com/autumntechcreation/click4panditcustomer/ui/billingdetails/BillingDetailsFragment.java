@@ -190,11 +190,9 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             .show();
                 }else{
 
-
-
-
-
                     if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getStatusShippingId()==1){
+                        mFragmentBillingdetailsBinding.tvLocation.setVisibility(View.VISIBLE);
+                        mFragmentBillingdetailsBinding.imgvwLoc.setVisibility(View.VISIBLE);
                         String shippingDateTime="";
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
                           shippingDateTime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();
@@ -243,8 +241,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             shippingOrderAmount = BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount();
                             Log.e("shippingOrderAmount", "" + shippingOrderAmount);
                         }
-                        mFragmentBillingdetailsBinding.tvLocation.setVisibility(View.VISIBLE);
-                        mFragmentBillingdetailsBinding.imgvwLoc.setVisibility(View.VISIBLE);
+
                         mFragmentBillingdetailsBinding.tvLocation.setText(shippingAddress+","+shippingState+","+shippingCity+","+shippingPincode);
 
                         mBillingDetailsViewModel.getProceedToPayForShippingAddress(shippingDateTime,shippingbkgId,mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString(),mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString(),
@@ -255,8 +252,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
                     }
                     else{
-                        mFragmentBillingdetailsBinding.tvLocation.setVisibility(View.GONE);
-                        mFragmentBillingdetailsBinding.imgvwLoc.setVisibility(View.GONE);
+
                         mBillingDetailsViewModel.getProceedToPayForBillingAddress(pujaDatetime,bkgId,mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString(),mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString(),mFragmentBillingdetailsBinding.edtTxtCity.getText().toString(),
@@ -347,17 +343,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                     String json = gson.toJson(resource.data);
                     Log.e("handleRegisterResponse", json + "");
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
+                        mBillingDetailsViewModel.getCashFreeToken("INR",String.valueOf(orderId),orderAmount).observe(getActivity(), BillingDetailsFragment.this::handleCashFreeToken);
 
-                        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText(this.getString(R.string.success))
-                                .setContentText(this.getString(R.string.billgenerate))
-                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sDialog) {
-                                        sDialog.dismiss();
-                                        mBillingDetailsViewModel.getCashFreeToken("INR",String.valueOf(orderId),orderAmount).observe(getActivity(), BillingDetailsFragment.this::handleCashFreeToken);
-                                    }
-                                }).show();
 
 
                     }
@@ -560,6 +547,9 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
                                         sDialog.dismiss();
+                                        BillingDetailsFragmentDirections.ActionBillingDetailsFragmentToHomeFragmentFragment action=
+                                                BillingDetailsFragmentDirections.actionBillingDetailsFragmentToHomeFragmentFragment();
+                                        Navigation.findNavController(mView).navigate(action);
 
                                     }
                                 }).show();

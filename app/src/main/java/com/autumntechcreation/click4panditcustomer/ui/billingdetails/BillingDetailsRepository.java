@@ -244,9 +244,9 @@ public class BillingDetailsRepository {
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ADDDR2, "");
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ADDDR3, "");
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CITYIDD, 1001);
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CITYDESCRR, "West Bengal");
+                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CITYDESCRR, "Kolkata");
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.STIDD, 1001);
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.STDESCRR, "Kolkata");
+                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.STDESCRR, "West Bengal");
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.COUNTRYIDD, 1001);
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.POSTALL, shippingPostalCode);
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.PUJAADDINFODESCR, additionalInfo);

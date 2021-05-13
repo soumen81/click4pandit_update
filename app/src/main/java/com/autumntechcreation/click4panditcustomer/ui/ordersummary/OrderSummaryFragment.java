@@ -120,10 +120,26 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         mFragmentOrdersummeryBinding.tvPackageValue.setText(packageTypeIdDesc);
         mFragmentOrdersummeryBinding.tvPanditDetails.setText(pujaDesc);
         mFragmentOrdersummeryBinding.tvPriestPreferenceValue.setText(languageName);
-        mFragmentOrdersummeryBinding.tvAllPujaSamagriesValue.setText(pujaSamagri);
-        mFragmentOrdersummeryBinding.tvDakshinaValue.setText(procedure);
-        mFragmentOrdersummeryBinding.tvAllPujaSamagriesValue.setText(pujaSamagri);
-        mFragmentOrdersummeryBinding.tvHavanValue.setText(yajaman );
+        if(pujaSamagri.length()>0) {
+            mFragmentOrdersummeryBinding.tvAllPujaSamagriesValue.setText(pujaSamagri);
+        }else{
+            mFragmentOrdersummeryBinding.tvAllPujaSamagries.setVisibility(View.GONE);
+        }
+        if(procedure.length()>0) {
+            mFragmentOrdersummeryBinding.tvDakshinaValue.setText(procedure);
+        }else{
+            mFragmentOrdersummeryBinding.tvDakshina.setVisibility(View.GONE);
+        }
+        if(pujaSamagri.length()>0) {
+            mFragmentOrdersummeryBinding.tvAllPujaSamagriesValue.setText(pujaSamagri);
+        }else{
+            mFragmentOrdersummeryBinding.tvAllPujaSamagries.setVisibility(View.GONE);
+        }
+        if(yajaman.length()>0) {
+            mFragmentOrdersummeryBinding.tvHavanValue.setText(yajaman);
+        }else{
+            mFragmentOrdersummeryBinding.tvHavan.setVisibility(View.GONE);
+        }
         mFragmentOrdersummeryBinding.tvDateTimeValue.setText(pujaDate+" " + "at"+" "+ pujaTime );
         mFragmentOrdersummeryBinding.tvSubTotalValue.setText(pujaAmount );
 
@@ -206,32 +222,14 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
                         int  orderId=resource.data.orderId;
                         int bkgId=resource.data.getBkgId();
-                        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText(this.getString(R.string.success))
-                                .setContentText(this.getString(R.string.ordergenerate))
-                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sDialog) {
-                                        sDialog.dismiss();
 
-                                        OrderSummaryFragmentDirections.ActionOrderSummaryFragmentToBillingDetailsFragment action=
-                                               OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment();
-                                       action.setOrderId(orderId);
-                                       action.setBkgId(bkgId);
-                                       action.setOrderAmount(String.valueOf(finalAmount));
-                                       action.setDateTime(pujaDateTime);
-                                        Navigation.findNavController(mView).navigate(action);
-                                    }
-                                })
-                                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                        sweetAlertDialog.dismiss();
-                                    }
-                                })
-
-                                .show();
-
+                        OrderSummaryFragmentDirections.ActionOrderSummaryFragmentToBillingDetailsFragment action=
+                                OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment();
+                        action.setOrderId(orderId);
+                        action.setBkgId(bkgId);
+                        action.setOrderAmount(String.valueOf(finalAmount));
+                        action.setDateTime(pujaDateTime);
+                        Navigation.findNavController(mView).navigate(action);
 
 
                     }
