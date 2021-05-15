@@ -48,9 +48,18 @@ public class ChoosePackageListModel {
     @SerializedName("pujasamagriHHList")
     @Expose
     public List<PujasamagriHH> pujasamagriHHList = null;
+    @SerializedName("isSelect")
     @Expose
     public boolean isSelect=false;
-    @SerializedName("isSelect")
+
+
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
+    }
 
 
     public Integer getPujaPkgId() {

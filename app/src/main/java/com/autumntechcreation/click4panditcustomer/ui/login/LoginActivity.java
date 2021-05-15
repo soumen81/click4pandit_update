@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                 }else if(TextUtils.isEmpty(mActivityLoginBinding.edtTxtPassword.getText().toString()) || mActivityLoginBinding.edtTxtPassword.getText().toString().length() < 6){
                     new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
-                            .setContentText("Please Enter Password...")
+                            .setContentText("You must have 6 characters in your password...")
                             .show();
                 }else{
                     mLoginViewModel.getLoginResult(mActivityLoginBinding.edtTxtEmail.getText().toString(),

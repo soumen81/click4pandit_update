@@ -211,22 +211,20 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
 
                     //For select background color change
                     List<ChoosePackageListModel> listChoosePackage = mChoosePackageViewModel.mChoosePackageList.getValue().data;
+                    Log.e("SIZE",listChoosePackage.size()+"");
                     for (int i = 0; i < listChoosePackage.size(); i++) {
-
+                        ChoosePackageListModel choosePackageListModel1=listChoosePackage.get(i);
                         if (i == position) {
-                            if(  listChoosePackage.get(position).isSelect == false) {
+                            choosePackageListModel1.setSelect(true);
+                            Log.e("Yellow","Yellow");
 
-                                listChoosePackage.get(position).isSelect = true;
-                                Log.e("Yellow", "Yellow");
-
-                            }
 
                         } else {
-                            listChoosePackage.get(position).isSelect = false;
+                            choosePackageListModel1.setSelect(false);
                             Log.e("White","White");
-                            break;
 
                         }
+                        listChoosePackage.set(i,choosePackageListModel1);
                     }
                     Gson gson=new Gson();
                     Log.e("CLICK",gson.toJson(listChoosePackage));
