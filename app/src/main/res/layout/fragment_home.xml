@@ -129,7 +129,7 @@
                     android:id="@+id/tvSpinTypeOfPuja"
                     android:layout_width="@dimen/dimen_200dp"
                     android:layout_height="@dimen/dimen_30dp"
-                    android:prompt="@string/typesofpuja"
+
                     style="@style/Style_TextView_FontRegular"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"

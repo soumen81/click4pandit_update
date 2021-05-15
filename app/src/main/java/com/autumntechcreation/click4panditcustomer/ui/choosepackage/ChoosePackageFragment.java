@@ -214,12 +214,22 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                     for (int i = 0; i < listChoosePackage.size(); i++) {
 
                         if (i == position) {
-                            listChoosePackage.get(position).isSelect = true;
+                            if(  listChoosePackage.get(position).isSelect == false) {
+
+                                listChoosePackage.get(position).isSelect = true;
+                                Log.e("Yellow", "Yellow");
+
+                            }
 
                         } else {
                             listChoosePackage.get(position).isSelect = false;
+                            Log.e("White","White");
+                            break;
+
                         }
                     }
+                    Gson gson=new Gson();
+                    Log.e("CLICK",gson.toJson(listChoosePackage));
                     mChoosePackageViewModel.setChoosePackageListAdapter(listChoosePackage);
 
 

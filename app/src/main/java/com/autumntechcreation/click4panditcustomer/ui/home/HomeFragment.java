@@ -58,9 +58,8 @@ public class HomeFragment extends Fragment implements Injectable {
 
     ArrayAdapter<String> mSpinPujaTypesAdapter;
     List<String> mListTypesPuja = new ArrayList<>();
-    List<Integer> mListPujaCategoryid = new ArrayList<>();
+    List<String> mListTypesPujaHeader = new ArrayList<>();
     ArrayList<PujaTypesModel> pujaTypesModellist = new ArrayList<PujaTypesModel>();
-
 
 
     ArrayAdapter<String> mSpinPujaCategoryAdapter;
@@ -100,7 +99,7 @@ public class HomeFragment extends Fragment implements Injectable {
         DisplayDialog.getInstance().showAlertDialog(getActivity(), "Please wait");
 
 
-    mHomeViewModel.getPujaTypesList().observe(getActivity(), HomeFragment.this::handlePujaTypesList);
+        mHomeViewModel.getPujaTypesList().observe(getActivity(), HomeFragment.this::handlePujaTypesList);
 
 
 
@@ -110,33 +109,23 @@ public class HomeFragment extends Fragment implements Injectable {
         // Specify the layout to use when the list of choices appears
         mSpinPujaTypesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+
         // Apply the adapter to the spinner
         mFragmentHomeBinding.tvSpinTypeOfPuja.setAdapter(mSpinPujaTypesAdapter);
-
-
 
         mFragmentHomeBinding.tvSpinTypeOfPuja.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                try {
 
+                        if(position>0) {
+                            pujaCategoryId = mHomeViewModel.mPujaTypesList.getValue().data.get(position-1).pujaCtgryId;
+                            mHomeViewModel.getPujaCategoryList(pujaCategoryId).observe(getActivity(), HomeFragment.this::handlePujCategoryList);
+                        }
 
-                   // mListCategoryPuja.clear();
-                   // pujaCategoryModellist.clear();
-                    if(position>0) {
-                        try {
-                        Log.e("POSITION", String.valueOf(position));
-
-                      //  pujaCategoryId = mHomeViewModel.mPujaTypesList.getValue().data.get(position).pujaCtgryId;
-                        pujaCategoryId=mListPujaCategoryid.get(position);
-                        Log.e("CATEGORYID", String.valueOf(pujaCategoryId));
-                        mHomeViewModel.getPujaCategoryList(pujaCategoryId).observe(getActivity(), HomeFragment.this::handlePujCategoryList);
-                        //mSpinPujaCategoryAdapter.notifyDataSetChanged();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    }
-
-
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
 
             }
@@ -157,18 +146,15 @@ public class HomeFragment extends Fragment implements Injectable {
         mFragmentHomeBinding.tvSpinTypeCategories.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 if(position>0) {
-                    try {
-                        pujaSubCategoryId = mHomeViewModel.mPujaCategoryList.getValue().data.get(position).getPujaSubCtgryId();
-                        Log.e("SUBCATE", "" + pujaSubCategoryId);
-                        subCategoryName = mHomeViewModel.mPujaCategoryList.getValue().data.get(position).getPujaSubCtgryDscr();
-                        pujaName = mHomeViewModel.mPujaCategoryList.getValue().data.get(position).getPujaSubCtgryDscr();
-                        Log.e("PUJANAME", "" + pujaName);
-                    }
-                    catch(Exception e){
-                        e.printStackTrace();
-                    }
+                    pujaSubCategoryId = mHomeViewModel.mPujaCategoryList.getValue().data.get(position-1).getPujaSubCtgryId();
+                    Log.e("SUBCATE", "" + pujaSubCategoryId);
+                    subCategoryName = mHomeViewModel.mPujaCategoryList.getValue().data.get(position-1).getPujaSubCtgryDscr();
+                    pujaName = mHomeViewModel.mPujaCategoryList.getValue().data.get(position-1).getPujaSubCtgryDscr();
+                    Log.e("PUJANAME", "" + pujaName);
                 }
+
             }
 
             @Override
@@ -184,7 +170,12 @@ public class HomeFragment extends Fragment implements Injectable {
                 imageView.setImageResource(mImager[position]);
             }
         });
-
+        mFragmentHomeBinding.carousal.setImageClickListener(new ImageClickListener() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(getActivity(), mImagetitle[position], Toast.LENGTH_SHORT).show();
+            }
+        });
         mFragmentHomeBinding.carousal.setPageCount(mImager.length);
         mFragmentHomeBinding.tvViewPackages.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,19 +240,19 @@ public class HomeFragment extends Fragment implements Injectable {
                             //  ArrayList<EnterpriseModel> list1 = new ArrayList<EnterpriseModel>();
                             pujaTypesModellist.clear();
                             mListTypesPuja.clear();
-                            mListTypesPuja.add(0,"Types Of Puja");
-                            mListPujaCategoryid.add(0,555);
+                            mListTypesPuja.add("Types Of Puja");
                             for (int i = 0; i < resource.data.size(); i++) {
                                 mListTypesPuja.add(resource.data.get(i).getPujaCtgryDscr());
-                                mListPujaCategoryid.add(resource.data.get(i).pujaCtgryId);
+
                                 pujaTypesModellist.add(resource.data.get(i));
 
                             }
-                            Log.e("ARRAYLIST", String.valueOf(mListTypesPuja));
-                            mListCategoryPuja.add(0,"Categories");
-                            mSpinPujaCategoryAdapter.notifyDataSetChanged();
-                            mSpinPujaTypesAdapter.notifyDataSetChanged();
 
+                            mSpinPujaTypesAdapter.notifyDataSetChanged();
+                            mListCategoryPuja.clear();
+                            mListCategoryPuja.add("Categories");
+                            mSpinPujaCategoryAdapter.notifyDataSetChanged();
+                            mFragmentHomeBinding.tvSpinTypeCategories.setSelection(0);
                             DisplayDialog.getInstance().dismissAlertDialog();
 
                             //mListCategoryPuja.add(0, "Categories");
@@ -318,7 +309,8 @@ public class HomeFragment extends Fragment implements Injectable {
 
                             //  ArrayList<EnterpriseModel> list1 = new ArrayList<EnterpriseModel>();
                             pujaCategoryModellist.clear();
-                           mListCategoryPuja.clear();
+                            mListCategoryPuja.clear();
+                            mListCategoryPuja.add("Categories");
 
                             for (int i = 0; i < resource.data.size(); i++) {
                                 mListCategoryPuja.add(resource.data.get(i).getPujaSubCtgryDscr());
@@ -328,7 +320,8 @@ public class HomeFragment extends Fragment implements Injectable {
                             }
                             Log.e("LISSSST", mListCategoryPuja.size() + "");
 
-                          //  mSpinPujaCategoryAdapter.notifyDataSetChanged();
+                            mSpinPujaCategoryAdapter.notifyDataSetChanged();
+                            mFragmentHomeBinding.tvSpinTypeCategories.setSelection(0);
                             DisplayDialog.getInstance().dismissAlertDialog();
 
                         }
