@@ -22,24 +22,44 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            tools:layout_editor_absoluteX="-74dp"
+            tools:layout_editor_absoluteY="-43dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/buttonColor"
+                android:paddingBottom="@dimen/dimen_10dp"
                 android:orientation="vertical">
-                <!--<ImageView
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/searchAuto"
+                    android:layout_width="@dimen/dimen_250dp"
+                    android:layout_height="@dimen/dimen_30dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:hint="What are you Looking for"
+
+                    android:background="@drawable/round_white_corner"
+                    android:drawableStart="@drawable/ic_blacksearch"
+                    android.support.design:layout_constraintLeft_toLeftOf="parent"
+                    android.support.design:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </androidx.appcompat.widget.AppCompatAutoCompleteTextView>
+
+                <ImageView
                     android:id="@+id/imgvwPandit"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_100dp"
-                    android:src="@drawable/panditji"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_150dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:src="@drawable/banner"
+                    android.support.design:layout_constraintTop_toBottomOf="@+id/searchAuto"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent">
 
-                </ImageView>-->
-                <com.synnapps.carouselview.CarouselView
+                </ImageView>
+                <!--  <com.synnapps.carouselview.CarouselView
                     android:id="@+id/carousal"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
@@ -52,7 +72,33 @@
                     tools:ignore="MissingConstraints">
 
                 </com.synnapps.carouselview.CarouselView>
+                -->
 
+                <TextView
+                    android:id="@+id/tvPujas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pujas"
+                    android:textSize="@dimen/font_12sp"
+                    android:textColor="@color/yellowColor"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android.support.design:layout_constraintStart_toStartOf="@+id/tvPickPuja"
+                    app:layout_constraintTop_toBottomOf="@+id/imgvwPandit">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/tvPackages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" / Packages"
+                    android:textSize="@dimen/font_12sp"
+                    android:textColor="@color/whiteColor"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android.support.design:layout_constraintStart_toEndOf="@+id/tvPujas"
+                    app:layout_constraintTop_toBottomOf="@+id/imgvwPandit">
+
+                </TextView>
                 <TextView
                     android:id="@+id/tvExperienced"
                     style="@style/Style_TextView_FontBold"
@@ -61,13 +107,12 @@
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:text="@string/yourpuja"
                     android:textColor="@color/blackColor"
-                    android:textSize="@dimen/font_12sp"
+                    android:textSize="@dimen/font_14sp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/carousal">
+                   android.support.design:layout_constraintStart_toStartOf="@+id/tvPickPuja"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPujas">
 
                 </TextView>
-
 
 
                 <TextView
@@ -75,12 +120,13 @@
                     style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginRight="@dimen/dimen_20dp"
+
                     android:text="@string/pickpujagot"
                     android:textColor="@color/whiteColor"
                     android:textSize="@dimen/font_12sp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                   android.support.design:layout_constraintStart_toStartOf="@+id/tvForYourself"
                     app:layout_constraintTop_toBottomOf="@+id/tvExperienced">
 
                 </TextView>
@@ -105,66 +151,69 @@
                     style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/choosepuja"
-                    android:textColor="@color/yellowColor"
-                    android:textSize="@dimen/font_14sp"
                     android:layout_marginTop="@dimen/dimen_20dp"
+                    android:text="@string/choosepuja"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/font_14sp"
+                    android.support.design:layout_constraintStart_toStartOf="@+id/tvForYourself"
+                    android.support.design:layout_constraintTop_toBottomOf="@+id/tvForYourself"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android.support.design:layout_constraintTop_toBottomOf="@+id/tvForYourself">
+                   >
 
                 </TextView>
 
-               <androidx.constraintlayout.widget.ConstraintLayout
-                   android:id="@+id/clTypesPuja"
-                   android:layout_width="@dimen/dimen_200dp"
-                   android:layout_height="@dimen/dimen_30dp"
-                   android:layout_marginTop="@dimen/dimen_20dp"
-
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                   android:background="@drawable/round_white_corner"
-                   app:layout_constraintTop_toBottomOf="@+id/tvChoosePuja">
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/tvSpinTypeOfPuja"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clTypesPuja"
                     android:layout_width="@dimen/dimen_200dp"
                     android:layout_height="@dimen/dimen_30dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
 
-                    style="@style/Style_TextView_FontRegular"
+                    android:background="@drawable/newroundedbutton"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    android:drawablePadding="@dimen/dimen_10dp"
-                   android.support.design:layout_constraintTop_toTopOf="parent"
-                    >
+                    app:layout_constraintTop_toBottomOf="@+id/tvChoosePuja">
 
-                </androidx.appcompat.widget.AppCompatSpinner>
-               </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/tvSpinTypeOfPuja"
+                        style="@style/Style_TextView_FontRegular"
+                        android:layout_width="@dimen/dimen_200dp"
+
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:drawablePadding="@dimen/dimen_10dp"
+                        android.support.design:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent">
+
+                    </androidx.appcompat.widget.AppCompatSpinner>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clTypesCategories"
                     android:layout_width="@dimen/dimen_200dp"
                     android:layout_height="@dimen/dimen_30dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
+                    android:background="@drawable/newroundedbutton"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    android:background="@drawable/round_white_corner"
                     app:layout_constraintTop_toBottomOf="@+id/clTypesPuja">
+
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/tvSpinTypeCategories"
+                        style="@style/Style_TextView_FontRegular"
                         android:layout_width="@dimen/dimen_200dp"
                         android:layout_height="@dimen/dimen_30dp"
-                        style="@style/Style_TextView_FontRegular"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
                         android:drawablePadding="@dimen/dimen_10dp"
                         android.support.design:layout_constraintTop_toTopOf="parent"
-                        >
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent">
 
                     </androidx.appcompat.widget.AppCompatSpinner>
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <TextView
                     android:id="@+id/tvViewPackages"
                     style="@style/Style_TextView_FontBold"
-                    android:layout_width="@dimen/dimen_150dp"
+                    android:layout_width="@dimen/dimen_120dp"
                     android:layout_height="@dimen/dimen_30dp"
                     android:layout_marginTop="@dimen/dimen_20dp"
                     android:background="@drawable/round_black_corner"
@@ -172,8 +221,7 @@
                     android:text="@string/viewpackage"
                     android:textColor="@color/whiteColor"
                     android:textSize="@dimen/font_12sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    android.support.design:layout_constraintEnd_toEndOf="@+id/clTypesCategories"
                     app:layout_constraintTop_toBottomOf="@+id/clTypesCategories">
 
                 </TextView>

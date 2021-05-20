@@ -33,7 +33,7 @@
     <string name="andeasy">An Easy and Economic choice for a  </string>
     <string name="divineexperience">Divine Experience </string>
     <string name="choosepuja">Pick your Puja </string>
-    <string name="viewpackage">Confirm </string>
+    <string name="viewpackage">View Packages </string>
     <string name="pickpuja">Experienced Pandits,Reasonable Dakshina </string>
     <string name="economical"> And Multiple Choices</string>
     <string name="samagries">All your Puja Requirements Ranging </string>
@@ -134,4 +134,5 @@
     <string name="contactusoon">Successfully submited your requirements, we will contact with you soon</string>
     <string name="cashfreetokengenerate">CashFree Token generated succefully...</string>
     <string name="paymentsuccess">Payment Successfully\n Received</string>
+    <string name="select">Select</string>
 </resources>

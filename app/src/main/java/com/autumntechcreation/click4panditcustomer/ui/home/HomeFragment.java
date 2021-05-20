@@ -164,7 +164,7 @@ public class HomeFragment extends Fragment implements Injectable {
         });
 
 
-        mFragmentHomeBinding.carousal.setImageListener(new ImageListener() {
+       /* mFragmentHomeBinding.carousal.setImageListener(new ImageListener() {
             @Override
             public void setImageForPosition(int position, ImageView imageView) {
                 imageView.setImageResource(mImager[position]);
@@ -176,7 +176,7 @@ public class HomeFragment extends Fragment implements Injectable {
                 Toast.makeText(getActivity(), mImagetitle[position], Toast.LENGTH_SHORT).show();
             }
         });
-        mFragmentHomeBinding.carousal.setPageCount(mImager.length);
+        mFragmentHomeBinding.carousal.setPageCount(mImager.length);*/
         mFragmentHomeBinding.tvViewPackages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

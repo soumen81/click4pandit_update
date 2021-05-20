@@ -284,7 +284,7 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@drawable/round_red_corner"
             android:onClick="@{(v) -> BillingDetailsViewModel.onClickBillingDiffLocation(v)}"
-            android:drawableRight="@drawable/ic_arrowforward"
+            android:drawableRight="@drawable/ic_whitearrow"
             android:gravity="center"
             android:text="@string/adddifferentloc"
             android:textColor="@color/whiteColor"

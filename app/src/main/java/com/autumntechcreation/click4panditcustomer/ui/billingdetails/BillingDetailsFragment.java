@@ -567,6 +567,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     }
     private Map<String, String> getInputParams() {
         String appId = "6159303c6dd0fdc88e24a424f39516";
+       // String appId = "10732304e9cb87da1696501a98323701";
         String strorderId = String.valueOf(orderId);
         String strorderAmount = orderAmount;
         String orderNote = "Puja";

@@ -42,6 +42,7 @@ public class DashBoardActivity extends AppCompatActivity {
             public void onChanged(@Nullable Void _) {
                 Intent in=new Intent(DashBoardActivity.this, LoginActivity.class);
                 startActivity(in);
+
             }
         });
         mDashBoardViewModel.getonClickRegisterPage().observe(this, new Observer<Void>() {

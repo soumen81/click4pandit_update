@@ -123,7 +123,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
 
 
 
-        mFragmentChoosepackageBinding.carousal.setImageListener(new ImageListener() {
+      /*  mFragmentChoosepackageBinding.carousal.setImageListener(new ImageListener() {
             @Override
             public void setImageForPosition(int position, ImageView imageView) {
                 imageView.setImageResource(mImager[position]);
@@ -143,7 +143,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                 showCustomChoosePackageDialog();
             }
         });
-
+*/
 
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -217,7 +217,6 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                         if (i == position) {
                             choosePackageListModel1.setSelect(true);
                             Log.e("Yellow","Yellow");
-
 
                         } else {
                             choosePackageListModel1.setSelect(false);

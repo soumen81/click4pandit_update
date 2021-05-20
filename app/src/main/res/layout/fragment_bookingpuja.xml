@@ -28,16 +28,17 @@
         android:layout_height="match_parent"
         android:background="@color/buttonColor"
         android:orientation="vertical">
-   <!-- <ImageView
+    <ImageView
         android:id="@+id/imgvwPandit"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_100dp"
-        android:src="@drawable/panditji"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_150dp"
+        android:src="@drawable/banner"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-    </ImageView>-->
+    </ImageView>
+<!--
         <com.synnapps.carouselview.CarouselView
             android:id="@+id/carousal"
             android:layout_width="match_parent"
@@ -51,6 +52,7 @@
             tools:ignore="MissingConstraints">
 
         </com.synnapps.carouselview.CarouselView>
+-->
     <TextView
         android:id="@+id/tvPanditsAvailable"
         android:layout_width="wrap_content"
@@ -62,7 +64,7 @@
         android:layout_marginTop="@dimen/dimen_10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carousal">
+        app:layout_constraintTop_toBottomOf="@+id/imgvwPandit">
 
     </TextView>
     <TextView
@@ -134,6 +136,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
                 android:layout_height="@dimen/dimen_20dp"
                 android:paddingLeft="@dimen/dimen_10dp"
                 android:src="@drawable/ic_location"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"></ImageView>
@@ -163,16 +166,25 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
                 android:id="@+id/tvSpinTypeOfLocation"
                 android:layout_width="@dimen/dimen_170dp"
                 android:layout_height="@dimen/dimen_30dp"
-                android:layout_marginLeft="@dimen/dimen_40dp"
+
                 style="@style/Style_TextView_FontRegular"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:spinnerMode="dropdown"
-                android:drawablePadding="@dimen/dimen_10dp"
+                android:background="@android:color/transparent"
+
                 android.support.design:layout_constraintTop_toTopOf="parent"
                 >
 
             </androidx.appcompat.widget.AppCompatSpinner>
+            <ImageView
+
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:paddingRight="@dimen/dimen_10dp"
+                android:src="@drawable/ic_dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></ImageView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -190,6 +202,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
                 android:layout_width="@dimen/dimen_30dp"
                 android:layout_height="@dimen/dimen_20dp"
                 android:paddingLeft="@dimen/dimen_10dp"
+                android:visibility="invisible"
                 android:src="@drawable/ic_ttext"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -198,25 +211,25 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
                 android:id="@+id/tvSpinTypeOfLanguage"
                 android:layout_width="@dimen/dimen_170dp"
                 android:layout_height="@dimen/dimen_30dp"
-                android:layout_marginLeft="@dimen/dimen_40dp"
+
                 style="@style/Style_TextView_FontRegular"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:spinnerMode="dropdown"
+                android:background="@android:color/transparent"
                 android:drawablePadding="@dimen/dimen_10dp"
                 android.support.design:layout_constraintTop_toTopOf="parent"
                 >
 
             </androidx.appcompat.widget.AppCompatSpinner>
-            <!--<ImageView
-                android:id="@+id/imgvwDropLang"
+            <ImageView
+
                 android:layout_width="@dimen/dimen_30dp"
                 android:layout_height="@dimen/dimen_20dp"
                 android:paddingRight="@dimen/dimen_10dp"
                 android:src="@drawable/ic_dropdown"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"></ImageView>-->
+                app:layout_constraintRight_toRightOf="parent"></ImageView>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clBookDate"
@@ -233,6 +246,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
                 android:layout_height="@dimen/dimen_20dp"
                 android:paddingLeft="@dimen/dimen_10dp"
                 android:src="@drawable/ic_calendar"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"></ImageView>
@@ -273,6 +287,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
                 android:layout_height="@dimen/dimen_20dp"
                 android:paddingLeft="@dimen/dimen_10dp"
                 android:src="@drawable/ic_clock"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"></ImageView>

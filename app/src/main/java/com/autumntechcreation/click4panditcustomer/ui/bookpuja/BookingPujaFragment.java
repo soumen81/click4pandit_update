@@ -134,6 +134,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
 
 
 
+/*
         mFragmentBookingpujaBinding.carousal.setImageListener(new ImageListener() {
             @Override
             public void setImageForPosition(int position, ImageView imageView) {
@@ -149,6 +150,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
         });
         mFragmentBookingpujaBinding.carousal.setPageCount(mImager.length);
 
+*/
 
 
         mBookingPujaViewModel.getBookingLocationList().observe(getActivity(), BookingPujaFragment.this::handleBookingLocationList);

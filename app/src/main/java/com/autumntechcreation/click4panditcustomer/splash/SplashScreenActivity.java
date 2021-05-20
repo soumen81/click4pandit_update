@@ -53,6 +53,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 if(sp.getBoolean("logged",false)){
                     Intent i = new Intent(SplashScreenActivity.this,MainActivity.class);
                     startActivity(i);
+                    finish();
                 }else {
 
                     Intent intent = new Intent(SplashScreenActivity.this, DashBoardActivity.class);

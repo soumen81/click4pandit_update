@@ -26,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.autumntechcreation.click4panditcustomer.databinding.ActivityMainBinding;
 import com.autumntechcreation.click4panditcustomer.network.ConnectivityReceiver;
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView userName,txtInitial,email;
     String TAG="SoumenBokachoda";
     Bundle bundle;
+    boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 selectFragment(menuItem);
-                drawerLayout.closeDrawer(GravityCompat.START);
+                drawerLayout.closeDrawer(GravityCompat.END);
                 return true;
             }
 
@@ -136,11 +139,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         activityMainBinding.txtMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
                     //drawer is open
-                    drawerLayout.closeDrawer(GravityCompat.START);
+                    drawerLayout.closeDrawer(GravityCompat.END);
                 } else {
-                    drawerLayout.openDrawer(GravityCompat.START);
+                    drawerLayout.openDrawer(GravityCompat.END);
                 }
             }
         });
@@ -307,14 +310,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         // Close the navigation drawer
-        drawerLayout.closeDrawer(GravityCompat.START);
+        drawerLayout.closeDrawer(GravityCompat.END);
         return menuReturn;
     }
 
     @Override
     public void onBackPressed() {
 
-        if (getFragmentManager().getBackStackEntryCount() > 0) {
+       /* if (getFragmentManager().getBackStackEntryCount() > 0) {
 
             getFragmentManager().popBackStack();
         }
@@ -322,6 +325,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else {
 
             super.onBackPressed();
+        }*/
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            drawerLayout.closeDrawer(GravityCompat.END);
+
+        } else if (navController.popBackStack()) {
+
+            Log.e("navController", navController.navigateUp() + "");
+        } else {
+            // super.onBackPressed();
+            Static.doExitApp(MainActivity.this);
         }
     }
 
@@ -351,9 +365,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         if (isLockDrawer) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+            drawerLayout.closeDrawer(GravityCompat.END);
         } else {
-            drawerLayout.closeDrawer(GravityCompat.START);
+            drawerLayout.closeDrawer(GravityCompat.END);
         }
         if(backGround){
             activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#D1453E"));
