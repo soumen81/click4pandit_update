@@ -39,7 +39,7 @@
                     android:layout_height="@dimen/dimen_30dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:hint="What are you Looking for"
-
+                    android:visibility="gone"
                     android:background="@drawable/round_white_corner"
                     android:drawableStart="@drawable/ic_blacksearch"
                     android.support.design:layout_constraintLeft_toLeftOf="parent"

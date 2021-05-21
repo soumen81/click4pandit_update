@@ -504,6 +504,10 @@
         android:defaultValue="0"
         app:argType="string" />
     </fragment>
+    <activity
+        android:id="@+id/searchActivity"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.search.SearchActivity"
+        android:label="SearchActivity" />
 
 
 </navigation>

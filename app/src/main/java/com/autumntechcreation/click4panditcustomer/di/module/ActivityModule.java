@@ -11,6 +11,7 @@ import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyActivity;
 import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyActivity;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
+import com.autumntechcreation.click4panditcustomer.ui.search.SearchActivity;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryActivity;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionActivity;
 
@@ -54,6 +55,9 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract SendEnquiryActivity contributeSendEnquiryActivity();
+
+    @ContributesAndroidInjector
+    abstract SearchActivity contributeSearchActivity();
 
 
 

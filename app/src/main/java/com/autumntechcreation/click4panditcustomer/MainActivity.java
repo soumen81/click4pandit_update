@@ -33,6 +33,7 @@ import com.autumntechcreation.click4panditcustomer.network.ConnectivityReceiver;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
+import com.autumntechcreation.click4panditcustomer.ui.search.SearchActivity;
 import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.google.android.material.navigation.NavigationView;
 
@@ -104,7 +105,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         sp = getSharedPreferences("login",MODE_PRIVATE);
 
-
+        activityMainBinding.imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(in);
+            }
+        });
 
         activityMainBinding.imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -375,12 +382,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             activityMainBinding.rlHeader.setBackgroundColor(Color.parseColor("#D1453E"));
             activityMainBinding.header.setBackgroundColor(Color.parseColor("#D1453E"));
             activityMainBinding.imgvwWhiteback.setBackgroundColor(Color.parseColor("#D1453E"));
+            activityMainBinding.imgSearch.setImageResource(R.drawable.ic_search);
+            activityMainBinding.imgSearch.setBackgroundColor(Color.parseColor("#D1453E"));
+            activityMainBinding.imgCart.setImageResource(R.drawable.cart);
+            activityMainBinding.imgCart.setBackgroundColor(Color.parseColor("#D1453E"));
         }else{
             activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#FFFFFF"));
             activityMainBinding.rlHeader.setBackgroundColor(Color.parseColor("#FFFFFF"));
             activityMainBinding.header.setBackgroundColor(Color.parseColor("#FFFFFF"));
             activityMainBinding.imgvwWhiteback.setBackgroundColor(Color.parseColor("#FFFFFF"));
             activityMainBinding.imgvwWhiteback.setImageResource(R.drawable.ic_back);
+            activityMainBinding.imgSearch.setImageResource(R.drawable.ic_loupe);
+            activityMainBinding.imgSearch.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            activityMainBinding.imgCart.setImageResource(R.drawable.cart_black);
+            activityMainBinding.imgCart.setBackgroundColor(Color.parseColor("#FFFFFF"));
         }
 
 

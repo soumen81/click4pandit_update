@@ -26,6 +26,7 @@ import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolic
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.search.SearchViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutViewModel;
@@ -164,4 +165,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CashFreeViewModel.class)
     abstract ViewModel bindCashFreeViewModel(CashFreeViewModel cashFreeViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchViewModel.class)
+    abstract ViewModel bindSearchViewModel(SearchViewModel searchViewModel);
 }

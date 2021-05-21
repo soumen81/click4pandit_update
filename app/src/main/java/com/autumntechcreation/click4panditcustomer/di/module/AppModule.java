@@ -26,6 +26,7 @@ import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolic
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileRepository;
 import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyRepository;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterRepository;
+import com.autumntechcreation.click4panditcustomer.ui.search.SearchRepository;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutRepository;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionRepository;
@@ -180,5 +181,11 @@ public class AppModule {
     @Singleton
     CashFreeRepository provideCashFreeRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new CashFreeRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    SearchRepository provideSearchRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new SearchRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }
