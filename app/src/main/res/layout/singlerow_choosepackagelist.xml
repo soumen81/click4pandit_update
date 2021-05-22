@@ -29,7 +29,7 @@
             android:onClick="@{(v) -> viewModel.onClickChoosePackage(v,position)}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:background="@drawable/round_white_corner"
+            android:background="@drawable/newroundedbutton"
             app:layout_constraintTop_toBottomOf="@+id/tvChoosePackage"
             >
             <TextView

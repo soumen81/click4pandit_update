@@ -68,7 +68,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     NavController navController;
     int orderId,bkgId,shippingbkgId,shippingOrderId;
     String orderAmount,shippingAddress,shippingCity,shippingState,shippingPincode,pujaDatetime,shippingFirstName,
-    shippingLastName,shippingemail,shippingAlternateMobile,shippingAdditionalInfo,shippingOrderAmount;
+    shippingLastName,shippingemail,shippingAlternateMobile,shippingAdditionalInfo,shippingOrderAmount,pujaAmount,cgstValue,sgstValue;
     String paymentorderID = "";
     @Nullable
     @Override
@@ -89,6 +89,15 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount().length()>0){
             orderAmount=BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount();
             Log.e("ORDERAMOUNT",orderAmount);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaAmount().length()>0){
+            pujaAmount=BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaAmount();
+            Log.e("PUJAAMOUNT",pujaAmount);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getCgstvalue().length()>0){
+            cgstValue=BillingDetailsFragmentArgs.fromBundle(getArguments()).getCgstvalue();
+            Log.e("CGSTVALUE",cgstValue);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getSgstvalue().length()>0){
+            sgstValue=BillingDetailsFragmentArgs.fromBundle(getArguments()).getSgstvalue();
+            Log.e("SGSTVALUE",sgstValue);
         }
 
         return mFragmentBillingdetailsBinding.getRoot();
@@ -137,6 +146,10 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         mFragmentBillingdetailsBinding.edtTxtEmail.setText(emailId);
         mFragmentBillingdetailsBinding.edtTxtState.setText("West Bengal");
         mFragmentBillingdetailsBinding.edtTxtCity.setText("Kolkata");
+        mFragmentBillingdetailsBinding.tvSubTotalValue.setText(pujaAmount);
+        mFragmentBillingdetailsBinding.tvCgstValue.setText(cgstValue);
+        mFragmentBillingdetailsBinding.tvSgstValue.setText(sgstValue);
+        mFragmentBillingdetailsBinding.tvTotalValue.setText(orderAmount);
 
 
 

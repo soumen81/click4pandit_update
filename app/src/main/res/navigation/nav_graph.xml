@@ -309,6 +309,20 @@
             android:name="dateTime"
             android:defaultValue="0"
             app:argType="string" />
+        <argument
+            android:name="pujaAmount"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="cgstvalue"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="sgstvalue"
+            android:defaultValue="0"
+            app:argType="string" />
+
+
         <action
             android:id="@+id/action_orderSummaryFragment_to_billingDetailsFragment"
             app:destination="@id/billingDetailsFragment" />
@@ -380,6 +394,18 @@
             app:argType="integer" />
         <argument
             android:name="cashFreeToken"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="pujaAmount"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="cgstvalue"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="sgstvalue"
             android:defaultValue="0"
             app:argType="string" />
         <action

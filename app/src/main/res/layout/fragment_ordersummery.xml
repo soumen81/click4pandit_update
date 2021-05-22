@@ -436,7 +436,7 @@
             android:id="@+id/tvConfirm"
             android:layout_width="@dimen/dimen_150dp"
             android:layout_height="@dimen/dimen_30dp"
-            android:background="@drawable/round_yellow_corner"
+            android:background="@drawable/newroundedyellow"
             android:gravity="center"
             style="@style/Style_TextView_FontBold"
             android:textSize="@dimen/font_12sp"

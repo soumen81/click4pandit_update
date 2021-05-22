@@ -128,7 +128,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/round_white_corner"
+            android:background="@drawable/newroundedbutton"
             app:layout_constraintTop_toBottomOf="@+id/tvBookPuja">
          <ImageView
                 android:id="@+id/imgvwLocation"
@@ -162,21 +162,25 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
              app:layout_constraintRight_toRightOf="parent"></ImageView>-->
 
 
-            <androidx.appcompat.widget.AppCompatSpinner
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/tvSpinTypeOfLocation"
                 android:layout_width="@dimen/dimen_170dp"
                 android:layout_height="@dimen/dimen_30dp"
+                android:hint="Location"
 
+                android:textSize="@dimen/font_12sp"
+                android:textColorHint="@color/blackColor"
+                android:background="@drawable/newroundedbutton"
                 style="@style/Style_TextView_FontRegular"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:background="@android:color/transparent"
+
 
                 android.support.design:layout_constraintTop_toTopOf="parent"
                 >
 
-            </androidx.appcompat.widget.AppCompatSpinner>
-            <ImageView
+            </androidx.appcompat.widget.AppCompatAutoCompleteTextView>
+           <!-- <ImageView
 
                 android:layout_width="@dimen/dimen_30dp"
                 android:layout_height="@dimen/dimen_20dp"
@@ -184,7 +188,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
                 android:src="@drawable/ic_dropdown"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"></ImageView>
+                app:layout_constraintRight_toRightOf="parent"></ImageView>-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -195,7 +199,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/round_white_corner"
+            android:background="@drawable/newroundedbutton"
             app:layout_constraintTop_toBottomOf="@+id/clLocation">
             <ImageView
                 android:id="@+id/imgvwLanguage"
@@ -238,7 +242,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/round_white_corner"
+            android:background="@drawable/newroundedbutton"
             app:layout_constraintTop_toBottomOf="@+id/clLanguage">
             <ImageView
                 android:id="@+id/imgvwBookDate"
@@ -279,7 +283,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/round_white_corner"
+            android:background="@drawable/newroundedbutton"
             app:layout_constraintTop_toBottomOf="@+id/clBookDate">
             <ImageView
                 android:id="@+id/imgvwBookTime"
@@ -317,7 +321,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
             android:id="@+id/tvBookConfirm"
             android:layout_width="@dimen/dimen_120dp"
             android:layout_height="@dimen/dimen_30dp"
-            android:background="@drawable/round_black_corner"
+            android:background="@drawable/newroundblack"
             android:gravity="center"
             style="@style/Style_TextView_FontBold"
             android:textSize="@dimen/font_12sp"

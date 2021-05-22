@@ -54,6 +54,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
             pujaDate,pujaTime,packageTypeIdDesc,subcategoryName,isAllSamagries,pujaDateTime;
     int subCategoryId,pujPackageId,locationId,languageId,noOfPandit;
     double dd,finalAmount;
+    double sgstvalue,cgstvalue;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -145,11 +146,11 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
 
         double cgst = Double.parseDouble(pujaAmount)*9/100;
         System.out.println("int i = " + cgst);
-            double cgstvalue=Static.roundAvoid(cgst,2);
+             cgstvalue=Static.roundAvoid(cgst,2);
             mFragmentOrdersummeryBinding.tvCgstValue.setText(Double.toString(cgstvalue));
             double sgst = Double.parseDouble(pujaAmount)*9/100;
             System.out.println("int i = " + sgst);
-        double sgstvalue=Static.roundAvoid(sgst,2);
+         sgstvalue=Static.roundAvoid(sgst,2);
         mFragmentOrdersummeryBinding.tvSgstValue.setText(Double.toString(sgstvalue));
         double cgstsgst=cgstvalue+sgstvalue;
          dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
@@ -229,9 +230,12 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
                         action.setBkgId(bkgId);
                         action.setOrderAmount(String.valueOf(finalAmount));
                         action.setDateTime(pujaDateTime);
+                        action.setPujaAmount(pujaAmount);
+                        action.setCgstvalue(Double.toString(cgstvalue));
+                        action.setSgstvalue(Double.toString(sgstvalue));
                         Navigation.findNavController(mView).navigate(action);
 
-
+//pujaAmount,Double.toString(cgstvalue)Double.toString(sgstvalue)Double.toString(finalAmount)
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;
