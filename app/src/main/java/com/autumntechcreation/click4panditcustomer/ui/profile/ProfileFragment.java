@@ -1,6 +1,7 @@
 package com.autumntechcreation.click4panditcustomer.ui.profile;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +13,28 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentProfileBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
+import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.Resource;
+import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordAcitivity;
 import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationFragment;
 import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryFragmentDirections;
+import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
+import com.autumntechcreation.click4panditcustomer.util.Static;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.inject.Inject;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -32,7 +45,8 @@ public class ProfileFragment extends Fragment implements Injectable {
     FragmentProfileBinding mFragmentProfileBinding;
     private View mView;
     NavController navController;
-
+    int custMasterId;
+    String firstName,lastName,emailId,mobileNo;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,6 +76,160 @@ public class ProfileFragment extends Fragment implements Injectable {
                 findNavController(mView).navigate(ProfileFragmentDirections.actionProfileFragmentToEditprofileFragment());
             }
         });
+
+        mProfileViewModel.customerGetProfile().observe(getActivity(),
+                ProfileFragment.this::handlegetCustomerProfile);
+
+        mFragmentProfileBinding.tvSaveChanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProfileViewModel.getForSaveCustomerProfile(custMasterId,firstName,lastName,mobileNo,mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(),emailId).observe(getActivity(),ProfileFragment.this::handleSaveCustomerProfile);
+            }
+        });
+
     }
 
+
+
+
+    private void handlegetCustomerProfile(Resource<CustomerGetProfileModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+
+                    break;
+                case LOADING:
+                    Log.e("handleRegisterResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleRegisterResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleRegisterResponse", resource.status + "");
+                    Log.e("handleRegisterResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleRegisterResponse", json + "");
+                   //if ( resource.data.custMasterProfileDataModel!=null) {
+                     firstName=resource.data.custMasterProfileDataModel.firstName;
+                     lastName=resource.data.custMasterProfileDataModel.lastName;
+                     emailId=resource.data.custMasterProfileDataModel.emailId;
+                     mobileNo=resource.data.custMasterProfileDataModel.mobile;
+                     custMasterId=resource.data.custMasterProfileDataModel.custMasterId;
+                    mFragmentProfileBinding.edtTxtFName.setText(firstName);
+                    mFragmentProfileBinding.edtTxtLastName.setText(lastName);
+                    mFragmentProfileBinding.edtTxtMobileNo.setText(mobileNo);
+                    mFragmentProfileBinding.edtTxtEmail.setText(emailId);
+
+                   // }
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    }
+
+
+
+
+
+    private void handleSaveCustomerProfile(Resource<SaveCustomerprofileModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+
+                    break;
+                case LOADING:
+                    Log.e("handleRegisterResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleRegisterResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleRegisterResponse", resource.status + "");
+                    Log.e("handleRegisterResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleRegisterResponse", json + "");
+                    if ( resource.data.returnStatus.equals("SUCCESS")) {
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText(this.getString(R.string.success))
+                                .setContentText(this.getString(R.string.profilesave))
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismiss();
+                                    }
+                                }).show();
+
+
+                    }
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    }
 }

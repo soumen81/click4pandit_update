@@ -135,4 +135,9 @@
     <string name="cashfreetokengenerate">CashFree Token generated succefully...</string>
     <string name="paymentsuccess">Payment Successfully\n Received</string>
     <string name="select">Select</string>
+    <string name="helpsupport">Help  &amp; Support </string>
+    <string name="account">Account</string>
+    <string name="addressbook">Address Book</string>
+    <string name="savechanges">Save Changes</string>
+    <string name="profilesave">Your Profile Successfully Changed</string>
 </resources>

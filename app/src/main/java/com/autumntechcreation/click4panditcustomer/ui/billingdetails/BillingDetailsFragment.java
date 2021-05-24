@@ -204,8 +204,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                 }else{
 
                     if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getStatusShippingId()==1){
-                        mFragmentBillingdetailsBinding.tvLocation.setVisibility(View.VISIBLE);
-                        mFragmentBillingdetailsBinding.imgvwLoc.setVisibility(View.VISIBLE);
+                        mFragmentBillingdetailsBinding.tvLocation.setVisibility(View.GONE);
+                        mFragmentBillingdetailsBinding.imgvwLoc.setVisibility(View.GONE);
                         String shippingDateTime="";
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
                           shippingDateTime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();

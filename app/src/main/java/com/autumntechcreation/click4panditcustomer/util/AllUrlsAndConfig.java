@@ -18,6 +18,9 @@ public class AllUrlsAndConfig {
     public static final String CASFREETOKEN ="/api/PaymentGateway/GetToken";
     public static final String UPDATEINVOICE ="/api/CustomerBkgOrder/UpdInvBkgAndGetInvBkgDetails";
     public static final String SENDCUSTOMERFORCUSTINVOICE="/api/TriggerMail/SendEmailForCustInv";
+    public static final String GETPROFILE="/api/Profile/GetCustProfileByLogonId";
+    public static final String SAVEPROFILE="/api/Profile/SaveCustProfile";
+
 
 
     //Parameter for SignUp
@@ -158,33 +161,16 @@ public class AllUrlsAndConfig {
     public static final String LOGONIDDDDD="LogonId";
     public static final String ORDERIDDD="OrderId";
 
-    //Parameter for Invoice Customer Email
-    public static final String LOGONIDDDDDDD="logonId";
-    public static final String CUSTBKGIDDD="custBkgId";
-    public static final String UPDATESTAMPP="updtStamp";
-    public static final String UPDATEUSERR="updtUser";
-    public static final String ORGLSTAMPPP="orglStamp";
-    public static final String ORGLUSERRR="orglUser";
-    public static final String DELFLGGG="delFlg";
-    public static final String CANCELFLG="cnclFlg";
-    public static final String CANCELDT="cnclDt";
+    //Parameter for SaveProfile
     public static final String CUSTMASTERIDDD="custMasterId";
-    public static final String CUSTBKGPUJAPKGTYPEIDD="custBkgPujaPkgTypId";
-    public static final String CUSTBKGPUJAPKGTYPEDESC="custBkgPujaPkgTypDscr";
-    public static final String CUSTBKGPUJASUBCATEGORYID="custBkgPujaSubCtgryId";
-    public static final String CUSTBKGPUJASUBCATEGORYDESC="custBkgPujaSubCtgryDscr";
-    public static final String CUSTBKGBKGDATE="custBkgBkgDt";
-    public static final String CUSTBKGBKGTIMEONLYY="custBkgBkgTimeOnly";
-    public static final String CUSTBKGSUBLCITYID="custBkgSublcltyId";
-    public static final String CUSTBKGSUBLCITYNAME="custBkgSubLcltyName";
-    public static final String CUSTBKGLANGMASTERIDD="custBkgLangMasterId";
-    public static final String CUSTBKGLANGMASTERNAMEE="custBkgLangMasterName";
-    public static final String CUSTBKGPUJAPKGIDD="custBkgPujaPkgId";
-    public static final String CUSTBKGPUJAPKGDESCRIPTION="custBkgPujaPkgDescription";
-    public static final String CUSTBKGPKGAMOUNT="custBkgPkgAmt";
-    public static final String CUSTBKGPKGTAXAMOUNT="custBkgPkgTaxAmt";
-    public static final String CUSTBKGPKGTOTALAMOUNT="custBkgPkgTotalAmt";
-    public static final String CUSTBKGPKGTOTALAMOUNTT="custBkgPkgTotalAmt";
-    public static final String CUSTBKGPKGNOOFPANDIT="custBkgPujaPkgNoOfPandit";
+    public static final String FIRSTNAMEEE="firstName";
+    public static final String LASTNAMEEE="lastName";
+    public static final String MOBILENOOOO="mobile";
+    public static final String ALTERNATEMOBILE="alternateMobile";
+    public static final String EMMAILID="emailId";
+    public static final String PHHONENO="phoneNo";
+    public static final String FAXNOO="faxNo";
+
+
 
 }
