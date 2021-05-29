@@ -105,7 +105,6 @@
                     android:textColor="@color/whiteColor"
                     android:textSize="@dimen/font_40sp"
                     android:visibility="visible" />
-
                 <ImageView
                     android:id="@+id/imgFace"
                     android:layout_width="@dimen/dimen_50dp"
