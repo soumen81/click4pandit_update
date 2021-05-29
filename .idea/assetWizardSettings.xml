@@ -312,8 +312,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_loupe" />
-                            <entry key="sourceFile" value="C:\Users\Soumen\Downloads\loupe.svg" />
+                            <entry key="outputName" value="ic_black_logo" />
+                            <entry key="sourceFile" value="C:\Users\Soumen\Downloads\black_logo.svg" />
                           </map>
                         </option>
                       </PersistentState>

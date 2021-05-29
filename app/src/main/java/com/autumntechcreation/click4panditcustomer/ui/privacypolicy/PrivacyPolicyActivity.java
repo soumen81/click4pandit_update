@@ -35,7 +35,8 @@ public class PrivacyPolicyActivity extends AppCompatActivity {
         mActivityPrivacypolicyBinding.setLifecycleOwner(this);
         mActivityPrivacypolicyBinding.setPrivacyPolicyViewModel(mPrivacyPolicyViewModel);
 
-        String url ="https://www.click4pandit.com/Home/Privacy";
+       // String url ="https://www.click4pandit.com/Home/Privacy";
+        String url ="https://webapp-click4pandit.azurewebsites.net/Home/Privacy?moblieView=YES";
 
 
         mActivityPrivacypolicyBinding.wvPrivacyPolicy.getSettings().setLoadsImagesAutomatically(true);

@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/dimen_150dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
-                    android:src="@drawable/banner"
+                    android:src="@drawable/hanumanji"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/searchAuto"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent">
@@ -109,9 +109,9 @@
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:text="@string/yourpuja"
                     android:textColor="@color/blackColor"
-                    android:textSize="@dimen/font_14sp"
+                    android:textSize="@dimen/font_12sp"
+                    android.support.design:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                   android.support.design:layout_constraintStart_toStartOf="@+id/tvPickPuja"
                     app:layout_constraintTop_toBottomOf="@+id/tvPujas">
 
                 </TextView>
@@ -122,13 +122,13 @@
                     style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
 
                     android:text="@string/pickpujagot"
                     android:textColor="@color/whiteColor"
                     android:textSize="@dimen/font_12sp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                   android.support.design:layout_constraintStart_toStartOf="@+id/tvForYourself"
+                  android.support.design:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvExperienced">
 
                 </TextView>
@@ -153,13 +153,15 @@
                     style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
                     android:text="@string/choosepuja"
-                    android:textColor="@color/whiteColor"
-                    android:textSize="@dimen/font_14sp"
-                    android.support.design:layout_constraintStart_toStartOf="@+id/tvForYourself"
+                    android:textColor="@color/yellowColor"
+
+                    android:textSize="@dimen/font_12sp"
+                   android.support.design:layout_constraintLeft_toLeftOf="parent"
+                    android.support.design:layout_constraintRight_toRightOf="parent"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/tvForYourself"
-                    app:layout_constraintLeft_toLeftOf="parent"
+
                    >
 
                 </TextView>
@@ -168,9 +170,9 @@
                     android:id="@+id/clTypesPuja"
                     android:layout_width="@dimen/dimen_200dp"
                     android:layout_height="@dimen/dimen_30dp"
-                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
 
-                    android:background="@drawable/newroundedbutton"
+                    android:background="@drawable/ic_newwhiteoval"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvChoosePuja">
@@ -194,7 +196,7 @@
                     android:layout_width="@dimen/dimen_200dp"
                     android:layout_height="@dimen/dimen_30dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
-                    android:background="@drawable/newroundedbutton"
+                    android:background="@drawable/ic_newwhiteoval"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/clTypesPuja">
@@ -218,7 +220,7 @@
                     android:layout_width="@dimen/dimen_120dp"
                     android:layout_height="@dimen/dimen_30dp"
                     android:layout_marginTop="@dimen/dimen_20dp"
-                    android:background="@drawable/newroundblack"
+                    android:background="@drawable/ic_newovalblack"
                     android:gravity="center"
                     android:text="@string/viewpackage"
                     android:textColor="@color/whiteColor"

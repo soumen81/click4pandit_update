@@ -12,9 +12,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class OrderDetailsViewModel extends ViewModel {
-
+    OrderDetailsRepository mOrderDetailsRepository;
 
     @Inject
-    public OrderDetailsViewModel() {
+    public OrderDetailsViewModel(OrderDetailsRepository orderDetailsRepository) {
+        this.mOrderDetailsRepository=orderDetailsRepository;
     }
+
+
 }

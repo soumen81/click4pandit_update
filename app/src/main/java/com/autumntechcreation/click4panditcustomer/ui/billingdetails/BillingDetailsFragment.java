@@ -196,10 +196,10 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             .setTitleText("Error")
                             .setContentText("Please Enter City...")
                             .show();
-                }else if(mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString().trim().equals("")){
+                }else if(mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString().trim().equals("")||(mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString().length()<6)){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
-                            .setContentText("Please Enter PinCode...")
+                            .setContentText("Please Enter Valid PinCode...")
                             .show();
                 }else{
 

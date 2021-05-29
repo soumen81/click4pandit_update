@@ -26,9 +26,9 @@ public class BookingPujaViewModel extends ViewModel {
     }
 
 
-    public LiveData<Resource<List<BookingLocationModel>>> getBookingLocationList() {
+    public LiveData<Resource<List<BookingLocationModel>>> getBookingLocationList(String cityName) {
         mBookingLocationList=new MutableLiveData<>();
-        mBookingLocationList=mBookingPujaRepository.getLocationList();
+        mBookingLocationList=mBookingPujaRepository.getLocationList(cityName);
         return mBookingLocationList;
     }public LiveData<Resource<List<BookingLanguageModel>>> getBookingLanguageList() {
         mBookingLanguageList=new MutableLiveData<>();

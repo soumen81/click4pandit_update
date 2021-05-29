@@ -35,6 +35,7 @@ import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragmentDirection
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
+import com.autumntechcreation.click4panditcustomer.ui.orders.OrderFragment;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryActivity;
 import com.google.gson.Gson;
@@ -295,7 +296,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                     break;
                 case LOADING:
 
-
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), ChoosePackageFragment.this.getString(R.string.please_wait));
 
                     break;
                 case SUCCESS:

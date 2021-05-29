@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dimen_40dp"
         android:layout_marginTop="@dimen/dimen_20dp"
-        android:src="@drawable/ic_logowithtext"
+        android:src="@drawable/ic_newblacklogo"
         android.support.design:layout_constraintLeft_toLeftOf="parent"
         android.support.design:layout_constraintRight_toRightOf="parent"
         android.support.design:layout_constraintTop_toTopOf="parent"></ImageView>
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_30dp"
             android:text="@string/login"
-            android:textSize="@dimen/font_18sp"
+            android:textSize="@dimen/font_14sp"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
            android.support.design:layout_constraintTop_toBottomOf="@+id/imgvwLogoWithText">
@@ -43,10 +43,10 @@
 
         <View
             android:id="@+id/viewLogin"
-            android:layout_width="@dimen/dimen_100dp"
-            android:layout_height="@dimen/dimen_2dp"
+            android:layout_width="@dimen/dimen_70dp"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/buttonColor"
             android:layout_marginTop="@dimen/dimen_5dp"
-            android:background="#D1453E"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
             android.support.design:layout_constraintTop_toBottomOf="@+id/tvLogin"></View>
@@ -74,7 +74,7 @@
                 android:inputType="textEmailAddress"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -102,7 +102,7 @@
                 android:inputType="textPassword"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -115,7 +115,7 @@
             android:onClick="@{(v) -> LoginViewModel.onClickGoToForgetPassword(v)}"
             android:textColor="@color/colorBadge"
             android:layout_marginTop="@dimen/dimen_5dp"
-            android:textSize="@dimen/font_14sp"
+            android:textSize="@dimen/font_10sp"
             android:layout_marginRight="@dimen/dimen_20dp"
             android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutPassword"
             android.support.design:layout_constraintRight_toRightOf="parent"></TextView>
@@ -124,9 +124,9 @@
             android:id="@+id/tvLoginSend"
             style="@style/Style_TextView_FontBold"
             android:layout_width="@dimen/dimen_120dp"
-            android:layout_height="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_30dp"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/newroundedred"
+            android:background="@drawable/ic_newovalblack"
             android:gravity="center"
             android:text="@string/login"
             android:textColor="@color/whiteColor"
@@ -137,6 +137,12 @@
           android.support.design:layout_constraintTop_toBottomOf="@+id/tvForgetPassword">
 
         </TextView>
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android.support.design:layout_constraintRight_toRightOf="parent"
+           android.support.design:layout_constraintLeft_toLeftOf="parent"
+           android.support.design:layout_constraintTop_toBottomOf="@+id/tvLoginSend">
         <TextView
             android:id="@+id/tvDonotaccount"
             android:layout_width="wrap_content"
@@ -146,8 +152,9 @@
             android:textSize="@dimen/font_12sp"
             style="@style/Style_TextView_FontRegular"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
-            android.support.design:layout_constraintRight_toRightOf="parent"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/tvLoginSend">
+          android.support.design:layout_constraintTop_toTopOf="parent"
+
+            >
 
         </TextView>
         <TextView
@@ -161,13 +168,13 @@
             android:textColor="@color/buttonColor"
             android:textSize="@dimen/font_12sp"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/tvLoginSend"
+           android.support.design:layout_constraintTop_toTopOf="parent"
             android.support.design:layout_constraintLeft_toRightOf="@+id/tvDonotaccount"
             >
 
         </TextView>
 
-
+       </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

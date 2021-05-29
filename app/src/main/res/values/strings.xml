@@ -8,7 +8,7 @@
     <string name="confirmpassword">Confirm Password</string>
     <string name="createanaccount">By creating an account,you agree to our</string>
     <string name="termscondition">Terms &amp; conditions</string>
-    <string name="privacypolicy">privacy policy </string>
+    <string name="privacypolicy">Privacy Policy </string>
     <string name="donothaveaccount">Do not have an account?</string>
 
     <string name="signup">Sign Up</string>
@@ -53,8 +53,8 @@
     <string name="Rs1">\u20B9 4100</string>
     <string name="Rs2">\u20B9 3100</string>
     <string name="Rs3">\u20B9 3400</string>
-    <string name="panditsavailable">Book your Puja Now!!! From the Comfort  </string>
-    <string name="convenience">Of Your Home</string>
+    <string name="panditsavailable">Book your Puja Now!!! </string>
+    <string name="convenience"> From the Comfort Of Your Home</string>
     <string name="transparency">You are Only One Click Away From</string>
     <string name="hasslefree">A Divine experience</string>
     <string name="bookpuja">Book your Puja</string>
@@ -63,18 +63,18 @@
     <string name="date">March 10,2021</string>
     <string name="time">10:30 PM</string>
     <string name="ordersummray">Order Summary</string>
-    <string name="pujaname">Puja Name</string>
+    <string name="pujaname">Puja Name:</string>
     <string name="amount">Amount</string>
     <string name="ganeshpuja">Ganesh Puja</string>
-    <string name="packagename">Package</string>
-    <string name="dakshina">Dakshine:</string>
+    <string name="packagename">Package:</string>
+    <string name="dakshina">Dakshine</string>
     <string name="included">Included</string>
-    <string name="allpujasamagries">All Puja Samagri</string>
+    <string name="allpujasamagries">All Puja Samagri:</string>
     <string name="packagedetails">(1 Pandit + All Puja Samagries)</string>
-    <string name="havan">Havan</string>
+    <string name="havan">Havan:</string>
     <string name="priestpreference">Priest Preference:</string>
-    <string name="hindi">Hindi:</string>
-    <string name="datetime">Date &amp; Time </string>
+    <string name="hindi">Hindi</string>
+    <string name="datetime">Date &amp; Time: </string>
     <string name="datetimevalue">16th,May 21 at 3:30 PM</string>
     <string name="subtotal">Sub Total</string>
     <string name="cgst">CGST 9%</string>
@@ -102,7 +102,7 @@
     <string name="contactus">Contact Us</string>
     <string name="name">Name</string>
     <string name="editprofile">Edit Profile</string>
-    <string name="orderno">Order No</string>
+    <string name="orderno">Order No:</string>
     <string name="paid">Paid</string>
     <string name="total1">TOTAL \u20B9 4,000.00</string>
     <string name="orderdetails">Order Details</string>
@@ -140,4 +140,7 @@
     <string name="addressbook">Address Book</string>
     <string name="savechanges">Save Changes</string>
     <string name="profilesave">Your Profile Successfully Changed</string>
+    <string name="accountinfo">Your Information</string>
+    <string name="yourselection">Your Selection</string>
+    <string name="panditpreference">Pandit Preference</string>
 </resources>

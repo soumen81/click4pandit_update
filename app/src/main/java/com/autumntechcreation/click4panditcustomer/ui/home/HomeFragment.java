@@ -203,6 +203,12 @@ public class HomeFragment extends Fragment implements Injectable {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+       // mHomeViewModel.getPujaTypesList().observe(getActivity(), HomeFragment.this::handlePujaTypesList);
+    }
+
     private void handlePujaTypesList(Resource<List<PujaTypesModel>> resource) {
         if (resource != null) {
             JSONObject jsonObject = null;
@@ -240,7 +246,7 @@ public class HomeFragment extends Fragment implements Injectable {
                             //  ArrayList<EnterpriseModel> list1 = new ArrayList<EnterpriseModel>();
                             pujaTypesModellist.clear();
                             mListTypesPuja.clear();
-                            mListTypesPuja.add("Types Of Puja");
+                            mListTypesPuja.add("Types of Puja");
                             for (int i = 0; i < resource.data.size(); i++) {
                                 mListTypesPuja.add(resource.data.get(i).getPujaCtgryDscr());
 
@@ -249,6 +255,7 @@ public class HomeFragment extends Fragment implements Injectable {
                             }
 
                             mSpinPujaTypesAdapter.notifyDataSetChanged();
+                            mFragmentHomeBinding.tvSpinTypeOfPuja.setSelection(0);
                             mListCategoryPuja.clear();
                             mListCategoryPuja.add("Categories");
                             mSpinPujaCategoryAdapter.notifyDataSetChanged();

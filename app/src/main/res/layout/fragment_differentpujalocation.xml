@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_30dp"
             android:text="@string/differentpujalocation"
-            android:textSize="@dimen/font_18sp"
+            android:textSize="@dimen/font_14sp"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
             android.support.design:layout_constraintTop_toTopOf="parent">
@@ -47,7 +47,7 @@
 
         <View
             android:id="@+id/viewDifferentPujaLoc"
-            android:layout_width="@dimen/dimen_190dp"
+            android:layout_width="@dimen/dimen_160dp"
             android:layout_height="@dimen/dimen_2dp"
             android:layout_marginTop="@dimen/dimen_5dp"
             android:background="#D1453E"
@@ -77,7 +77,7 @@
                 android:inputType="text"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -104,7 +104,7 @@
                 android:inputType="text"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -130,7 +130,7 @@
                 android:inputType="textEmailAddress"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -156,7 +156,7 @@
                 android:inputType="number"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -185,7 +185,7 @@
                 android:inputType="text"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -211,7 +211,7 @@
                 android:inputType="text"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -238,7 +238,7 @@
                 android:inputType="text"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -265,7 +265,7 @@
                 android:inputType="number"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -292,7 +292,7 @@
                 android:inputType="text"
                 android:scrollbars="vertical"
                 android:singleLine="true"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -300,9 +300,9 @@
             android:id="@+id/tvSave"
             style="@style/Style_TextView_FontBold"
             android:layout_width="@dimen/dimen_120dp"
-            android:layout_height="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_30dp"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/newroundedred"
+            android:background="@drawable/ic_newovalblack"
             android:gravity="center"
             android:text="@string/save"
             android:textColor="@color/whiteColor"

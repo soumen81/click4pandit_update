@@ -34,7 +34,7 @@ public class BookingPujaRepository {
 
     }
 
-    public LiveData<Resource<List<BookingLocationModel>>> getLocationList() {
+    public LiveData<Resource<List<BookingLocationModel>>> getLocationList(String cityName) {
         return new NetworkBoundResource<List<BookingLocationModel>, List<BookingLocationModel>>(mAppExecutors) {
             private List<BookingLocationModel> resultsDb;
 
@@ -71,7 +71,7 @@ public class BookingPujaRepository {
 
                 String url= AllUrlsAndConfig.BASE_URL+AllUrlsAndConfig.LOCATIONLIST;
                 JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty(AllUrlsAndConfig.SUBLCITYMINTHREECHARS, "ball");
+                jsonObject.addProperty(AllUrlsAndConfig.SUBLCITYMINTHREECHARS, cityName);
                 return mWebservice.getLocationList(url,jsonObject);
 
             }

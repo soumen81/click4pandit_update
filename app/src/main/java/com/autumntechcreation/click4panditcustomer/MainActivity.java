@@ -37,6 +37,8 @@ import com.autumntechcreation.click4panditcustomer.ui.search.SearchActivity;
 import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -323,6 +325,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
+
+        // Fragment currentFragment = MainActivity.this.getSupportFragmentManager().findFragmentById(R.id.fragment);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        int id=navController.getCurrentDestination().getId();
+        if(id==R.id.homeFragmentFragment ){
+            selectedPosition(0);
+
+        }else if(id==R.id.choosePackageFragment ){
+            selectedPosition(1);
+
+        }else if(id==R.id.bookingPujaFragment ){
+            selectedPosition(2);
+
+        }else if(id==R.id.orderSummaryFragment ){
+            selectedPosition(3);
+
+        } else if(id==R.id.billingDetailsFragment ){
+            selectedPosition(4);
+
+        }else if(id==R.id.differentPujaLocationFragment ) {
+            selectedPosition(5);
+
+        }
 
        /* if (getFragmentManager().getBackStackEntryCount() > 0) {
 
@@ -333,17 +359,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             super.onBackPressed();
         }*/
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+      /*  NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
             drawerLayout.closeDrawer(GravityCompat.END);
 
         } else if (navController.popBackStack()) {
 
             Log.e("navController", navController.navigateUp() + "");
+        } else if (getFragmentManager().getBackStackEntryCount() > 0) {
+
+            getFragmentManager().popBackStack();
         } else {
             // super.onBackPressed();
             Static.doExitApp(MainActivity.this);
-        }
+        }*/
     }
 
     @Override
@@ -379,6 +408,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(backGround){
             activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#D1453E"));
             activityMainBinding.imgvwWhiteback.setImageResource(R.drawable.ic_whiteback);
+            activityMainBinding.header.setImageResource(R.drawable.ic_whitelogo);
             activityMainBinding.rlHeader.setBackgroundColor(Color.parseColor("#D1453E"));
             activityMainBinding.header.setBackgroundColor(Color.parseColor("#D1453E"));
             activityMainBinding.imgvwWhiteback.setBackgroundColor(Color.parseColor("#D1453E"));
@@ -396,12 +426,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             activityMainBinding.imgSearch.setBackgroundColor(Color.parseColor("#FFFFFF"));
             activityMainBinding.imgCart.setImageResource(R.drawable.cart_black);
             activityMainBinding.imgCart.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            activityMainBinding.header.setImageResource(R.drawable.ic_black_logo);
         }
 
 
     }
 
+    private void selectedPosition(int pos){
+        NavigationView navigationView = (NavigationView) findViewById(R.id.activity_home_bnView);
+        for (int i = 0; i >=navigationView.getMenu().size(); i++) {
+            navigationView.getMenu().getItem(pos).setChecked(false);
 
+        }
+        navigationView.getMenu().getItem(pos).setChecked(true);
+    }
 
 
 }

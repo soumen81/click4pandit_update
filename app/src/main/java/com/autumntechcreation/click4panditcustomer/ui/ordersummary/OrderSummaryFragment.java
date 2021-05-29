@@ -119,27 +119,35 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
 
         mFragmentOrdersummeryBinding.tvPujaNameValue.setText(pujaName);
         mFragmentOrdersummeryBinding.tvPackageValue.setText(packageTypeIdDesc);
-        mFragmentOrdersummeryBinding.tvPanditDetails.setText(pujaDesc);
-        mFragmentOrdersummeryBinding.tvPriestPreferenceValue.setText(languageName);
+        mFragmentOrdersummeryBinding.tvPanditDetails.setText("("+""+pujaDesc+")");
+        if(locationName.length()>0){
+            mFragmentOrdersummeryBinding.tvLocationValues.setText(locationName);
+        }
+        if(isAllSamagries.equals("Y")){
+            mFragmentOrdersummeryBinding.tvAllPujaValues.setText("Included");
+        }
+        if(languageName.length()>0){
+            mFragmentOrdersummeryBinding.tvPanditPreferenceValues.setText(languageName);
+        }
         if(pujaSamagri.length()>0) {
-            mFragmentOrdersummeryBinding.tvAllPujaSamagriesValue.setText(pujaSamagri);
+
         }else{
             mFragmentOrdersummeryBinding.tvAllPujaSamagries.setVisibility(View.GONE);
         }
         if(procedure.length()>0) {
-            mFragmentOrdersummeryBinding.tvDakshinaValue.setText(procedure);
+
         }else{
-            mFragmentOrdersummeryBinding.tvDakshina.setVisibility(View.GONE);
+
         }
         if(pujaSamagri.length()>0) {
-            mFragmentOrdersummeryBinding.tvAllPujaSamagriesValue.setText(pujaSamagri);
+
         }else{
             mFragmentOrdersummeryBinding.tvAllPujaSamagries.setVisibility(View.GONE);
         }
         if(yajaman.length()>0) {
-            mFragmentOrdersummeryBinding.tvHavanValue.setText(yajaman);
+
         }else{
-            mFragmentOrdersummeryBinding.tvHavan.setVisibility(View.GONE);
+
         }
         mFragmentOrdersummeryBinding.tvDateTimeValue.setText(pujaDate+" " + "at"+" "+ pujaTime );
         mFragmentOrdersummeryBinding.tvSubTotalValue.setText(pujaAmount );

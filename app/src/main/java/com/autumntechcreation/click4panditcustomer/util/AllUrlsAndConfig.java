@@ -20,6 +20,7 @@ public class AllUrlsAndConfig {
     public static final String SENDCUSTOMERFORCUSTINVOICE="/api/TriggerMail/SendEmailForCustInv";
     public static final String GETPROFILE="/api/Profile/GetCustProfileByLogonId";
     public static final String SAVEPROFILE="/api/Profile/SaveCustProfile";
+    public static final String ORDERLIST="/api/OrderSearch/SearchByStandardCriteria";
 
 
 
@@ -171,6 +172,11 @@ public class AllUrlsAndConfig {
     public static final String PHHONENO="phoneNo";
     public static final String FAXNOO="faxNo";
 
+    //Parameter for OrderListing
+    public static final String LOGINID="LogonId";
+    public static final String ORDERDATECRITERIA="OrderDateCriteria";
+    public static final String PAGEINDEX="PageIndex";
+    public static final String PAGESIZE="PageSize";
 
 
 }

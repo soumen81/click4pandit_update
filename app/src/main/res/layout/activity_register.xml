@@ -36,11 +36,10 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimen_40dp"
             android:layout_marginTop="@dimen/dimen_20dp"
-            android:src="@drawable/ic_logowithtext"
+            android:src="@drawable/ic_newblacklogo"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
             android.support.design:layout_constraintTop_toTopOf="parent"></ImageView>
-
 
 
                 <TextView
@@ -50,19 +49,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_30dp"
                     android:text="SignUp"
-                    android:textSize="@dimen/font_18sp"
-                    android.support.design:layout_constraintRight_toRightOf="parent"
+                    android:textSize="@dimen/font_14sp"
                     android.support.design:layout_constraintLeft_toLeftOf="parent"
-                   android.support.design:layout_constraintTop_toBottomOf="@+id/imgvwLogoWithText">
+                    android.support.design:layout_constraintRight_toRightOf="parent"
+                    android.support.design:layout_constraintTop_toBottomOf="@+id/imgvwLogoWithText">
 
                 </TextView>
 
                 <View
                     android:id="@+id/viewSignUp"
                     android:layout_width="@dimen/dimen_100dp"
-                    android:layout_height="@dimen/dimen_2dp"
-                    android:layout_marginTop="@dimen/dimen_5dp"
-                    android:background="#D1453E"
+                    android:layout_height="@dimen/dimen_1dp"
+
+                    android:background="@color/buttonColor"
                     android.support.design:layout_constraintLeft_toLeftOf="parent"
                     android.support.design:layout_constraintRight_toRightOf="parent"
                     android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUp"></View>
@@ -89,7 +88,7 @@
                         android:inputType="text"
                         android:scrollbars="vertical"
                         android:singleLine="true"
-                        android:textSize="@dimen/font_10sp"
+                        android:textSize="@dimen/font_14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/parent1"
                         app:layout_constraintTop_toTopOf="@+id/parent1" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -116,7 +115,7 @@
                         android:inputType="text"
                         android:scrollbars="vertical"
                         android:singleLine="true"
-                        android:textSize="@dimen/font_10sp"
+                        android:textSize="@dimen/font_14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/parent1"
                         app:layout_constraintTop_toTopOf="@+id/parent1" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -144,7 +143,7 @@
                         android:inputType="number"
                         android:scrollbars="vertical"
                         android:singleLine="true"
-                        android:textSize="@dimen/font_10sp"
+                        android:textSize="@dimen/font_14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/parent1"
                         app:layout_constraintTop_toTopOf="@+id/parent1" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -172,7 +171,7 @@
                         android:inputType="textEmailAddress"
                         android:scrollbars="vertical"
                         android:singleLine="true"
-                        android:textSize="@dimen/font_10sp"
+                        android:textSize="@dimen/font_14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/parent1"
                         app:layout_constraintTop_toTopOf="@+id/parent1" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -201,7 +200,7 @@
                         android:scrollbars="vertical"
                         android:singleLine="true"
 
-                        android:textSize="@dimen/font_10sp"
+                        android:textSize="@dimen/font_14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/parent1"
                         app:layout_constraintTop_toTopOf="@+id/parent1" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -231,7 +230,7 @@
                         android:singleLine="true"
                         app:passwordToggleDrawable="@drawable/show_password_selector"
                         app:passwordToggleEnabled="true"
-                        android:textSize="@dimen/font_10sp"
+                        android:textSize="@dimen/font_14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/parent1"
                         app:layout_constraintTop_toTopOf="@+id/parent1" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -296,9 +295,9 @@
                     android:id="@+id/tvSignUpSend"
                     style="@style/Style_TextView_FontBold"
                     android:layout_width="@dimen/dimen_120dp"
-                    android:layout_height="@dimen/dimen_40dp"
+                    android:layout_height="@dimen/dimen_30dp"
                     android:layout_marginTop="@dimen/dimen_10dp"
-                    android:background="@drawable/newroundedred"
+                    android:background="@drawable/ic_newovalblack"
                     android:gravity="center"
                     android:onClick="@{(v) -> RegisterViewModel.clickForRegister(v)}"
                     android:text="@string/signup"
@@ -309,6 +308,13 @@
                     android.support.design:layout_constraintTop_toBottomOf="@+id/tvtermscondition">
 
                 </TextView>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android.support.design:layout_constraintLeft_toLeftOf="parent"
+                    android.support.design:layout_constraintRight_toRightOf="parent"
+                    android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUpSend">
 
                 <TextView
                     android:id="@+id/tvalready"
@@ -319,8 +325,9 @@
                     android:text="Already have an Account?"
                     android:textColor="@color/blackColor"
                     android.support.design:layout_constraintLeft_toLeftOf="parent"
-                    android.support.design:layout_constraintRight_toRightOf="parent"
-                    android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUpSend">
+
+                    android.support.design:layout_constraintTop_toTopOf="parent"
+                   >
 
                 </TextView>
 
@@ -329,15 +336,17 @@
                     style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dimen_10dp"
+
                     android:layout_marginTop="@dimen/dimen_10dp"
                     android:onClick="@{(v) -> RegisterViewModel.onClickGoToLogin(v)}"
                     android:text="Login"
                     android:textColor="@color/redColor"
                     android.support.design:layout_constraintLeft_toRightOf="@+id/tvalready"
-                    android.support.design:layout_constraintTop_toBottomOf="@+id/tvSignUpSend">
+                    android.support.design:layout_constraintTop_toTopOf="parent"
+                   >
 
                 </TextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

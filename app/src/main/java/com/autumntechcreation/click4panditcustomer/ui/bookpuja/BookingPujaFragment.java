@@ -7,6 +7,8 @@ import android.app.TimePickerDialog;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +70,7 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
     private View mView;
     NavController navController;
-    String procedure,pujaName,pujaAmount,pujaDesc,pujaSamagri,yajaman;
+    String procedure,pujaName,pujaAmount,pujaDesc,pujaSamagri,yajaman,item;
     ArrayAdapter<String> mSpinLocationAdapter;
     List<String> mListLocation = new ArrayList<>();
     ArrayList<BookingLocationModel> bookingLocationModellist = new ArrayList<BookingLocationModel>();
@@ -136,42 +138,30 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
 
 
 
-/*
-        mFragmentBookingpujaBinding.carousal.setImageListener(new ImageListener() {
-            @Override
-            public void setImageForPosition(int position, ImageView imageView) {
-                imageView.setImageResource(mImager[position]);
-            }
-        });
-
-        mFragmentBookingpujaBinding.carousal.setImageClickListener(new ImageClickListener() {
-            @Override
-            public void onClick(int position) {
-                Toast.makeText(getActivity(),mImagetitle[position],Toast.LENGTH_SHORT).show();
-            }
-        });
-        mFragmentBookingpujaBinding.carousal.setPageCount(mImager.length);
-
-*/
 
 
-        mBookingPujaViewModel.getBookingLocationList().observe(getActivity(), BookingPujaFragment.this::handleBookingLocationList);
 
-      /*  mSpinLocationAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, mListLocation);
-*/
-
-        ArrayAdapter<String> mSpinLocationAdapter = new ArrayAdapter<String>
-                (getActivity(),android.R.layout.simple_list_item_1,mListLocation);
-        // Specify the layout to use when the list of choices appears
-       // mSpinLocationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-      //  mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setAdapter(mSpinLocationAdapter);
-
-        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setThreshold(1);//will start working from first character
-        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setAdapter(mSpinLocationAdapter);//setting the adapter data into the AutoCompleteTextView
-        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setTextColor(Color.BLACK);
         mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemClickListener(this);
+
+        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mBookingPujaViewModel.getBookingLocationList(mFragmentBookingpujaBinding.tvSpinTypeOfLocation.getText().toString()).observe(getActivity(), BookingPujaFragment.this::handleBookingLocationList);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
 
 
 
@@ -179,9 +169,9 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
         mBookingPujaViewModel.getBookingLanguageList().observe(getActivity(),BookingPujaFragment.this::handleBookingLanguage);
 
         mSpinLanguageAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, mListLanguage);
+                R.layout.spinner_item, mListLanguage);
         // Specify the layout to use when the list of choices appears
-        mSpinLanguageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinLanguageAdapter.setDropDownViewResource(R.layout.spinner_item);
         // Apply the adapter to the spinner
         mFragmentBookingpujaBinding.tvSpinTypeOfLanguage.setAdapter(mSpinLanguageAdapter);
 
@@ -225,7 +215,7 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 try {
                     locationId=mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position).getLangMasterId();
-                    pujaLang = mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position).getLangMasterName();
+                    pujaLang = mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position-1).getLangMasterName();
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -241,10 +231,10 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
         mBookingPujaViewModel.getOnClickBookPackage().observe(this, new Observer<Void>() {
             @Override
             public void onChanged(Void aVoid) {
-
-                if (mFragmentBookingpujaBinding.tvSpinTypeOfLocation.getText().toString()=="Location") {
+                if  (item==null||(item.length()==0)){
                     Toast.makeText(getActivity(), "Please select the Location", Toast.LENGTH_SHORT).show();
-                }else if(mFragmentBookingpujaBinding.tvSpinTypeOfLanguage.getSelectedItem().toString().trim().equalsIgnoreCase("Language")){
+                }
+                else if(mFragmentBookingpujaBinding.tvSpinTypeOfLanguage.getSelectedItem().toString().trim().equalsIgnoreCase("Language")){
                     Toast.makeText(getActivity(), "Please select the Language", Toast.LENGTH_SHORT).show();
                 }else  if(mFragmentBookingpujaBinding.tvBookingDate.getText().equals("Choose Date")) {
                     Toast.makeText(getActivity(), "Please select the Date", Toast.LENGTH_SHORT).show();
@@ -260,7 +250,7 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
                     action.setProcedure(procedure);
                     action.setPujaSamagries(pujaSamagri);
                     action.setYajaman(yajaman);
-                    action.setPujaLocation(locName);
+                    action.setPujaLocation(item);
                     action.setPujaLanguage(pujaLang);
                     action.setPujaDate(pujaDate);
                     action.setPujaTime(pujaTime);
@@ -290,14 +280,11 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-
-
                         int hour = sHour % 12;
                         if (hour == 0)
                             hour = 12;
                         mFragmentBookingpujaBinding.tvBookingTime.setText(String.format("%02d:%02d %s", hour, sMinute, sHour < 12 ? "am" : "pm"));
-                        //mFragmentBookingpujaBinding.tvBookingTime.setText(sHour + ":" + sMinute);
-                       // pujaTime=sHour + ":" + sMinute;
+
                         pujaTime=String.format("%02d:%02d", hour, sMinute);
                     }
                 }, hour, minutes, true);
@@ -379,8 +366,17 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
                                                 bookingLocationModellist.add(resource.data.get(i));
 
                                             }
+                                            ArrayAdapter<String> mSpinLocationAdapter = new ArrayAdapter<String>
+                                                    (getActivity(),R.layout.autocom_item,mListLocation);
+
+                                            mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setThreshold(1);//will start working from first character
+                                            mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setAdapter(mSpinLocationAdapter);//setting the adapter data into the AutoCompleteTextView
+                                            mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setTextColor(Color.BLACK);
+                                            mSpinLocationAdapter.notifyDataSetChanged();
+
+
                                             Log.e("LISSSST", mListLocation.size() + "");
-                                         //   mSpinLocationAdapter.notifyDataSetChanged();
+
                                             DisplayDialog.getInstance().dismissAlertDialog();
 
 
@@ -467,7 +463,9 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String item = parent.getItemAtPosition(position).toString();
+
+         item = parent.getItemAtPosition(position).toString();
+
 
         // create Toast with user selected value
        // Toast.makeText(getActivity(), "Selected Item is: \t" + item, Toast.LENGTH_LONG).show();
@@ -477,6 +475,7 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
         try {
             locationId=mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
             locName = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();
+            Log.e("LOCATIONNAME",locName);
         }catch (Exception e){
             e.printStackTrace();
         }

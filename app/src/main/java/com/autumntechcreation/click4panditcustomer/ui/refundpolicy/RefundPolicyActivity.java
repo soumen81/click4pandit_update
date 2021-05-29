@@ -34,7 +34,8 @@ public class RefundPolicyActivity extends AppCompatActivity {
         mActivityRefundpolicyBinding.setLifecycleOwner(this);
         mActivityRefundpolicyBinding.setRefundPolicyViewModel(mRefundPolicyViewModel);
 
-        String url ="https://www.click4pandit.com/Home/Refund";
+        //String url ="https://www.click4pandit.com/Home/Refund";
+        String url ="https://webapp-click4pandit.azurewebsites.net/Home/Refund?moblieView=YES";
 
         mActivityRefundpolicyBinding.wvRefundPolicy.getSettings().setLoadsImagesAutomatically(true);
         mActivityRefundpolicyBinding.wvRefundPolicy.getSettings().setJavaScriptEnabled(true);

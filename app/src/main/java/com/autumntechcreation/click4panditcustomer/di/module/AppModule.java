@@ -20,6 +20,7 @@ import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileRep
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
+import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderRepository;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryRepository;
 import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyRepository;
@@ -187,5 +188,10 @@ public class AppModule {
     @Singleton
     SearchRepository provideSearchRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new SearchRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+    @Provides
+    @Singleton
+    OrderDetailsRepository provideOrderDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new OrderDetailsRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

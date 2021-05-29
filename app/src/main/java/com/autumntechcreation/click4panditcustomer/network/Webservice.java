@@ -15,6 +15,7 @@ import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.TriggerMail
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
+import com.autumntechcreation.click4panditcustomer.ui.orders.OrderListModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.CustomerGetProfileModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.SaveCustomerprofileModel;
@@ -149,6 +150,13 @@ public interface Webservice {
      @POST()
     LiveData<ApiResponse<SaveCustomerprofileModel>> customerSaveProfile(@Url String apiname,
                                                                        @Body JsonObject jsonObject
+
+    );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<List<OrderListModel>>> getOrderList(@Url String apiname,
+                                                                    @Body JsonObject jsonObject
 
     );
 

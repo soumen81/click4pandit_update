@@ -27,12 +27,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/buttonColor"
+        android:paddingBottom="@dimen/dimen_10dp"
         android:orientation="vertical">
     <ImageView
         android:id="@+id/imgvwPandit"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dimen_150dp"
-        android:src="@drawable/banner"
+        android:src="@drawable/hanumanji"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -60,7 +61,7 @@
         android:textColor="@color/blackColor"
         style="@style/Style_TextView_FontBold"
         android:text="@string/panditsavailable"
-        android:textSize="@dimen/font_14sp"
+        android:textSize="@dimen/font_12sp"
         android:layout_marginTop="@dimen/dimen_10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -74,7 +75,7 @@
         style="@style/Style_TextView_FontBold"
         android:textColor="@color/blackColor"
         android:text="@string/convenience"
-        android:textSize="@dimen/font_14sp"
+        android:textSize="@dimen/font_12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPanditsAvailable">
@@ -87,7 +88,7 @@
         android:textColor="@color/whiteColor"
         android:text="@string/transparency"
         style="@style/Style_TextView_FontRegular"
-        android:textSize="@dimen/font_14sp"
+        android:textSize="@dimen/font_12sp"
         android:layout_marginTop="@dimen/dimen_20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -101,7 +102,7 @@
         android:textColor="@color/whiteColor"
         android:text="@string/hasslefree"
         style="@style/Style_TextView_FontRegular"
-        android:textSize="@dimen/font_14sp"
+        android:textSize="@dimen/font_12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTransparency">
@@ -115,7 +116,7 @@
         android:text="@string/bookpuja"
         android:layout_marginTop="@dimen/dimen_10dp"
         style="@style/Style_TextView_FontRegular"
-        android:textSize="@dimen/font_14sp"
+        android:textSize="@dimen/font_12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
 app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
@@ -128,7 +129,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/newroundedbutton"
+            android:background="@drawable/ic_newwhiteoval"
             app:layout_constraintTop_toBottomOf="@+id/tvBookPuja">
          <ImageView
                 android:id="@+id/imgvwLocation"
@@ -170,7 +171,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
 
                 android:textSize="@dimen/font_12sp"
                 android:textColorHint="@color/blackColor"
-                android:background="@drawable/newroundedbutton"
+                android:background="@drawable/ic_newwhiteoval"
                 style="@style/Style_TextView_FontRegular"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -199,28 +200,27 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/newroundedbutton"
+            android:background="@drawable/ic_newwhiteoval"
             app:layout_constraintTop_toBottomOf="@+id/clLocation">
-            <ImageView
+           <!-- <ImageView
                 android:id="@+id/imgvwLanguage"
                 android:layout_width="@dimen/dimen_30dp"
                 android:layout_height="@dimen/dimen_20dp"
                 android:paddingLeft="@dimen/dimen_10dp"
-                android:visibility="invisible"
+                android:visibility="gone"
                 android:src="@drawable/ic_ttext"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"></ImageView>
+                app:layout_constraintLeft_toLeftOf="parent"></ImageView>-->
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/tvSpinTypeOfLanguage"
-                android:layout_width="@dimen/dimen_170dp"
+                android:layout_width="@dimen/dimen_190dp"
                 android:layout_height="@dimen/dimen_30dp"
-
                 style="@style/Style_TextView_FontRegular"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:background="@android:color/transparent"
-                android:drawablePadding="@dimen/dimen_10dp"
+
                 android.support.design:layout_constraintTop_toTopOf="parent"
                 >
 
@@ -242,7 +242,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/newroundedbutton"
+            android:background="@drawable/ic_newwhiteoval"
             app:layout_constraintTop_toBottomOf="@+id/clLanguage">
             <ImageView
                 android:id="@+id/imgvwBookDate"
@@ -259,7 +259,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Choose Date"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_12sp"
                 style="@style/Style_TextView_FontRegular"
                 android:textColor="@color/blackColor"
                 android:layout_marginLeft="@dimen/dimen_10dp"
@@ -283,7 +283,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/newroundedbutton"
+            android:background="@drawable/ic_newwhiteoval"
             app:layout_constraintTop_toBottomOf="@+id/clBookDate">
             <ImageView
                 android:id="@+id/imgvwBookTime"
@@ -300,7 +300,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Choose Time"
-                android:textSize="@dimen/font_10sp"
+                android:textSize="@dimen/font_12sp"
                 style="@style/Style_TextView_FontRegular"
                 android:textColor="@color/blackColor"
                 android:layout_marginLeft="@dimen/dimen_10dp"
@@ -321,7 +321,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
             android:id="@+id/tvBookConfirm"
             android:layout_width="@dimen/dimen_120dp"
             android:layout_height="@dimen/dimen_30dp"
-            android:background="@drawable/newroundblack"
+            android:background="@drawable/ic_newovalblack"
             android:gravity="center"
             style="@style/Style_TextView_FontBold"
             android:textSize="@dimen/font_12sp"

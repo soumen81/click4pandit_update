@@ -36,7 +36,8 @@ public class TermsConditionActivity extends AppCompatActivity {
         mActivityTermsconditionBinding.setTermsConditionViewModel(mTermsConditionViewModel);
 
 
-        String url ="https://www.click4pandit.com/Home/Terms";
+        //String url ="https://www.click4pandit.com/Home/Terms";
+        String url ="https://webapp-click4pandit.azurewebsites.net/Home/Terms?moblieView=YES";
 
         mActivityTermsconditionBinding.wvTermsCondition.getSettings().setLoadsImagesAutomatically(true);
         mActivityTermsconditionBinding.wvTermsCondition.getSettings().setJavaScriptEnabled(true);
