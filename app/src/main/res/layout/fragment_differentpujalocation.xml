@@ -39,6 +39,7 @@
             android:layout_marginTop="@dimen/dimen_30dp"
             android:text="@string/differentpujalocation"
             android:textSize="@dimen/font_14sp"
+            android:textColor="@color/blackColor"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
             android.support.design:layout_constraintRight_toRightOf="parent"
             android.support.design:layout_constraintTop_toTopOf="parent">

@@ -24,6 +24,7 @@
 
         <item
             android:id="@+id/menu_addressbook"
+            android:visible="false"
             android:icon="@drawable/addressbook"
             android:title="@string/addressbook" />
     </group>

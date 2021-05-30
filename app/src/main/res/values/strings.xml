@@ -59,6 +59,7 @@
     <string name="hasslefree">A Divine experience</string>
     <string name="bookpuja">Book your Puja</string>
     <string name="location">Location</string>
+    <string name="locationn">Location:</string>
     <string name="language">Language</string>
     <string name="date">March 10,2021</string>
     <string name="time">10:30 PM</string>
@@ -142,5 +143,5 @@
     <string name="profilesave">Your Profile Successfully Changed</string>
     <string name="accountinfo">Your Information</string>
     <string name="yourselection">Your Selection</string>
-    <string name="panditpreference">Pandit Preference</string>
+    <string name="panditpreference">Pandit Preference:</string>
 </resources>

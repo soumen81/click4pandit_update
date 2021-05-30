@@ -12,6 +12,7 @@ import com.autumntechcreation.click4panditcustomer.adapter.OrderListingAdapter;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageListModel;
 import com.autumntechcreation.click4panditcustomer.util.SingleLiveEvent;
+import com.autumntechcreation.click4panditcustomer.util.Static;
 
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class OrderViewModel extends ViewModel {
         return "" + list.get(position).getPujaSubCtgryDscr();
     }public String getCustOrderDate(int position){
         List<OrderListModel> list = mOrderListModel.getValue();
-        return "" + list.get(position).getCustOrdDt();
+        return "" + Static.convertToDate(list.get(position).getCustOrdDt());
     }public String getBkgPkgTotalAmount(int position){
         List<OrderListModel> list = mOrderListModel.getValue();
         return "" + list.get(position).getCustBkgPkgTotalAmt();

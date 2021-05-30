@@ -102,7 +102,25 @@ public class Static {
         double scale = Math.pow(10, places);
         return Math.round(value * scale) / scale;
     }
-
+    public static String convertToDate(String strDate) {
+        SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        SimpleDateFormat formatter2= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");//2020-08-19T18:30:00.000Z
+        Date date = null;
+        try {
+            date = formatter1.parse(strDate);
+        } catch (ParseException e) {
+            try{
+                date = formatter2.parse(strDate);
+            }catch (ParseException e2){
+                e2.printStackTrace();
+            }
+            e.printStackTrace();
+        }
+        SimpleDateFormat formatter3 = new SimpleDateFormat("dd/MM/yyyy");
+        strDate = formatter3.format(date);
+        System.out.println("Date Format with MM/dd/yyyy : " + strDate);
+        return strDate;
+    }
 
     public static String convertNewDate(String strDate) {
         SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
