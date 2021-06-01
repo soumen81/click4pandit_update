@@ -8,6 +8,8 @@ import com.autumntechcreation.click4panditcustomer.network.AppExecutors;
 import com.autumntechcreation.click4panditcustomer.network.Webservice;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
 import com.autumntechcreation.click4panditcustomer.splash.SplashRepository;
+import com.autumntechcreation.click4panditcustomer.ui.address.AddressRepository;
+import com.autumntechcreation.click4panditcustomer.ui.addupdateremoveaddress.AddUpdateRemoveRepository;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaRepository;
 import com.autumntechcreation.click4panditcustomer.ui.cashfree.CashFreeRepository;
@@ -193,5 +195,17 @@ public class AppModule {
     @Singleton
     OrderDetailsRepository provideOrderDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new OrderDetailsRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    AddressRepository provideAddressRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new AddressRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    AddUpdateRemoveRepository provideAddUpdateRemoveRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new AddUpdateRemoveRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

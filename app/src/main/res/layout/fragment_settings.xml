@@ -55,6 +55,7 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@drawable/newroundedyellow"
             android:drawableRight="@drawable/ic_arrowblack"
+            android:visibility="gone"
             android:gravity="center"
             android:text="@string/changepassword"
             android:textColor="@color/blackColor"

@@ -232,6 +232,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //isHomeFragment=false;
 
                 break;
+                case R.id.menu_changepassword:
+                tabSelected = 4;
+                NavHostFragment navHostFragmentChangePassword= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                    navHostFragmentChangePassword.getNavController().navigate(R.id.changePasswordAcitivity);
+                //isHomeFragment=false;
+
+                break;
+                case R.id.menu_addressbook:
+                tabSelected = 5;
+                NavHostFragment navHostAddressBook= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                    navHostAddressBook.getNavController().navigate(R.id.addressFragment);
+                //isHomeFragment=false;
+
+                break;
                 case R.id.menu_signout:
                     /*tabSelected = 4;
                     NavHostFragment navHostFragmentSignout= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);

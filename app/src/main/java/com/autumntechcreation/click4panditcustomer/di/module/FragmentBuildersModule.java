@@ -1,5 +1,7 @@
 package com.autumntechcreation.click4panditcustomer.di.module;
 
+import com.autumntechcreation.click4panditcustomer.ui.address.AddressFragment;
+import com.autumntechcreation.click4panditcustomer.ui.addupdateremoveaddress.AddUpdateRemoveFragment;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment;
 import com.autumntechcreation.click4panditcustomer.ui.cashfree.CashFreeFragment;
@@ -58,4 +60,10 @@ public abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract CashFreeFragment contributeCashFreeFragment();
+
+    @ContributesAndroidInjector
+    abstract AddressFragment contributeAddressFragment();
+
+    @ContributesAndroidInjector
+    abstract AddUpdateRemoveFragment contributeAddUpdateRemoveFragment();
 }

@@ -135,6 +135,37 @@
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:textColorHint="@color/colorBadge"
+            android:hint="@string/mobileNo"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtMobileNo"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:editable="false"
+                android:inputType="number"
+                android:scrollbars="vertical"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputAlternateMobileNo"
             android:layout_width="match_parent"
@@ -144,7 +175,7 @@
             android:layout_marginRight="@dimen/dimen_20dp"
             android:textColorHint="@color/colorBadge"
             android:hint="@string/alternatemobileno"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputMobileNo"
 
             >
 
@@ -154,6 +185,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:maxLength="10"
                 android:editable="false"
                 android:inputType="number"
                 android:scrollbars="vertical"
@@ -293,7 +325,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_10dp"
-            android:background="@drawable/round_sideyellow_corner"
+
             android:paddingBottom="@dimen/dimen_10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

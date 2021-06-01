@@ -142,7 +142,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         String mobileNo=mBillingDetailsViewModel.getMobile();
         mFragmentBillingdetailsBinding.edtTxtFirstName.setText(firstName);
         mFragmentBillingdetailsBinding.edtTxtLastName.setText(lastName);
-        mFragmentBillingdetailsBinding.edtAlternateMobileNo.setText(mobileNo);
+        mFragmentBillingdetailsBinding.edtMobileNo.setText(mobileNo);
         mFragmentBillingdetailsBinding.edtTxtEmail.setText(emailId);
         mFragmentBillingdetailsBinding.edtTxtState.setText("West Bengal");
         mFragmentBillingdetailsBinding.edtTxtCity.setText("Kolkata");
@@ -172,9 +172,9 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             .setTitleText("Error")
                             .setContentText("Please Enter Valid  Email Address...")
                             .show();
-                } else if (!Patterns.PHONE.matcher(mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString()).matches()||
+                } else if (!Patterns.PHONE.matcher(mFragmentBillingdetailsBinding.edtMobileNo.getText().toString()).matches()||
 
-                        (mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString().trim().equals(""))||(mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString().trim().length()<10)){
+                        (mFragmentBillingdetailsBinding.edtMobileNo.getText().toString().trim().equals(""))||(mFragmentBillingdetailsBinding.edtMobileNo.getText().toString().trim().length()<10)){
                     //  Toast.makeText(SettingPageActivity.this,R.string.please_enter_valid_phone_number,Toast.LENGTH_SHORT).show();
 
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
@@ -258,7 +258,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                         mFragmentBillingdetailsBinding.tvLocation.setText(shippingAddress+","+shippingState+","+shippingCity+","+shippingPincode);
 
                         mBillingDetailsViewModel.getProceedToPayForShippingAddress(shippingDateTime,shippingbkgId,mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString(),mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString(),
-                                mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString(),
+                                mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),mFragmentBillingdetailsBinding.edtMobileNo.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtTxtCity.getText().toString(),mFragmentBillingdetailsBinding.edtTxtState.getText().toString(),mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString(),Double.parseDouble(shippingOrderAmount),shippingOrderId,shippingFirstName,shippingLastName,shippingAlternateMobile,
                                 shippingemail,shippingAddress, shippingPincode,shippingAdditionalInfo
                                 ).observe(getActivity(), BillingDetailsFragment.this::handleProceedToPay);
@@ -268,7 +268,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
                         mBillingDetailsViewModel.getProceedToPayForBillingAddress(pujaDatetime,bkgId,mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString(),mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),
-                                mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString(),mFragmentBillingdetailsBinding.edtTxtCity.getText().toString(),
+                                mFragmentBillingdetailsBinding.edtMobileNo.getText().toString(),mFragmentBillingdetailsBinding.edtTxtCity.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtTxtState.getText().toString(),mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString(),Double.parseDouble(orderAmount),
                                 orderId).observe(getActivity(), BillingDetailsFragment.this::handleProceedToPay);
                     }

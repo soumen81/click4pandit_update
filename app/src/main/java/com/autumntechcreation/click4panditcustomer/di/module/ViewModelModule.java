@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.autumntechcreation.click4panditcustomer.MainViewModel;
 import com.autumntechcreation.click4panditcustomer.di.qualifiers.ViewModelKey;
 import com.autumntechcreation.click4panditcustomer.splash.SplashViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.address.AddressViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.addupdateremoveaddress.AddUpdateRemoveViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.cashfree.CashFreeViewModel;
@@ -170,4 +172,14 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SearchViewModel.class)
     abstract ViewModel bindSearchViewModel(SearchViewModel searchViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddUpdateRemoveViewModel.class)
+    abstract ViewModel bindAddUpdateRemoveViewModel(AddUpdateRemoveViewModel addUpdateRemoveViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddressViewModel.class)
+    abstract ViewModel bindAddressViewModel(AddressViewModel addUpdateRemoveViewModel);
 }

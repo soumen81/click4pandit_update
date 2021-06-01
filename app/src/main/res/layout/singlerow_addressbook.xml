@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+        <variable
+            name="viewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.address.AddressViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dimen_10dp"
+    android:background="@color/lightgrey">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clAddressList"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_120dp"
+        android:layout_margin="@dimen/dimen_10dp"
+        android:background="@drawable/round_white_corner"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@{viewModel.getCustName(position)}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@{viewModel.getCustAddress(position)}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"></TextView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tvEdit"
+                style="@style/Style_TextView_FontBold"
+                android:layout_width="@dimen/dimen_100dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_marginLeft="@dimen/dimen_20dp"
+                android:background="@drawable/newroundedred"
+                android:gravity="center"
+                android:text="@string/edit"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/font_14sp"
+                android:onClick="@{(v) -> viewModel.onClickUpdateList(v,position)}"
+                android.support.design:layout_constraintBottom_toBottomOf="parent"
+                android.support.design:layout_constraintLeft_toLeftOf="parent">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvRemove"
+                style="@style/Style_TextView_FontBold"
+                android:layout_width="@dimen/dimen_100dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_marginRight="@dimen/dimen_20dp"
+                android:background="@drawable/newroundedred"
+                android:gravity="center"
+                android:text="@string/remove"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/font_14sp"
+                android:onClick="@{(v) -> viewModel.onClickRemoveList(v,position)}"
+                android.support.design:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

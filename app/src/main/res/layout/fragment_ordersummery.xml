@@ -26,8 +26,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/whiteColor"
-        android:paddingBottom="@dimen/dimen_10dp"
+        android:background="@color/colorAshLighter"
+
         android:orientation="vertical">
     <TextView
         android:id="@+id/tvOrderSummary"
@@ -247,12 +247,12 @@
             android:id="@+id/clTotalAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_10dp"
-            android:background="@drawable/round_yellow_corner"
+
+          android:background="@color/whiteColor"
             android:paddingBottom="@dimen/dimen_10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewDateTimeValue">
+           app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
                 android:id="@+id/tvSubTotal"
@@ -393,24 +393,25 @@
                 android:textColor="@color/blackColor"
                 app:layout_constraintRight_toLeftOf="@+id/tvTotalValue"
                 app:layout_constraintTop_toBottomOf="@+id/tvSgstValue"></TextView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <TextView
-            android:id="@+id/tvConfirm"
-            android:layout_width="@dimen/dimen_120dp"
-            android:layout_height="@dimen/dimen_30dp"
-            android:background="@drawable/newroundblack"
-            android:gravity="center"
-            style="@style/Style_TextView_FontSemiBold"
-            android:textSize="@dimen/font_12sp"
-            android:textColor="@color/whiteColor"
-            android:onClick="@{(v) -> OrderSummeryViewModel.onClickConfirmOrder(v)}"
+            <TextView
+                android:id="@+id/tvConfirm"
+                android:layout_width="@dimen/dimen_120dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:background="@drawable/ic_newovalblack"
+                android:gravity="center"
+                style="@style/Style_TextView_FontSemiBold"
+                android:textSize="@dimen/font_12sp"
+                android:textColor="@color/whiteColor"
+                android:onClick="@{(v) -> OrderSummeryViewModel.onClickConfirmOrder(v)}"
 
-            android:text="@string/submit"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clTotalAmount">
-        </TextView>
+                android:text="@string/submit"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/tvTotalValue">
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

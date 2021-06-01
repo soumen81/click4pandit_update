@@ -8,6 +8,30 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="addUpdateRemoveFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="885" />
+                            <option name="y" value="-1132" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="addressFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="535" />
+                            <option name="y" value="-1196" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="billingDetailsFragment">
                     <value>
                       <LayoutPositions>
@@ -50,6 +74,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_bookingPujaFragment_to_choosePackageFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_bookingPujaFragment_to_orderSummaryFragment">
                               <value>
                                 <LayoutPositions />
@@ -67,6 +96,18 @@
                           <Point>
                             <option name="x" value="1440" />
                             <option name="y" value="338" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="changePasswordAcitivity">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="111" />
+                            <option name="y" value="-1200" />
                           </Point>
                         </option>
                       </LayoutPositions>

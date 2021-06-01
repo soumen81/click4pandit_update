@@ -2,6 +2,8 @@ package com.autumntechcreation.click4panditcustomer.network;
 
 import androidx.lifecycle.LiveData;
 
+import com.autumntechcreation.click4panditcustomer.ui.address.AddressListModel;
+import com.autumntechcreation.click4panditcustomer.ui.addupdateremoveaddress.AddAddressModel;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.CashFreeTokenModel;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.ProceedtoPayModel;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.SendEmailForCustInvoiceModel;
@@ -157,6 +159,19 @@ public interface Webservice {
     @POST()
     LiveData<ApiResponse<List<OrderListModel>>> getOrderList(@Url String apiname,
                                                                     @Body JsonObject jsonObject
+
+    );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<List<AddressListModel>>> getAddressList(@Url String apiname,
+                                                               @Body JsonObject jsonObject
+
+    );
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<AddAddressModel>> customerAddAddress(@Url String apiname,
+                                                               @Body JsonObject jsonObject
 
     );
 

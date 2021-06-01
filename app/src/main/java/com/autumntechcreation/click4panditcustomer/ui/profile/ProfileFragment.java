@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -151,7 +154,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, 1);
-
+              //  UploadImageToServer();
             }
         });
 
@@ -182,8 +185,9 @@ public class ProfileFragment extends Fragment implements Injectable {
     }
     public void UploadImageToServer(){
 
-        FixBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-
+       FixBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+       
+       // FixBitmap = ((BitmapDrawable)  mFragmentProfileBinding.imgVwProfile.getDrawable()).getBitmap();
         byteArray = byteArrayOutputStream.toByteArray();
 
         ConvertImage = Base64.encodeToString(byteArray, Base64.DEFAULT);

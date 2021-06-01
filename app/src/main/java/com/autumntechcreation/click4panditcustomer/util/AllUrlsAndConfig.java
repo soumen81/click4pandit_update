@@ -21,6 +21,8 @@ public class AllUrlsAndConfig {
     public static final String GETPROFILE="/api/Profile/GetCustProfileByLogonId";
     public static final String SAVEPROFILE="/api/Profile/SaveCustProfile";
     public static final String ORDERLIST="/api/OrderSearch/SearchByStandardCriteria";
+    public static final String ADDADDRESS="/api/ShippingAddress/SaveShippingAddress";
+    public static final String ADDRESSLIST="/api/ShippingAddress/SearchShippingAddress";
 
 
 
@@ -178,5 +180,34 @@ public class AllUrlsAndConfig {
     public static final String PAGEINDEX="PageIndex";
     public static final String PAGESIZE="PageSize";
 
+    //Parameter for Address Listing
+    public static final String LOGID="LogonId";
+    public static final String SHIPPINGADDRID="ShippingAddrId";
+
+    //Parameter for AddAddress..
+    public static final String ADDRACTION="addrAction";
+    public static final String SHIPADDRID="shippingAddrId";
+    public static final String UPDATESTMP="updtStamp";
+    public static final String UPDATEUSR="updtUser";
+    public static final String ORGLSTMP="orglStamp";
+    public static final String ORGLUSR="orglUser";
+    public static final String DELFLLG="delFlg";
+    public static final String CUSTMASTEID="custMasterId";
+    public static final String LOID="logonId";
+    public static final String FNME="firstName";
+    public static final String LNME="lastName";
+    public static final String ADDR11="addr1";
+    public static final String ADDR22="addr2";
+    public static final String ADD33="addr3";
+    public static final String CITID="ctyId";
+    public static final String CITDESC="cityDescr";
+    public static final String STIDDD="stId";
+    public static final String STDESC="stDescr";
+    public static final String CNTRYID="cntryId";
+    public static final String CNTRYDESC="cntryDescr";
+    public static final String POST="postal";
+    public static final String ISSDEFAULT="isDefault";
+    public static final String SEQQNO="seqNo";
+    public static final String DSPORD="dspOrd";
 
 }

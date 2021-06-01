@@ -24,7 +24,6 @@
 
         <item
             android:id="@+id/menu_addressbook"
-            android:visible="false"
             android:icon="@drawable/addressbook"
             android:title="@string/addressbook" />
     </group>
@@ -48,6 +47,15 @@
     </group>
     <group
         android:id="@+id/grp6"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_changepassword"
+            android:icon="@drawable/eye"
+            android:title="@string/changepassword" />
+    </group>
+    <group
+        android:id="@+id/grp7"
         android:checkableBehavior="single">
 
         <item

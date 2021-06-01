@@ -622,6 +622,101 @@
         android:id="@+id/searchActivity"
         android:name="com.autumntechcreation.click4panditcustomer.ui.search.SearchActivity"
         android:label="SearchActivity" />
+    <activity
+        android:id="@+id/changePasswordAcitivity"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordAcitivity"
+        android:label="ChangePasswordAcitivity" />
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.address.AddressFragment"
+        android:label="AddressFragment" >
+        <argument
+            android:name="addAction"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="updateAction"
+            android:defaultValue="0"
+            app:argType="string" />
+         <argument
+            android:name="removeAction"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="firstName"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="lastName"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="address1"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="city"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="state"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="pincode"
+            android:defaultValue="0"
+            app:argType="string" />
+
+
+        <action
+            android:id="@+id/action_addressFragment_to_addUpdateRemoveFragment"
+            app:destination="@id/addUpdateRemoveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addUpdateRemoveFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.addupdateremoveaddress.AddUpdateRemoveFragment"
+        android:label="AddUpdateRemoveFragment" >
+        <argument
+            android:name="addAction"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="updateAction"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="removeAction"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="firstName"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="lastName"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="address1"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="city"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="state"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="pincode"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_addUpdateRemoveFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+    </fragment>
 
 
 </navigation>

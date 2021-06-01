@@ -35,12 +35,12 @@ public class ContactUsActivity extends AppCompatActivity {
         mActivityContactusBinding.setContactUsViewModel(contactUsViewModel);
 
 
-        String url ="https://www.click4pandit.com/Home/ContactUs";
+       /* String url ="https://www.click4pandit.com/Home/ContactUs";
 
         mActivityContactusBinding.wvContactUs.getSettings().setLoadsImagesAutomatically(true);
         mActivityContactusBinding.wvContactUs.getSettings().setJavaScriptEnabled(true);
         mActivityContactusBinding.wvContactUs.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        mActivityContactusBinding.wvContactUs.loadUrl(url);
+        mActivityContactusBinding.wvContactUs.loadUrl(url);*/
 
         mActivityContactusBinding.imgbackContactus.setOnClickListener(new View.OnClickListener() {
             @Override

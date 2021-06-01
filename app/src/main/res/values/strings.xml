@@ -91,7 +91,7 @@
     <string name="state">State</string>
     <string name="city">City</string>
     <string name="pincode">Pin Code</string>
-    <string name="adddifferentloc">Add a Different Puja Location</string>
+    <string name="adddifferentloc">Different Puja Location</string>
     <string name="proceedtopay">Proceed to Pay</string>
     <string name="additionalinfo">Additional Information</string>
     <string name="differentpujalocation">Different Puja Location</string>
@@ -140,8 +140,23 @@
     <string name="account">Account</string>
     <string name="addressbook">Address Book</string>
     <string name="savechanges">Save Changes</string>
+    <string name="removechanges">Remove Changes</string>
+    <string name="updatechanges">Update Changes</string>
     <string name="profilesave">Your Profile Successfully Changed</string>
     <string name="accountinfo">Your Information</string>
     <string name="yourselection">Your Selection</string>
     <string name="panditpreference">Pandit Preference:</string>
+    <string name="addnewaddress">Add New Address</string>
+    <string name="saveaddress">Save Address</string>
+    <string name="address1">Address1</string>
+    <string name="address2">Address2</string>
+    <string name="address3">Address3</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+    <string name="addressautumn">Autumntech Creation Pvt ltd</string>
+    <string name="addressautumn1">91/A/1,ParkStreet Avani Signature,</string>
+    <string name="addressautumn2">Kolkata -700016</string>
+    <string name="datetimeoffice">Mon-Sat,10:00 am-8:00 pm</string>
+    <string name="dialoffice">1800 891 9016/ + 91 76050 106 56</string>
+    <string name="contactoffice">contact@click4pandit.com</string>
 </resources>
