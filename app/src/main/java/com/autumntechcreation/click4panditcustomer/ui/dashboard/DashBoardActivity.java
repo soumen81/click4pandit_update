@@ -42,6 +42,7 @@ public class DashBoardActivity extends AppCompatActivity {
             public void onChanged(@Nullable Void _) {
                 Intent in=new Intent(DashBoardActivity.this, LoginActivity.class);
                 startActivity(in);
+                finish();
 
             }
         });
@@ -50,6 +51,7 @@ public class DashBoardActivity extends AppCompatActivity {
             public void onChanged(@Nullable Void _) {
                 Intent in=new Intent(DashBoardActivity.this, RegisterActivity.class);
                 startActivity(in);
+                finish();
             }
         });
     }

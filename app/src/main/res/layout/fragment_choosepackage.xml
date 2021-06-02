@@ -109,17 +109,31 @@
 
         </TextView>
         <TextView
-            android:id="@+id/tvChoosePackage"
+            android:id="@+id/tvPujaName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/yellowColor"
-            android:text="@string/choosepackage"
+
             style="@style/Style_TextView_FontRegular"
             android:textSize="@dimen/font_12sp"
             android:layout_marginTop="@dimen/dimen_10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDoorstep">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvChoosePackage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/whiteColor"
+            android:text="@string/choosepackage"
+            style="@style/Style_TextView_FontRegular"
+            android:textSize="@dimen/font_12sp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPujaName">
 
         </TextView>
         <androidx.recyclerview.widget.RecyclerView

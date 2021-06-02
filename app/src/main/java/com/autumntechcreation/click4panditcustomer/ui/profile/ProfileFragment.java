@@ -176,7 +176,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                 mFragmentProfileBinding.imgVwProfile.setImageBitmap(FixBitmap);
                 mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
                 mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
-               // UploadImageToServer();
+                UploadImageToServer();
             } catch (IOException e) {
 
                 e.printStackTrace();
@@ -219,21 +219,21 @@ public class ProfileFragment extends Fragment implements Injectable {
 
                 HashMap<String,String> HashMapParams = new HashMap<String,String>();
 
-                HashMapParams.put("cloudFileName", GetImageNameFromEditText);
-                HashMapParams.put("cloudImgId", GetImageNameFromEditText);
-                HashMapParams.put("custMasterId", GetImageNameFromEditText);
-                HashMapParams.put("custMasterId", GetImageNameFromEditText);
-                HashMapParams.put("custMasterProfImgId", GetImageNameFromEditText);
-                HashMapParams.put("delFlg", GetImageNameFromEditText);
-                HashMapParams.put("fileData", GetImageNameFromEditText);
-                HashMapParams.put("fileData", GetImageNameFromEditText);
-                HashMapParams.put("imgAction", GetImageNameFromEditText);
-                HashMapParams.put("logonId", GetImageNameFromEditText);
-                HashMapParams.put("mimeTyp", GetImageNameFromEditText);
-                HashMapParams.put("orglFileName", GetImageNameFromEditText);
-                HashMapParams.put("orglStamp", GetImageNameFromEditText);
-                HashMapParams.put("orglUser", GetImageNameFromEditText);
-                HashMapParams.put("updtStamp", GetImageNameFromEditText);
+                HashMapParams.put("cloudFileName", GetImageNameFromEditText);//IMAGE NAME
+                HashMapParams.put("cloudImgId", GetImageNameFromEditText);//NULL
+                HashMapParams.put("custMasterId", GetImageNameFromEditText);//GETpROFILE
+
+                HashMapParams.put("custMasterProfImgId", GetImageNameFromEditText);//NULL
+                HashMapParams.put("delFlg", GetImageNameFromEditText);//N
+                HashMapParams.put("fileData", GetImageNameFromEditText);//IMAGEDATA
+
+                HashMapParams.put("imgAction", GetImageNameFromEditText);//add,UPDATE
+                HashMapParams.put("logonId", GetImageNameFromEditText);//MAILID
+                HashMapParams.put("mimeTyp", GetImageNameFromEditText);//NULL
+                HashMapParams.put("orglFileName", GetImageNameFromEditText);//NULL
+                HashMapParams.put("orglStamp", GetImageNameFromEditText);//NULL
+                HashMapParams.put("orglUser", GetImageNameFromEditText);//NULL
+                HashMapParams.put("updtStamp", GetImageNameFromEditText);//NULL
 
                // HashMapParams.put(ImageName, ConvertImage);
 

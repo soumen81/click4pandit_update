@@ -73,7 +73,12 @@ public class ChangePasswordAcitivity extends AppCompatActivity {
             }
         });
 
-
+    mActivityChangepasswordBinding.imgbackChangePassword.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            finish();
+        }
+    });
     }
 
 

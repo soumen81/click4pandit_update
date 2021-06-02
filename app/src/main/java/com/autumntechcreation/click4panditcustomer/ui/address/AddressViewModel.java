@@ -60,10 +60,10 @@ public class AddressViewModel extends ViewModel {
 
     public String getCustName(int position){
         List<AddressListModel> list = mAddressListModel.getValue();
-        return "" + list.get(position).getFirstName()+" "+list.get(position).getLastName();
+        return "Name:" +" "+list.get(position).getFirstName()+" "+list.get(position).getLastName();
     }  public String getCustAddress(int position){
         List<AddressListModel> list = mAddressListModel.getValue();
-        return "" + list.get(position).getAddr1();
+        return "Address:"+" "+ list.get(position).getAddr1();
     }
 
     public void onClickUpdateList(View view, int pos){

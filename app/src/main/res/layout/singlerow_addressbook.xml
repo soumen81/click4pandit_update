@@ -32,7 +32,10 @@
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Style_TextView_FontRegular"
+            android:textSize="@dimen/font_12sp"
             android:layout_margin="@dimen/dimen_10dp"
+            android:textColor="@color/blackColor"
             android:text="@{viewModel.getCustName(position)}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"></TextView>
@@ -41,7 +44,10 @@
             android:id="@+id/tvAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/font_12sp"
             android:layout_margin="@dimen/dimen_10dp"
+            android:textColor="@color/blackColor"
+            style="@style/Style_TextView_FontRegular"
             android:text="@{viewModel.getCustAddress(position)}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvName"></TextView>
@@ -59,6 +65,7 @@
                 android:layout_height="@dimen/dimen_30dp"
                 android:layout_marginLeft="@dimen/dimen_20dp"
                 android:background="@drawable/newroundedred"
+
                 android:gravity="center"
                 android:text="@string/edit"
                 android:textColor="@color/whiteColor"

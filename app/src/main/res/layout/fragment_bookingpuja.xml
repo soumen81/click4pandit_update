@@ -108,18 +108,32 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTransparency">
 
     </TextView>
+        <TextView
+            android:id="@+id/tvPackageName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/yellowColor"
+            android:text="@string/bookpuja"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            style="@style/Style_TextView_FontRegular"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
+
+        </TextView>
     <TextView
         android:id="@+id/tvBookPuja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/yellowColor"
+        android:textColor="@color/whiteColor"
         android:text="@string/bookpuja"
         android:layout_marginTop="@dimen/dimen_10dp"
         style="@style/Style_TextView_FontRegular"
         android:textSize="@dimen/font_12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
+app:layout_constraintTop_toBottomOf="@+id/tvPackageName"        >
 
     </TextView>
         <androidx.constraintlayout.widget.ConstraintLayout

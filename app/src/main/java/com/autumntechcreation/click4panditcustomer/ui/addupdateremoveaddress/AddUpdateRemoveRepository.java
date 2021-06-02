@@ -37,7 +37,75 @@ public class AddUpdateRemoveRepository {
 
     }
 
-    public LiveData<Resource<AddAddressModel>> getAddAddress(String action,String firstName,String lastName,String address1,String pincode ) {
+    public LiveData<Resource<AddAddressModel>> getAddAddress(String action,int shippingAddressId,int custMasterId,String orglStamp,String firstName,String lastName,String address1,String pincode ) {
+        return new NetworkBoundResource<AddAddressModel,AddAddressModel>(mAppExecutors) {
+            private AddAddressModel resultsDb;
+            @Override
+            protected void saveCallResult(@NonNull AddAddressModel data) {
+                resultsDb=data;
+            }
+
+            @Override
+            protected boolean shouldFetch(@Nullable AddAddressModel data) {
+                return true;
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<AddAddressModel>loadFromDb() {
+                if (resultsDb == null) {
+                    return AbsentLiveData.create();
+                }else {
+                    return new LiveData<AddAddressModel>() {
+                        @Override
+                        protected void onActive() {
+                            super.onActive();
+                            setValue(resultsDb);
+                        }
+                    };
+                }
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<AddAddressModel>> createCall() {
+
+                String url= AllUrlsAndConfig.BASE_URL+AllUrlsAndConfig.ADDADDRESS;
+
+                Log.e("URL",url);
+                JsonObject jsonObject = new JsonObject();
+                String str=null;
+                jsonObject.addProperty(AllUrlsAndConfig.ADDRACTION, action);
+                jsonObject.addProperty(AllUrlsAndConfig.SHIPADDRID, shippingAddressId);
+                jsonObject.addProperty(AllUrlsAndConfig.UPDATESTMP, orglStamp);
+                jsonObject.addProperty(AllUrlsAndConfig.UPDATEUSR, getEmail());
+                jsonObject.addProperty(AllUrlsAndConfig.ORGLSTMP, orglStamp);
+                jsonObject.addProperty(AllUrlsAndConfig.ORGLUSR, getEmail());
+                jsonObject.addProperty(AllUrlsAndConfig.DELFLLG, "N");
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTMASTEID, custMasterId);
+                jsonObject.addProperty(AllUrlsAndConfig.LOID, getEmail());
+                jsonObject.addProperty(AllUrlsAndConfig.FNME,firstName);
+                jsonObject.addProperty(AllUrlsAndConfig.LNME, lastName);
+                jsonObject.addProperty(AllUrlsAndConfig.ADDR11, address1);
+                jsonObject.addProperty(AllUrlsAndConfig.ADDR22, str);
+                jsonObject.addProperty(AllUrlsAndConfig.ADD33, str);
+                jsonObject.addProperty(AllUrlsAndConfig.CITID, str);
+                jsonObject.addProperty(AllUrlsAndConfig.CITDESC, str);
+                jsonObject.addProperty(AllUrlsAndConfig.STIDDD, str);
+                jsonObject.addProperty(AllUrlsAndConfig.STDESC, "WEST BENGAL");
+                jsonObject.addProperty(AllUrlsAndConfig.CNTRYID, str);
+                jsonObject.addProperty(AllUrlsAndConfig.CNTRYDESC, "INDIA");
+                jsonObject.addProperty(AllUrlsAndConfig.POST, pincode);
+                jsonObject.addProperty(AllUrlsAndConfig.ISSDEFAULT, "N");
+                jsonObject.addProperty(AllUrlsAndConfig.SEQQNO, str);
+                jsonObject.addProperty(AllUrlsAndConfig.DSPORD, str);
+
+                return mWebservice.customerAddAddress(url,jsonObject);
+
+            }
+        }.asLiveData();
+    }
+    public LiveData<Resource<AddAddressModel>> getNewAddAddress(String action,String firstName,String lastName,String address1,String pincode ) {
         return new NetworkBoundResource<AddAddressModel,AddAddressModel>(mAppExecutors) {
             private AddAddressModel resultsDb;
             @Override

@@ -19,6 +19,7 @@ import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentOrderdetailsBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentArgs;
+import com.autumntechcreation.click4panditcustomer.util.Static;
 
 import javax.inject.Inject;
 
@@ -80,7 +81,7 @@ public class OrderDetailsFragment extends Fragment implements Injectable {
 
         mFragmentOrderdetailsBinding.tvPackageValue.setText(packageTypeName);
         mFragmentOrderdetailsBinding.tvPanditDetails.setText(orderDesc);
-        mFragmentOrderdetailsBinding.tvDateTimeValue.setText(custOrderDate);
+        mFragmentOrderdetailsBinding.tvDateTimeValue.setText(Static.convertToDate(custOrderDate));
         mFragmentOrderdetailsBinding.tvAllPujaSamagriesValue.setText(pujaPackageDesc);
         mFragmentOrderdetailsBinding.tvDakshinaValue.setText(orderNo);
         mFragmentOrderdetailsBinding.tvSamagriDetails.setText(pujaSubCategoryDesc);

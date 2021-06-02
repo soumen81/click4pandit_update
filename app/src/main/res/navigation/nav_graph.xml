@@ -666,6 +666,22 @@
             android:name="pincode"
             android:defaultValue="0"
             app:argType="string" />
+        <argument
+            android:name="shippingAddressId"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="updtStamp"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="orglStamp"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="custMasterId"
+            android:defaultValue="1"
+            app:argType="integer" />
 
 
         <action
@@ -712,6 +728,22 @@
             android:name="pincode"
             android:defaultValue="0"
             app:argType="string" />
+        <argument
+            android:name="shippingAddressId"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="updtStamp"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="orglStamp"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="custMasterId"
+            android:defaultValue="1"
+            app:argType="integer" />
 
         <action
             android:id="@+id/action_addUpdateRemoveFragment_to_addressFragment"

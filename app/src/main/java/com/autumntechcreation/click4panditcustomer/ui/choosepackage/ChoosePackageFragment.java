@@ -108,7 +108,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
         mChoosePackageViewModel = ViewModelProviders.of(ChoosePackageFragment.this, viewModelFactory).get(ChoosePackageViewModel.class);
         mFragmentChoosepackageBinding.setChoosePackageViewModel(mChoosePackageViewModel);
 
-
+        mFragmentChoosepackageBinding.tvPujaName.setText(subCategoryName);
         mDialogForChoosePackage = new AlertDialog.Builder(this.getActivity()).create();
         mDialogChoosepackageDetailsBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_choosepackage_details, null, true);
         mDialogChoosepackageDetailsBinding.setViewModel(mChoosePackageViewModel);

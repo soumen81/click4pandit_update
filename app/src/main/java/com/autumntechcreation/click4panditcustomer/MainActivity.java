@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ProgressDialog mProgressDialog;
     SharedPreferences sp;
     TextView userName,txtInitial,email;
-    String TAG="SoumenBokachoda";
+    String TAG="Soumen";
     Bundle bundle;
     boolean doubleBackToExitPressedOnce = false;
 
@@ -346,7 +346,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id=navController.getCurrentDestination().getId();
         if(id==R.id.homeFragmentFragment ){
             selectedPosition(0);
-
+            Static.doExitApp(MainActivity.this);
         }else if(id==R.id.choosePackageFragment ){
             selectedPosition(1);
 

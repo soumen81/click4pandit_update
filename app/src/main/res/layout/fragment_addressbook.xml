@@ -44,7 +44,7 @@
     </androidx.recyclerview.widget.RecyclerView>
     <TextView
         android:id="@+id/tvAddNewAddress"
-        style="@style/Style_TextView_FontBold"
+        style="@style/Style_TextView_FontRegular"
         android:layout_width="@dimen/dimen_150dp"
         android:layout_height="@dimen/dimen_30dp"
         android:layout_marginTop="@dimen/dimen_10dp"

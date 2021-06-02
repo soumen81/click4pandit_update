@@ -126,33 +126,34 @@
             app:layout_constraintTop_toBottomOf="@+id/tvDakshina"></TextView>
         <TextView
             android:id="@+id/tvAllPujaSamagriesValue"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dimen_250dp"
             android:layout_height="wrap_content"
             android:text="@string/dakshina"
             style="@style/Style_TextView_FontRegular"
             android:layout_margin="@dimen/dimen_10dp"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_12sp"
-            app:layout_constraintStart_toEndOf="@+id/tvAllPujaSamagries"
-            app:layout_constraintLeft_toRightOf="@+id/tvAllPujaSamagries"
-            app:layout_constraintTop_toBottomOf="@+id/tvDakshinaValue"></TextView>
+           app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAllPujaSamagries"></TextView>
         <TextView
             android:id="@+id/tvHavan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/havan"
+            android:visibility="gone"
             style="@style/Style_TextView_FontBold"
             android:layout_margin="@dimen/dimen_10dp"
             android:textColor="@color/blackColor"
             android:textSize="@dimen/font_12sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAllPujaSamagries"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/tvAllPujaSamagriesValue"></TextView>
 
         <TextView
             android:id="@+id/tvHavanValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/included"
+            android:visibility="gone"
             style="@style/Style_TextView_FontRegular"
            android:layout_margin="@dimen/dimen_10dp"
             android:textColor="@color/blackColor"
@@ -385,6 +386,7 @@
             android:textSize="@dimen/font_12sp"
             android:textColor="@color/blackColor"
             android:text="@string/paidamount"
+
             android:layout_marginTop="@dimen/dimen_20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

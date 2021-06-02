@@ -104,6 +104,10 @@ public class AddressFragment extends Fragment implements Injectable {
                 Object city=addressViewModel.mAddressListResponse.getValue().data.get(position).getCityDescr();
                 Object state=addressViewModel.mAddressListResponse.getValue().data.get(position).getStDescr();
                 Object postal=addressViewModel.mAddressListResponse.getValue().data.get(position).getPostal();
+                int  shippingAddressId=addressViewModel.mAddressListResponse.getValue().data.get(position).getShippingAddrId();
+                String  updtStamp=addressViewModel.mAddressListResponse.getValue().data.get(position).getUpdtStamp();
+                String  orglStamp=addressViewModel.mAddressListResponse.getValue().data.get(position).getOrglStamp();
+                int  custMasterId=addressViewModel.mAddressListResponse.getValue().data.get(position).custMasterId;
                 AddressFragmentDirections.ActionAddressFragmentToAddUpdateRemoveFragment action=
                         AddressFragmentDirections.actionAddressFragmentToAddUpdateRemoveFragment();
                 action.setUpdateAction(update);
@@ -113,6 +117,10 @@ public class AddressFragment extends Fragment implements Injectable {
                 action.setCity(String.valueOf(city));
                 action.setState(String.valueOf(state));
                 action.setPincode(String.valueOf(postal));
+                action.setShippingAddressId(shippingAddressId);
+                action.setUpdtStamp(updtStamp);
+                action.setOrglStamp(orglStamp);
+                action.setCustMasterId(custMasterId);
                 Navigation.findNavController(mView).navigate(action);
             }
         }); addressViewModel.getRemoveListItemsClick().observe(getActivity(), new Observer<Integer>() {
@@ -125,6 +133,10 @@ public class AddressFragment extends Fragment implements Injectable {
                 Object city=addressViewModel.mAddressListResponse.getValue().data.get(position).getCityDescr();
                 Object state=addressViewModel.mAddressListResponse.getValue().data.get(position).getStDescr();
                 Object postal=addressViewModel.mAddressListResponse.getValue().data.get(position).getPostal();
+                int  shippingAddressId=addressViewModel.mAddressListResponse.getValue().data.get(position).getShippingAddrId();
+                String  updtStamp=addressViewModel.mAddressListResponse.getValue().data.get(position).getUpdtStamp();
+                String  orglStamp=addressViewModel.mAddressListResponse.getValue().data.get(position).getOrglStamp();
+                int  custMasterId=addressViewModel.mAddressListResponse.getValue().data.get(position).custMasterId;
                 AddressFragmentDirections.ActionAddressFragmentToAddUpdateRemoveFragment action=
                         AddressFragmentDirections.actionAddressFragmentToAddUpdateRemoveFragment();
                 action.setRemoveAction(delete);
@@ -134,6 +146,10 @@ public class AddressFragment extends Fragment implements Injectable {
                 action.setCity(String.valueOf(city));
                 action.setState(String.valueOf(state));
                 action.setPincode(String.valueOf(postal));
+                action.setShippingAddressId(shippingAddressId);
+                action.setUpdtStamp(updtStamp);
+                action.setOrglStamp(orglStamp);
+                action.setCustMasterId(custMasterId);
                 Navigation.findNavController(mView).navigate(action);
 
             }

@@ -139,7 +139,7 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
 
 
 
-
+        mFragmentBookingpujaBinding.tvPackageName.setText(subcategoryName+" "+">"+" "+packageTypeIdDesc);
 
         mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemClickListener(this);
 

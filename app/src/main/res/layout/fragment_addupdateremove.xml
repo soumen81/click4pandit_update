@@ -27,8 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorAshLighter"
-                android:layout_paddingBottom="@dimen/dimen_10dp"
-                android:orientation="vertical">
+                android:paddingBottom="@dimen/dimen_10dp"
+                >
         <TextView
             android:id="@+id/tvSaveAddress"
             style="@style/Style_TextView_FontBold"
@@ -257,7 +257,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:maxLength="6"
-                android:inputType="text"
+                android:inputType="number"
                 android:scrollbars="vertical"
                 android:singleLine="true"
                 android:textSize="@dimen/font_14sp"
@@ -267,7 +267,7 @@
 
                 <TextView
                     android:id="@+id/tvAddConfirm"
-                    style="@style/Style_TextView_FontSemiBold"
+                    style="@style/Style_TextView_FontRegular"
                     android:layout_width="@dimen/dimen_120dp"
                     android:layout_height="@dimen/dimen_30dp"
                     android:layout_marginTop="20dp"
@@ -288,7 +288,7 @@
             android:background="@drawable/ic_newovalblack"
             android:gravity="center"
                     android:visibility="gone"
-            style="@style/Style_TextView_FontSemiBold"
+                    style="@style/Style_TextView_FontRegular"
             android:textSize="@dimen/font_12sp"
             android:textColor="@color/whiteColor"
             android:text="@string/removechanges"
@@ -304,8 +304,8 @@
             android:background="@drawable/ic_newovalblack"
             android:gravity="center"
                     android:visibility="gone"
-            style="@style/Style_TextView_FontSemiBold"
-            android:textSize="@dimen/font_12sp"
+                    style="@style/Style_TextView_FontRegular"
+                    android:textSize="@dimen/font_12sp"
             android:textColor="@color/whiteColor"
             android:text="@string/updatechanges"
             android:layout_marginTop="@dimen/dimen_20dp"

@@ -46,7 +46,9 @@ public class AddUpdateRemoveFragment extends Fragment implements Injectable {
     AddUpdateRemoveViewModel mAddUpdateRemoveViewModel;
     private View mView;
     NavController navController;
-    String addAction="",updateAction="",removeAction="",getFirstName,getLastName,getAddress1,getCity,getState,getPincode;
+    String addAction="",updateAction="",removeAction="",getFirstName,getLastName,getAddress1,getCity,
+            getState,getPincode,updtStamp,orglStamp;
+    int shippingAddressId,custMasterId;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -72,6 +74,16 @@ public class AddUpdateRemoveFragment extends Fragment implements Injectable {
         } if(AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getPincode().length()>0) {
             getPincode = AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getPincode();
             Log.e("getPincode", "" + getPincode);
+        }if(AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getShippingAddressId()!=0){
+            shippingAddressId=AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getShippingAddressId();
+        }if(AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getCustMasterId()!=0){
+            custMasterId=AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getCustMasterId();
+        } if(AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getUpdtStamp().length()>0) {
+            updtStamp = AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getUpdtStamp();
+            Log.e("updtStamp", "" + updtStamp);
+        } if(AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getOrglStamp().length()>0) {
+            orglStamp = AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getOrglStamp();
+            Log.e("orglStamp", "" + orglStamp);
         }
 
             addAction = AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getAddAction();
@@ -80,6 +92,8 @@ public class AddUpdateRemoveFragment extends Fragment implements Injectable {
             mFragmentAddupdateremoveBinding.tvUpdateConfirm.setVisibility(View.GONE);
             mFragmentAddupdateremoveBinding.removeConfirm.setVisibility(View.GONE);
             mFragmentAddupdateremoveBinding.tvAddConfirm.setVisibility(View.VISIBLE);
+            mFragmentAddupdateremoveBinding.edtTxtCity.setText("Kolkata");
+            mFragmentAddupdateremoveBinding.edtTxtState.setText("West Bengal");
         }
             updateAction = AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getUpdateAction();
             Log.e("updateAction", "" + updateAction);
@@ -90,8 +104,8 @@ public class AddUpdateRemoveFragment extends Fragment implements Injectable {
             mFragmentAddupdateremoveBinding.edtTxtFirstName.setText(getFirstName);
             mFragmentAddupdateremoveBinding.edtTxtLastName.setText(getLastName);
             mFragmentAddupdateremoveBinding.edtTxtAddress1.setText(getAddress1);
-            mFragmentAddupdateremoveBinding.edtTxtCity.setText(getCity);
-            mFragmentAddupdateremoveBinding.edtTxtState.setText(getState);
+            mFragmentAddupdateremoveBinding.edtTxtCity.setText("Kolkata");
+            mFragmentAddupdateremoveBinding.edtTxtState.setText("West Bengal");
             mFragmentAddupdateremoveBinding.edtTxtPinCode.setText(getPincode);
         }
             removeAction = AddUpdateRemoveFragmentArgs.fromBundle(getArguments()).getRemoveAction();
@@ -103,8 +117,8 @@ public class AddUpdateRemoveFragment extends Fragment implements Injectable {
             mFragmentAddupdateremoveBinding.edtTxtFirstName.setText(getFirstName);
             mFragmentAddupdateremoveBinding.edtTxtLastName.setText(getLastName);
             mFragmentAddupdateremoveBinding.edtTxtAddress1.setText(getAddress1);
-            mFragmentAddupdateremoveBinding.edtTxtCity.setText(getCity);
-            mFragmentAddupdateremoveBinding.edtTxtState.setText(getState);
+            mFragmentAddupdateremoveBinding.edtTxtCity.setText("Kolkata");
+            mFragmentAddupdateremoveBinding.edtTxtState.setText("West Bengal");
             mFragmentAddupdateremoveBinding.edtTxtPinCode.setText(getPincode);
         }
 
@@ -169,7 +183,7 @@ public class AddUpdateRemoveFragment extends Fragment implements Injectable {
 
 
 
-                    mAddUpdateRemoveViewModel.getAddAddress(addAction,
+                    mAddUpdateRemoveViewModel.getNewAddAddress(addAction,
                             mFragmentAddupdateremoveBinding.edtTxtFirstName.getText().toString(),
                             mFragmentAddupdateremoveBinding.edtTxtLastName.getText().toString(), mFragmentAddupdateremoveBinding.edtTxtAddress1.getText().toString(), mFragmentAddupdateremoveBinding.edtTxtPinCode.getText().toString()).observe(getActivity(), AddUpdateRemoveFragment.this::handleAddAdrress);
                 }
@@ -183,9 +197,12 @@ public class AddUpdateRemoveFragment extends Fragment implements Injectable {
             mFragmentAddupdateremoveBinding.tvUpdateConfirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mAddUpdateRemoveViewModel.getAddAddress(updateAction,
+                    mAddUpdateRemoveViewModel.getAddAddress(updateAction,shippingAddressId,custMasterId,orglStamp,
                             mFragmentAddupdateremoveBinding.edtTxtFirstName.getText().toString(),
-                            mFragmentAddupdateremoveBinding.edtTxtLastName.getText().toString(),mFragmentAddupdateremoveBinding.edtTxtAddress1.getText().toString(),mFragmentAddupdateremoveBinding.edtTxtPinCode.getText().toString()).observe(getActivity(), AddUpdateRemoveFragment.this::handleAddAdrress);
+                            mFragmentAddupdateremoveBinding.edtTxtLastName.getText().toString(),
+                            mFragmentAddupdateremoveBinding.edtTxtAddress1.getText().toString(),
+                            mFragmentAddupdateremoveBinding.edtTxtPinCode.getText().toString())
+                            .observe(getActivity(), AddUpdateRemoveFragment.this::handleAddAdrress);
                 }
             });
 
@@ -193,9 +210,12 @@ public class AddUpdateRemoveFragment extends Fragment implements Injectable {
             mFragmentAddupdateremoveBinding.removeConfirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mAddUpdateRemoveViewModel.getAddAddress(removeAction,
+                    mAddUpdateRemoveViewModel.getAddAddress(removeAction,shippingAddressId,custMasterId,orglStamp,
                             mFragmentAddupdateremoveBinding.edtTxtFirstName.getText().toString(),
-                            mFragmentAddupdateremoveBinding.edtTxtLastName.getText().toString(),mFragmentAddupdateremoveBinding.edtTxtAddress1.getText().toString(),mFragmentAddupdateremoveBinding.edtTxtPinCode.getText().toString()).observe(getActivity(), AddUpdateRemoveFragment.this::handleAddAdrress);
+                            mFragmentAddupdateremoveBinding.edtTxtLastName.getText().toString(),
+                            mFragmentAddupdateremoveBinding.edtTxtAddress1.getText().toString(),
+                            mFragmentAddupdateremoveBinding.edtTxtPinCode.getText().toString())
+                            .observe(getActivity(), AddUpdateRemoveFragment.this::handleAddAdrress);
                 }
             });
 

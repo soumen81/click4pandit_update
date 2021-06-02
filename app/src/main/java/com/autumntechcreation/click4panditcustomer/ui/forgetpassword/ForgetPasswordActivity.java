@@ -54,6 +54,8 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         mActivityForgetpasswordBinding.setForgetPasswordViewModel(mForgetPasswordViewModel);
 
 
+
+
         UUID uuid = UUID.randomUUID();
         uuidInString = uuid.toString();
          mActivityForgetpasswordBinding.tvSubmit.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +72,13 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                              uuidInString).observe(ForgetPasswordActivity.this,
                              ForgetPasswordActivity.this::handleForgetPassword);
                  }
+             }
+         });
+
+         mActivityForgetpasswordBinding.imgbackPrivacyPolicy.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 finish();
              }
          });
     }
