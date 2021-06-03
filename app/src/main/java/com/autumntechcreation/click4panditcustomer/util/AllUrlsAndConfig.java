@@ -23,6 +23,8 @@ public class AllUrlsAndConfig {
     public static final String ORDERLIST="/api/OrderSearch/SearchByStandardCriteria";
     public static final String ADDADDRESS="/api/ShippingAddress/SaveShippingAddress";
     public static final String ADDRESSLIST="/api/ShippingAddress/SearchShippingAddress";
+    public static final String SAVEPROFILEIMAGE="/api/Profile/SaveCustProfileImage";
+
 
 
 
@@ -209,5 +211,23 @@ public class AllUrlsAndConfig {
     public static final String ISSDEFAULT="isDefault";
     public static final String SEQQNO="seqNo";
     public static final String DSPORD="dspOrd";
+
+
+    //Parameter for Save Image Upload
+    public static final String CUSTMASTERPROFILEIMGID="custMasterProfImgId";
+    public static final String CUSTMASID="custMasterId";
+    public static final String LOGGEDID="logonId";
+    public static final String UPDATESTAM="updtStamp";
+    public static final String UPDTEUSER="updtUser";
+    public static final String ORGSTAMPP="orglStamp";
+    public static final String ORGUSERR="orglUser";
+    public static final String DELLFLG="delFlg";
+    public static final String CLOUDIMGID="cloudImgId";
+    public static final String ORGLFILENAME="orglFileName";
+    public static final String CLOUDFILENAME="cloudFileName";
+    public static final String MIMETYPE="mimeTyp";
+    public static final String IMGACTION="imgAction";
+    public static final String FILEDATA="fileData";
+
 
 }

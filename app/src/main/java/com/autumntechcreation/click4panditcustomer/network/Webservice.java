@@ -19,6 +19,7 @@ import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderListModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
+import com.autumntechcreation.click4panditcustomer.ui.profile.AddProfileImageModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.CustomerGetProfileModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.SaveCustomerprofileModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
@@ -174,5 +175,13 @@ public interface Webservice {
                                                                @Body JsonObject jsonObject
 
     );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<AddProfileImageModel>> customerAddProfileImage(@Url String apiname,
+                                                                        @Body JsonObject jsonObject
+
+    );
+
 
 }

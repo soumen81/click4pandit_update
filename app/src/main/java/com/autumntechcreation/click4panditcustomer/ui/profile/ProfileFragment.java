@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.FileUtils;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -62,7 +63,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -81,32 +85,17 @@ public class ProfileFragment extends Fragment implements Injectable {
     int custMasterId;
     String firstName,lastName,emailId,mobileNo;
     private String Document_img1="";
-    Bitmap FixBitmap;
+    Bitmap fixBitmap;
     ByteArrayOutputStream byteArrayOutputStream ;
     byte[] byteArray ;
 
 
-    String ConvertImage ;
+    String ConvertImage,fileName,encoded ;
 
-    String GetImageNameFromEditText;
 
-    HttpURLConnection httpURLConnection ;
-
-    URL url;
-
-    OutputStream outputStream;
-
-    BufferedWriter bufferedWriter ;
-
-    int RC ;
-
-    BufferedReader bufferedReader ;
-
-    StringBuilder stringBuilder;
-    ProgressDialog progressDialog ;
+    String uuidInString,cloudFileName;
     boolean check = true;
-   // String ServerUploadPath ="http://androidblog.esy.es/upload-image-server.php" ;
-    String ServerUploadPath ="https://webapi-click4pandit.azurewebsites.net/api/Profile/SaveCustProfileImage" ;
+
 
     @Nullable
     @Override
@@ -130,7 +119,9 @@ public class ProfileFragment extends Fragment implements Injectable {
 
         mProfileViewModel = ViewModelProviders.of(ProfileFragment.this, viewModelFactory).get(ProfileViewModel.class);
         mFragmentProfileBinding.setProfileViewModel(mProfileViewModel);
-
+        UUID uuid = UUID.randomUUID();
+        uuidInString = uuid.toString();
+         cloudFileName=uuidInString+".jpg";
         mFragmentProfileBinding.imgVwEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,16 +138,18 @@ public class ProfileFragment extends Fragment implements Injectable {
                 mProfileViewModel.getForSaveCustomerProfile(custMasterId,firstName,lastName,mobileNo,mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(),emailId).observe(getActivity(),ProfileFragment.this::handleSaveCustomerProfile);
             }
         });
-        //String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
+        byteArrayOutputStream = new ByteArrayOutputStream();
         mFragmentProfileBinding.imgvwUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, 1);
-              //  UploadImageToServer();
+                mProfileViewModel.getAddProfileImageUpload(null,null,null,null,null,null,uuidInString,fileName,cloudFileName,"ADD",encoded).observe(getActivity(),ProfileFragment.this::handleUploadForImage);
+
             }
         });
+
 
     }
     @Override
@@ -171,80 +164,28 @@ public class ProfileFragment extends Fragment implements Injectable {
 
             try {
 
-                FixBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+                fixBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
 
-                mFragmentProfileBinding.imgVwProfile.setImageBitmap(FixBitmap);
+                mFragmentProfileBinding.imgVwProfile.setImageBitmap(fixBitmap);
                 mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
                 mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
-                UploadImageToServer();
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                fixBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                byte[] byteArray = byteArrayOutputStream .toByteArray();
+
+                 encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                Log.e("Encoded",encoded);
+                 fileName = new SimpleDateFormat("yyyyMMddHHmm'.jpg'").format(new Date());
+
+
+
             } catch (IOException e) {
 
                 e.printStackTrace();
             }
         }
     }
-    public void UploadImageToServer(){
 
-       FixBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-       
-       // FixBitmap = ((BitmapDrawable)  mFragmentProfileBinding.imgVwProfile.getDrawable()).getBitmap();
-        byteArray = byteArrayOutputStream.toByteArray();
-
-        ConvertImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
-
-        class AsyncTaskUploadClass extends AsyncTask<Void,Void,String> {
-
-            @Override
-            protected void onPreExecute() {
-
-                super.onPreExecute();
-
-                progressDialog = ProgressDialog.show(getActivity(),"Image is Uploading","Please Wait",false,false);
-            }
-
-            @Override
-            protected void onPostExecute(String string1) {
-
-                super.onPostExecute(string1);
-
-                progressDialog.dismiss();
-
-                Toast.makeText(getActivity(),string1,Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            protected String doInBackground(Void... params) {
-
-                ImageProcessClass imageProcessClass = new ImageProcessClass();
-
-                HashMap<String,String> HashMapParams = new HashMap<String,String>();
-
-                HashMapParams.put("cloudFileName", GetImageNameFromEditText);//IMAGE NAME
-                HashMapParams.put("cloudImgId", GetImageNameFromEditText);//NULL
-                HashMapParams.put("custMasterId", GetImageNameFromEditText);//GETpROFILE
-
-                HashMapParams.put("custMasterProfImgId", GetImageNameFromEditText);//NULL
-                HashMapParams.put("delFlg", GetImageNameFromEditText);//N
-                HashMapParams.put("fileData", GetImageNameFromEditText);//IMAGEDATA
-
-                HashMapParams.put("imgAction", GetImageNameFromEditText);//add,UPDATE
-                HashMapParams.put("logonId", GetImageNameFromEditText);//MAILID
-                HashMapParams.put("mimeTyp", GetImageNameFromEditText);//NULL
-                HashMapParams.put("orglFileName", GetImageNameFromEditText);//NULL
-                HashMapParams.put("orglStamp", GetImageNameFromEditText);//NULL
-                HashMapParams.put("orglUser", GetImageNameFromEditText);//NULL
-                HashMapParams.put("updtStamp", GetImageNameFromEditText);//NULL
-
-               // HashMapParams.put(ImageName, ConvertImage);
-
-                String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
-
-                return FinalData;
-            }
-        }
-        AsyncTaskUploadClass AsyncTaskUploadClassOBJ = new AsyncTaskUploadClass();
-        AsyncTaskUploadClassOBJ.execute();
-    }
 
 
 
@@ -294,18 +235,18 @@ public class ProfileFragment extends Fragment implements Injectable {
                     Gson gson = new Gson();
                     String json = gson.toJson(resource.data);
                     Log.e("handleRegisterResponse", json + "");
-                   //if ( resource.data.custMasterProfileDataModel!=null) {
-                     firstName=resource.data.custMasterProfileDataModel.firstName;
-                     lastName=resource.data.custMasterProfileDataModel.lastName;
-                     emailId=resource.data.custMasterProfileDataModel.emailId;
-                     mobileNo=resource.data.custMasterProfileDataModel.mobile;
-                     custMasterId=resource.data.custMasterProfileDataModel.custMasterId;
+                    //if ( resource.data.custMasterProfileDataModel!=null) {
+                    firstName=resource.data.custMasterProfileDataModel.firstName;
+                    lastName=resource.data.custMasterProfileDataModel.lastName;
+                    emailId=resource.data.custMasterProfileDataModel.emailId;
+                    mobileNo=resource.data.custMasterProfileDataModel.mobile;
+                    custMasterId=resource.data.custMasterProfileDataModel.custMasterId;
                     mFragmentProfileBinding.edtTxtFName.setText(firstName);
                     mFragmentProfileBinding.edtTxtLastName.setText(lastName);
                     mFragmentProfileBinding.edtTxtMobileNo.setText(mobileNo);
                     mFragmentProfileBinding.edtTxtEmail.setText(emailId);
 
-                   // }
+                    // }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;
                 default:
@@ -370,6 +311,73 @@ public class ProfileFragment extends Fragment implements Injectable {
                         new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText(this.getString(R.string.success))
                                 .setContentText(this.getString(R.string.profilesave))
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismiss();
+                                    }
+                                }).show();
+
+
+                    }
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    } private void handleUploadForImage(Resource<AddProfileImageModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+
+                    break;
+                case LOADING:
+                    Log.e("handleRegisterResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleRegisterResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleRegisterResponse", resource.status + "");
+                    Log.e("handleRegisterResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleRegisterResponse", json + "");
+                    if ( resource.data.returnStatus.equals("SUCCESS")) {
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText(this.getString(R.string.success))
+                                .setContentText(this.getString(R.string.imageupload))
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {

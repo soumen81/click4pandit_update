@@ -137,6 +137,69 @@ public class ProfileRepository {
         }.asLiveData();
     }
 
+  public LiveData<Resource<AddProfileImageModel>> getAddProfileImageUpload(String customerProfileImageId,
+                                                                           String custMasId,String updateStam,String updateUser,
+                                                                           String orgStamp,String orgUser,String cloudImgId,String fileName,
+                                                                        String cloudFileName,String imgAction,
+                                                                           String fileData  ) {
+        return new NetworkBoundResource<AddProfileImageModel,AddProfileImageModel>(mAppExecutors) {
+            private AddProfileImageModel resultsDb;
+            @Override
+            protected void saveCallResult(@NonNull AddProfileImageModel data) {
+                resultsDb=data;
+            }
+
+            @Override
+            protected boolean shouldFetch(@Nullable AddProfileImageModel data) {
+                return true;
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<AddProfileImageModel>loadFromDb() {
+                if (resultsDb == null) {
+                    return AbsentLiveData.create();
+                }else {
+                    return new LiveData<AddProfileImageModel>() {
+                        @Override
+                        protected void onActive() {
+                            super.onActive();
+                            setValue(resultsDb);
+                        }
+                    };
+                }
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<AddProfileImageModel>> createCall() {
+
+                String url= AllUrlsAndConfig.BASE_URL+AllUrlsAndConfig.SAVEPROFILEIMAGE;
+                String str=null;
+                Log.e("URL",url);
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTMASTERPROFILEIMGID, customerProfileImageId);
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTMASID, custMasId);
+                jsonObject.addProperty(AllUrlsAndConfig.LOGGEDID, getEmail());
+                jsonObject.addProperty(AllUrlsAndConfig.UPDATESTAM, updateStam);
+                jsonObject.addProperty(AllUrlsAndConfig.UPDTEUSER, updateUser);
+                jsonObject.addProperty(AllUrlsAndConfig.ORGSTAMPP, orgStamp);
+                jsonObject.addProperty(AllUrlsAndConfig.ORGUSERR, orgUser);
+                jsonObject.addProperty(AllUrlsAndConfig.DELLFLG, "N");
+                jsonObject.addProperty(AllUrlsAndConfig.CLOUDIMGID, cloudImgId);
+                jsonObject.addProperty(AllUrlsAndConfig.ORGLFILENAME, fileName);
+                jsonObject.addProperty(AllUrlsAndConfig.CLOUDFILENAME, cloudFileName);
+                jsonObject.addProperty(AllUrlsAndConfig.MIMETYPE, "image/jpeg");
+                jsonObject.addProperty(AllUrlsAndConfig.IMGACTION, imgAction);
+                jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, fileData);
+
+                Log.e("testImgUpload", jsonObject.toString());
+                return mWebservice.customerAddProfileImage(url,jsonObject);
+
+            }
+        }.asLiveData();
+    }
+
 
 
 

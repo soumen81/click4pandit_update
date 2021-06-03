@@ -159,4 +159,5 @@
     <string name="datetimeoffice">Mon-Sat,10:00 am-8:00 pm</string>
     <string name="dialoffice">1800 891 9016/ + 91 76050 106 56</string>
     <string name="contactoffice">contact@click4pandit.com</string>
+    <string name="imageupload">Image Uploaded Successfully</string>
 </resources>
