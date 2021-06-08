@@ -8,9 +8,11 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -48,6 +50,7 @@ import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryF
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
 import com.autumntechcreation.click4panditcustomer.util.ImageProcessClass;
 import com.autumntechcreation.click4panditcustomer.util.Static;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -57,6 +60,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -82,21 +86,26 @@ public class ProfileFragment extends Fragment implements Injectable {
     FragmentProfileBinding mFragmentProfileBinding;
     private View mView;
     NavController navController;
-    int custMasterId;
-    String firstName,lastName,emailId,mobileNo;
+    int custMasterId,custMasterProfImgId,custMasterIdvalue;
+    String newMasterProfileImageid;
+    String firstName,lastName,emailId,mobileNo,imgActionValue;
     private String Document_img1="";
     Bitmap fixBitmap;
-    ByteArrayOutputStream byteArrayOutputStream ;
+
     byte[] byteArray ;
+    String updateCusProfileImgid,updateCustMasterId,updateLogonId,updateDelFlg,updateCloudImgid,updateorglFileName,
+            updateCloudFileName,updateMimeType,updateImgAction,updateFileData;
 
 
-    String ConvertImage,fileName,encoded ;
+    String ConvertImage,fileName,encoded,fileData,custMasterProfileImageModel;
 
 
-    String uuidInString,cloudFileName;
+    String uuidInString,cloudFileName,newLogonId,newDelFlag,newCloudImgId,newOriginalFileName,
+            newCloudFileName,custMasterImgId,
+            newmimeType,newImgAction="",newFileDate;
     boolean check = true;
 
-
+    ByteArrayOutputStream byteArrayOutputStream;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -121,7 +130,7 @@ public class ProfileFragment extends Fragment implements Injectable {
         mFragmentProfileBinding.setProfileViewModel(mProfileViewModel);
         UUID uuid = UUID.randomUUID();
         uuidInString = uuid.toString();
-         cloudFileName=uuidInString+".jpg";
+        cloudFileName=uuidInString+".jpg";
         mFragmentProfileBinding.imgVwEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,15 +147,21 @@ public class ProfileFragment extends Fragment implements Injectable {
                 mProfileViewModel.getForSaveCustomerProfile(custMasterId,firstName,lastName,mobileNo,mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(),emailId).observe(getActivity(),ProfileFragment.this::handleSaveCustomerProfile);
             }
         });
-        byteArrayOutputStream = new ByteArrayOutputStream();
+
         mFragmentProfileBinding.imgvwUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View  v) {
+
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, 1);
-                mProfileViewModel.getAddProfileImageUpload(null,null,null,null,null,null,uuidInString,fileName,cloudFileName,"ADD",encoded).observe(getActivity(),ProfileFragment.this::handleUploadForImage);
 
+                if(newImgAction.equals("UPDATE")){
+                    mProfileViewModel.getAddProfileImageUpload(Integer.parseInt(newMasterProfileImageid) ,custMasterId,null,null,null,null,uuidInString,fileName,cloudFileName,"image/jpeg","UPDATE",encoded).observe(getActivity(),ProfileFragment.this::handleUploadForImage);
+                }else{
+
+                    mProfileViewModel.getProfileImageUpload(null, null, null, null, null, null, uuidInString, fileName, cloudFileName, "image/jpeg","ADD", encoded).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+                }
             }
         });
 
@@ -173,9 +188,10 @@ public class ProfileFragment extends Fragment implements Injectable {
                 fixBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                 byte[] byteArray = byteArrayOutputStream .toByteArray();
 
-                 encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 Log.e("Encoded",encoded);
-                 fileName = new SimpleDateFormat("yyyyMMddHHmm'.jpg'").format(new Date());
+                //fileName = new SimpleDateFormat("yyyyMMddHHmm'.jpg'").format(new Date());
+                fileName = "fav.jpg";
 
 
 
@@ -185,8 +201,6 @@ public class ProfileFragment extends Fragment implements Injectable {
             }
         }
     }
-
-
 
 
     private void handlegetCustomerProfile(Resource<CustomerGetProfileModel> resource) {
@@ -235,18 +249,50 @@ public class ProfileFragment extends Fragment implements Injectable {
                     Gson gson = new Gson();
                     String json = gson.toJson(resource.data);
                     Log.e("handleRegisterResponse", json + "");
-                    //if ( resource.data.custMasterProfileDataModel!=null) {
+
+
                     firstName=resource.data.custMasterProfileDataModel.firstName;
                     lastName=resource.data.custMasterProfileDataModel.lastName;
                     emailId=resource.data.custMasterProfileDataModel.emailId;
                     mobileNo=resource.data.custMasterProfileDataModel.mobile;
                     custMasterId=resource.data.custMasterProfileDataModel.custMasterId;
-                    mFragmentProfileBinding.edtTxtFName.setText(firstName);
-                    mFragmentProfileBinding.edtTxtLastName.setText(lastName);
-                    mFragmentProfileBinding.edtTxtMobileNo.setText(mobileNo);
-                    mFragmentProfileBinding.edtTxtEmail.setText(emailId);
 
-                    // }
+                    if(resource.data.custMasterProfileImageModel==null){
+                        mFragmentProfileBinding.edtTxtFName.setText(firstName);
+                        mFragmentProfileBinding.edtTxtLastName.setText(lastName);
+                        mFragmentProfileBinding.edtTxtMobileNo.setText(mobileNo);
+                        mFragmentProfileBinding.edtTxtEmail.setText(emailId);
+
+
+
+                    }else{
+                            try {
+
+                                newMasterProfileImageid = String.valueOf(resource.data.custMasterProfileImageModel.custMasterProfImgId);
+                            }catch(Exception e){
+                                e.printStackTrace();
+                            }
+
+                        newLogonId=resource.data.custMasterProfileImageModel.logonId;
+                        newDelFlag=resource.data.custMasterProfileImageModel.delFlg;
+                        newCloudImgId=resource.data.custMasterProfileImageModel.cloudImgId;
+                        newOriginalFileName=resource.data.custMasterProfileImageModel.orglFileName;
+                        newCloudFileName=resource.data.custMasterProfileImageModel.cloudFileName;
+                        newmimeType=resource.data.custMasterProfileImageModel.mimeTyp;
+                        newImgAction=resource.data.custMasterProfileImageModel.imgAction;
+                        newFileDate=resource.data.custMasterProfileImageModel.fileData;
+
+                        mFragmentProfileBinding.edtTxtFName.setText(firstName);
+                        mFragmentProfileBinding.edtTxtLastName.setText(lastName);
+                        mFragmentProfileBinding.edtTxtMobileNo.setText(mobileNo);
+                        mFragmentProfileBinding.edtTxtEmail.setText(emailId);
+                        //imgActionValue=customerGetProfileModel.custMasterProfileImageModel.imgAction;
+                        if(newImgAction==null && newImgAction=="" ){
+                            newImgAction="ADD";
+                        }
+                        custMasterProfileImageModel=String.valueOf(resource.data.custMasterProfileImageModel);
+
+                    }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;
                 default:
@@ -328,7 +374,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                     break;
             }
         }
-    } private void handleUploadForImage(Resource<AddProfileImageModel> resource) {
+    } private void handleUploadForImage(Resource<CustomerGetProfileModel> resource) {
         if (resource != null) {
 
             switch (resource.status) {
@@ -374,7 +420,20 @@ public class ProfileFragment extends Fragment implements Injectable {
                     Gson gson = new Gson();
                     String json = gson.toJson(resource.data);
                     Log.e("handleRegisterResponse", json + "");
-                    if ( resource.data.returnStatus.equals("SUCCESS")) {
+                    if(resource.data.custMasterProfileImageModel.returnStatus.equals("SUCCESS")) {
+
+                       /* updateCusProfileImgid = String.valueOf(resource.data.custMasterProfileImageModel.custMasterProfImgId);
+                        updateCustMasterId = String.valueOf(resource.data.custMasterProfileImageModel.custMasterId);
+                        updateLogonId = resource.data.custMasterProfileImageModel.logonId;
+                        updateDelFlg = resource.data.custMasterProfileImageModel.delFlg;
+                        updateCloudImgid = resource.data.custMasterProfileImageModel.cloudImgId;
+                        updateorglFileName = resource.data.custMasterProfileImageModel.orglFileName;
+                        updateCloudFileName = resource.data.custMasterProfileImageModel.cloudFileName;
+                        updateMimeType = resource.data.custMasterProfileImageModel.mimeTyp;
+                        updateImgAction = resource.data.custMasterProfileImageModel.imgAction;
+                        updateFileData = resource.data.custMasterProfileImageModel.fileData;
+*/
+
                         new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText(this.getString(R.string.success))
                                 .setContentText(this.getString(R.string.imageupload))

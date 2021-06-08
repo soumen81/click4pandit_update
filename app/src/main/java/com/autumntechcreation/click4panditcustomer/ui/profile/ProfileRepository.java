@@ -137,30 +137,30 @@ public class ProfileRepository {
         }.asLiveData();
     }
 
-  public LiveData<Resource<AddProfileImageModel>> getAddProfileImageUpload(String customerProfileImageId,
-                                                                           String custMasId,String updateStam,String updateUser,
+  public LiveData<Resource<CustomerGetProfileModel>> getAddProfileImageUpload(int customerProfileImageId,
+                                                                           int custMasId,String updateStam,String updateUser,
                                                                            String orgStamp,String orgUser,String cloudImgId,String fileName,
-                                                                        String cloudFileName,String imgAction,
+                                                                        String cloudFileName,String mimeType,String imgAction,
                                                                            String fileData  ) {
-        return new NetworkBoundResource<AddProfileImageModel,AddProfileImageModel>(mAppExecutors) {
-            private AddProfileImageModel resultsDb;
+        return new NetworkBoundResource<CustomerGetProfileModel,CustomerGetProfileModel>(mAppExecutors) {
+            private CustomerGetProfileModel resultsDb;
             @Override
-            protected void saveCallResult(@NonNull AddProfileImageModel data) {
+            protected void saveCallResult(@NonNull CustomerGetProfileModel data) {
                 resultsDb=data;
             }
 
             @Override
-            protected boolean shouldFetch(@Nullable AddProfileImageModel data) {
+            protected boolean shouldFetch(@Nullable CustomerGetProfileModel data) {
                 return true;
             }
 
             @NonNull
             @Override
-            protected LiveData<AddProfileImageModel>loadFromDb() {
+            protected LiveData<CustomerGetProfileModel>loadFromDb() {
                 if (resultsDb == null) {
                     return AbsentLiveData.create();
                 }else {
-                    return new LiveData<AddProfileImageModel>() {
+                    return new LiveData<CustomerGetProfileModel>() {
                         @Override
                         protected void onActive() {
                             super.onActive();
@@ -172,7 +172,7 @@ public class ProfileRepository {
 
             @NonNull
             @Override
-            protected LiveData<ApiResponse<AddProfileImageModel>> createCall() {
+            protected LiveData<ApiResponse<CustomerGetProfileModel>> createCall() {
 
                 String url= AllUrlsAndConfig.BASE_URL+AllUrlsAndConfig.SAVEPROFILEIMAGE;
                 String str=null;
@@ -189,7 +189,7 @@ public class ProfileRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.CLOUDIMGID, cloudImgId);
                 jsonObject.addProperty(AllUrlsAndConfig.ORGLFILENAME, fileName);
                 jsonObject.addProperty(AllUrlsAndConfig.CLOUDFILENAME, cloudFileName);
-                jsonObject.addProperty(AllUrlsAndConfig.MIMETYPE, "image/jpeg");
+                jsonObject.addProperty(AllUrlsAndConfig.MIMETYPE, mimeType);
                 jsonObject.addProperty(AllUrlsAndConfig.IMGACTION, imgAction);
                 jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, fileData);
 
@@ -200,7 +200,68 @@ public class ProfileRepository {
         }.asLiveData();
     }
 
+    public LiveData<Resource<CustomerGetProfileModel>> getProfileImageUpload(String customerProfileImageId,
+                                                                                String custMasId,String updateStam,String updateUser,
+                                                                                String orgStamp,String orgUser,String cloudImgId,String fileName,
+                                                                                String cloudFileName,String mimeType,String imgAction,
+                                                                                String fileData  ) {
+        return new NetworkBoundResource<CustomerGetProfileModel,CustomerGetProfileModel>(mAppExecutors) {
+            private CustomerGetProfileModel resultsDb;
+            @Override
+            protected void saveCallResult(@NonNull CustomerGetProfileModel data) {
+                resultsDb=data;
+            }
 
+            @Override
+            protected boolean shouldFetch(@Nullable CustomerGetProfileModel data) {
+                return true;
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<CustomerGetProfileModel>loadFromDb() {
+                if (resultsDb == null) {
+                    return AbsentLiveData.create();
+                }else {
+                    return new LiveData<CustomerGetProfileModel>() {
+                        @Override
+                        protected void onActive() {
+                            super.onActive();
+                            setValue(resultsDb);
+                        }
+                    };
+                }
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<CustomerGetProfileModel>> createCall() {
+
+                String url= AllUrlsAndConfig.BASE_URL+AllUrlsAndConfig.SAVEPROFILEIMAGE;
+                String str=null;
+                Log.e("URL",url);
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTMASTERPROFILEIMGID, customerProfileImageId);
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTMASID, custMasId);
+                jsonObject.addProperty(AllUrlsAndConfig.LOGGEDID, getEmail());
+                jsonObject.addProperty(AllUrlsAndConfig.UPDATESTAM, updateStam);
+                jsonObject.addProperty(AllUrlsAndConfig.UPDTEUSER, updateUser);
+                jsonObject.addProperty(AllUrlsAndConfig.ORGSTAMPP, orgStamp);
+                jsonObject.addProperty(AllUrlsAndConfig.ORGUSERR, orgUser);
+                jsonObject.addProperty(AllUrlsAndConfig.DELLFLG, "N");
+                jsonObject.addProperty(AllUrlsAndConfig.CLOUDIMGID, cloudImgId);
+                jsonObject.addProperty(AllUrlsAndConfig.ORGLFILENAME, fileName);
+                jsonObject.addProperty(AllUrlsAndConfig.CLOUDFILENAME, cloudFileName);
+                jsonObject.addProperty(AllUrlsAndConfig.MIMETYPE, mimeType);
+                jsonObject.addProperty(AllUrlsAndConfig.IMGACTION, imgAction);
+                jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, fileData);
+
+                Log.e("testImgUpload", jsonObject.toString());
+                return mWebservice.customerAddProfileImage(url,jsonObject);
+
+            }
+        }.asLiveData();
+    }
 
 
 

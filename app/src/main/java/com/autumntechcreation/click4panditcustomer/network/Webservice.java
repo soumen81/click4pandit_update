@@ -19,19 +19,15 @@ import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderListModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
-import com.autumntechcreation.click4panditcustomer.ui.profile.AddProfileImageModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.CustomerGetProfileModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.SaveCustomerprofileModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryModel;
-import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig;
 import com.google.gson.JsonObject;
 
 import java.util.List;
 
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -178,8 +174,8 @@ public interface Webservice {
 
     @Headers({"Content-Type:application/json"})
     @POST()
-    LiveData<ApiResponse<AddProfileImageModel>> customerAddProfileImage(@Url String apiname,
-                                                                        @Body JsonObject jsonObject
+    LiveData<ApiResponse<CustomerGetProfileModel>> customerAddProfileImage(@Url String apiname,
+                                                                               @Body JsonObject jsonObject
 
     );
 

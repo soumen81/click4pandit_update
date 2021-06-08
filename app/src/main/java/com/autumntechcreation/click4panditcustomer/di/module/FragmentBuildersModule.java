@@ -15,6 +15,7 @@ import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryF
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutFragment;
+import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -66,4 +67,7 @@ public abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract AddUpdateRemoveFragment contributeAddUpdateRemoveFragment();
+
+    @ContributesAndroidInjector
+    abstract TransactionStatusFragment contributeTransactionStatusFragment();
 }

@@ -413,6 +413,32 @@
             android:name="sgstvalue"
             android:defaultValue="0"
             app:argType="string" />
+        <argument
+            android:name="referenceid"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="transactionstatus"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="paymentmode"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="message"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="Transactiontime"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="paymentorderID"
+            android:defaultValue="0"
+            app:argType="string" />
+
+
         <action
             android:id="@+id/action_billingDetailsFragment_to_differentPujaLocationFragment"
             app:destination="@id/differentPujaLocationFragment" />
@@ -423,6 +449,9 @@
         <action
             android:id="@+id/action_billingDetailsFragment_to_homeFragmentFragment"
             app:destination="@id/homeFragmentFragment" />
+        <action
+            android:id="@+id/action_billingDetailsFragment_to_transactionStatusFragment"
+            app:destination="@id/transactionStatusFragment" />
     </fragment>
     <fragment
         android:id="@+id/differentPujaLocationFragment"
@@ -748,6 +777,47 @@
         <action
             android:id="@+id/action_addUpdateRemoveFragment_to_addressFragment"
             app:destination="@id/addressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionStatusFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusFragment"
+        android:label="TransactionStatusFragment" >
+        <argument
+            android:name="orderId"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="orderAmount"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="referenceid"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="transactionstatus"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="paymentmode"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="message"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="Transactiontime"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="paymentorderID"
+            android:defaultValue="0"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_transactionStatusFragment_to_homeFragmentFragment"
+            app:destination="@id/homeFragmentFragment" />
     </fragment>
 
 

@@ -33,6 +33,7 @@ import com.autumntechcreation.click4panditcustomer.ui.search.SearchRepository;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutRepository;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionRepository;
+import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusRepository;
 import com.autumntechcreation.click4panditcustomer.util.AppConstants;
 
 import javax.inject.Singleton;
@@ -207,5 +208,11 @@ public class AppModule {
     @Singleton
     AddUpdateRemoveRepository provideAddUpdateRemoveRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new AddUpdateRemoveRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    TransactionStatusRepository provideTransactionStatusRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new TransactionStatusRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

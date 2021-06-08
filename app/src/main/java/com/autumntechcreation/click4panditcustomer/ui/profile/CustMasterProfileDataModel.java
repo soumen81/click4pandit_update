@@ -32,6 +32,18 @@ public class CustMasterProfileDataModel {
     @Expose
     public Object faxNo;
 
+    @SerializedName("imgAction")
+    @Expose
+    public String imgAction;
+
+    public String getImgAction() {
+        return imgAction;
+    }
+
+    public void setImgAction(String imgAction) {
+        this.imgAction = imgAction;
+    }
+
     public String getLogonId() {
         return logonId;
     }

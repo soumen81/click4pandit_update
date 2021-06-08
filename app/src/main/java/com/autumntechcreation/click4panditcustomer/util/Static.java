@@ -2,6 +2,7 @@ package com.autumntechcreation.click4panditcustomer.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.autumntechcreation.click4panditcustomer.R;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.math.BigDecimal;
 import java.text.DateFormat;
@@ -159,5 +161,11 @@ public class Static {
         } else {
             return false;
         }
+    }
+    public byte[] convertBitmaptoByte(Bitmap bitmap){
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream .toByteArray();
+        return byteArray;
     }
 }

@@ -8,8 +8,8 @@ android {
         applicationId "com.autumntechcreation.click4panditcustomer"
         minSdkVersion versions.min_sdk
         targetSdkVersion versions.target_sdk
-        versionCode 6
-        versionName "1.5"
+        versionCode 7
+        versionName "1.6"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         javaCompileOptions {
@@ -113,4 +113,5 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.0'
     //Circle Image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
 }

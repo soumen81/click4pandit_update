@@ -69,7 +69,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     int orderId,bkgId,shippingbkgId,shippingOrderId;
     String orderAmount,shippingAddress,shippingCity,shippingState,shippingPincode,pujaDatetime,shippingFirstName,
     shippingLastName,shippingemail,shippingAlternateMobile,shippingAdditionalInfo,shippingOrderAmount,pujaAmount,cgstValue,sgstValue;
-    String paymentorderID = "";
+    String paymentorderID = "",paymentMode="",transactionTime="",referenceId="",txMsg="",txStatus="";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -291,6 +291,20 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         Bundle bundle = ((MainActivity) getActivity()).returnPaymentDetails();
         if (bundle != null)
             paymentorderID = bundle.getString("orderId");
+            paymentMode = bundle.getString("paymentMode");
+            Log.e("PAYEEMODEEE",paymentMode);
+            transactionTime = bundle.getString("txTime");
+             Log.e("TRANSTIME",transactionTime);
+            referenceId = bundle.getString("referenceId");
+            Log.e("REFERENCETIME",referenceId);
+            txMsg = bundle.getString("txMsg");
+            Log.e("TRANSACTIONMSG",txMsg);
+            orderAmount = bundle.getString("orderAmount");
+            Log.e("ORDERAMOUNT",orderAmount);
+            txStatus = bundle.getString("txStatus");
+            Log.e("STATUS",txStatus);
+
+
         if(paymentorderID.length()>0){
             mBillingDetailsViewModel.getUpdateInvoice(Integer.parseInt(paymentorderID)).observe(getActivity(),BillingDetailsFragment.this::handleUpdateInvoice);
         }
@@ -552,8 +566,24 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                     String json = gson.toJson(resource.data);
                     Log.e("handleCashFreeTokenResponse", json + "");
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
+                        BillingDetailsFragmentDirections.ActionBillingDetailsFragmentToTransactionStatusFragment action=
+                                BillingDetailsFragmentDirections.actionBillingDetailsFragmentToTransactionStatusFragment();
+                        action.setPaymentorderID(paymentorderID);
+                        action.setOrderAmount(orderAmount);
+                        action.setReferenceid(referenceId);
+                        action.setTransactionstatus(txMsg);
+                        action.setPaymentmode(paymentMode);
+                        action.setMessage(txStatus);
+                        action.setTransactiontime(transactionTime);
 
-                        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                        Navigation.findNavController(mView).navigate(action);
+
+
+
+
+
+
+                      /*  new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText(this.getString(R.string.success))
                                 .setContentText(this.getString(R.string.paymentsuccess))
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -565,7 +595,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                                         Navigation.findNavController(mView).navigate(action);
 
                                     }
-                                }).show();
+                                }).show();*/
 
 
                     }

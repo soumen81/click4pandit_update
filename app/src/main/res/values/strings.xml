@@ -160,4 +160,14 @@
     <string name="dialoffice">1800 891 9016/ + 91 76050 106 56</string>
     <string name="contactoffice">contact@click4pandit.com</string>
     <string name="imageupload">Image Uploaded Successfully</string>
+    <string name="orderid">Order Id</string>
+    <string name="orderamount">Order Amount</string>
+    <string name="referenceid">Reference ID</string>
+    <string name="transactionstatus">Transaction Status</string>
+    <string name="paymentmode">Payment Mode</string>
+    <string name="message">Message</string>
+    <string name="Transactiontime">Transaction Time</string>
+    <string name="thankyoupayment">Thank You! Payment done is subject</string>
+    <string name="torealization">to Realization</string>
+    <string name="backtohome">Back to Home</string>
 </resources>

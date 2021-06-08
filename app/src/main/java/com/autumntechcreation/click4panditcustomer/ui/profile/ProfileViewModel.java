@@ -12,7 +12,7 @@ import javax.inject.Inject;
 public class ProfileViewModel extends ViewModel {
     private LiveData<Resource<CustomerGetProfileModel>> mCustomerGetProfileModelResponse;
     private LiveData<Resource<SaveCustomerprofileModel>> mCustomerSaveProfileModelResponse;
-    private LiveData<Resource<AddProfileImageModel>> mAddProfileImageModelResponse;
+    private LiveData<Resource<CustomerGetProfileModel>> mAddProfileImageModelResponse;
     ProfileRepository mProfileRepository;
     @Inject
     public ProfileViewModel(ProfileRepository profileRepository) {
@@ -32,15 +32,26 @@ public class ProfileViewModel extends ViewModel {
                 mobileNo,altermobileNo,emailId );
         return mCustomerSaveProfileModelResponse;
 
-    }public LiveData<Resource<AddProfileImageModel>> getAddProfileImageUpload(String customerProfileImageId,
-                                                                              String custMasId,String updateStam,String updateUser,
+    }public LiveData<Resource<CustomerGetProfileModel>> getAddProfileImageUpload(int customerProfileImageId,
+                                                                              int custMasId,String updateStam,String updateUser,
                                                                               String orgStamp,String orgUser,String cloudImgId,String fileName,
-                                                                                  String cloudFileName,String imgAction,
+                                                                                  String cloudFileName,String mimeType,String imgAction,
                                                                                   String fileData
                                                                               ) {
         mAddProfileImageModelResponse = new MutableLiveData<>();
         mAddProfileImageModelResponse = mProfileRepository.getAddProfileImageUpload(customerProfileImageId,custMasId,updateStam,updateUser,orgStamp,orgUser,cloudImgId,fileName,cloudFileName,
-                imgAction,fileData);
+                mimeType,imgAction,fileData);
+        return mAddProfileImageModelResponse;
+
+    }public LiveData<Resource<CustomerGetProfileModel>> getProfileImageUpload(String customerProfileImageId,
+                                                                              String custMasId,String updateStam,String updateUser,
+                                                                              String orgStamp,String orgUser,String cloudImgId,String fileName,
+                                                                                  String cloudFileName,String mimeType,String imgAction,
+                                                                                  String fileData
+                                                                              ) {
+        mAddProfileImageModelResponse = new MutableLiveData<>();
+        mAddProfileImageModelResponse = mProfileRepository.getProfileImageUpload(customerProfileImageId,custMasId,updateStam,updateUser,orgStamp,orgUser,cloudImgId,fileName,cloudFileName,
+                mimeType,imgAction,fileData);
         return mAddProfileImageModelResponse;
 
     }

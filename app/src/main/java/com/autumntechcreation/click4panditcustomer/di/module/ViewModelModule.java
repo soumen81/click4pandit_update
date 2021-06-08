@@ -33,6 +33,7 @@ import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryVie
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusViewModel;
 import com.autumntechcreation.click4panditcustomer.viewmodel.ProjectViewModelFactory;
 
 import dagger.Binds;
@@ -182,4 +183,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(AddressViewModel.class)
     abstract ViewModel bindAddressViewModel(AddressViewModel addUpdateRemoveViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TransactionStatusViewModel.class)
+    abstract ViewModel bindTransactionStatusViewModel(TransactionStatusViewModel transactionStatusViewModel);
 }

@@ -17,6 +17,15 @@
                             <option name="y" value="-1132" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_addUpdateRemoveFragment_to_addressFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -28,6 +37,15 @@
                             <option name="x" value="535" />
                             <option name="y" value="-1196" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_addressFragment_to_addUpdateRemoveFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -306,6 +324,18 @@
                           <Point>
                             <option name="x" value="915" />
                             <option name="y" value="644" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="transactionStatusFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1780" />
+                            <option name="y" value="354" />
                           </Point>
                         </option>
                       </LayoutPositions>

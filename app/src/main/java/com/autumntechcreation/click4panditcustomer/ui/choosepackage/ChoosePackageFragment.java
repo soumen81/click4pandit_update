@@ -241,21 +241,27 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
             @Override
             public void onChanged(@Nullable Void _) {
 
-                ChoosePackageFragmentDirections.ActionChoosePackageFragmentToBookingPujaFragment action=
-                        ChoosePackageFragmentDirections.actionChoosePackageFragmentToBookingPujaFragment();
-                action.setPujaName(pujaName);
-                action.setAmount(pujaAmount);
-                action.setPackageDesc(pujaDesc);
-                action.setProcedure(procedures);
-                action.setPujaSamagries(pujaSamagries);
-                action.setYajaman(Yajaman);
-                action.setPackageTypeIdDesc(packageTypeIdDesc);
-                action.setSubCategoryName(subCategoryName);
-                action.setSubCategoryId(subCategoryId);
-                action.setPujaPackageId(pujaPackageId);
-                action.setIsAllSamagries(isAllSamagries);
-                action.setNoOfPandit(noOfPandit);
-                Navigation.findNavController(mView).navigate(action);
+                if(mChoosePackageViewModel.getSelectedChoosePackageListItem().getValue()==null){
+                    Toast.makeText(getActivity(), "Please select Package", Toast.LENGTH_SHORT).show();
+                }else {
+
+
+                    ChoosePackageFragmentDirections.ActionChoosePackageFragmentToBookingPujaFragment action =
+                            ChoosePackageFragmentDirections.actionChoosePackageFragmentToBookingPujaFragment();
+                    action.setPujaName(pujaName);
+                    action.setAmount(pujaAmount);
+                    action.setPackageDesc(pujaDesc);
+                    action.setProcedure(procedures);
+                    action.setPujaSamagries(pujaSamagries);
+                    action.setYajaman(Yajaman);
+                    action.setPackageTypeIdDesc(packageTypeIdDesc);
+                    action.setSubCategoryName(subCategoryName);
+                    action.setSubCategoryId(subCategoryId);
+                    action.setPujaPackageId(pujaPackageId);
+                    action.setIsAllSamagries(isAllSamagries);
+                    action.setNoOfPandit(noOfPandit);
+                    Navigation.findNavController(mView).navigate(action);
+                }
 
             }
         });
