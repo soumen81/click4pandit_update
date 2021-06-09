@@ -4,15 +4,19 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -70,6 +74,7 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
     private View mView;
     NavController navController;
+    AlertDialog dialogAlert;
     String procedure,pujaName,pujaAmount,pujaDesc,pujaSamagri,yajaman,item;
     ArrayAdapter<String> mSpinLocationAdapter;
     List<String> mListLocation = new ArrayList<>();
@@ -152,6 +157,7 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mBookingPujaViewModel.getBookingLocationList(mFragmentBookingpujaBinding.tvSpinTypeOfLocation.getText().toString()).observe(getActivity(), BookingPujaFragment.this::handleBookingLocationList);
+
             }
 
             @Override
@@ -372,8 +378,9 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
                                             mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setThreshold(1);//will start working from first character
                                             mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setAdapter(mSpinLocationAdapter);//setting the adapter data into the AutoCompleteTextView
                                             mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setTextColor(Color.BLACK);
-                                            mSpinLocationAdapter.notifyDataSetChanged();
 
+
+                                            mSpinLocationAdapter.notifyDataSetChanged();
 
                                             Log.e("LISSSST", mListLocation.size() + "");
 
@@ -472,6 +479,7 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
 
         // set user selected value to the TextView
         mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setText(item);
+        Static.hideKeyboard(getActivity());
         try {
             locationId=mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
             locName = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();

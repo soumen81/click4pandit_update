@@ -68,7 +68,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     NavController navController;
     int orderId,bkgId,shippingbkgId,shippingOrderId;
     String orderAmount,shippingAddress,shippingCity,shippingState,shippingPincode,pujaDatetime,shippingFirstName,
-    shippingLastName,shippingemail,shippingAlternateMobile,shippingAdditionalInfo,shippingOrderAmount,pujaAmount,cgstValue,sgstValue;
+            shippingLastName,shippingemail,shippingAlternateMobile,shippingAdditionalInfo,shippingOrderAmount,pujaAmount,cgstValue,sgstValue;
+
     String paymentorderID = "",paymentMode="",transactionTime="",referenceId="",txMsg="",txStatus="";
     @Nullable
     @Override
@@ -76,7 +77,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         mFragmentBillingdetailsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_billingdetails, container, false);
         mFragmentBillingdetailsBinding.setLifecycleOwner(this);
 
-       if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
+        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
             pujaDatetime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();
             Log.e("PUJADATETIME", pujaDatetime);
         }
@@ -208,7 +209,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                         mFragmentBillingdetailsBinding.imgvwLoc.setVisibility(View.GONE);
                         String shippingDateTime="";
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
-                          shippingDateTime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();
+                            shippingDateTime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();
                             Log.e("SHIPPINGDATETIME", shippingDateTime);
                         }
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress().length()>0) {
@@ -225,23 +226,23 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             Log.e("SHIPPINGPINCODE", shippingPincode);
                         }
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingFname().length()>0){
-                             shippingFirstName=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingFname();
+                            shippingFirstName=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingFname();
                             Log.e("SHIPPINGFIRSTNAME", shippingFirstName);
                         }
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingLname().length()>0){
-                             shippingLastName=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingLname();
+                            shippingLastName=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingLname();
                             Log.e("SHIPPINGLASTNAME", shippingLastName);
                         }
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingemail().length()>0){
-                             shippingemail=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingemail();
+                            shippingemail=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingemail();
                             Log.e("SHIPPINGEMAIL", shippingemail);
                         }
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingMobile().length()>0){
-                             shippingAlternateMobile=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingMobile();
+                            shippingAlternateMobile=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingMobile();
                             Log.e("SHIPPINGMOBILE", shippingAlternateMobile);
                         }
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getAdditionalInfo().length()>0){
-                             shippingAdditionalInfo=BillingDetailsFragmentArgs.fromBundle(getArguments()).getAdditionalInfo();
+                            shippingAdditionalInfo=BillingDetailsFragmentArgs.fromBundle(getArguments()).getAdditionalInfo();
                             Log.e("SHIPPINGFADDITIONALINFO", shippingAdditionalInfo);
                         }
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBkgId()>0) {
@@ -261,7 +262,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                                 mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),mFragmentBillingdetailsBinding.edtMobileNo.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtTxtCity.getText().toString(),mFragmentBillingdetailsBinding.edtTxtState.getText().toString(),mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString(),Double.parseDouble(shippingOrderAmount),shippingOrderId,shippingFirstName,shippingLastName,shippingAlternateMobile,
                                 shippingemail,shippingAddress, shippingPincode,shippingAdditionalInfo
-                                ).observe(getActivity(), BillingDetailsFragment.this::handleProceedToPay);
+                        ).observe(getActivity(), BillingDetailsFragment.this::handleProceedToPay);
 
                     }
                     else{
@@ -284,17 +285,17 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     @Override
     public void onResume() {
         super.onResume();
-    try {
+        try {
 
-        Log.e("SOUMMMMMEN", "Frag");
-        ((MainActivity) getActivity()).returnPaymentDetails();
-        Bundle bundle = ((MainActivity) getActivity()).returnPaymentDetails();
-        if (bundle != null)
-            paymentorderID = bundle.getString("orderId");
+            Log.e("SOUMMMMMEN", "Frag");
+            ((MainActivity) getActivity()).returnPaymentDetails();
+            Bundle bundle = ((MainActivity) getActivity()).returnPaymentDetails();
+            if (bundle != null)
+                paymentorderID = bundle.getString("orderId");
             paymentMode = bundle.getString("paymentMode");
             Log.e("PAYEEMODEEE",paymentMode);
             transactionTime = bundle.getString("txTime");
-             Log.e("TRANSTIME",transactionTime);
+            Log.e("TRANSTIME",transactionTime);
             referenceId = bundle.getString("referenceId");
             Log.e("REFERENCETIME",referenceId);
             txMsg = bundle.getString("txMsg");
@@ -303,22 +304,20 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
             Log.e("ORDERAMOUNT",orderAmount);
             txStatus = bundle.getString("txStatus");
             Log.e("STATUS",txStatus);
-
-
-        if(paymentorderID.length()>0){
-            mBillingDetailsViewModel.getUpdateInvoice(Integer.parseInt(paymentorderID)).observe(getActivity(),BillingDetailsFragment.this::handleUpdateInvoice);
-        }
-
-        Log.e("OrderIddd", paymentorderID);
-        for (String key : bundle.keySet()) {
-            if (bundle.getString(key) != null) {
-                Log.d(TAG, key + " : " + bundle.getString(key));
-
+            if(paymentorderID.length()>0){
+                mBillingDetailsViewModel.getUpdateInvoice(Integer.parseInt(paymentorderID)).observe(getActivity(),BillingDetailsFragment.this::handleUpdateInvoice);
             }
+
+            Log.e("OrderIddd", paymentorderID);
+            for (String key : bundle.keySet()) {
+                if (bundle.getString(key) != null) {
+                    Log.d(TAG, key + " : " + bundle.getString(key));
+
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
-    }catch (Exception e){
-        e.printStackTrace();
-    }
     }
 
 
@@ -439,7 +438,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
                         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
                         cfPaymentService.setOrientation(0);
-                        cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
+                       // cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
+                        cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "PROD", "#784BD2", "#FFFFFF", false);
 
 
 
@@ -566,39 +566,22 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                     String json = gson.toJson(resource.data);
                     Log.e("handleCashFreeTokenResponse", json + "");
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
-                        BillingDetailsFragmentDirections.ActionBillingDetailsFragmentToTransactionStatusFragment action=
-                                BillingDetailsFragmentDirections.actionBillingDetailsFragmentToTransactionStatusFragment();
-                        action.setPaymentorderID(paymentorderID);
-                        action.setOrderAmount(orderAmount);
-                        action.setReferenceid(referenceId);
-                        action.setTransactionstatus(txMsg);
-                        action.setPaymentmode(paymentMode);
-                        action.setMessage(txStatus);
-                        action.setTransactiontime(transactionTime);
 
-                        Navigation.findNavController(mView).navigate(action);
+                        if ( resource.data.returnStatus.equals("SUCCESS")) {
+                            BillingDetailsFragmentDirections.ActionBillingDetailsFragmentToTransactionStatusFragment action =
+                                    BillingDetailsFragmentDirections.actionBillingDetailsFragmentToTransactionStatusFragment();
+                            action.setPaymentorderID(paymentorderID);
+                            action.setOrderAmount(orderAmount);
+                            action.setReferenceid(referenceId);
+                            action.setTransactionstatus(txMsg);
+                            action.setPaymentmode(paymentMode);
+                            action.setMessage(txStatus);
+                            action.setTransactiontime(transactionTime);
 
+                            Navigation.findNavController(mView).navigate(action);
+                        }
 
-
-
-
-
-                      /*  new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText(this.getString(R.string.success))
-                                .setContentText(this.getString(R.string.paymentsuccess))
-                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sDialog) {
-                                        sDialog.dismiss();
-                                        BillingDetailsFragmentDirections.ActionBillingDetailsFragmentToHomeFragmentFragment action=
-                                                BillingDetailsFragmentDirections.actionBillingDetailsFragmentToHomeFragmentFragment();
-                                        Navigation.findNavController(mView).navigate(action);
-
-                                    }
-                                }).show();*/
-
-
-                    }
+                        }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;
                 default:
@@ -609,8 +592,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         }
     }
     private Map<String, String> getInputParams() {
-        String appId = "6159303c6dd0fdc88e24a424f39516";
-       // String appId = "10732304e9cb87da1696501a98323701";
+        //String appId = "6159303c6dd0fdc88e24a424f39516";
+        String appId = "10732304e9cb87da1696501a98323701";
         String strorderId = String.valueOf(orderId);
         String strorderAmount = orderAmount;
         String orderNote = "Puja";
@@ -635,4 +618,4 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
 
 
-    }
+}

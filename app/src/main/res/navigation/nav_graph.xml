@@ -438,6 +438,14 @@
             android:defaultValue="0"
             app:argType="string" />
 
+        <argument
+            android:name="BillingPincode"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="BillingAddress"
+            android:defaultValue="0"
+            app:argType="string" />
 
         <action
             android:id="@+id/action_billingDetailsFragment_to_differentPujaLocationFragment"
@@ -518,7 +526,26 @@
             android:name="shippingBkgId"
             android:defaultValue="1"
             app:argType="integer" />
-
+        <argument
+            android:name="pujaAmount"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="cgstvalue"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="sgstvalue"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="BillingPincode"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="BillingAddress"
+            android:defaultValue="0"
+            app:argType="string" />
         <action
             android:id="@+id/action_differentPujaLocationFragment_to_billingDetailsFragment"
             app:destination="@id/billingDetailsFragment" />
@@ -684,6 +711,14 @@
             android:defaultValue="0"
             app:argType="string" />
         <argument
+            android:name="address2"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="address3"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
             android:name="city"
             android:defaultValue="0"
             app:argType="string" />
@@ -743,6 +778,14 @@
             app:argType="string" />
         <argument
             android:name="address1"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="address2"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="address3"
             android:defaultValue="0"
             app:argType="string" />
         <argument

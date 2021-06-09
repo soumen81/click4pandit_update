@@ -16,14 +16,14 @@ public class AddUpdateRemoveViewModel extends ViewModel {
     public AddUpdateRemoveViewModel(AddUpdateRemoveRepository addUpdateRemoveRepository) {
         this.mAddUpdateRemoveRepository=addUpdateRemoveRepository;
     }
-    public LiveData<Resource<AddAddressModel>> getAddAddress(String action,int shippingAddressId,int custMasterId,String orglStamp,String firstName,String lastName,String address1,String pincode) {
+    public LiveData<Resource<AddAddressModel>> getAddAddress(String action,int shippingAddressId,int custMasterId,String orglStamp,String firstName,String lastName,String address1,String address2,String address3,String pincode) {
         mAddAddressModelResponse = new MutableLiveData<>();
-        mAddAddressModelResponse = mAddUpdateRemoveRepository.getAddAddress(action,shippingAddressId,custMasterId,orglStamp,firstName,lastName,address1,pincode);
+        mAddAddressModelResponse = mAddUpdateRemoveRepository.getAddAddress(action,shippingAddressId,custMasterId,orglStamp,firstName,lastName,address1,address2,address3,pincode);
         return mAddAddressModelResponse;
 
-    } public LiveData<Resource<AddAddressModel>> getNewAddAddress(String action,String firstName,String lastName,String address1,String pincode) {
+    } public LiveData<Resource<AddAddressModel>> getNewAddAddress(String action,String firstName,String lastName,String address1,String address2,String address3,String pincode) {
         mAddAddressModelResponse = new MutableLiveData<>();
-        mAddAddressModelResponse = mAddUpdateRemoveRepository.getNewAddAddress(action,firstName,lastName,address1,pincode);
+        mAddAddressModelResponse = mAddUpdateRemoveRepository.getNewAddAddress(action,firstName,lastName,address1,address2,address3,pincode);
         return mAddAddressModelResponse;
 
     }

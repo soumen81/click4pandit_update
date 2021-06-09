@@ -37,7 +37,7 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
     DifferentPujaLocationViewModel mDifferentPujaLocationViewModel;
     private View mView;
     NavController navController;
-    String pujaDatetime,shippingorderAmount;
+    String pujaDatetime,shippingorderAmount,getPujaAmount,getSgstvalue,getCgstvalue,getBillingAddress,getBillingPinCode;
     int shippingbkgId,shippingorderId;
 
     @Nullable
@@ -61,6 +61,22 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
            shippingorderAmount=BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount();
             Log.e("SHIPPINGORDERAMOUNT",shippingorderAmount);
         }
+       /* if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaAmount().length()>0){
+            getPujaAmount=BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaAmount();
+            Log.e("PUJAAMOUNT",getPujaAmount);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getSgstvalue().length()>0){
+            getSgstvalue=BillingDetailsFragmentArgs.fromBundle(getArguments()).getSgstvalue();
+            Log.e("SGSSTVALUE",getSgstvalue);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getCgstvalue().length()>0){
+            getCgstvalue=BillingDetailsFragmentArgs.fromBundle(getArguments()).getCgstvalue();
+            Log.e("CGSTVALUE",getCgstvalue);
+        }*//*if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress().length()>0){
+            getBillingAddress=BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress();
+            Log.e("BILLINGADDRESS",getBillingAddress);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingPincode().length()>0){
+            getBillingPinCode=BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingPincode();
+            Log.e("BILLINGPINCODE",getBillingPinCode);
+        }*/
         return mFragmentDifferentpujalocationBinding.getRoot();
     }
     @Override
@@ -122,7 +138,7 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                             .setTitleText("Error")
                             .setContentText("Please Enter City...")
                             .show();
-                }else if(mFragmentDifferentpujalocationBinding.edtTxtPincode.getText().toString().trim().equals("")){
+                }else if(mFragmentDifferentpujalocationBinding.edtTxtPincode.getText().toString().trim().equals("")||(mFragmentDifferentpujalocationBinding.edtTxtPincode.getText().toString().length()<6)){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
                             .setContentText("Please Enter PinCode...")
@@ -147,7 +163,12 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                     action.setDateTime(pujaDatetime);
                     action.setShippingBkgId(shippingbkgId);
                     action.setOrderAmount(shippingorderAmount);
+                  /*  action.setPujaAmount(getPujaAmount);
+                    action.setCgstvalue(getCgstvalue);
+                    action.setSgstvalue(getSgstvalue);*/
                     action.setOrderId(shippingorderId);
+                   /* action.setBillingAddress(getBillingAddress);
+                    action.setBillingPincode(getBillingPinCode);*/
                     action.setStatusShippingId(1);
                     Navigation.findNavController(mView).navigate(action);
                 }

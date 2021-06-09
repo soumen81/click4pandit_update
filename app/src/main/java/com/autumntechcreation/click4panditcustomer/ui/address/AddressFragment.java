@@ -101,6 +101,8 @@ public class AddressFragment extends Fragment implements Injectable {
                 String firstName=addressViewModel.mAddressListResponse.getValue().data.get(position).getFirstName();
                 String lastName=addressViewModel.mAddressListResponse.getValue().data.get(position).getLastName();
                 Object address1=addressViewModel.mAddressListResponse.getValue().data.get(position).getAddr1();
+                Object address2=addressViewModel.mAddressListResponse.getValue().data.get(position).getAddr2();
+                Object address3=addressViewModel.mAddressListResponse.getValue().data.get(position).getAddr3();
                 Object city=addressViewModel.mAddressListResponse.getValue().data.get(position).getCityDescr();
                 Object state=addressViewModel.mAddressListResponse.getValue().data.get(position).getStDescr();
                 Object postal=addressViewModel.mAddressListResponse.getValue().data.get(position).getPostal();
@@ -114,6 +116,8 @@ public class AddressFragment extends Fragment implements Injectable {
                 action.setFirstName(firstName);
                 action.setLastName(lastName);
                 action.setAddress1(String.valueOf(address1));
+                action.setAddress2(String.valueOf(address2));
+                action.setAddress3(String.valueOf(address3));
                 action.setCity(String.valueOf(city));
                 action.setState(String.valueOf(state));
                 action.setPincode(String.valueOf(postal));
@@ -130,6 +134,8 @@ public class AddressFragment extends Fragment implements Injectable {
                 String firstName=addressViewModel.mAddressListResponse.getValue().data.get(position).getFirstName();
                 String lastName=addressViewModel.mAddressListResponse.getValue().data.get(position).getLastName();
                 Object address1=addressViewModel.mAddressListResponse.getValue().data.get(position).getAddr1();
+                Object address2=addressViewModel.mAddressListResponse.getValue().data.get(position).getAddr2();
+                Object address3=addressViewModel.mAddressListResponse.getValue().data.get(position).getAddr3();
                 Object city=addressViewModel.mAddressListResponse.getValue().data.get(position).getCityDescr();
                 Object state=addressViewModel.mAddressListResponse.getValue().data.get(position).getStDescr();
                 Object postal=addressViewModel.mAddressListResponse.getValue().data.get(position).getPostal();
@@ -143,6 +149,8 @@ public class AddressFragment extends Fragment implements Injectable {
                 action.setFirstName(firstName);
                 action.setLastName(lastName);
                 action.setAddress1(String.valueOf(address1));
+                action.setAddress2(String.valueOf(address2));
+                action.setAddress3(String.valueOf(address3));
                 action.setCity(String.valueOf(city));
                 action.setState(String.valueOf(state));
                 action.setPincode(String.valueOf(postal));

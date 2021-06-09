@@ -46,7 +46,8 @@ public class SendEnquiryActivity extends AppCompatActivity {
         mSendEnquiryViewModel = ViewModelProviders.of(this, viewModelFactory).get(SendEnquiryViewModel.class);
         mActivitySendenquiryBinding.setLifecycleOwner(this);
         mActivitySendenquiryBinding.setSendEnquiryViewModel(mSendEnquiryViewModel);
-
+        mActivitySendenquiryBinding.edtTxtBhumiPuja.setText("Bhoomi Puja");
+        mActivitySendenquiryBinding.edtTxtEmail.setEnabled(false);
         mActivitySendenquiryBinding.imgbackPrivacyPolicy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

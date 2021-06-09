@@ -21,6 +21,7 @@ import android.os.FileUtils;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,7 +145,34 @@ public class ProfileFragment extends Fragment implements Injectable {
         mFragmentProfileBinding.tvSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mProfileViewModel.getForSaveCustomerProfile(custMasterId,firstName,lastName,mobileNo,mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(),emailId).observe(getActivity(),ProfileFragment.this::handleSaveCustomerProfile);
+                if(mFragmentProfileBinding.edtTxtFName.getText().toString().trim().equals("")){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Please Enter First Name...")
+                            .show();
+                } else if(mFragmentProfileBinding.edtTxtLastName.getText().toString().trim().equals("")){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Please Enter Last Name...")
+                            .show();
+                } else if (!Patterns.PHONE.matcher(mFragmentProfileBinding.edtTxtMobileNo.getText().toString()).matches()||
+
+                        (mFragmentProfileBinding.edtTxtMobileNo.getText().toString().trim().equals(""))||(mFragmentProfileBinding.edtTxtMobileNo.getText().toString().trim().length()<10)){
+                    //  Toast.makeText(SettingPageActivity.this,R.string.please_enter_valid_phone_number,Toast.LENGTH_SHORT).show();
+
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
+                            .show();
+                }else if (!Patterns.EMAIL_ADDRESS.matcher(mFragmentProfileBinding.edtTxtEmail.getText().toString()).matches()||
+                        (mFragmentProfileBinding.edtTxtEmail.getText().toString().trim().equals(""))){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Please Enter Valid  Email Address...")
+                            .show();
+                }else {
+                    mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(), emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
+                }
             }
         });
 
@@ -156,12 +184,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, 1);
 
-                if(newImgAction.equals("UPDATE")){
-                    mProfileViewModel.getAddProfileImageUpload(Integer.parseInt(newMasterProfileImageid) ,custMasterId,null,null,null,null,uuidInString,fileName,cloudFileName,"image/jpeg","UPDATE",encoded).observe(getActivity(),ProfileFragment.this::handleUploadForImage);
-                }else{
 
-                    mProfileViewModel.getProfileImageUpload(null, null, null, null, null, null, uuidInString, fileName, cloudFileName, "image/jpeg","ADD", encoded).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
-                }
             }
         });
 
@@ -192,7 +215,12 @@ public class ProfileFragment extends Fragment implements Injectable {
                 Log.e("Encoded",encoded);
                 //fileName = new SimpleDateFormat("yyyyMMddHHmm'.jpg'").format(new Date());
                 fileName = "fav.jpg";
+                if(newImgAction.equals("UPDATE")){
+                    mProfileViewModel.getAddProfileImageUpload(Integer.parseInt(newMasterProfileImageid) ,custMasterId,null,null,null,null,uuidInString,newOriginalFileName,cloudFileName,"image/jpeg","UPDATE",newFileDate).observe(getActivity(),ProfileFragment.this::handleUploadForImage);
+                }else{
 
+                    mProfileViewModel.getProfileImageUpload(null, null, null, null, null, null, uuidInString, fileName, cloudFileName, "image/jpeg","ADD", encoded).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+                }
 
 
             } catch (IOException e) {
@@ -262,6 +290,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                         mFragmentProfileBinding.edtTxtLastName.setText(lastName);
                         mFragmentProfileBinding.edtTxtMobileNo.setText(mobileNo);
                         mFragmentProfileBinding.edtTxtEmail.setText(emailId);
+                        mFragmentProfileBinding.edtTxtEmail.setEnabled(false);
 
 
 
@@ -420,7 +449,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                     Gson gson = new Gson();
                     String json = gson.toJson(resource.data);
                     Log.e("handleRegisterResponse", json + "");
-                    if(resource.data.custMasterProfileImageModel.returnStatus.equals("SUCCESS")) {
+                   // if(resource.data.custMasterProfileImageModel.returnStatus.equals("SUCCESS")) {
 
                        /* updateCusProfileImgid = String.valueOf(resource.data.custMasterProfileImageModel.custMasterProfImgId);
                         updateCustMasterId = String.valueOf(resource.data.custMasterProfileImageModel.custMasterId);
@@ -445,7 +474,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                                 }).show();
 
 
-                    }
+                   // }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;
                 default:

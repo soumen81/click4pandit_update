@@ -189,6 +189,7 @@ public class BillingDetailsRepository {
                 Log.e("URL",url);
                 JsonObject jsonObject = new JsonObject();
                 JsonObject jsonOObjectBillingAddress = new JsonObject();
+                String str=null;
 
 
                 jsonOObjectBillingAddress.addProperty(AllUrlsAndConfig.CUSTPUJABILLINGADDRID, 0);
@@ -234,7 +235,7 @@ public class BillingDetailsRepository {
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.ORIGINALUSER, "");
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.DELETEFLG, "N");
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CUSTMASTERIDDDD, 1);
-                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CUSTBKGGID, 0);
+                jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.CUSTBKGGID, str);
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.FIRSTTNAME, shippingFirstName);
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.LASTTNAME, shippingLastName);
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.MOBBI1, shippingMobileNo);

@@ -43,6 +43,7 @@ public class TransactionStatusFragment extends Fragment implements Injectable {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mFragmentTransactionstatusBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_transactionstatus, container, false);
         mFragmentTransactionstatusBinding.setLifecycleOwner(this);
+
         if(TransactionStatusFragmentArgs.fromBundle(getArguments()).getPaymentorderID().length()>0) {
             getPaymentorderID = BillingDetailsFragmentArgs.fromBundle(getArguments()).getPaymentorderID();
             Log.e("ORDERID", getPaymentorderID);
@@ -97,6 +98,7 @@ public class TransactionStatusFragment extends Fragment implements Injectable {
                 TransactionStatusFragmentDirections.ActionTransactionStatusFragmentToHomeFragmentFragment action=
                         TransactionStatusFragmentDirections.actionTransactionStatusFragmentToHomeFragmentFragment();
                 Navigation.findNavController(mView).navigate(action);
+              // getActivity().finish();
             }
         });
 

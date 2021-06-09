@@ -37,7 +37,7 @@ public class AddUpdateRemoveRepository {
 
     }
 
-    public LiveData<Resource<AddAddressModel>> getAddAddress(String action,int shippingAddressId,int custMasterId,String orglStamp,String firstName,String lastName,String address1,String pincode ) {
+    public LiveData<Resource<AddAddressModel>> getAddAddress(String action,int shippingAddressId,int custMasterId,String orglStamp,String firstName,String lastName,String address1,String address2,String address3,String pincode ) {
         return new NetworkBoundResource<AddAddressModel,AddAddressModel>(mAppExecutors) {
             private AddAddressModel resultsDb;
             @Override
@@ -87,8 +87,8 @@ public class AddUpdateRemoveRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.FNME,firstName);
                 jsonObject.addProperty(AllUrlsAndConfig.LNME, lastName);
                 jsonObject.addProperty(AllUrlsAndConfig.ADDR11, address1);
-                jsonObject.addProperty(AllUrlsAndConfig.ADDR22, str);
-                jsonObject.addProperty(AllUrlsAndConfig.ADD33, str);
+                jsonObject.addProperty(AllUrlsAndConfig.ADDR22, address2);
+                jsonObject.addProperty(AllUrlsAndConfig.ADD33, address3);
                 jsonObject.addProperty(AllUrlsAndConfig.CITID, str);
                 jsonObject.addProperty(AllUrlsAndConfig.CITDESC, str);
                 jsonObject.addProperty(AllUrlsAndConfig.STIDDD, str);
@@ -105,7 +105,7 @@ public class AddUpdateRemoveRepository {
             }
         }.asLiveData();
     }
-    public LiveData<Resource<AddAddressModel>> getNewAddAddress(String action,String firstName,String lastName,String address1,String pincode ) {
+    public LiveData<Resource<AddAddressModel>> getNewAddAddress(String action,String firstName,String lastName,String address1,String address2,String address3,String pincode ) {
         return new NetworkBoundResource<AddAddressModel,AddAddressModel>(mAppExecutors) {
             private AddAddressModel resultsDb;
             @Override
@@ -155,8 +155,8 @@ public class AddUpdateRemoveRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.FNME,firstName);
                 jsonObject.addProperty(AllUrlsAndConfig.LNME, lastName);
                 jsonObject.addProperty(AllUrlsAndConfig.ADDR11, address1);
-                jsonObject.addProperty(AllUrlsAndConfig.ADDR22, str);
-                jsonObject.addProperty(AllUrlsAndConfig.ADD33, str);
+                jsonObject.addProperty(AllUrlsAndConfig.ADDR22, address2);
+                jsonObject.addProperty(AllUrlsAndConfig.ADD33, address3);
                 jsonObject.addProperty(AllUrlsAndConfig.CITID, str);
                 jsonObject.addProperty(AllUrlsAndConfig.CITDESC, str);
                 jsonObject.addProperty(AllUrlsAndConfig.STIDDD, str);
