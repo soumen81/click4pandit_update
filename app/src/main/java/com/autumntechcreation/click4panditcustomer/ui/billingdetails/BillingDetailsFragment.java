@@ -129,6 +129,11 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                 action.setShippingBkgId(bkgId);
                 action.setOrderAmount(orderAmount);
                 action.setOrderId(orderId);
+                action.setPujaAmount(pujaAmount);
+                action.setSgstvalue(sgstValue);
+                action.setCgstvalue(cgstValue);
+                action.setBillingAddress(mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString());
+                action.setBillingPincode(mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString());
                 Navigation.findNavController(mView).navigate(action);
 
 
@@ -207,6 +212,37 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                     if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getStatusShippingId()==1){
                         mFragmentBillingdetailsBinding.tvLocation.setVisibility(View.GONE);
                         mFragmentBillingdetailsBinding.imgvwLoc.setVisibility(View.GONE);
+                        String shippingPujaAmount="";
+                        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
+                            shippingPujaAmount = BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaAmount();
+                            Log.e("SHIPPINGDATETIME", shippingPujaAmount);
+                        }
+                        String shippingCgst="";
+                        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getCgstvalue().length()>0) {
+                            shippingCgst = BillingDetailsFragmentArgs.fromBundle(getArguments()).getCgstvalue();
+                            Log.e("SHIPPINGDATETIME", shippingCgst);
+                        }
+                        String shippingSgst="";
+                        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getSgstvalue().length()>0) {
+                            shippingSgst = BillingDetailsFragmentArgs.fromBundle(getArguments()).getSgstvalue();
+                            Log.e("SHIPPINGDATETIME", shippingSgst);
+                        }
+                        String billingAddress="";
+                        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress().length()>0) {
+                            billingAddress = BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress();
+                            Log.e("SHIPPINGDATETIME", billingAddress);
+                        }
+                        String billingPinCode="";
+                        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingPincode().length()>0) {
+                            billingPinCode= BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingPincode();
+                            Log.e("SHIPPINGDATETIME", billingAddress);
+                        }
+                        mFragmentBillingdetailsBinding.edtTxtAddress.setText(billingAddress);
+                        mFragmentBillingdetailsBinding.edtTxtPincode.setText(billingPinCode);
+                        mFragmentBillingdetailsBinding.tvSubTotalValue.setText(shippingPujaAmount);
+                        mFragmentBillingdetailsBinding.tvCgstValue.setText(shippingCgst);
+                        mFragmentBillingdetailsBinding.tvSgstValue.setText(shippingSgst);
+
                         String shippingDateTime="";
                         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
                             shippingDateTime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();
@@ -438,8 +474,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
                         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
                         cfPaymentService.setOrientation(0);
-                       // cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
-                        cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "PROD", "#784BD2", "#FFFFFF", false);
+                     //   cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
+                       cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "PROD", "#784BD2", "#FFFFFF", false);
 
 
 
@@ -592,8 +628,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         }
     }
     private Map<String, String> getInputParams() {
-        //String appId = "6159303c6dd0fdc88e24a424f39516";
-        String appId = "10732304e9cb87da1696501a98323701";
+       // String appId = "6159303c6dd0fdc88e24a424f39516";//TEST
+        String appId = "10732304e9cb87da1696501a98323701";//PRODUCTION
         String strorderId = String.valueOf(orderId);
         String strorderAmount = orderAmount;
         String orderNote = "Puja";

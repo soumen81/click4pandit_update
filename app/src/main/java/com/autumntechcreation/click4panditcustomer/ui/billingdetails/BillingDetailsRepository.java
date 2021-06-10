@@ -138,6 +138,7 @@ public class BillingDetailsRepository {
                    jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.POSTALL, str);
                    jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.PUJAADDINFODESCR, str);
                    jsonObject.add("PujaAddlInfoModel", jsonObjectPujaAddlInfoModel);
+                Log.e("Result",jsonObject.toString());
 
                 return mWebservice.ProceedtoPay(url,jsonObject);
 
@@ -252,6 +253,8 @@ public class BillingDetailsRepository {
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.POSTALL, shippingPostalCode);
                 jsonObjectPujaAddlInfoModel.addProperty(AllUrlsAndConfig.PUJAADDINFODESCR, additionalInfo);
                 jsonObject.add("PujaAddlInfoModel", jsonObjectPujaAddlInfoModel);
+                Log.e("Result",jsonObject.toString());
+
 
                 return mWebservice.ProceedtoPay(url,jsonObject);
 

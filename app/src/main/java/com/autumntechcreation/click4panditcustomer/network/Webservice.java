@@ -177,6 +177,7 @@ public interface Webservice {
     LiveData<ApiResponse<CustomerGetProfileModel>> customerAddProfileImage(@Url String apiname,
                                                                                @Body JsonObject jsonObject
 
+
     );
 
 

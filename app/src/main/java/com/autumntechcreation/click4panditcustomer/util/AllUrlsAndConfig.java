@@ -2,8 +2,8 @@ package com.autumntechcreation.click4panditcustomer.util;
 
 public class AllUrlsAndConfig {
     public static String SIGNUP="/api/NonFnctnlCncrn/SignUp";
-   // public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";
-    public static String BASE_URL="https://prod-webapi-click4pandit.azurewebsites.net";
+   // public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";//TEST
+    public static String BASE_URL="https://prod-webapi-click4pandit.azurewebsites.net";//PRODUCTION
     public static String LOGIN="/api/NonFnctnlCncrn/Login";
     public static final String PUJATYPES = "/api/PujaCtgry/GetPujaCategories";
     public static final String PUJACATEGORIES = "/api/PujaSubCtgry/GetPujaSubCtgryByPujaCtgryId";
@@ -215,20 +215,20 @@ public class AllUrlsAndConfig {
 
 
     //Parameter for Save Image Upload
-    public static final String CUSTMASTERPROFILEIMGID="custMasterProfImgId";
-    public static final String CUSTMASID="custMasterId";
-    public static final String LOGGEDID="logonId";
-    public static final String UPDATESTAM="updtStamp";
-    public static final String UPDTEUSER="updtUser";
-    public static final String ORGSTAMPP="orglStamp";
-    public static final String ORGUSERR="orglUser";
-    public static final String DELLFLG="delFlg";
-    public static final String CLOUDIMGID="cloudImgId";
-    public static final String ORGLFILENAME="orglFileName";
-    public static final String CLOUDFILENAME="cloudFileName";
-    public static final String MIMETYPE="mimeTyp";
-    public static final String IMGACTION="imgAction";
-    public static final String FILEDATA="fileData";
+    public static final String CUSTMASTERPROFILEIMGID="custMasterProfImgId";//custMasterProfImgId
+    public static final String CUSTMASID="custMasterId";//custMasterId
+    public static final String LOGGEDID="logonId";//logonId
+    public static final String UPDATESTAM="updtStamp";//updtStamp
+    public static final String UPDTEUSER="updtUser";//updtUser
+    public static final String ORGSTAMPP="orglStamp";//orglStamp
+    public static final String ORGUSERR="orglUser";//orglUser
+    public static final String DELLFLG="delFlg";//delFlg
+    public static final String CLOUDIMGID="cloudImgId";//cloudImgId
+    public static final String ORGLFILENAME="orglFileName";//orglFileName
+    public static final String CLOUDFILENAME="cloudFileName";//cloudFileName
+    public static final String MIMETYPE="mimeTyp";//mimeTyp
+    public static final String IMGACTION="imgAction";//imgAction
+    public static final String FILEDATA="fileData";//fileData
 
 
 }

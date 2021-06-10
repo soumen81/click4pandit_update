@@ -20,6 +20,7 @@ import android.os.Environment;
 import android.os.FileUtils;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Base64.*;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -131,7 +132,7 @@ public class ProfileFragment extends Fragment implements Injectable {
         mFragmentProfileBinding.setProfileViewModel(mProfileViewModel);
         UUID uuid = UUID.randomUUID();
         uuidInString = uuid.toString();
-        cloudFileName=uuidInString+".jpg";
+        cloudFileName=uuidInString+".jpeg";
         mFragmentProfileBinding.imgVwEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,6 +200,8 @@ public class ProfileFragment extends Fragment implements Injectable {
 
             Uri uri = I.getData();
 
+            String s =this.getRealPathFromURI(uri);
+            Log.d("Picture Path", s);
 
             try {
 
@@ -207,29 +210,63 @@ public class ProfileFragment extends Fragment implements Injectable {
                 mFragmentProfileBinding.imgVwProfile.setImageBitmap(fixBitmap);
                 mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
                 mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                fixBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+               /* ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                fixBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
                 byte[] byteArray = byteArrayOutputStream .toByteArray();
+*/
 
-                encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-                Log.e("Encoded",encoded);
+
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                fixBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                Log.e("BYTEARRAY",byteArray+"");
+                //fixBitmap.recycle();
+                String encodedImage = getEncoded64ImageStringFromBitmap(fixBitmap);
+                Log.e("encodedImage",encodedImage);
+
+
+
+
+
+
+                // String base64Encoded = Base64.getEncoder().encodeToString(byteArray);
+               // encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+               // Log.e("Encoded",encoded);
+
+
                 //fileName = new SimpleDateFormat("yyyyMMddHHmm'.jpg'").format(new Date());
-                fileName = "fav.jpg";
+              //  fileName = "fav.jpg";
                 if(newImgAction.equals("UPDATE")){
                     mProfileViewModel.getAddProfileImageUpload(Integer.parseInt(newMasterProfileImageid) ,custMasterId,null,null,null,null,uuidInString,newOriginalFileName,cloudFileName,"image/jpeg","UPDATE",newFileDate).observe(getActivity(),ProfileFragment.this::handleUploadForImage);
                 }else{
 
-                    mProfileViewModel.getProfileImageUpload(null, null, null, null, null, null, uuidInString, fileName, cloudFileName, "image/jpeg","ADD", encoded).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+                    mProfileViewModel.getProfileImageUpload(  uuidInString, cloudFileName, "ADD", encodedImage).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
                 }
-
-
             } catch (IOException e) {
 
                 e.printStackTrace();
             }
         }
     }
+    public String getRealPathFromURI(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        @SuppressWarnings("deprecation")
+        Cursor cursor = getActivity().managedQuery(uri, projection, null, null, null);
+        int column_index = cursor
+                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }
+    public String getEncoded64ImageStringFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+        byte[] byteFormat = stream.toByteArray();
 
+        // Get the Base64 string
+        String imgString = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
+
+        return imgString;
+    }
 
     private void handlegetCustomerProfile(Resource<CustomerGetProfileModel> resource) {
         if (resource != null) {
@@ -448,7 +485,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                     Log.e("handleRegisterResponse", resource.data + "");
                     Gson gson = new Gson();
                     String json = gson.toJson(resource.data);
-                    Log.e("handleRegisterResponse", json + "");
+                    Log.e("handleImageResponse", json + "");
                    // if(resource.data.custMasterProfileImageModel.returnStatus.equals("SUCCESS")) {
 
                        /* updateCusProfileImgid = String.valueOf(resource.data.custMasterProfileImageModel.custMasterProfImgId);

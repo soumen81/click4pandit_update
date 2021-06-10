@@ -61,7 +61,7 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
            shippingorderAmount=BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount();
             Log.e("SHIPPINGORDERAMOUNT",shippingorderAmount);
         }
-       /* if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaAmount().length()>0){
+        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaAmount().length()>0){
             getPujaAmount=BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaAmount();
             Log.e("PUJAAMOUNT",getPujaAmount);
         }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getSgstvalue().length()>0){
@@ -70,13 +70,13 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
         }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getCgstvalue().length()>0){
             getCgstvalue=BillingDetailsFragmentArgs.fromBundle(getArguments()).getCgstvalue();
             Log.e("CGSTVALUE",getCgstvalue);
-        }*//*if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress().length()>0){
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress().length()>0){
             getBillingAddress=BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress();
             Log.e("BILLINGADDRESS",getBillingAddress);
         }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingPincode().length()>0){
             getBillingPinCode=BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingPincode();
             Log.e("BILLINGPINCODE",getBillingPinCode);
-        }*/
+        }
         return mFragmentDifferentpujalocationBinding.getRoot();
     }
     @Override
@@ -163,12 +163,12 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                     action.setDateTime(pujaDatetime);
                     action.setShippingBkgId(shippingbkgId);
                     action.setOrderAmount(shippingorderAmount);
-                  /*  action.setPujaAmount(getPujaAmount);
+                    action.setPujaAmount(getPujaAmount);
                     action.setCgstvalue(getCgstvalue);
-                    action.setSgstvalue(getSgstvalue);*/
+                    action.setSgstvalue(getSgstvalue);
                     action.setOrderId(shippingorderId);
-                   /* action.setBillingAddress(getBillingAddress);
-                    action.setBillingPincode(getBillingPinCode);*/
+                    action.setBillingAddress(getBillingAddress);
+                    action.setBillingPincode(getBillingPinCode);
                     action.setStatusShippingId(1);
                     Navigation.findNavController(mView).navigate(action);
                 }

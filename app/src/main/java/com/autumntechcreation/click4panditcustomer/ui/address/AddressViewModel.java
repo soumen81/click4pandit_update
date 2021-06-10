@@ -63,8 +63,15 @@ public class AddressViewModel extends ViewModel {
         return "Name:" +" "+list.get(position).getFirstName()+" "+list.get(position).getLastName();
     }  public String getCustAddress(int position){
         List<AddressListModel> list = mAddressListModel.getValue();
-        return "Address1:"+" "+ list.get(position).getAddr1();
-    }public String getCustAddress2(int position){
+        if (list.get(position).getAddr2() == null||list.get(position).getAddr2().equals("")) {
+            return "Address:"  + list.get(position).getAddr1();
+        } if (list.get(position).getAddr3() == null||list.get(position).getAddr3().equals("")) {
+            return "Address:"  + list.get(position).getAddr1()+"," + list.get(position).getAddr2();
+        }else {
+            return "Address:" + " " + list.get(position).getAddr1() + "," + list.get(position).getAddr2() + "," + list.get(position).getAddr3();
+        }
+    }
+    /*public String getCustAddress2(int position){
         List<AddressListModel> list = mAddressListModel.getValue();
         if (list.get(position).getAddr2() == null) {
             return "";
@@ -78,7 +85,8 @@ public class AddressViewModel extends ViewModel {
         }else {
             return "Address3:" + " " + list.get(position).getAddr3();
         }
-    }public String getCity(int position){
+    }*/
+    public String getCity(int position){
         List<AddressListModel> list = mAddressListModel.getValue();
         {
             return "City:" + " " + "Kolkata";
