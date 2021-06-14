@@ -65,7 +65,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static androidx.navigation.Navigation.findNavController;
 
-public class BookingPujaFragment extends Fragment implements Injectable, AdapterView.OnItemClickListener {
+public class BookingPujaFragment extends Fragment implements Injectable {
     @Inject
     public ViewModelProvider.Factory viewModelFactory;
     FragmentBookingpujaBinding mFragmentBookingpujaBinding;
@@ -84,10 +84,13 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
     List<String> mListLanguage = new ArrayList<>();
     ArrayList<BookingLanguageModel> bookingLanguageModellist = new ArrayList<BookingLanguageModel>();
     String locName="",pujaLang="",pujaDate="",pujaTime="",packageTypeIdDesc="",
-            subcategoryName="",isAllSamagries="";
+            subcategoryName="",isAllSamagries="",selectedTime="";
     int subCategoryId,pujPackageId,locationId,languageId,noOfPandit;
     SimpleDateFormat sdf;
-     Calendar calendar;
+    Calendar calendar;
+    BookingLocationModel bookingLocationModel;
+    List<String> list = new ArrayList<String>();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -146,7 +149,64 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
 
         mFragmentBookingpujaBinding.tvPackageName.setText(subcategoryName+" "+">"+" "+packageTypeIdDesc);
 
-        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemClickListener(this);
+        list.add("Choose Time");
+        list.add("7:00 AM");
+        list.add("7:30 AM");
+        list.add("8:00 AM");
+        list.add("8:30 AM");
+        list.add("9:00 AM");
+        list.add("9:30 AM");
+        list.add("10:00 AM");
+        list.add("10:30 AM");
+        list.add("11:00 AM");
+        list.add("11:30 AM");
+        list.add("12:00 PM");
+        list.add("12:30 PM");
+        list.add("1:00 PM");
+        list.add("1:30 PM");
+        list.add("2:00 PM");
+        list.add("2:30 PM");
+        list.add("3:00 PM");
+        list.add("3:30 PM");
+        list.add("4:00 PM");
+        list.add("4:30 PM");
+        list.add("5:00 PM");
+        list.add("5:30 PM");
+        list.add("6:00 PM");
+        list.add("6:30 PM");
+        list.add("7:00 PM");
+        list.add("7:30 PM");
+        list.add("8:00 PM");
+        list.add("8:30 PM");
+        list.add("9:00 PM");
+        list.add("9:30 PM");
+        list.add("10:00 PM");
+        list.add("10:30 PM");
+        list.add("11:00 PM");
+        list.add("11:30 PM");
+        list.add("12:00 AM");
+        list.add("12:30 AM");
+        //create an ArrayAdaptar from the String Array
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, list);
+        //set the view for the Drop down list
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //set the ArrayAdapter to the spinner
+        mFragmentBookingpujaBinding.tvSpinTypeOfTime.setAdapter(dataAdapter);
+
+       // mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemClickListener(this);
+        mFragmentBookingpujaBinding.tvSpinTypeOfTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                 selectedTime = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         mFragmentBookingpujaBinding.tvSpinTypeOfLocation.addTextChangedListener(new TextWatcher() {
             @Override
@@ -156,8 +216,8 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mBookingPujaViewModel.getBookingLocationList(mFragmentBookingpujaBinding.tvSpinTypeOfLocation.getText().toString()).observe(getActivity(), BookingPujaFragment.this::handleBookingLocationList);
 
+                mBookingPujaViewModel.getBookingLocationList(mFragmentBookingpujaBinding.tvSpinTypeOfLocation.getText().toString()).observe(getActivity(), BookingPujaFragment.this::handleBookingLocationList);
             }
 
             @Override
@@ -165,7 +225,25 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
 
             }
         });
+       /* mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                locationId = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
+                Log.e("LOC", locationId + "");
+                locName = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();
+                Log.e("LOCATIONNAME", locName);
+                item = parent.getItemAtPosition(position).toString();
+                mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setText(item);
 
+                Static.hideKeyboard(getActivity());
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });*/
 
 
 
@@ -191,12 +269,12 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
 
             }
         });
-        mFragmentBookingpujaBinding.clBookTime.setOnClickListener(new View.OnClickListener() {
+      /*  mFragmentBookingpujaBinding.clBookTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showTimePicker();
             }
-        });
+        });*/
 
 
 
@@ -216,11 +294,22 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
 
             }
         });*/
+      /*  mFragmentBookingpujaBinding.tvSpinTypeOfTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });*/
         mFragmentBookingpujaBinding.tvSpinTypeOfLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 try {
-                    locationId=mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position).getLangMasterId();
+                    languageId=mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position).getLangMasterId();
                     pujaLang = mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position-1).getLangMasterName();
                 }catch (Exception e){
                     e.printStackTrace();
@@ -244,7 +333,9 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
                     Toast.makeText(getActivity(), "Please select the Language", Toast.LENGTH_SHORT).show();
                 }else  if(mFragmentBookingpujaBinding.tvBookingDate.getText().equals("Choose Date")) {
                     Toast.makeText(getActivity(), "Please select the Date", Toast.LENGTH_SHORT).show();
-                }else  if(mFragmentBookingpujaBinding.tvBookingTime.getText().equals("Choose Time")) {
+                }/*else  if(mFragmentBookingpujaBinding.tvBookingTime.getText().equals("Choose Time")) {
+                    Toast.makeText(getActivity(), "Please select the Time", Toast.LENGTH_SHORT).show();
+                }*/else  if(mFragmentBookingpujaBinding.tvSpinTypeOfTime.getSelectedItem().toString().trim().equalsIgnoreCase("Choose Time")) {
                     Toast.makeText(getActivity(), "Please select the Time", Toast.LENGTH_SHORT).show();
                 }else {
 
@@ -259,12 +350,12 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
                     action.setPujaLocation(item);
                     action.setPujaLanguage(pujaLang);
                     action.setPujaDate(pujaDate);
-                    action.setPujaTime(pujaTime);
+                    action.setPujaTime(selectedTime);
                     action.setPackageTypeIdDesc(packageTypeIdDesc);
                     action.setSubCategoryName(subcategoryName);
                     action.setSubCategoryId(subCategoryId);
                     action.setPujaPackageId(pujPackageId);
-                    action.setLocationId(locationId);
+                    action.setLocationId(1020);
                     action.setLanguageId(languageId);
                     action.setIsAllSamagries(isAllSamagries);
                     action.setNoOfPandit(noOfPandit);
@@ -289,7 +380,7 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
                         int hour = sHour % 12;
                         if (hour == 0)
                             hour = 12;
-                        mFragmentBookingpujaBinding.tvBookingTime.setText(String.format("%02d:%02d %s", hour, sMinute, sHour < 12 ? "am" : "pm"));
+                      //  mFragmentBookingpujaBinding.tvBookingTime.setText(String.format("%02d:%02d %s", hour, sMinute, sHour < 12 ? "am" : "pm"));
 
                         pujaTime=String.format("%02d:%02d", hour, sMinute);
                     }
@@ -331,164 +422,215 @@ public class BookingPujaFragment extends Fragment implements Injectable, Adapter
 
 
     private void handleBookingLocationList(Resource<List<BookingLocationModel>> resource) {
-                        if (resource != null) {
-                            JSONObject jsonObject = null;
-                            switch (resource.status) {
-                                case ERROR:
-                                    DisplayDialog.getInstance().dismissAlertDialog();
-                                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                                            .setTitleText("Error")
-                                            .setContentText("Something went wrong")
-                                            .show();
-                                    break;
-                                case LOADING:
+        if (resource != null) {
+            JSONObject jsonObject = null;
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Something went wrong")
+                            .show();
+                    break;
+                case LOADING:
 
 
-                                    break;
-                                case SUCCESS:
+                    break;
+                case SUCCESS:
 
-                                    Log.e("handleBookingLocStatus", "SUCCESS");
-                                    Log.e("handleBookingLocStatus", resource.data + "");
-                                    Log.e("handleBookingLocStatus", resource.message + "");
-                                    Log.e("handleBookingLocStatus", resource.status + "");
-
-
-                                    if (resource.data != null) {
-
-                                        Log.e("handleBookingLocStatus_count", resource.data.size() + "");
-                                        if (resource.data.size() == 0) {
-                                            DisplayDialog.getInstance().dismissAlertDialog();
-                                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                                                    .setTitleText("Error")
-                                                    .setContentText("Something went wrong")
-                                                    .show();
-                                        } else {
-
-                                            bookingLocationModellist.clear();
-                                            mListLocation.clear();
-                                            mListLocation.add(0,"Location");
-                                            for (int i = 0; i < resource.data.size(); i++) {
-                                                mListLocation.add(resource.data.get(i).getSubLcltyName());
-                                                bookingLocationModellist.add(resource.data.get(i));
-
-                                            }
-                                            ArrayAdapter<String> mSpinLocationAdapter = new ArrayAdapter<String>
-                                                    (getActivity(),R.layout.autocom_item,mListLocation);
-
-                                            mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setThreshold(1);//will start working from first character
-                                            mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setAdapter(mSpinLocationAdapter);//setting the adapter data into the AutoCompleteTextView
-                                            mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setTextColor(Color.BLACK);
+                    Log.e("handleBookingLocStatus", "SUCCESS");
+                    Log.e("handleBookingLocStatus", resource.data + "");
+                    Log.e("handleBookingLocStatus", resource.message + "");
+                    Log.e("handleBookingLocStatus", resource.status + "");
 
 
-                                            mSpinLocationAdapter.notifyDataSetChanged();
+                    if (resource.data != null) {
 
-                                            Log.e("LISSSST", mListLocation.size() + "");
+                        Log.e("handleBookingLocStatus_count", resource.data.size() + "");
+                        if (resource.data.size() == 0) {
+                            DisplayDialog.getInstance().dismissAlertDialog();
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Something went wrong")
+                                    .show();
+                        } else {
 
-                                            DisplayDialog.getInstance().dismissAlertDialog();
+                            bookingLocationModellist.clear();
+                            mListLocation.clear();
+                            mListLocation.add(0,"Location");
+
+                            for ( int i = 0; i < resource.data.size(); i++) {
+                                mListLocation.add(resource.data.get(i).getSubLcltyName());
+                                bookingLocationModellist.add(resource.data.get(i));
 
 
-                                        }
-
-                                    }
-
-                                    // mModuleDetailsViewModel.setUserWiseWidgetList(resource.data);
-
-
-                                    break;
-                                default:
-
-                                    DisplayDialog.getInstance().dismissAlertDialog();
-
-                                    break;
                             }
+                            ArrayAdapter<String> mSpinLocationAdapter = new ArrayAdapter<String>
+                                    (getActivity(),R.layout.autocom_item,mListLocation);
+
+                            mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setThreshold(1);//will start working from first character
+                            mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setAdapter(mSpinLocationAdapter);//setting the adapter data into the AutoCompleteTextView
+                            mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setTextColor(Color.BLACK);
+
+                            mSpinLocationAdapter.notifyDataSetChanged();
+
+                            Log.e("LISSSST", mListLocation.size() + "");
+
+                            DisplayDialog.getInstance().dismissAlertDialog();
+
+
+                        }
+
+
+                        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                item = parent.getItemAtPosition(position).toString();
+                                mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setText(item);
+                                Static.hideKeyboard(getActivity());
+                                /*bookingLocationModel=new BookingLocationModel();
+                                 bookingLocationModel= (BookingLocationModel)mFragmentBookingpujaBinding.tvSpinTypeOfLocation.getAdapter().getItem(position);
+                                bookingLocationModel.getSubLcltyName();
+                                locationId=bookingLocationModel.getSubLcltyId();*/
+                               // locationId = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
+                                Log.e("LOC", locationId + "");
+
+
+                               /* try {
+                                    if(position>0) {
+
+                                        locationId = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
+                                        Log.e("LOC", locationId + "");
+                                        locName = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();
+                                        Log.e("LOCATIONNAME", locName);
+                                    }
+                                }catch(Exception e){
+                                    e.printStackTrace();
+                                }*/
+                            }
+                        });
+
+                        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                bookingLocationModel=new BookingLocationModel();
+                                bookingLocationModel= (BookingLocationModel)mFragmentBookingpujaBinding.tvSpinTypeOfLocation.getAdapter().getItem(position);
+                                bookingLocationModel.getSubLcltyName();
+                                locationId=bookingLocationModel.getSubLcltyId();
+                                // locationId = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
+                                Log.e("LOC", locationId + "");
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
+
+
+                    }
+
+                    // mModuleDetailsViewModel.setUserWiseWidgetList(resource.data);
+
+
+                    break;
+                default:
+
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    }
+
+
+    private void handleBookingLanguage(Resource<List<BookingLanguageModel>> resource) {
+        if (resource != null) {
+            JSONObject jsonObject = null;
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Something went wrong")
+                            .show();
+                    break;
+                case LOADING:
+
+
+                    break;
+                case SUCCESS:
+
+                    Log.e("handleGetLeaveStatus", "SUCCESS");
+                    Log.e("handleGetLeaveStatus", resource.data + "");
+                    Log.e("handleGetLeaveStatus", resource.message + "");
+                    Log.e("handleGetLeaveStatus", resource.status + "");
+
+
+                    if (resource.data != null) {
+
+                        Log.e("handleGetLeaveStatus_count", resource.data.size() + "");
+                        if (resource.data.size() == 0) {
+                            DisplayDialog.getInstance().dismissAlertDialog();
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Something went wrong")
+                                    .show();
+                        } else {
+
+                            bookingLanguageModellist.clear();
+                            mListLanguage.clear();
+                            mListLanguage.add(0,"Language");
+                            for (int i = 0; i < resource.data.size(); i++) {
+                                mListLanguage.add(resource.data.get(i).getLangMasterName());
+                                bookingLanguageModellist.add(resource.data.get(i));
+
+                            }
+
+
+                            Log.e("LISSSST", mListLanguage.size() + "");
+                            mSpinLanguageAdapter.notifyDataSetChanged();
+                            DisplayDialog.getInstance().dismissAlertDialog();
                         }
                     }
 
-
-                    private void handleBookingLanguage(Resource<List<BookingLanguageModel>> resource) {
-                        if (resource != null) {
-                            JSONObject jsonObject = null;
-                            switch (resource.status) {
-                                case ERROR:
-                                    DisplayDialog.getInstance().dismissAlertDialog();
-                                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                                            .setTitleText("Error")
-                                            .setContentText("Something went wrong")
-                                            .show();
-                                    break;
-                                case LOADING:
+                    // mModuleDetailsViewModel.setUserWiseWidgetList(resource.data);
 
 
-                                    break;
-                                case SUCCESS:
+                    break;
+                default:
 
-                                    Log.e("handleGetLeaveStatus", "SUCCESS");
-                                    Log.e("handleGetLeaveStatus", resource.data + "");
-                                    Log.e("handleGetLeaveStatus", resource.message + "");
-                                    Log.e("handleGetLeaveStatus", resource.status + "");
+                    DisplayDialog.getInstance().dismissAlertDialog();
 
+                    break;
+            }
+        }
+    }
 
-                                    if (resource.data != null) {
-
-                                        Log.e("handleGetLeaveStatus_count", resource.data.size() + "");
-                                        if (resource.data.size() == 0) {
-                                            DisplayDialog.getInstance().dismissAlertDialog();
-                                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                                                    .setTitleText("Error")
-                                                    .setContentText("Something went wrong")
-                                                    .show();
-                                        } else {
-
-                                            bookingLanguageModellist.clear();
-                                            mListLanguage.clear();
-                                            mListLanguage.add(0,"Language");
-                                            for (int i = 0; i < resource.data.size(); i++) {
-                                                mListLanguage.add(resource.data.get(i).getLangMasterName());
-                                                bookingLanguageModellist.add(resource.data.get(i));
-
-                                            }
-
-
-                                            Log.e("LISSSST", mListLanguage.size() + "");
-                                            mSpinLanguageAdapter.notifyDataSetChanged();
-                                            DisplayDialog.getInstance().dismissAlertDialog();
-                                        }
-                                    }
-
-                                    // mModuleDetailsViewModel.setUserWiseWidgetList(resource.data);
-
-
-                                    break;
-                                default:
-
-                                    DisplayDialog.getInstance().dismissAlertDialog();
-
-                                    break;
-                            }
-                        }
-                    }
-
-    @Override
+ /*   @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-         item = parent.getItemAtPosition(position).toString();
-
+        item = parent.getItemAtPosition(position).toString();
+        try {
+            locationId = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
+            locName = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();
+            Log.e("LOCATIONNAME", locName);
+        }catch(Exception e){
+           e.printStackTrace();
+        }
 
         // create Toast with user selected value
-       // Toast.makeText(getActivity(), "Selected Item is: \t" + item, Toast.LENGTH_LONG).show();
+        // Toast.makeText(getActivity(), "Selected Item is: \t" + item, Toast.LENGTH_LONG).show();
 
         // set user selected value to the TextView
         mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setText(item);
         Static.hideKeyboard(getActivity());
-        try {
-            locationId=mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
-            locName = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();
-            Log.e("LOCATIONNAME",locName);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
-    }
+
+
+
+    }*/
 }
 
 

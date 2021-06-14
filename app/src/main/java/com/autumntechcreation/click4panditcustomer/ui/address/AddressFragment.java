@@ -192,7 +192,7 @@ public class AddressFragment extends Fragment implements Injectable {
                         Log.e("handleAddressListStatus_count", resource.data.size() + "");
                         if (resource.data.size() == 0) {
                             DisplayDialog.getInstance().dismissAlertDialog();
-                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                                     .setTitleText("Error")
                                     .setContentText("Data Not found")
                                     .show();

@@ -182,7 +182,6 @@ app:layout_constraintTop_toBottomOf="@+id/tvPackageName"        >
                 android:layout_width="@dimen/dimen_170dp"
                 android:layout_height="@dimen/dimen_30dp"
                 android:hint="Location"
-
                 android:textSize="@dimen/font_12sp"
                 android:textColorHint="@color/blackColor"
                 android:background="@drawable/ic_newwhiteoval"
@@ -309,7 +308,7 @@ app:layout_constraintTop_toBottomOf="@+id/tvPackageName"        >
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"></ImageView>
-            <TextView
+            <!--<TextView
                 android:id="@+id/tvBookingTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -320,7 +319,21 @@ app:layout_constraintTop_toBottomOf="@+id/tvPackageName"        >
                 android:layout_marginLeft="@dimen/dimen_10dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/imgvwBookTime"></TextView>
+                app:layout_constraintLeft_toRightOf="@+id/imgvwBookTime"></TextView>-->
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/tvSpinTypeOfTime"
+                android:layout_width="@dimen/dimen_190dp"
+                android:layout_height="@dimen/dimen_30dp"
+                style="@style/Style_TextView_FontRegular"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@android:color/transparent"
+
+                android.support.design:layout_constraintTop_toTopOf="parent"
+                >
+
+            </androidx.appcompat.widget.AppCompatSpinner>
             <ImageView
                 android:id="@+id/imgvwDropBookTime"
                 android:layout_width="@dimen/dimen_30dp"

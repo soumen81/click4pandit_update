@@ -37,7 +37,8 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
     DifferentPujaLocationViewModel mDifferentPujaLocationViewModel;
     private View mView;
     NavController navController;
-    String pujaDatetime,shippingorderAmount,getPujaAmount,getSgstvalue,getCgstvalue,getBillingAddress,getBillingPinCode;
+    String pujaDatetime,shippingorderAmount,getPujaAmount,getSgstvalue,getCgstvalue,getBillingAddress,
+            getBillingAddress2,getBillingAddress3,getBillingPinCode;
     int shippingbkgId,shippingorderId;
 
     @Nullable
@@ -73,6 +74,12 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
         }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress().length()>0){
             getBillingAddress=BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress();
             Log.e("BILLINGADDRESS",getBillingAddress);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress2().length()>0){
+            getBillingAddress2=BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress2();
+            Log.e("BILLINGADDRESS2",getBillingAddress2);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress3().length()>0){
+            getBillingAddress3=BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingAddress3();
+            Log.e("BILLINGADDRES3",getBillingAddress3);
         }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingPincode().length()>0){
             getBillingPinCode=BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingPincode();
             Log.e("BILLINGPINCODE",getBillingPinCode);
@@ -152,6 +159,8 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                     DifferentPujaLocationFragmentDirections.ActionDifferentPujaLocationFragmentToBillingDetailsFragment action=
                             DifferentPujaLocationFragmentDirections.actionDifferentPujaLocationFragmentToBillingDetailsFragment();
                     action.setShippingAddress(mFragmentDifferentpujalocationBinding.edtTxtAddress.getText().toString());
+                    action.setShippingAddress2(mFragmentDifferentpujalocationBinding.edtTxtAddress2.getText().toString());
+                    action.setShippingAddress3(mFragmentDifferentpujalocationBinding.edtTxtAddress3.getText().toString());
                     action.setShippingState(mFragmentDifferentpujalocationBinding.edtTxtState.getText().toString());
                     action.setShippingCity(mFragmentDifferentpujalocationBinding.edtTxtCity.getText().toString());
                     action.setShippingPinCode(mFragmentDifferentpujalocationBinding.edtTxtPincode.getText().toString());
@@ -169,6 +178,9 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                     action.setOrderId(shippingorderId);
                     action.setBillingAddress(getBillingAddress);
                     action.setBillingPincode(getBillingPinCode);
+                    action.setBillingAddress2(getBillingAddress2);
+                    action.setBillingAddress3(getBillingAddress3);
+
                     action.setStatusShippingId(1);
                     Navigation.findNavController(mView).navigate(action);
                 }

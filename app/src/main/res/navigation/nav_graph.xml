@@ -446,6 +446,22 @@
             android:name="BillingAddress"
             android:defaultValue="0"
             app:argType="string" />
+        <argument
+            android:name="BillingAddress2"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="BillingAddress3"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="ShippingAddress2"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="ShippingAddress3"
+            android:defaultValue="0"
+            app:argType="string" />
 
         <action
             android:id="@+id/action_billingDetailsFragment_to_differentPujaLocationFragment"
@@ -544,6 +560,22 @@
             app:argType="string" />
         <argument
             android:name="BillingAddress"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="BillingAddress2"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="BillingAddress3"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="ShippingAddress2"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="ShippingAddress3"
             android:defaultValue="0"
             app:argType="string" />
         <action

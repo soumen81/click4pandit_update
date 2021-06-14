@@ -2,8 +2,8 @@ package com.autumntechcreation.click4panditcustomer.util;
 
 public class AllUrlsAndConfig {
     public static String SIGNUP="/api/NonFnctnlCncrn/SignUp";
-    public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";//TEST
-    //public static String BASE_URL="https://prod-webapi-click4pandit.azurewebsites.net";//PRODUCTION
+   // public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";//TEST
+    public static String BASE_URL="https://prod-webapi-click4pandit.azurewebsites.net";//PRODUCTION
     public static String LOGIN="/api/NonFnctnlCncrn/Login";
     public static final String PUJATYPES = "/api/PujaCtgry/GetPujaCategories";
     public static final String PUJACATEGORIES = "/api/PujaSubCtgry/GetPujaSubCtgryByPujaCtgryId";
@@ -25,6 +25,7 @@ public class AllUrlsAndConfig {
     public static final String ADDADDRESS="/api/ShippingAddress/SaveShippingAddress";
     public static final String ADDRESSLIST="/api/ShippingAddress/SearchShippingAddress";
     public static final String SAVEPROFILEIMAGE="/api/Profile/SaveCustProfileImage";
+    public static final String SENDEMAILCONTACT="/api/TriggerMail/SendEmailForContact";
 
 
 
@@ -229,6 +230,12 @@ public class AllUrlsAndConfig {
     public static final String MIMETYPE="mimeTyp";//mimeTyp
     public static final String IMGACTION="imgAction";//imgAction
     public static final String FILEDATA="fileData";//fileData
+    //Parameter for SendForContactUs
+    public static final String NAME="Name";
+    public static final String MOBBILE="Mobile";
+    public static final String EMAILADDRRESS="EmailAddr";
+    public static final String ADDRESSS="Address";
+    public static final String EXPLAINYOURISSUE="ExplainYourIssue";
 
 
 }

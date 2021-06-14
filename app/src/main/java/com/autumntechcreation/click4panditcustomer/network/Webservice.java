@@ -12,6 +12,7 @@ import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLanguageMo
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingLocationModel;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordModel;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageListModel;
+import com.autumntechcreation.click4panditcustomer.ui.contactus.ContactUsModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.TriggerMailModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
@@ -180,5 +181,10 @@ public interface Webservice {
 
     );
 
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<ContactUsModel>> SendEmailForContactUs(@Url String apiname,
+                                                                @Body JsonObject jsonObject
 
+    );
 }

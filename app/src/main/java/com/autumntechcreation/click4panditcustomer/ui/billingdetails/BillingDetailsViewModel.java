@@ -28,22 +28,22 @@ public class BillingDetailsViewModel extends ViewModel {
 
 
     public LiveData<Resource<ProceedtoPayModel>> getProceedToPayForBillingAddress(String pujaDateTime, int custBkgId, String firstName, String lastName,
-                                                                   String address, String mobileNo, String city,String state,String pincode,
+                                                                   String address,String address2,String address3, String mobileNo, String city,String state,String pincode,
                                                                    double orderAmount,int orderId) {
         mProceedtoPayModelResponse = new MutableLiveData<>();
-        mProceedtoPayModelResponse = mBillingDetailsRepository.proceedtoPayForBillingAddress(pujaDateTime, custBkgId, firstName, lastName, address,
+        mProceedtoPayModelResponse = mBillingDetailsRepository.proceedtoPayForBillingAddress(pujaDateTime, custBkgId, firstName, lastName, address,address2,address3,
                 mobileNo, city,state,pincode,orderAmount,orderId);
         return mProceedtoPayModelResponse;
 
     }
     public LiveData<Resource<ProceedtoPayModel>> getProceedToPayForShippingAddress(String pujaDateTime, int custBkgId, String firstName, String lastName,
-                                                                                   String address, String mobileNo, String city,String state,String pincode,
+                                                                                   String address,String shippingAddress2,String shippingAddress3, String mobileNo, String city,String state,String pincode,
                                                                                    double orderAmount,int orderId, String shippingFirstName,String shippingLastName,
                                                                                    String shippingMobileNo,String shippingEmailId,String shippingAddress,
                                                                                    String shippingPostalCode,String additionalInfo) {
         mProceedtoPayModelResponse = new MutableLiveData<>();
         mProceedtoPayModelResponse = mBillingDetailsRepository.proceedtoPayForShippingAddress(pujaDateTime, custBkgId, firstName, lastName, address,
-                mobileNo, city,state,pincode,orderAmount,orderId,shippingFirstName,shippingLastName,shippingMobileNo,shippingEmailId,shippingAddress,
+                shippingAddress2,shippingAddress3,mobileNo, city,state,pincode,orderAmount,orderId,shippingFirstName,shippingLastName,shippingMobileNo,shippingEmailId,shippingAddress,
                 shippingPostalCode,additionalInfo);
         return mProceedtoPayModelResponse;
 

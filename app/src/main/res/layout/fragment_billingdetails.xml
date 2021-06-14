@@ -77,6 +77,7 @@
                 android:editable="false"
                 android:inputType="text"
                 android:scrollbars="vertical"
+                android:maxLength="60"
                 android:singleLine="true"
                 android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
@@ -103,6 +104,7 @@
                 android:editable="false"
                 android:inputType="text"
                 android:scrollbars="vertical"
+                android:maxLength="60"
                 android:singleLine="true"
                 android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
@@ -206,7 +208,7 @@
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginRight="@dimen/dimen_20dp"
-            android:hint="@string/address"
+            android:hint="@string/address1"
             android.support.design:layout_constraintTop_toBottomOf="@+id/inputAlternateMobileNo"
 
             >
@@ -217,8 +219,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
                 android:scrollbars="vertical"
+                android:maxLength="40"
+                android:inputType="textPostalAddress"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutAddress2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/address2"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutAddress"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtAddress2"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:scrollbars="vertical"
+                android:maxLength="40"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutAddress3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/address3"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutAddress2"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtAddress3"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:scrollbars="vertical"
+                android:maxLength="40"
+                android:inputType="text"
                 android:singleLine="true"
                 android:textSize="@dimen/font_14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/parent1"
@@ -233,7 +290,7 @@
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_marginRight="@dimen/dimen_20dp"
             android:hint="@string/state"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutAddress"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutAddress3"
 
             >
 
@@ -533,6 +590,24 @@
             android.support.design:layout_constraintTop_toBottomOf="@+id/tvLocation">
 
         </TextView>
+       <!-- <TextView
+            android:id="@+id/tvShippingProceedtoPay"
+            style="@style/Style_TextView_FontRegular"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:visibility="gone"
+            android:background="@drawable/ic_newovalblack"
+            android:gravity="center"
+            android:text="@string/proceedtopay"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/font_14sp"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvLocation">
+
+        </TextView>-->
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

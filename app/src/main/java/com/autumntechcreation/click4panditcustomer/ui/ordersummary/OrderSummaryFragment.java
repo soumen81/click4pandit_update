@@ -51,7 +51,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
     private View mView;
     NavController navController;
     String pujaName,pujaAmount,pujaDesc,procedure,pujaSamagri,yajaman,locationName,languageName,
-            pujaDate,pujaTime,packageTypeIdDesc,subcategoryName,isAllSamagries,pujaDateTime;
+            pujaDate,pujaTime,packageTypeIdDesc,subcategoryName,isAllSamagries,pujaDateTime,subStr="",subStrstr="";
     int subCategoryId,pujPackageId,locationId,languageId,noOfPandit;
     double dd,finalAmount;
     double sgstvalue,cgstvalue;
@@ -164,7 +164,147 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
          dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
           finalAmount=Static.roundAvoid(dd,2);
         mFragmentOrdersummeryBinding.tvTotalValue.setText(Double.toString(finalAmount));
-         pujaDateTime=Static.convertNewDate(pujaDate)+"T"+pujaTime;
+        if(pujaTime.equals("7:00 AM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("7:30 AM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("8:00 AM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("8:30 AM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("9:00 AM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("9:30 AM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("1:00 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("1:30 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("2:00 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("2:30 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("3:00 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("3:30 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("4:00 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("4:30 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("5:00 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("5:30 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("6:00 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("6:30 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("7:00 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("7:30 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("8:00 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("8:30 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("9:00 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("9:30 PM")) {
+            subStrstr = pujaTime.substring(0, 4);
+
+        pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
+        }if(pujaTime.equals("10:00 PM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }if(pujaTime.equals("10:30 PM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }if(pujaTime.equals("11:00 PM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }if(pujaTime.equals("11:30 PM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }if(pujaTime.equals("12:00 AM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }if(pujaTime.equals("10:00 AM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }if(pujaTime.equals("10:30 AM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }if(pujaTime.equals("11:00 AM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }if(pujaTime.equals("11:30 AM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }if(pujaTime.equals("12:00 PM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }if(pujaTime.equals("12:30 PM")) {
+            subStr = pujaTime.substring(0, 5);
+            pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
+            Log.e("PUJADATETIME", pujaDateTime);
+        }
 
 
 

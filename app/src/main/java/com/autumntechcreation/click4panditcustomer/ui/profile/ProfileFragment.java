@@ -90,7 +90,8 @@ public class ProfileFragment extends Fragment implements Injectable {
     FragmentProfileBinding mFragmentProfileBinding;
     private View mView;
     NavController navController;
-    int custMasterId,custMasterProfImgId,custMasterIdvalue;
+    int custMasterId,custMasterProfImgId,custMasterIdvalue,newCustMasterId,newCustMasterImageId;
+    double donewCustMasterId;
     String newMasterProfileImageid;
     String firstName,lastName,emailId,mobileNo,imgActionValue;
     private String Document_img1="";
@@ -182,57 +183,85 @@ public class ProfileFragment extends Fragment implements Injectable {
         mFragmentProfileBinding.imgvwUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View  v) {
-
-
-
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setType("image/*");
-                startActivityForResult(photoPickerIntent, 1);
-
+                selectImage();
             }
         });
 
 
+
+
+
+
     }
     @Override
-    public void onActivityResult(int RC, int RQC, Intent I) {
-
-        super.onActivityResult(RC, RQC, I);
-
-        if (RC == 1 && RQC == RESULT_OK && I != null && I.getData() != null) {
-
-            Uri uri = I.getData();
-
-            String s =this.getRealPathFromURI(uri);
-            Log.d("Picture Path", s);
-
-            try {
-
-                fixBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
-                mFragmentProfileBinding.imgVwProfile.setImageBitmap(fixBitmap);
-                mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
-                mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
-
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 1) {
+                Uri selectedImage = data.getData();
+                String picturePath =this.getRealPathFromURI(selectedImage);
+                Log.d("Picture Path", picturePath);
 
                 //Bitmap bitmap = ((BitmapDrawable)  mFragmentProfileBinding.imgVwProfile.getDrawable()).getBitmap();
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                fixBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                    byte[] imageInByte = baos.toByteArray();
-                    imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);
-                    if (newImgAction.equals("UPDATE")) {
-                        mProfileViewModel.getAddProfileImageUpload(Integer.parseInt(newMasterProfileImageid), custMasterId, null, null, null, null, null, uuidInString, cloudFileName, "image/jpeg", "UPDATE", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
-                    } else {
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mFragmentProfileBinding.imgVwProfile.setImageBitmap(bitmap);
+                mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
+                mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] imageInByte = baos.toByteArray();
+                imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);
 
-                        mProfileViewModel.getProfileImageUpload(uuidInString, cloudFileName, "ADD", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
-                    }
+                if (newImgAction.equals("UPDATE")) {
+                    mProfileViewModel.getAddProfileImageUpload(newCustMasterImageId, newCustMasterId, null, null, null, null, newCloudImgId,newOriginalFileName, newCloudFileName, newmimeType, "UPDATE", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+                } else {
 
-
-            } catch (IOException e) {
-
-                e.printStackTrace();
+                    mProfileViewModel.getProfileImageUpload(uuidInString, cloudFileName, "ADD", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+                }
             }
         }
     }
+
+    private void selectImage() {
+        final CharSequence[] options = { "Choose from Gallery","Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Add Photo!");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                 if (options[item].equals("Choose from Gallery"))
+                {
+                    Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 1);
+                }
+                else if (options[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+    public byte[] getBytesFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+        return stream.toByteArray();
+    }
+
+
+  /*   if (newImgAction.equals("UPDATE")) {
+        mProfileViewModel.getAddProfileImageUpload(newCustMasterImageId, newCustMasterId, null, null, null, null, newCloudImgId,newOriginalFileName, newCloudFileName, newmimeType, "UPDATE", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+    } else {
+
+        mProfileViewModel.getProfileImageUpload(uuidInString, cloudFileName, "ADD", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+    }*/
+
+
+
     public String getRealPathFromURI(Uri uri) {
         String[] projection = { MediaStore.Images.Media.DATA };
         @SuppressWarnings("deprecation")
@@ -321,11 +350,18 @@ public class ProfileFragment extends Fragment implements Injectable {
                         newLogonId=resource.data.custMasterProfileImageModel.logonId;
                         newDelFlag=resource.data.custMasterProfileImageModel.delFlg;
                         newCloudImgId=resource.data.custMasterProfileImageModel.cloudImgId;
+
                         newOriginalFileName=resource.data.custMasterProfileImageModel.orglFileName;
                         newCloudFileName=resource.data.custMasterProfileImageModel.cloudFileName;
+
                         newmimeType=resource.data.custMasterProfileImageModel.mimeTyp;
                         newImgAction=resource.data.custMasterProfileImageModel.imgAction;
                         newFileDate=resource.data.custMasterProfileImageModel.fileData;
+
+                        donewCustMasterId=(Double)resource.data.custMasterProfileImageModel.custMasterId;
+                        newCustMasterId=(int)donewCustMasterId;
+
+                        newCustMasterImageId=resource.data.custMasterProfileImageModel.custMasterProfImgId;
 
                         mFragmentProfileBinding.edtTxtFName.setText(firstName);
                         mFragmentProfileBinding.edtTxtLastName.setText(lastName);

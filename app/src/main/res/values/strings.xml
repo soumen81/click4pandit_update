@@ -170,4 +170,6 @@
     <string name="thankyoupayment">Thank You! Payment done is subject</string>
     <string name="torealization">to Realization</string>
     <string name="backtohome">Back to Home</string>
+    <string name="phoneno">Phone Number</string>
+    <string name="thankcontactus">Thank You for Contact Us</string>
 </resources>

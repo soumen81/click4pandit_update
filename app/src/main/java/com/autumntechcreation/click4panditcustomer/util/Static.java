@@ -180,4 +180,19 @@ public class Static {
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
+
+    public static String convertPickDate(String strDate) {
+        SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy'T'HH:mm:ss");
+        Date date = null;
+        try {
+            date = formatter1.parse(strDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        strDate = formatter2.format(date);
+        System.out.println("Date Format with MM/dd/yyyy : " + strDate);
+        return strDate;
+    }
 }

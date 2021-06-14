@@ -1,5 +1,7 @@
 package com.autumntechcreation.click4panditcustomer.ui.bookpuja;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
@@ -72,6 +74,7 @@ public class BookingPujaRepository {
                 String url= AllUrlsAndConfig.BASE_URL+AllUrlsAndConfig.LOCATIONLIST;
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty(AllUrlsAndConfig.SUBLCITYMINTHREECHARS, cityName);
+                Log.e("Result",jsonObject.toString());
                 return mWebservice.getLocationList(url,jsonObject);
 
             }
