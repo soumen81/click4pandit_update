@@ -293,8 +293,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                                     Intent.FLAG_ACTIVITY_NEW_TASK);
                                             startActivity(intent);
                                             overridePendingTransition(R.anim.anim_right_in, R.anim.anim_left_out);
-                                            finish();
                                             sp.edit().putBoolean("logged",false).apply();
+                                            finish();
+
                                         }
                                     }, 1000);
 

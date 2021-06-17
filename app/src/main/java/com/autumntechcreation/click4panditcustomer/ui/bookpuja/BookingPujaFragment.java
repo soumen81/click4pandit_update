@@ -194,11 +194,11 @@ public class BookingPujaFragment extends Fragment implements Injectable {
         //set the ArrayAdapter to the spinner
         mFragmentBookingpujaBinding.tvSpinTypeOfTime.setAdapter(dataAdapter);
 
-       // mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemClickListener(this);
+        // mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemClickListener(this);
         mFragmentBookingpujaBinding.tvSpinTypeOfTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                 selectedTime = parent.getItemAtPosition(position).toString();
+                selectedTime = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -225,6 +225,33 @@ public class BookingPujaFragment extends Fragment implements Injectable {
 
             }
         });
+
+
+        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                item = parent.getItemAtPosition(position).toString();
+                mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setText(item);
+                int size=bookingLocationModellist.size();
+                Log.e("SIZE",size+"");
+                 locationId=0;
+                 for(int i=0;i<bookingLocationModellist.size();i++){
+                    if(item.equals(bookingLocationModellist.get(i).subLcltyName)){
+                        locationId=bookingLocationModellist.get(i).getSubLcltyId();
+
+                    }
+
+                }
+                Log.e("LOCATIONID",locationId+"");
+
+                Static.hideKeyboard(getActivity());
+                                
+
+
+            }
+        });
+
        /* mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -355,7 +382,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                     action.setSubCategoryName(subcategoryName);
                     action.setSubCategoryId(subCategoryId);
                     action.setPujaPackageId(pujPackageId);
-                    action.setLocationId(1020);
+                    action.setLocationId(locationId);
                     action.setLanguageId(languageId);
                     action.setIsAllSamagries(isAllSamagries);
                     action.setNoOfPandit(noOfPandit);
@@ -380,7 +407,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                         int hour = sHour % 12;
                         if (hour == 0)
                             hour = 12;
-                      //  mFragmentBookingpujaBinding.tvBookingTime.setText(String.format("%02d:%02d %s", hour, sMinute, sHour < 12 ? "am" : "pm"));
+                        //  mFragmentBookingpujaBinding.tvBookingTime.setText(String.format("%02d:%02d %s", hour, sMinute, sHour < 12 ? "am" : "pm"));
 
                         pujaTime=String.format("%02d:%02d", hour, sMinute);
                     }
@@ -456,6 +483,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                         } else {
 
                             bookingLocationModellist.clear();
+
                             mListLocation.clear();
                             mListLocation.add(0,"Location");
 
@@ -465,6 +493,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
 
 
                             }
+
                             ArrayAdapter<String> mSpinLocationAdapter = new ArrayAdapter<String>
                                     (getActivity(),R.layout.autocom_item,mListLocation);
 
@@ -482,36 +511,8 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                         }
 
 
-                        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                                item = parent.getItemAtPosition(position).toString();
-                                mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setText(item);
-                                Static.hideKeyboard(getActivity());
-                                /*bookingLocationModel=new BookingLocationModel();
-                                 bookingLocationModel= (BookingLocationModel)mFragmentBookingpujaBinding.tvSpinTypeOfLocation.getAdapter().getItem(position);
-                                bookingLocationModel.getSubLcltyName();
-                                locationId=bookingLocationModel.getSubLcltyId();*/
-                               // locationId = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
-                                Log.e("LOC", locationId + "");
-
-
-                               /* try {
-                                    if(position>0) {
-
-                                        locationId = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyId();
-                                        Log.e("LOC", locationId + "");
-                                        locName = mBookingPujaViewModel.mBookingLocationList.getValue().data.get(position).getSubLcltyName();
-                                        Log.e("LOCATIONNAME", locName);
-                                    }
-                                }catch(Exception e){
-                                    e.printStackTrace();
-                                }*/
-                            }
-                        });
-
-                        mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                       /* mFragmentBookingpujaBinding.tvSpinTypeOfLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 bookingLocationModel=new BookingLocationModel();
@@ -526,7 +527,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                             public void onNothingSelected(AdapterView<?> parent) {
 
                             }
-                        });
+                        });*/
 
 
                     }

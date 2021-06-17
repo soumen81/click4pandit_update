@@ -1,13 +1,16 @@
 package com.autumntechcreation.click4panditcustomer.ui.profile;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,6 +18,7 @@ import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.FileUtils;
@@ -28,9 +32,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -54,7 +62,7 @@ import com.autumntechcreation.click4panditcustomer.util.ImageProcessClass;
 import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.gson.Gson;
-
+import java.nio.file.Files;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -66,21 +74,26 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
+
 
 import javax.inject.Inject;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 import static androidx.navigation.Navigation.findNavController;
 
 public class ProfileFragment extends Fragment implements Injectable {
@@ -97,6 +110,8 @@ public class ProfileFragment extends Fragment implements Injectable {
     private String Document_img1="";
     Bitmap fixBitmap;
     Bitmap decodedImage;
+    FileInputStream fis = null;
+    private static final int PERMISSION_REQUEST_CODE = 1;
     byte[] byteArray ;
     String updateCusProfileImgid,updateCustMasterId,updateLogonId,updateDelFlg,updateCloudImgid,updateorglFileName,
             updateCloudFileName,updateMimeType,updateImgAction,updateFileData;
@@ -198,13 +213,73 @@ public class ProfileFragment extends Fragment implements Injectable {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
+                if (Build.VERSION.SDK_INT >= 23) {
+                    if (checkPermission()) {
                 Uri selectedImage = data.getData();
-                String picturePath =this.getRealPathFromURI(selectedImage);
+                String picturePath = this.getRealPathFromURI(selectedImage);
                 Log.d("Picture Path", picturePath);
 
                 //Bitmap bitmap = ((BitmapDrawable)  mFragmentProfileBinding.imgVwProfile.getDrawable()).getBitmap();
-                Bitmap bitmap = null;
+                // Bitmap bitmap = null;
+
+
+                //File f=new File("C:\\Users\\Soumen\\Downloads\\pandit.png");
+
+                // You can use the API that requires the permission.
+
+                        File objFile = new File(picturePath);
+                        Log.e("FILEEEE", objFile + "");
+                        if (objFile.exists()) {
+                            Log.e("EXIST", objFile.exists() + "");
+                            if (objFile.canRead()) {
+                                Log.e("READ", objFile.canRead() + "");
+                            }
+                            if (objFile.isFile()) {
+                                Log.e("ISFILE", objFile.isFile() + "");
+                            }
+                            if (objFile.getTotalSpace() > 0) {
+                                Log.e("TOTALSPACE", objFile.getTotalSpace() + "");
+                            }
+
+
+                            try {
+                                fis = new FileInputStream(objFile);
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        byte[] data1 = new byte[(int) objFile.length()];
+                        try {
+                            fis.read(data1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                        data1 = bos.toByteArray();
+                        Log.e("DATAAAA1", data1 + "");
+                    }
+                }else{
+                    requestPermission();
+                }
+              /*  Path path = Paths.get(picturePath);
                 try {
+                    byte[] data2 = Files.readAllBytes(path);
+                    Log.e("DATA2222",data2+"");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }*/
+            }
+
+
+                /*InputStream inputStream = getActivity().getAssets().open(f);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                mFragmentProfileBinding.imgVwProfile.setImageBitmap(bitmap);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG,80,stream);
+                byte[] byteArray = stream.toByteArray();
+                Bitmap compressedBitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
+                mFragmentProfileBinding.imgVwProfile.setImageBitmap(compressedBitmap);*/
+                /*try {
                     bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -215,7 +290,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 byte[] imageInByte = baos.toByteArray();
-                imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);
+                imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);*/
 
                 if (newImgAction.equals("UPDATE")) {
                     mProfileViewModel.getAddProfileImageUpload(newCustMasterImageId, newCustMasterId, null, null, null, null, newCloudImgId,newOriginalFileName, newCloudFileName, newmimeType, "UPDATE", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
@@ -224,6 +299,54 @@ public class ProfileFragment extends Fragment implements Injectable {
                     mProfileViewModel.getProfileImageUpload(uuidInString, cloudFileName, "ADD", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
                 }
             }
+
+    }
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void requestPermission() {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            Toast.makeText(getActivity(), "Write External Storage permission allows us to do store images. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
+        } else {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    public void bitMaptoraw(Bitmap bitmap){
+        int width = bitmap.getWidth();
+
+        int height = bitmap.getHeight();
+
+
+
+        int[] pixels = new int[width * height];
+
+        bitmap.getPixels(pixels, 0, width, 0, 0, width, height);
+
+        byte[] pixelArray = new byte[pixels.length];
+
+        for(int i = 0; i <pixels.length ; i++) {
+
+            int pixel = pixels[i];
+
+            int A = Color.alpha(pixel);
+
+            int R = Color.red(pixel);
+
+            int G = Color.green(pixel);
+
+            int B = Color.blue(pixel);
+
+            pixelArray[i] = (byte) (0.2989 * R + 0.5870 * G + 0.1140 * B);
+
+
         }
     }
 

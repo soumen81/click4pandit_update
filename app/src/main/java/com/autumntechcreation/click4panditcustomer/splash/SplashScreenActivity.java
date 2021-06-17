@@ -58,8 +58,9 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(SplashScreenActivity.this, DashBoardActivity.class);
                     startActivity(intent);
+                    sp.edit().putBoolean("logged",false).apply();
                     finish();
-                    sp.edit().putBoolean("logged",true).apply();
+
                 }
             }
         },6000);
