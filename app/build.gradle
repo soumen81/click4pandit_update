@@ -114,4 +114,7 @@ dependencies {
     //Circle Image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
+    // Shimmer
+    //Ref:https://www.androidhive.info/2018/01/android-content-placeholder-animation-like-facebook-using-shimmer/
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 }

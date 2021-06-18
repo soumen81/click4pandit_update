@@ -24,4 +24,6 @@
     <color name="lightgrey">#e3e3e3</color>
     <color name="transparent">#00ffffff</color>
     <color name="spots_dialog_color">#D1453E</color>
+    <color name="placeholder_bg">#dddddd</color>
+    <color name="darkgrey">#A9A9A9</color>
 </resources>

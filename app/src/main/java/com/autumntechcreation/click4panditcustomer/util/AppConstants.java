@@ -18,6 +18,9 @@ public class AppConstants {
      */
     // public static final String BASE_URL = "http://192.168.100.68/";
     public static final String BASE_URL = "http://182.75.123.94/";
+    public static final int LIST_VISIBLE_COUNT_VIEW = 5000;
+    public static final String CONECTION_FAILED_TIMEOUT_MESSAGE = "failed to connect";
+    public static final String TIMEOUT_MESSAGE = "timeout";
 
     /**
      * Database

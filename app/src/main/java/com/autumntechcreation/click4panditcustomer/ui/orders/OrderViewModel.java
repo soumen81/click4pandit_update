@@ -14,13 +14,14 @@ import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackag
 import com.autumntechcreation.click4panditcustomer.util.SingleLiveEvent;
 import com.autumntechcreation.click4panditcustomer.util.Static;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 public class OrderViewModel extends ViewModel {
     OrderListingAdapter mOrderListingAdapter;
-    private MutableLiveData<List<OrderListModel>> mOrderListModel;
+    public MutableLiveData<List<OrderListModel>> mOrderListModel= new MutableLiveData<>();
     private SingleLiveEvent<Integer> mSelectedOrderListItem=new SingleLiveEvent<>();
     public LiveData<Resource<List<OrderListModel>>> mOrderListResponse;
     OrderRepository mOrderRepository;
@@ -34,9 +35,9 @@ public class OrderViewModel extends ViewModel {
     }
 
 
-    public LiveData<Resource<List<OrderListModel>>> getOrderList(String orderDateCriteria) {
+    public LiveData<Resource<List<OrderListModel>>> getOrderList(String orderDateCriteria,int pageNo) {
         mOrderListResponse = new MutableLiveData<>();
-        mOrderListResponse = mOrderRepository.getOrderList(orderDateCriteria);
+        mOrderListResponse = mOrderRepository.getOrderList(orderDateCriteria,pageNo);
         return mOrderListResponse;
     }
 
@@ -49,11 +50,31 @@ public class OrderViewModel extends ViewModel {
 
 
 
-    public void setOrderList(List<OrderListModel>listOrderListModel){
-        mOrderListModel=new MutableLiveData<>();
-        mOrderListModel.setValue(listOrderListModel);
-        this.mOrderListingAdapter.setOrderListing(listOrderListModel);
-        this.mOrderListingAdapter.notifyDataSetChanged();
+    public void setOrderList(List<OrderListModel>listOrderListModel,int skip){
+
+        if(listOrderListModel!=null) {
+            if ((mOrderListModel.getValue() != null) && skip == 1){
+                List<OrderListModel> orderList = new ArrayList<>();
+                orderList.addAll(listOrderListModel);
+                mOrderListModel.setValue(orderList);
+                this.mOrderListingAdapter.setOrderListing(mOrderListModel.getValue());
+                this.mOrderListingAdapter.notifyDataSetChanged();
+            }else if (mOrderListModel.getValue() != null) {
+                List<OrderListModel> orderList = new ArrayList<>();
+                orderList.addAll(listOrderListModel);
+                orderList.addAll(mOrderListModel.getValue());
+                mOrderListModel.setValue(orderList);
+                this.mOrderListingAdapter.setOrderListing(mOrderListModel.getValue());
+                this.mOrderListingAdapter.notifyDataSetChanged();
+
+
+            }else {
+
+                mOrderListModel.setValue(listOrderListModel);
+                this.mOrderListingAdapter.setOrderListing(listOrderListModel);
+                this.mOrderListingAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
     public void onClickOrderList(View view, int pos){

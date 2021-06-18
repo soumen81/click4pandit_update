@@ -173,4 +173,9 @@
     <string name="phoneno">Phone Number</string>
     <string name="thankcontactus">Thank You for Contact Us</string>
     <string name="failed">Failed</string>
+    <string name="checkin">Check In</string>
+    <string name="checkout">Check Out</string>
+    <string name="nodata"> No Data Found</string>
+    <string name="nodatadetails">Sorry,We Can\'t find any data for you</string>
+    <string name="network_error"> Network Error</string>
 </resources>

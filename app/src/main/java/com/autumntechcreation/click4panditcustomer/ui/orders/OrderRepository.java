@@ -33,7 +33,7 @@ public class OrderRepository {
 
     }
 
-    public LiveData<Resource<List<OrderListModel>>> getOrderList(String orderDateCriteria) {
+    public LiveData<Resource<List<OrderListModel>>> getOrderList(String orderDateCriteria,int pageNo) {
         return new NetworkBoundResource<List<OrderListModel>, List<OrderListModel>>(mAppExecutors) {
             private List<OrderListModel> resultsDb;
 
@@ -72,7 +72,7 @@ public class OrderRepository {
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty(AllUrlsAndConfig.LOGINID, getEmail());
                 jsonObject.addProperty(AllUrlsAndConfig.ORDERDATECRITERIA, orderDateCriteria);
-                jsonObject.addProperty(AllUrlsAndConfig.PAGEINDEX, 1);
+                jsonObject.addProperty(AllUrlsAndConfig.PAGEINDEX, pageNo);
                 jsonObject.addProperty(AllUrlsAndConfig.PAGESIZE, 5);
                 return mWebservice.getOrderList(url,jsonObject);
 

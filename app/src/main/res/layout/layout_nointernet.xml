@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteColor"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imgvwnointernet"
+        android:layout_width="@dimen/dimen_150dp"
+        android:layout_height="@dimen/dimen_150dp"
+        android:src="@drawable/no_disconnect"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+       />
+    <TextView
+        android:id="@+id/txtnointernet"
+        style="@style/Style_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nointernet"
+        android:textColor="@color/greenColor"
+        android:textSize="@dimen/font_18sp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtnointernetDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/dimen_20dp"
+       />
+
+    <TextView
+        android:id="@+id/txtnointernetDetails"
+        style="@style/Style_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/nointernetdetails"
+        android:textColor="@color/darkgrey"
+        android:textSize="@dimen/font_15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+         />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
