@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:design="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="MainViewModel"
+            type="com.autumntechcreation.click4panditcustomer.MainViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/side_nav_bar"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <!-- android:src="@drawable/nav_menu_header1"-->
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clProfileImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dimen_40dp"
+            android:paddingBottom="@dimen/dimen_20dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <FrameLayout
+                android:id="@+id/frameImage"
+                android:layout_width="@dimen/dimen_60dp"
+                android:layout_height="@dimen/dimen_60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/roundedImageProfile"
+                    android:layout_width="@dimen/dimen_60dp"
+                    android:layout_height="@dimen/dimen_60dp"
+                    android:src="@drawable/ic_profile"
+                    android:visibility="gone"
+                    app:civ_border_color="@color/whiteColor"
+                    app:civ_border_width="@dimen/_1sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvInitial"
+                    style="@style/Style_TextView_FontRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/circular_shadow"
+                    android:gravity="center"
+                    android:text="S"
+                    android:textAllCaps="true"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/font_40sp"
+                    android:visibility="visible" />
+                <ImageView
+                    android:layout_width="@dimen/dimen_30dp"
+                    android:layout_height="@dimen/dimen_30dp"
+                    android:src="@drawable/ic_facelogo"
+                    android:layout_gravity="center"></ImageView>
+
+            </FrameLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txtname"
+            style="@style/Style_TextView_FontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:singleLine="true"
+            android:text="hhhdfdsafad"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_10sp"
+            app:autoSizeStepGranularity="1sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintLeft_toRightOf="@+id/clProfileImg"
+
+            app:layout_constraintTop_toBottomOf="@+id/txt_Email" />
+
+        <TextView
+            android:id="@+id/txt_Email"
+            style="@style/Style_TextView_FontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:text="fgrgfrfgr"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/clProfileImg"
+            app:layout_constraintTop_toTopOf="parent" />
+<View
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_1dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:background="@color/blackColor"></View>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

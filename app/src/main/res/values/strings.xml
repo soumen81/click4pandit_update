@@ -172,4 +172,5 @@
     <string name="backtohome">Back to Home</string>
     <string name="phoneno">Phone Number</string>
     <string name="thankcontactus">Thank You for Contact Us</string>
+    <string name="failed">Failed</string>
 </resources>

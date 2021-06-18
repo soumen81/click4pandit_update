@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="DashBoardViewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D1453E">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:background="@drawable/ic_click4panditlogo"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toTopOf="parent"></ImageView>
+
+        <ImageView
+            android:id="@+id/imgvwBiglogo"
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_200dp"
+            android:src="@drawable/ic_biglogo"
+            android.support.design:layout_constraintBottom_toBottomOf="parent"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toTopOf="parent">
+
+        </ImageView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginBottom="@dimen/dimen_20dp"
+            android.support.design:layout_constraintBottom_toBottomOf="parent"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent">
+
+
+            <TextView
+                android:id="@+id/tvlogin"
+                android:layout_width="@dimen/dimen_120dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:background="@drawable/ic_newovalblack"
+                android:gravity="center"
+                style="@style/Style_TextView_FontBold"
+                android:text="@string/login"
+                android:onClick="@{(v) -> DashBoardViewModel.onClickGoToLogin(v)}"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textAllCaps="false"
+                app:layout_constraintRight_toLeftOf="@+id/guideline"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/tvSignUp"
+                android:layout_width="@dimen/dimen_120dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:background="@drawable/ic_newovalblack"
+                android:gravity="center"
+                android:text="@string/signup"
+                style="@style/Style_TextView_FontBold"
+                android:onClick="@{(v) -> DashBoardViewModel.onClickGoToRegister(v)}"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/font_14sp"
+                android:textAllCaps="false"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/guideline"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

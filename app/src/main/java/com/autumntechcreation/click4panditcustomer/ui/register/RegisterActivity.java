@@ -229,6 +229,22 @@ public class RegisterActivity extends AppCompatActivity {
                         mActivityRegisterBinding.edtTxtPassword.setText("");
                         mActivityRegisterBinding.edtTxtConfirmPassword.setText("");
 
+                    }else if(resource.data.returnStatus.equals("FAILED")){
+                        String returnMsg= (String) resource.data.returnErrMsg;
+                        Log.e("ERROR",returnMsg);
+
+
+
+                        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText(this.getString(R.string.failed))
+                                .setContentText(returnMsg)
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismiss();
+                                    }
+                                })
+                                .show();
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;

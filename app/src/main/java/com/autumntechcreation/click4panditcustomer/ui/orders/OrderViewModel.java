@@ -80,7 +80,7 @@ public class OrderViewModel extends ViewModel {
         return "" + list.get(position).getCustBkgPkgTotalAmt();
     }public String getBkgStatusDesc(int position){
         List<OrderListModel> list = mOrderListModel.getValue();
-        if(list.get(position).getBkgStsDscr().equals("ACCEPT")){
+        if(list.get(position).getBkgStsDscr().equals("ACCEPTED")){
             return "PAID";
         }else {
             return "" + list.get(position).getBkgStsDscr();

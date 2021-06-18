@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="SearchViewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.search.SearchViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteColor"
+   >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clHeaderSearch"
+        android:layout_width="match_parent"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+        android.support.design:layout_constraintTop_toTopOf="parent"
+        android:background="@color/buttonColor"
+        android:layout_height="@dimen/dimen_40dp">
+    <ImageView
+        android:id="@+id/searchBack"
+        android:layout_width="@dimen/dimen_30dp"
+        android:layout_height="@dimen/dimen_25dp"
+        android:layout_marginLeft="@dimen/dimen_5dp"
+
+        android.support.design:layout_constraintTop_toTopOf="parent"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_back"
+
+        ></ImageView>
+    <ImageView
+        android:id="@+id/header"
+        style="@style/Style_TextView_FontRegular"
+        android:layout_width="@dimen/dimen_100dp"
+        android:layout_height="@dimen/dimen_30dp"
+        android.support.design:layout_constraintTop_toTopOf="parent"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:src="@drawable/ic_logowithtext"
+        android:textSize="@dimen/font_14sp"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+       <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+           android:id="@+id/tvAutoCompSearch"
+           android:layout_width="@dimen/dimen_250dp"
+           android:layout_height="@dimen/dimen_30dp"
+           android:layout_marginTop="@dimen/dimen_20dp"
+           android:hint="What are you Looking for"
+           android:drawablePadding="@dimen/dimen_10dp"
+           android:drawableStart="@drawable/ic_blacksearch"
+           android:background="@drawable/round_white"
+           android.support.design:layout_constraintLeft_toLeftOf="parent"
+           android.support.design:layout_constraintRight_toRightOf="parent"
+           android.support.design:layout_constraintTop_toBottomOf="@+id/clHeaderSearch"
+           ></androidx.appcompat.widget.AppCompatAutoCompleteTextView>
+    <TextView
+        android:id="@+id/tvSelectedItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/tvAutoCompSearch"></TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

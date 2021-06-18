@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+        <variable
+            name="viewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgrey">
+     <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dimen_10dp">
+
+    <FrameLayout
+        android:id="@+id/frameImage"
+        android:layout_width="@dimen/dimen_100dp"
+        android:layout_height="@dimen/dimen_100dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+       app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/tvInitial"
+            style="@style/Style_TextView_FontRegular"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/circular_redshadow"
+            android:gravity="center"
+
+            android:textAllCaps="true"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/font_40sp"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/imgFace"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_check">
+
+        </ImageView>
+    </FrameLayout>
+        <TextView
+            android:id="@+id/tvThankyou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/thankyoupayment"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_14sp"
+            style="@style/Style_TextView_FontSemiBold"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameImage"></TextView>
+
+        <TextView
+            android:id="@+id/tvToRealization"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/torealization"
+            android:textColor="@color/blackColor"
+            style="@style/Style_TextView_FontSemiBold"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvThankyou"></TextView>
+
+        <TextView
+            android:id="@+id/tvBacktoHome"
+            style="@style/Style_TextView_FontBold"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/newroundedred"
+            android:gravity="center"
+            android:text="@string/backtohome"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/font_14sp"
+
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvToRealization">
+
+        </TextView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/tvBacktoHome"
+
+          >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clOrderId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackColor"
+                style="@style/Style_TextView_FontRegular"
+                android:textSize="@dimen/font_12sp"
+                android:text="@string/orderid"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></TextView>
+
+            <TextView
+                android:id="@+id/orderIdValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackColor"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clOrderAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clOrderId">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackColor"
+                android:textSize="@dimen/font_12sp"
+                style="@style/Style_TextView_FontRegular"
+                android:text="@string/orderamount"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></TextView>
+
+            <TextView
+                android:id="@+id/tvOrderAmountValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackColor"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clReferenceId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clOrderAmount">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackColor"
+                android:textSize="@dimen/font_12sp"
+                style="@style/Style_TextView_FontRegular"
+                android:text="@string/referenceid"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></TextView>
+
+            <TextView
+                android:id="@+id/tvReferenceIdValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Style_TextView_FontRegular"
+                android:textColor="@color/blackColor"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTransactionstatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clReferenceId">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackColor"
+                android:textSize="@dimen/font_12sp"
+                style="@style/Style_TextView_FontRegular"
+                android:text="@string/transactionstatus"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></TextView>
+
+            <TextView
+                android:id="@+id/tvTransactionStatusValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Style_TextView_FontRegular"
+                android:textColor="@color/blackColor"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clPaymentMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTransactionstatus">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackColor"
+                style="@style/Style_TextView_FontRegular"
+                android:textSize="@dimen/font_12sp"
+                android:text="@string/paymentmode"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></TextView>
+
+            <TextView
+                android:id="@+id/tvPaymentModeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Style_TextView_FontRegular"
+                android:textColor="@color/blackColor"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clPaymentMode">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackColor"
+                style="@style/Style_TextView_FontRegular"
+                android:textSize="@dimen/font_12sp"
+                android:text="@string/message"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></TextView>
+
+            <TextView
+                android:id="@+id/tvMessageValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Style_TextView_FontRegular"
+                android:textColor="@color/blackColor"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTransactionTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clMessage">
+
+            <TextView
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:text="@string/Transactiontime"
+                android:textColor="@color/blackColor"
+                android:textSize="@dimen/font_12sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></TextView>
+
+            <TextView
+                android:id="@+id/tvtransactimeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blackColor"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+       <!-- <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+     </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

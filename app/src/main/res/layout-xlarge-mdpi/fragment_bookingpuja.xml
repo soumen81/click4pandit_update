@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="BookingPujaViewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/buttonColor">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/buttonColor"
+        android:paddingBottom="@dimen/dimen_10dp"
+        android:orientation="vertical">
+    <ImageView
+        android:id="@+id/imgvwPandit"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_150dp"
+        android:src="@drawable/hanumanji"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </ImageView>
+<!--
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/carousal"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:fillColor="#FFFFFFFF"
+            app:pageColor="#00000000"
+            app:radius="6dp"
+            app:slideInterval="3000"
+            app:strokeColor="#FF777777"
+            app:strokeWidth="1dp"
+            tools:ignore="MissingConstraints">
+
+        </com.synnapps.carouselview.CarouselView>
+-->
+    <TextView
+        android:id="@+id/tvPanditsAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blackColor"
+        style="@style/Style_TextView_FontBold"
+        android:text="@string/panditsavailable"
+        android:textSize="@dimen/font_12sp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgvwPandit">
+
+    </TextView>
+    <TextView
+        android:id="@+id/tvConvenience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Style_TextView_FontBold"
+        android:textColor="@color/blackColor"
+        android:text="@string/convenience"
+        android:textSize="@dimen/font_12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPanditsAvailable">
+
+    </TextView>
+    <TextView
+        android:id="@+id/tvTransparency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/whiteColor"
+        android:text="@string/transparency"
+        style="@style/Style_TextView_FontRegular"
+        android:textSize="@dimen/font_12sp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvConvenience">
+
+    </TextView>
+    <TextView
+        android:id="@+id/tvHassleFree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/whiteColor"
+        android:text="@string/hasslefree"
+        style="@style/Style_TextView_FontRegular"
+        android:textSize="@dimen/font_12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTransparency">
+
+    </TextView>
+        <TextView
+            android:id="@+id/tvPackageName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/yellowColor"
+            android:text="@string/bookpuja"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            style="@style/Style_TextView_FontRegular"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHassleFree"        >
+
+        </TextView>
+    <TextView
+        android:id="@+id/tvBookPuja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/whiteColor"
+        android:text="@string/bookpuja"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        style="@style/Style_TextView_FontRegular"
+        android:textSize="@dimen/font_12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/tvPackageName"        >
+
+    </TextView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clLocation"
+            android:layout_width="@dimen/dimen_200dp"
+            android:layout_height="@dimen/dimen_30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/ic_newwhiteoval"
+            app:layout_constraintTop_toBottomOf="@+id/tvBookPuja">
+         <ImageView
+                android:id="@+id/imgvwLocation"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:paddingLeft="@dimen/dimen_10dp"
+                android:src="@drawable/ic_location"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></ImageView>
+            <!-- <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/location"
+              style="@style/Style_TextView_FontRegular"
+              android:textSize="@dimen/font_10sp"
+              android:textColor="@color/blackColor"
+              android:layout_marginLeft="@dimen/dimen_10dp"
+             app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintLeft_toRightOf="@+id/imgvwLocation"></TextView>-->
+         <!-- <ImageView
+              android:id="@+id/imgvwSearch"
+              android:layout_width="@dimen/dimen_30dp"
+              android:layout_height="@dimen/dimen_20dp"
+              android:paddingRight="@dimen/dimen_10dp"
+              android:src="@drawable/ic_search"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintRight_toRightOf="parent"></ImageView>-->
+
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/tvSpinTypeOfLocation"
+                android:layout_width="@dimen/dimen_170dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:hint="Location"
+                android:textSize="@dimen/font_12sp"
+                android:textColorHint="@color/blackColor"
+                android:background="@drawable/ic_newwhiteoval"
+                style="@style/Style_TextView_FontRegular"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+
+
+                android.support.design:layout_constraintTop_toTopOf="parent"
+                >
+
+            </androidx.appcompat.widget.AppCompatAutoCompleteTextView>
+           <!-- <ImageView
+
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:paddingRight="@dimen/dimen_10dp"
+                android:src="@drawable/ic_dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></ImageView>-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clLanguage"
+            android:layout_width="@dimen/dimen_200dp"
+            android:layout_height="@dimen/dimen_30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/ic_newwhiteoval"
+            app:layout_constraintTop_toBottomOf="@+id/clLocation">
+           <!-- <ImageView
+                android:id="@+id/imgvwLanguage"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:paddingLeft="@dimen/dimen_10dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_ttext"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></ImageView>-->
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/tvSpinTypeOfLanguage"
+                android:layout_width="@dimen/dimen_190dp"
+                android:layout_height="@dimen/dimen_30dp"
+                style="@style/Style_TextView_FontRegular"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@android:color/transparent"
+
+                android.support.design:layout_constraintTop_toTopOf="parent"
+                >
+
+            </androidx.appcompat.widget.AppCompatSpinner>
+            <ImageView
+
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:paddingRight="@dimen/dimen_10dp"
+                android:src="@drawable/ic_dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></ImageView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBookDate"
+            android:layout_width="@dimen/dimen_200dp"
+            android:layout_height="@dimen/dimen_30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/ic_newwhiteoval"
+            app:layout_constraintTop_toBottomOf="@+id/clLanguage">
+            <ImageView
+                android:id="@+id/imgvwBookDate"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:paddingLeft="@dimen/dimen_10dp"
+                android:src="@drawable/ic_calendar"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></ImageView>
+            <TextView
+                android:id="@+id/tvBookingDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose Date"
+                android:textSize="@dimen/font_12sp"
+                style="@style/Style_TextView_FontRegular"
+                android:textColor="@color/blackColor"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/imgvwBookDate"></TextView>
+            <ImageView
+                android:id="@+id/imgvwDropBookDate"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:paddingRight="@dimen/dimen_10dp"
+                android:src="@drawable/ic_dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></ImageView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBookTime"
+            android:layout_width="@dimen/dimen_200dp"
+            android:layout_height="@dimen/dimen_30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/ic_newwhiteoval"
+            app:layout_constraintTop_toBottomOf="@+id/clBookDate">
+            <ImageView
+                android:id="@+id/imgvwBookTime"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:paddingLeft="@dimen/dimen_10dp"
+                android:src="@drawable/ic_clock"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></ImageView>
+            <!--<TextView
+                android:id="@+id/tvBookingTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose Time"
+                android:textSize="@dimen/font_12sp"
+                style="@style/Style_TextView_FontRegular"
+                android:textColor="@color/blackColor"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/imgvwBookTime"></TextView>-->
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/tvSpinTypeOfTime"
+                android:layout_width="@dimen/dimen_190dp"
+                android:layout_height="@dimen/dimen_30dp"
+                style="@style/Style_TextView_FontRegular"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@android:color/transparent"
+
+                android.support.design:layout_constraintTop_toTopOf="parent"
+                >
+
+            </androidx.appcompat.widget.AppCompatSpinner>
+            <ImageView
+                android:id="@+id/imgvwDropBookTime"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_20dp"
+                android:paddingRight="@dimen/dimen_10dp"
+                android:src="@drawable/ic_dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"></ImageView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvBookConfirm"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:background="@drawable/ic_newovalblack"
+            android:gravity="center"
+            style="@style/Style_TextView_FontBold"
+            android:textSize="@dimen/font_12sp"
+            android:textColor="@color/whiteColor"
+            android:text="@string/confirm"
+            android:onClick="@{(v) -> BookingPujaViewModel.onClickBookingPackage(v)}"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clBookTime">
+
+        </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

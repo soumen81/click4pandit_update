@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="PrivacyPolicyViewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeaderPrivacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:background="@color/buttonColor"
+            android.support.design:layout_constraintTop_toTopOf="parent"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent">
+            <ImageView
+                android:id="@+id/imgbackPrivacyPolicy"
+                android:layout_width="@dimen/dimen_40dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android.support.design:layout_constraintBottom_toBottomOf="parent"
+                android.support.design:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/ic_backblack"
+                android.support.design:layout_constraintTop_toTopOf="parent"
+                ></ImageView>
+            <TextView
+                android:id="@+id/tvPrivacyPolicy"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/font_14sp"
+                android:textColor="@color/blackColor"
+                android:text="Privacy Policy"
+                android.support.design:layout_constraintTop_toTopOf="parent"
+                android.support.design:layout_constraintBottom_toBottomOf="parent"
+                android.support.design:layout_constraintLeft_toLeftOf="parent"
+                android.support.design:layout_constraintRight_toRightOf="parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <View
+                android:id="@+id/viewPrivacyPolicy"
+                android.support.design:layout_constraintBottom_toBottomOf="parent"
+                android:background="@color/blackColor"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1dp"
+                ></View>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <WebView
+            android:id="@+id/wvPrivacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/clHeaderPrivacyPolicy"></WebView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

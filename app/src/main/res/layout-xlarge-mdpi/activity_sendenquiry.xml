@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="SendEnquiryViewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clHeaderPrivacyPolicy"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:background="@color/buttonColor"
+        android.support.design:layout_constraintTop_toTopOf="parent"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent">
+        <ImageView
+            android:id="@+id/imgbackPrivacyPolicy"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_20dp"
+            android.support.design:layout_constraintBottom_toBottomOf="parent"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android:src="@drawable/ic_back"
+            android.support.design:layout_constraintTop_toTopOf="parent"
+            ></ImageView>
+        <TextView
+            android:id="@+id/tvPrivacyPolicy"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/font_14sp"
+            android:textColor="@color/blackColor"
+            android:text="Send Us Enquiry"
+            android.support.design:layout_constraintTop_toTopOf="parent"
+            android.support.design:layout_constraintBottom_toBottomOf="parent"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <View
+            android:id="@+id/viewPrivacyPolicy"
+            android.support.design:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/blackColor"
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            ></View>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:hint="@string/name"
+        android:textColorHint="@color/colorBadge"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/clHeaderPrivacyPolicy"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTxtName"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:scrollbars="vertical"
+            android:singleLine="true"
+            android:textSize="@dimen/font_10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            app:layout_constraintTop_toTopOf="@+id/parent1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutMobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:hint="@string/mobileNo"
+        android:textColorHint="@color/colorBadge"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutName"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTxtMobileNo"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:maxLength="10"
+            android:inputType="number"
+            android:scrollbars="vertical"
+            android:singleLine="true"
+            android:textSize="@dimen/font_10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            app:layout_constraintTop_toTopOf="@+id/parent1" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:hint="@string/email"
+        android:textColorHint="@color/colorBadge"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutMobile"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTxtEmail"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+
+            android:inputType="text"
+            android:scrollbars="vertical"
+            android:singleLine="true"
+            android:textSize="@dimen/font_10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            app:layout_constraintTop_toTopOf="@+id/parent1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:hint="@string/address"
+        android:textColorHint="@color/colorBadge"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTxtAddress"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:scrollbars="vertical"
+            android:singleLine="true"
+            android:textSize="@dimen/font_10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            app:layout_constraintTop_toTopOf="@+id/parent1" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutBhoomiPuja"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:hint="@string/pujaname"
+        android:textColorHint="@color/colorBadge"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutAddress"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTxtBhumiPuja"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:scrollbars="vertical"
+            android:singleLine="true"
+            android:textSize="@dimen/font_10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            app:layout_constraintTop_toTopOf="@+id/parent1" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutRequirements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:hint="@string/requirements"
+        android:textColorHint="@color/colorBadge"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutBhoomiPuja"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTxtRequirements"
+            style="@style/Style_TextView_FontLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:scrollbars="vertical"
+            android:singleLine="true"
+            android:textSize="@dimen/font_10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/parent1"
+            app:layout_constraintTop_toTopOf="@+id/parent1" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/tvSubmit"
+        style="@style/Style_TextView_FontBold"
+        android:layout_width="@dimen/dimen_120dp"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_marginTop="@dimen/dimen_30dp"
+        android:background="@drawable/round_red_corner"
+        android:gravity="center"
+        android:text="@string/submit"
+        android:textColor="@color/whiteColor"
+        android:textSize="@dimen/font_14sp"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+        android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutRequirements">
+
+    </TextView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
