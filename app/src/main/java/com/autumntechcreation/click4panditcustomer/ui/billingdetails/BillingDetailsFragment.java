@@ -519,8 +519,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
                         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
                         cfPaymentService.setOrientation(0);
-                      //  cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
-                          cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "PROD", "#784BD2", "#FFFFFF", false);
+                        cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
+                        //  cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "PROD", "#784BD2", "#FFFFFF", false);
 
 
 
@@ -647,9 +647,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                     String json = gson.toJson(resource.data);
                     Log.e("handleCashFreeTokenResponse", json + "");
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
-
-                        if ( resource.data.returnStatus.equals("SUCCESS")) {
-                            BillingDetailsFragmentDirections.ActionBillingDetailsFragmentToTransactionStatusFragment action =
+                        BillingDetailsFragmentDirections.ActionBillingDetailsFragmentToTransactionStatusFragment action =
                                     BillingDetailsFragmentDirections.actionBillingDetailsFragmentToTransactionStatusFragment();
                             action.setPaymentorderID(paymentorderID);
                             action.setOrderAmount(orderAmount);
@@ -660,7 +658,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             action.setTransactiontime(transactionTime);
 
                             Navigation.findNavController(mView).navigate(action);
-                        }
+
 
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
@@ -673,8 +671,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         }
     }
     private Map<String, String> getInputParams() {
-        //String appId = "6159303c6dd0fdc88e24a424f39516";//TEST
-         String appId = "10732304e9cb87da1696501a98323701";//PRODUCTION
+        String appId = "6159303c6dd0fdc88e24a424f39516";//TEST
+        // String appId = "10732304e9cb87da1696501a98323701";//PRODUCTION
         String strorderId = String.valueOf(orderId);
         String strorderAmount = orderAmount;
         String orderNote = "Puja";

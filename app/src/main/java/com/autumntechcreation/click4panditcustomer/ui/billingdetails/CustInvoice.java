@@ -25,6 +25,12 @@ public class CustInvoice {
     @SerializedName("custOrdId")
     @Expose
     private Integer custOrdId;
+
+
+
+    @SerializedName("custOrdNo")
+    @Expose
+    private String custOrdNo;
     @SerializedName("prodSellBy")
     @Expose
     private String prodSellBy;
@@ -138,13 +144,13 @@ public class CustInvoice {
     private Object itmUnPrc;
     @SerializedName("itmQty")
     @Expose
-    private Object itmQty;
+    private Integer itmQty;
     @SerializedName("netAmt")
     @Expose
     private Object netAmt;
     @SerializedName("taxTypId")
     @Expose
-    private Object taxTypId;
+    private Integer taxTypId;
     @SerializedName("taxAmt")
     @Expose
     private Object taxAmt;
@@ -153,7 +159,7 @@ public class CustInvoice {
     private Object total;
     @SerializedName("curId")
     @Expose
-    private Object curId;
+    private Integer curId;
     @SerializedName("invStsId")
     @Expose
     private Integer invStsId;
@@ -212,6 +218,14 @@ public class CustInvoice {
 
     public void setCustOrdId(Integer custOrdId) {
         this.custOrdId = custOrdId;
+    }
+
+    public String getCustOrdNo() {
+        return custOrdNo;
+    }
+
+    public void setCustOrdNo(String custOrdNo) {
+        this.custOrdNo = custOrdNo;
     }
 
     public String getProdSellBy() {
@@ -510,11 +524,11 @@ public class CustInvoice {
         this.itmUnPrc = itmUnPrc;
     }
 
-    public Object getItmQty() {
+    public Integer getItmQty() {
         return itmQty;
     }
 
-    public void setItmQty(Object itmQty) {
+    public void setItmQty(Integer itmQty) {
         this.itmQty = itmQty;
     }
 
@@ -526,11 +540,11 @@ public class CustInvoice {
         this.netAmt = netAmt;
     }
 
-    public Object getTaxTypId() {
+    public Integer getTaxTypId() {
         return taxTypId;
     }
 
-    public void setTaxTypId(Object taxTypId) {
+    public void setTaxTypId(Integer taxTypId) {
         this.taxTypId = taxTypId;
     }
 
@@ -550,11 +564,11 @@ public class CustInvoice {
         this.total = total;
     }
 
-    public Object getCurId() {
+    public Integer getCurId() {
         return curId;
     }
 
-    public void setCurId(Object curId) {
+    public void setCurId(Integer curId) {
         this.curId = curId;
     }
 

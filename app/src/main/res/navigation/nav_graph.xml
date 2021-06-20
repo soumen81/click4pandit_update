@@ -12,16 +12,16 @@
         tools:layout="@layout/fragment_home" >
         <argument
             android:name="subCategoryId"
-            android:defaultValue="0"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="pujaName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="subCategoryName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
 
@@ -41,62 +41,62 @@
         android:label="ChoosePackageFragment" >
         <argument
             android:name="subCategoryId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="pujaPackageId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="pujaName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="procedure"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
         android:name="pujaSamagries"
-        android:defaultValue="0"
+        android:defaultValue=""
         app:argType="string"
         app:nullable="true" />
         <argument
             android:name="yajaman"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="amount"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="packageDesc"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
  <argument
             android:name="packageTypeIdDesc"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
 
         <argument
             android:name="subCategoryName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
 
         <argument
             android:name="isAllSamagries"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="noOfPandit"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <action
             android:id="@+id/action_choosePackageFragment_to_bookingPujaFragment"
@@ -111,91 +111,91 @@
         android:label="BookingPujaFragment" >
         <argument
             android:name="pujaName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaPackageId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="procedure"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaSamagries"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="yajaman"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
 
         <argument
             android:name="amount"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="packageDesc"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaDate"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaTime"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaLanguage"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaLocation"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
        <argument
             android:name="packageTypeIdDesc"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="subCategoryName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="locationId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
 
         <argument
             android:name="languageId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         />
         <argument
             android:name="subCategoryId"
-            android:defaultValue="0"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="isAllSamagries"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="noOfPandit"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <action
             android:id="@+id/action_bookingPujaFragment_to_orderSummaryFragment"
@@ -212,119 +212,119 @@
         android:label="OrderSummaryFragment" >
         <argument
             android:name="pujaName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaPackageId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="procedure"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaSamagries"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="yajaman"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
 
         <argument
             android:name="amount"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="packageDesc"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaDate"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaTime"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaLanguage"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="pujaLocation"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="packageTypeIdDesc"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="subCategoryName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="subCategoryId"
-            android:defaultValue="0"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="locationId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
 
         <argument
             android:name="languageId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         />
         <argument
             android:name="isAllSamagries"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
         <argument
             android:name="noOfPandit"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="orderId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="bkgId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="orderAmount"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="dateTime"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="pujaAmount"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="cgstvalue"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="sgstvalue"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
 
 
@@ -338,129 +338,129 @@
         android:label="BillingDetailsFragment" >
         <argument
             android:name="orderId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="bkgId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="orderAmount"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingAddress"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingState"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingCity"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingPinCode"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="dateTime"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="statusShippingId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="shippingFname"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingLname"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingemail"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
 
         <argument
             android:name="shippingMobile"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="additionalInfo"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingBkgId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="cashFreeToken"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="pujaAmount"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="cgstvalue"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="sgstvalue"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="referenceid"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="transactionstatus"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="paymentmode"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="message"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="Transactiontime"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="paymentorderID"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
 
         <argument
             android:name="BillingPincode"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="BillingAddress"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="BillingAddress2"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="BillingAddress3"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="ShippingAddress2"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="ShippingAddress3"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
 
         <action
@@ -483,100 +483,100 @@
         android:label="DifferentPujaLocationFragment" >
         <argument
             android:name="orderId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="bkgId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="orderAmount"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingAddress"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingState"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingCity"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingPinCode"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="dateTime"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="statusShippingId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="shippingFname"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingLname"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingemail"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
 
         <argument
             android:name="shippingMobile"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="additionalInfo"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingBkgId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="pujaAmount"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="cgstvalue"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="sgstvalue"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="BillingPincode"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="BillingAddress"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="BillingAddress2"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="BillingAddress3"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="ShippingAddress2"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="ShippingAddress3"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <action
             android:id="@+id/action_differentPujaLocationFragment_to_billingDetailsFragment"
@@ -720,63 +720,63 @@
         android:label="AddressFragment" >
         <argument
             android:name="addAction"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="updateAction"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
          <argument
             android:name="removeAction"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="firstName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="lastName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="address1"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="address2"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="address3"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="city"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="state"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="pincode"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingAddressId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="updtStamp"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="orglStamp"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="custMasterId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
 
 
@@ -790,63 +790,63 @@
         android:label="AddUpdateRemoveFragment" >
         <argument
             android:name="addAction"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="updateAction"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="removeAction"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="firstName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="lastName"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="address1"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="address2"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="address3"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="city"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="state"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="pincode"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="shippingAddressId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="updtStamp"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="orglStamp"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="custMasterId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
 
         <action
@@ -859,36 +859,36 @@
         android:label="TransactionStatusFragment" >
         <argument
             android:name="orderId"
-            android:defaultValue="1"
+            android:defaultValue="-1"
             app:argType="integer" />
         <argument
             android:name="orderAmount"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="referenceid"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
 
         <argument
             android:name="transactionstatus"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="paymentmode"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="message"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="Transactiontime"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="paymentorderID"
-            android:defaultValue="0"
+            android:defaultValue=""
             app:argType="string" />
         <action
             android:id="@+id/action_transactionStatusFragment_to_homeFragmentFragment"
