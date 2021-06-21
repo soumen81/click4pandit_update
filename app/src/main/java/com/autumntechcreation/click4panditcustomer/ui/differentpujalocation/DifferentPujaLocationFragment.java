@@ -178,8 +178,11 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                     action.setOrderId(shippingorderId);
                     action.setBillingAddress(getBillingAddress);
                     action.setBillingPincode(getBillingPinCode);
-                    action.setBillingAddress2(getBillingAddress2);
-                    action.setBillingAddress3(getBillingAddress3);
+                    if(getBillingAddress2!=null) {
+                        action.setBillingAddress2(getBillingAddress2);
+                    }if(getBillingAddress3!=null) {
+                        action.setBillingAddress3(getBillingAddress3);
+                    }
 
                     action.setStatusShippingId(1);
                     Navigation.findNavController(mView).navigate(action);

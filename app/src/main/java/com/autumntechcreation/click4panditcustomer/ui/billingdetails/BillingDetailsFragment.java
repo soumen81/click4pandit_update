@@ -153,63 +153,66 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         mFragmentBillingdetailsBinding.tvCgstValue.setText(shippingCgst);
         mFragmentBillingdetailsBinding.tvSgstValue.setText(shippingSgst);
 
-        String shippingDateTime="";
-        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
-            shippingDateTime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();
-            Log.e("SHIPPINGDATETIME", shippingDateTime);
-        }
-        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress().length()>0) {
-            shippingAddress = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress();
-            Log.e("SHIPPINGADDRESS", shippingAddress);
-        } if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress().length()>0) {
-            shippingAddress2 = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress2();
-            Log.e("SHIPPINGADDRESS2", shippingAddress2);
-        } if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress().length()>0) {
-            shippingAddress3 = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress3();
-            Log.e("SHIPPINGADDRESS3", shippingAddress3);
-        } if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingState().length()>0) {
-            shippingState = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingState();
-            Log.e("SHIPPINGSTATE", shippingState);
-        } if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingCity().length()>0) {
-            shippingCity = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingCity();
-            Log.e("SHIPPINGCITY", shippingCity);
-        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingPinCode().length()>0) {
-            shippingPincode = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingPinCode();
-            Log.e("SHIPPINGPINCODE", shippingPincode);
-        }
-        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingFname().length()>0){
-            shippingFirstName=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingFname();
-            Log.e("SHIPPINGFIRSTNAME", shippingFirstName);
-        }
-        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingLname().length()>0){
-            shippingLastName=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingLname();
-            Log.e("SHIPPINGLASTNAME", shippingLastName);
-        }
-        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingemail().length()>0){
-            shippingemail=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingemail();
-            Log.e("SHIPPINGEMAIL", shippingemail);
-        }
-        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingMobile().length()>0){
-            shippingAlternateMobile=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingMobile();
-            Log.e("SHIPPINGMOBILE", shippingAlternateMobile);
-        }
-        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getAdditionalInfo().length()>0){
-            shippingAdditionalInfo=BillingDetailsFragmentArgs.fromBundle(getArguments()).getAdditionalInfo();
-            Log.e("SHIPPINGFADDITIONALINFO", shippingAdditionalInfo);
-        }
-        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingBkgId()>0) {
-            shippingbkgId = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingBkgId();
-            Log.e("shippingbkgId", "" + shippingbkgId);
-        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderId()>0) {
-            shippingOrderId = BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderId();
-            Log.e("shippingOrderId", "" + shippingOrderId);
-        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount().length()>0) {
-            shippingOrderAmount = BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount();
-            Log.e("shippingOrderAmount", "" + shippingOrderAmount);
-        }
 
          valueOfState=BillingDetailsFragmentArgs.fromBundle(getArguments()).getStatusShippingId()==1;
         Log.e("STATE",valueOfState+"");//true
+        if(valueOfState==true){
+            String shippingDateTime="";
+            if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
+                shippingDateTime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();
+                Log.e("SHIPPINGDATETIME", shippingDateTime);
+            }
+            if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress().length()>0) {
+                shippingAddress = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress();
+                Log.e("SHIPPINGADDRESS", shippingAddress);
+            } if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress().length()>0) {
+                shippingAddress2 = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress2();
+                Log.e("SHIPPINGADDRESS2", shippingAddress2);
+            } if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress().length()>0) {
+                shippingAddress3 = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingAddress3();
+                Log.e("SHIPPINGADDRESS3", shippingAddress3);
+            } if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingState().length()>0) {
+                shippingState = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingState();
+                Log.e("SHIPPINGSTATE", shippingState);
+            } if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingCity().length()>0) {
+                shippingCity = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingCity();
+                Log.e("SHIPPINGCITY", shippingCity);
+            }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingPinCode().length()>0) {
+                shippingPincode = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingPinCode();
+                Log.e("SHIPPINGPINCODE", shippingPincode);
+            }
+            if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingFname().length()>0){
+                shippingFirstName=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingFname();
+                Log.e("SHIPPINGFIRSTNAME", shippingFirstName);
+            }
+            if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingLname().length()>0){
+                shippingLastName=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingLname();
+                Log.e("SHIPPINGLASTNAME", shippingLastName);
+            }
+            if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingemail().length()>0){
+                shippingemail=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingemail();
+                Log.e("SHIPPINGEMAIL", shippingemail);
+            }
+            if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingMobile().length()>0){
+                shippingAlternateMobile=BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingMobile();
+                Log.e("SHIPPINGMOBILE", shippingAlternateMobile);
+            }
+            if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getAdditionalInfo().length()>0){
+                shippingAdditionalInfo=BillingDetailsFragmentArgs.fromBundle(getArguments()).getAdditionalInfo();
+                Log.e("SHIPPINGFADDITIONALINFO", shippingAdditionalInfo);
+            }
+            if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingBkgId()>0) {
+                shippingbkgId = BillingDetailsFragmentArgs.fromBundle(getArguments()).getShippingBkgId();
+                Log.e("shippingbkgId", "" + shippingbkgId);
+            }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderId()>0) {
+                shippingOrderId = BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderId();
+                Log.e("shippingOrderId", "" + shippingOrderId);
+            }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount().length()>0) {
+                shippingOrderAmount = BillingDetailsFragmentArgs.fromBundle(getArguments()).getOrderAmount();
+                Log.e("shippingOrderAmount", "" + shippingOrderAmount);
+            }
+
+        }
 
 
 
@@ -339,7 +342,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                         ).observe(getActivity(), BillingDetailsFragment.this::handleProceedToPay);
 
                     }*/
-                    if(valueOfState=false){
+                    if(valueOfState==true){
                         mBillingDetailsViewModel.getProceedToPayForShippingAddress(pujaDatetime,shippingbkgId,mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString(),mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),shippingAddress2,shippingAddress3,mFragmentBillingdetailsBinding.edtMobileNo.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtTxtCity.getText().toString(),mFragmentBillingdetailsBinding.edtTxtState.getText().toString(),mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString(),Double.parseDouble(shippingOrderAmount),shippingOrderId,shippingFirstName,shippingLastName,shippingAlternateMobile,
@@ -580,13 +583,14 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                     Gson gson = new Gson();
                     String json = gson.toJson(resource.data);
                     Log.e("handleCashFreeTokenResponse", json + "");
+                    DisplayDialog.getInstance().dismissAlertDialog();
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
                         CustBkg custBkg=resource.data.custInvoiceAsEmail.getCustBkg();
                         CustInvoice  custInvoice= resource.data.custInvoiceAsEmail.getCustInvoice();
                         mBillingDetailsViewModel.getSendEmailInvoice(custBkg,custInvoice).observe(getActivity(),BillingDetailsFragment.this::handlegetSendEmailInvoice);
 
                     }
-                    DisplayDialog.getInstance().dismissAlertDialog();
+
                     break;
                 default:
                     DisplayDialog.getInstance().dismissAlertDialog();
@@ -646,7 +650,9 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                     Gson gson = new Gson();
                     String json = gson.toJson(resource.data);
                     Log.e("handleCashFreeTokenResponse", json + "");
+                    DisplayDialog.getInstance().dismissAlertDialog();
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
+
                         BillingDetailsFragmentDirections.ActionBillingDetailsFragmentToTransactionStatusFragment action =
                                     BillingDetailsFragmentDirections.actionBillingDetailsFragmentToTransactionStatusFragment();
                             action.setPaymentorderID(paymentorderID);
@@ -656,12 +662,11 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             action.setPaymentmode(paymentMode);
                             action.setMessage(txStatus);
                             action.setTransactiontime(transactionTime);
-
                             Navigation.findNavController(mView).navigate(action);
 
 
                     }
-                    DisplayDialog.getInstance().dismissAlertDialog();
+
                     break;
                 default:
                     DisplayDialog.getInstance().dismissAlertDialog();
