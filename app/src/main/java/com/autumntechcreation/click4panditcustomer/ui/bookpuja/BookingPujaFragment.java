@@ -357,7 +357,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                     Toast.makeText(getActivity(), "Please select the Location", Toast.LENGTH_SHORT).show();
                 }
                 else if(mFragmentBookingpujaBinding.tvSpinTypeOfLanguage.getSelectedItem().toString().trim().equalsIgnoreCase("Language")){
-                    Toast.makeText(getActivity(), "Please select the Language", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Invalid Community option! Select the correct option.", Toast.LENGTH_SHORT).show();
                 }else  if(mFragmentBookingpujaBinding.tvBookingDate.getText().equals("Choose Date")) {
                     Toast.makeText(getActivity(), "Please select the Date", Toast.LENGTH_SHORT).show();
                 }/*else  if(mFragmentBookingpujaBinding.tvBookingTime.getText().equals("Choose Time")) {
@@ -420,7 +420,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
     public void showDatePicker() {
 
         calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR, 3);
+        calendar.add(Calendar.DAY_OF_YEAR, 2);
 
         DatePickerDialog dialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override

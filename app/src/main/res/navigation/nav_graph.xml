@@ -902,9 +902,16 @@
             android:name="shopId"
             android:defaultValue=""
             app:argType="string" />
+        <argument
+            android:name="pujaBoxId"
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_shopFragment_to_pujaItemKitFragment"
             app:destination="@id/pujaItemKitFragment" />
+        <action
+            android:id="@+id/action_shopFragment_to_pujaBoxItemListFragment"
+            app:destination="@id/pujaBoxItemListFragment" />
     </fragment>
     <fragment
         android:id="@+id/pujaItemKitFragment"
@@ -928,6 +935,15 @@
         android:label="PujaItemKitDetailsFragment" >
         <argument
             android:name="productName"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/pujaBoxItemListFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.pujaboxitemlist.PujaBoxItemListFragment"
+        android:label="PujaBoxItemListFragment" >
+        <argument
+            android:name="pujaBoxId"
             android:defaultValue=""
             app:argType="string" />
     </fragment>

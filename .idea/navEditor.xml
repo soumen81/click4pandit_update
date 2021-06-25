@@ -298,6 +298,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="pujaBoxItemListFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="434" />
+                            <option name="y" value="-1881" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="pujaItemKitDetailsFragment">
                     <value>
                       <LayoutPositions>
@@ -318,6 +330,15 @@
                             <option name="x" value="585" />
                             <option name="y" value="-1535" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_pujaItemKitFragment_to_pujaItemKitDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -351,8 +372,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="113" />
-                            <option name="y" value="-1520" />
+                            <option name="x" value="-77" />
+                            <option name="y" value="-1536" />
                           </Point>
                         </option>
                         <option name="myPositions">

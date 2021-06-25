@@ -26,6 +26,7 @@ import com.autumntechcreation.click4panditcustomer.ui.orders.OrderViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.pujaboxitemlist.PujaBoxItemListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.pujaitemkit.PujaItemKitViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.pujaitemkitdetails.PujaItemKitDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyViewModel;
@@ -206,4 +207,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(PujaItemKitDetailsViewModel.class)
     abstract ViewModel bindPujaItemKitDetailsViewModel(PujaItemKitDetailsViewModel pujaItemKitDetailsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PujaBoxItemListViewModel.class)
+    abstract ViewModel bindPujaBoxItemListViewModel(PujaBoxItemListViewModel pujaBoxItemListViewModel);
 }

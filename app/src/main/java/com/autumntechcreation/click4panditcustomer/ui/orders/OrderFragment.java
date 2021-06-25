@@ -58,7 +58,7 @@ public class OrderFragment extends Fragment implements Injectable {
     private View mView;
     NavController navController;
     private List<OrderListModel> listOrderListModel;
-    String[] filterDays = { "Choose Days","Last 7 Days", "This Month", "Last Month"};
+    String[] filterDays = { "Last 7 Days", "This Month", "Last Month"};
     ArrayAdapter<String> mSpinFilterAdapter;
     int mSkip = 1,mTop = 5;
     boolean isLoading = false, itHasMoreDataToLoad = true,isFilter=false;
@@ -96,10 +96,7 @@ public class OrderFragment extends Fragment implements Injectable {
         mFragmentOrderBinding.spinFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position==0){
-
-
-                }else if(position==1){
+               if(position==0){
                     itHasMoreDataToLoad = true;
                     isLoading = false;
                     mSkip = 1;
@@ -107,7 +104,7 @@ public class OrderFragment extends Fragment implements Injectable {
                     mOrderViewModel.getOrderList(searchText,mSkip).observe(getActivity(), OrderFragment.this::handleOrderList);
 
 
-                }else if(position==2){
+                }else if(position==1){
                     itHasMoreDataToLoad = true;
                     isLoading = false;
                     mSkip = 1;
@@ -115,7 +112,7 @@ public class OrderFragment extends Fragment implements Injectable {
                     mOrderViewModel.getOrderList(searchText,mSkip).observe(getActivity(), OrderFragment.this::handleOrderList);
 
 
-                }else if(position==3){
+                }else if(position==2){
                     itHasMoreDataToLoad = true;
                     isLoading = false;
                     mSkip = 1;

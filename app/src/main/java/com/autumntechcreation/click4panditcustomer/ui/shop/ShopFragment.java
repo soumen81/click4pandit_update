@@ -60,5 +60,15 @@ public class ShopFragment extends Fragment implements Injectable {
                 Navigation.findNavController(mView).navigate(action);
             }
         });
+
+        mFragmentShopBinding.tvPujaBoxShopNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShopFragmentDirections.ActionShopFragmentToPujaBoxItemListFragment action=
+                        ShopFragmentDirections.actionShopFragmentToPujaBoxItemListFragment();
+                action.setPujaBoxId("2");
+                Navigation.findNavController(mView).navigate(action);
+            }
+        });
     }
     }
