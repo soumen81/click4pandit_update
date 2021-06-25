@@ -178,4 +178,16 @@
     <string name="nodata"> No Data Found</string>
     <string name="nodatadetails">Sorry,We Can\'t find any data for you</string>
     <string name="network_error"> Network Error</string>
+    <string name="shop">Shop</string>
+    <string name="pujaitemkit">Puja Item Kit</string>
+    <string name="shopnow">Shop Now</string>
+    <string name="pujabox">Puja Box</string>
+    <string name="pujabrass">Puja Brass Item</string>
+    <string name="addtocart">Add to Cart</string>
+    <string name="buynow">Buy Now</string>
+    <string name="quantity">Quantity</string>
+    <string name="checkdelivery">Check Delivery Pincode</string>
+    <string name="productdimension">Product Dimension</string>
+    <string name="productmaterial">Product Material</string>
+    <string name="productdesc">Product Description</string>
 </resources>

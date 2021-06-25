@@ -894,6 +894,43 @@
             android:id="@+id/action_transactionStatusFragment_to_homeFragmentFragment"
             app:destination="@id/homeFragmentFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.shop.ShopFragment"
+        android:label="ShopFragment" >
+        <argument
+            android:name="shopId"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_shopFragment_to_pujaItemKitFragment"
+            app:destination="@id/pujaItemKitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pujaItemKitFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.pujaitemkit.PujaItemKitFragment"
+        android:label="PujaItemKitFragment" >
+        <argument
+            android:name="shopId"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="productName"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_pujaItemKitFragment_to_pujaItemKitDetailsFragment"
+            app:destination="@id/pujaItemKitDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pujaItemKitDetailsFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.pujaitemkitdetails.PujaItemKitDetailsFragment"
+        android:label="PujaItemKitDetailsFragment" >
+        <argument
+            android:name="productName"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
 
 
 </navigation>

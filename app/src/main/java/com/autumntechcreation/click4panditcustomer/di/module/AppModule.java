@@ -27,10 +27,13 @@ import com.autumntechcreation.click4panditcustomer.ui.orders.OrderRepository;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryRepository;
 import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyRepository;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileRepository;
+import com.autumntechcreation.click4panditcustomer.ui.pujaitemkit.PujaItemKitRepository;
+import com.autumntechcreation.click4panditcustomer.ui.pujaitemkitdetails.PujaItemKitDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyRepository;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterRepository;
 import com.autumntechcreation.click4panditcustomer.ui.search.SearchRepository;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsRepository;
+import com.autumntechcreation.click4panditcustomer.ui.shop.ShopRepository;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutRepository;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionRepository;
 import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusRepository;
@@ -214,5 +217,22 @@ public class AppModule {
     @Singleton
     TransactionStatusRepository provideTransactionStatusRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new TransactionStatusRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+    @Provides
+    @Singleton
+    ShopRepository provideShopRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new ShopRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    PujaItemKitRepository providePujaItemKitRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new PujaItemKitRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    PujaItemKitDetailsRepository providePujaItemKitDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new PujaItemKitDetailsRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

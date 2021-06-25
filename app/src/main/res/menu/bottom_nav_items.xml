@@ -41,12 +41,21 @@
         android:checkableBehavior="single">
 
         <item
+            android:id="@+id/menu_shop"
+            android:icon="@drawable/orders"
+            android:title="@string/shop" />
+    </group>
+    <group
+        android:id="@+id/grp6"
+        android:checkableBehavior="single">
+
+        <item
             android:id="@+id/menu_settings"
             android:icon="@drawable/helpsupport"
             android:title="@string/helpsupport" />
     </group>
     <group
-        android:id="@+id/grp6"
+        android:id="@+id/grp7"
         android:checkableBehavior="single">
 
         <item
@@ -55,7 +64,7 @@
             android:title="@string/changepassword" />
     </group>
     <group
-        android:id="@+id/grp7"
+        android:id="@+id/grp8"
         android:checkableBehavior="single">
 
         <item

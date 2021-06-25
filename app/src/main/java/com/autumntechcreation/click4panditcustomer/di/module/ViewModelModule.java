@@ -26,11 +26,14 @@ import com.autumntechcreation.click4panditcustomer.ui.orders.OrderViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.pujaitemkit.PujaItemKitViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.pujaitemkitdetails.PujaItemKitDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.search.SearchViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.shop.ShopViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusViewModel;
@@ -188,4 +191,19 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TransactionStatusViewModel.class)
     abstract ViewModel bindTransactionStatusViewModel(TransactionStatusViewModel transactionStatusViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ShopViewModel.class)
+    abstract ViewModel bindShopViewModel(ShopViewModel shopViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PujaItemKitViewModel.class)
+    abstract ViewModel bindPujaItemKitViewModel(PujaItemKitViewModel pujaItemKitViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PujaItemKitDetailsViewModel.class)
+    abstract ViewModel bindPujaItemKitDetailsViewModel(PujaItemKitDetailsViewModel pujaItemKitDetailsViewModel);
 }

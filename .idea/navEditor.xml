@@ -76,6 +76,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_billingDetailsFragment_to_transactionStatusFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -293,6 +298,30 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="pujaItemKitDetailsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="973" />
+                            <option name="y" value="-1483" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="pujaItemKitFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="585" />
+                            <option name="y" value="-1535" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="searchActivity">
                     <value>
                       <LayoutPositions>
@@ -317,6 +346,27 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="shopFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="113" />
+                            <option name="y" value="-1520" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_shopFragment_to_pujaItemKitFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="signOutFragment">
                     <value>
                       <LayoutPositions>
@@ -337,6 +387,15 @@
                             <option name="x" value="1780" />
                             <option name="y" value="354" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_transactionStatusFragment_to_homeFragmentFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

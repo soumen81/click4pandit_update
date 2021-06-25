@@ -246,6 +246,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //isHomeFragment=false;
 
                 break;
+                case R.id.menu_shop:
+                tabSelected = 6;
+                NavHostFragment navHostShop= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                    navHostShop.getNavController().navigate(R.id.shopFragment);
+                //isHomeFragment=false;
+
+                break;
                 case R.id.menu_signout:
                     /*tabSelected = 4;
                     NavHostFragment navHostFragmentSignout= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
