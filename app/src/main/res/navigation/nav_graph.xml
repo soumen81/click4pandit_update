@@ -906,12 +906,19 @@
             android:name="pujaBoxId"
             android:defaultValue=""
             app:argType="string" />
+        <argument
+            android:name="pujaBrassId"
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_shopFragment_to_pujaItemKitFragment"
             app:destination="@id/pujaItemKitFragment" />
         <action
             android:id="@+id/action_shopFragment_to_pujaBoxItemListFragment"
             app:destination="@id/pujaBoxItemListFragment" />
+        <action
+            android:id="@+id/action_shopFragment_to_pujaBrassItemListingFragment"
+            app:destination="@id/pujaBrassItemListingFragment" />
     </fragment>
     <fragment
         android:id="@+id/pujaItemKitFragment"
@@ -944,6 +951,39 @@
         android:label="PujaBoxItemListFragment" >
         <argument
             android:name="pujaBoxId"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_pujaBoxItemListFragment_to_pujaBoxItemDetailsFragment"
+            app:destination="@id/pujaBoxItemDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pujaBoxItemDetailsFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.pujaboxitemsdetails.PujaBoxItemDetailsFragment"
+        android:label="PujaBoxItemDetailsFragment" >
+        <argument
+            android:name="pujaBoxId"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/pujaBrassItemListingFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.pujabrassitemlist.PujaBrassItemListingFragment"
+        android:label="PujaBrassItemListingFragment" >
+        <argument
+            android:name="pujaBrassId"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_pujaBrassItemListingFragment_to_pujaBrassItemDetailsFragment"
+            app:destination="@id/pujaBrassItemDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pujaBrassItemDetailsFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.pujabrassitemdetails.PujaBrassItemDetailsFragment"
+        android:label="PujaBrassItemDetailsFragment" >
+        <argument
+            android:name="pujaBrassId"
             android:defaultValue=""
             app:argType="string" />
     </fragment>

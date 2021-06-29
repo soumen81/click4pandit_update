@@ -1,5 +1,7 @@
 package com.autumntechcreation.click4panditcustomer.ui.pujaboxitemlist;
 
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
@@ -69,5 +71,17 @@ public class PujaBoxItemListViewModel extends ViewModel {
         }else if(position==4){
             img.setBackgroundResource(R.drawable.astromongola);
         }
+    }
+
+
+
+    public void onClickPujaBoxBuyNow(View view, int pos) {
+        Log.e("ClickPOSITION", view.getId() + "POSITION:" + Integer.toString(pos));
+
+        mSelectedPujaBoxItemKit.setValue(pos);
+    }
+
+    public SingleLiveEvent<Integer> getSelectedPujaBoxBuyNowListItem() {
+        return mSelectedPujaBoxItemKit;
     }
 }

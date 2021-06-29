@@ -27,6 +27,9 @@ import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryV
 import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.pujaboxitemlist.PujaBoxItemListViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.pujaboxitemsdetails.PujaBoxItemDetailsViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.pujabrassitemdetails.PujaBrassItemDetailsViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.pujabrassitemlist.PujaBrassItemListingViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.pujaitemkit.PujaItemKitViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.pujaitemkitdetails.PujaItemKitDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyViewModel;
@@ -212,4 +215,19 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(PujaBoxItemListViewModel.class)
     abstract ViewModel bindPujaBoxItemListViewModel(PujaBoxItemListViewModel pujaBoxItemListViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PujaBoxItemDetailsViewModel.class)
+    abstract ViewModel bindPujaBoxItemDetailsViewModel(PujaBoxItemDetailsViewModel pujaBoxItemDetailsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PujaBrassItemListingViewModel.class)
+    abstract ViewModel bindPujaBrassItemListingViewModel(PujaBrassItemListingViewModel pujaBrassItemListingViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PujaBrassItemDetailsViewModel.class)
+    abstract ViewModel bindPujaBrassItemDetailsViewModel(PujaBrassItemDetailsViewModel pujaBrassItemDetailsViewModel);
 }

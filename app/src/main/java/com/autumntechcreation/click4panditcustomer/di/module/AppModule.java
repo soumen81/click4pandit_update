@@ -28,6 +28,9 @@ import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryR
 import com.autumntechcreation.click4panditcustomer.ui.privacypolicy.PrivacyPolicyRepository;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileRepository;
 import com.autumntechcreation.click4panditcustomer.ui.pujaboxitemlist.PujaBoxItemListRepository;
+import com.autumntechcreation.click4panditcustomer.ui.pujaboxitemsdetails.PujaBoxItemDetailsRepository;
+import com.autumntechcreation.click4panditcustomer.ui.pujabrassitemdetails.PujaBrassItemDetailsRepository;
+import com.autumntechcreation.click4panditcustomer.ui.pujabrassitemlist.PujaBrassItemListingRepository;
 import com.autumntechcreation.click4panditcustomer.ui.pujaitemkit.PujaItemKitRepository;
 import com.autumntechcreation.click4panditcustomer.ui.pujaitemkitdetails.PujaItemKitDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.refundpolicy.RefundPolicyRepository;
@@ -241,5 +244,23 @@ public class AppModule {
     @Singleton
     PujaBoxItemListRepository providePujaBoxItemListRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new PujaBoxItemListRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    PujaBoxItemDetailsRepository providePujaBoxItemDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new PujaBoxItemDetailsRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    PujaBrassItemListingRepository providePujaBrassItemListingRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new PujaBrassItemListingRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    PujaBrassItemDetailsRepository providePujaBrassItemDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new PujaBrassItemDetailsRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

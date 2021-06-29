@@ -11,9 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
@@ -67,6 +69,17 @@ public class PujaBoxItemListFragment extends Fragment implements Injectable {
         mFragmentPujaboxitemlistBinding.setPujaBoxItemListViewModel(mPujaBoxItemListViewModel);
         mPujaBoxItemListViewModel.init();
         setData();
+
+
+        mPujaBoxItemListViewModel.getSelectedPujaBoxBuyNowListItem().observe(getActivity(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                PujaBoxItemListFragmentDirections.ActionPujaBoxItemListFragmentToPujaBoxItemDetailsFragment action=
+                        PujaBoxItemListFragmentDirections.actionPujaBoxItemListFragmentToPujaBoxItemDetailsFragment();
+                action.setPujaBoxId("2");
+                Navigation.findNavController(mView).navigate(action);
+            }
+        });
     }
 
     private void setData(){
