@@ -7,6 +7,7 @@ import com.autumntechcreation.click4panditcustomer.MainViewModel;
 import com.autumntechcreation.click4panditcustomer.di.qualifiers.ViewModelKey;
 import com.autumntechcreation.click4panditcustomer.splash.SplashViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.address.AddressViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.addtocart.AddtoCartViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.addupdateremoveaddress.AddUpdateRemoveViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewModel;
@@ -230,4 +231,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(PujaBrassItemDetailsViewModel.class)
     abstract ViewModel bindPujaBrassItemDetailsViewModel(PujaBrassItemDetailsViewModel pujaBrassItemDetailsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddtoCartViewModel.class)
+    abstract ViewModel bindAddtoCartViewModel(AddtoCartViewModel addtoCartViewModel);
 }

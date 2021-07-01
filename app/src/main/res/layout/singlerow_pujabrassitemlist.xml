@@ -85,6 +85,7 @@
                 android:background="@drawable/ic_newovalblack"
                 android:layout_marginLeft="@dimen/dimen_5dp"
                 android:gravity="center"
+                android:onClick="@{(v) -> viewModel.onClickPujaBrassAddtoCart(v,position)}"
                 android:text="@string/addtocart"
                 android:textColor="@color/whiteColor"
                 android:textSize="@dimen/font_10sp"

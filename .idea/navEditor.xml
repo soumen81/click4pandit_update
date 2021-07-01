@@ -50,6 +50,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="addtoCartFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1541" />
+                            <option name="y" value="-1863" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="billingDetailsFragment">
                     <value>
                       <LayoutPositions>
@@ -315,8 +327,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="434" />
-                            <option name="y" value="-1881" />
+                            <option name="x" value="397" />
+                            <option name="y" value="-1880" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -352,6 +364,15 @@
                             <option name="y" value="-2295" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_pujaBrassItemListingFragment_to_pujaBrassItemDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -378,6 +399,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_pujaItemKitFragment_to_addtoCartFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_pujaItemKitFragment_to_pujaItemKitDetailsFragment">
                               <value>
                                 <LayoutPositions />

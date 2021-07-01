@@ -9,6 +9,7 @@ import com.autumntechcreation.click4panditcustomer.network.Webservice;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
 import com.autumntechcreation.click4panditcustomer.splash.SplashRepository;
 import com.autumntechcreation.click4panditcustomer.ui.address.AddressRepository;
+import com.autumntechcreation.click4panditcustomer.ui.addtocart.AddtoCartRepository;
 import com.autumntechcreation.click4panditcustomer.ui.addupdateremoveaddress.AddUpdateRemoveRepository;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaRepository;
@@ -262,5 +263,11 @@ public class AppModule {
     @Singleton
     PujaBrassItemDetailsRepository providePujaBrassItemDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new PujaBrassItemDetailsRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    AddtoCartRepository provideAddtoCartRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new AddtoCartRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

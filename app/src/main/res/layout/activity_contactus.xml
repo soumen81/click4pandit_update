@@ -78,7 +78,7 @@
                         android:id="@+id/clHeaderContact"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/buttonColor"
+                        android:background="@color/whiteColor"
                         android:paddingBottom="@dimen/dimen_10dp"
                         android.support.design:layout_constraintLeft_toLeftOf="parent"
                         android.support.design:layout_constraintRight_toRightOf="parent"
@@ -91,7 +91,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen_20dp"
                             android:text="@string/contactus"
-                            android:textColor="@color/whiteColor"
+                            android:textColor="@color/blackColor"
                             android:textSize="@dimen/font_14sp"
                             android.support.design:layout_constraintLeft_toLeftOf="parent"
                             android.support.design:layout_constraintRight_toRightOf="parent"
@@ -103,12 +103,33 @@
                             android:id="@+id/viewcontactus"
                             android:layout_width="@dimen/dimen_90dp"
                             android:layout_height="@dimen/dimen_1dp"
-                            android:background="@color/whiteColor"
+                            android:background="@color/buttonColor"
                             android.support.design:layout_constraintLeft_toLeftOf="parent"
                             android.support.design:layout_constraintRight_toRightOf="parent"
                             android.support.design:layout_constraintTop_toBottomOf="@+id/tvContactUs"></View>
 
 
+                        <TextView
+                            android:id="@+id/tvDescContact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blackColor"
+                            android:text="@string/team"
+                            android:textSize="@dimen/font_14sp"
+
+                            android:layout_margin="@dimen/dimen_10dp"
+                            android.support.design:layout_constraintLeft_toLeftOf="parent"
+                            android.support.design:layout_constraintRight_toRightOf="parent"
+                            android.support.design:layout_constraintTop_toBottomOf="@+id/viewcontactus"></TextView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clContactDet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/buttonColor"
+                        android.support.design:layout_constraintTop_toBottomOf="@+id/clHeaderContact"
+                        >
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/clAddress"
                             android:layout_width="wrap_content"
@@ -116,7 +137,8 @@
                             android:layout_marginTop="@dimen/dimen_20dp"
                             android.support.design:layout_constraintLeft_toLeftOf="parent"
                             android:layout_marginLeft="@dimen/dimen_10dp"
-                            android.support.design:layout_constraintTop_toBottomOf="@+id/viewcontactus">
+                            android.support.design:layout_constraintTop_toTopOf="parent"
+                           >
 
                             <TextView
                                 android:id="@+id/tvAddress"
@@ -243,7 +265,7 @@
                         android:layout_marginRight="@dimen/dimen_10dp"
                         android:hint="@string/name"
                         android:textColorHint="@color/colorBadge"
-                        android.support.design:layout_constraintTop_toBottomOf="@+id/clHeaderContact"
+                        android.support.design:layout_constraintTop_toBottomOf="@+id/clContactDet"
 
                         >
 

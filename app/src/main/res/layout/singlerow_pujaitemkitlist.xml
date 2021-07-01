@@ -96,6 +96,8 @@
                 android:id="@+id/tvPujaItemKitShopNow"
                 style="@style/Style_TextView_FontBold"
                 android:layout_width="80dp"
+
+                android:onClick="@{(v) -> viewModel.onClickPujaItemKitAddtoCart(v,position)}"
                 android:layout_height="@dimen/dimen_30dp"
                 android:layout_marginLeft="@dimen/dimen_5dp"
                 android:layout_marginTop="@dimen/dimen_10dp"

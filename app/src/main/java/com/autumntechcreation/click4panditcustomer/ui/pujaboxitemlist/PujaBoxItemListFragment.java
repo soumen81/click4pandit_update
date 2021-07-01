@@ -80,6 +80,16 @@ public class PujaBoxItemListFragment extends Fragment implements Injectable {
                 Navigation.findNavController(mView).navigate(action);
             }
         });
+
+        mPujaBoxItemListViewModel.getSelectedPujaBoxAddtoCart().observe(getActivity(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                PujaBoxItemListFragmentDirections.ActionPujaBoxItemListFragmentToAddtoCartFragment action=
+                        PujaBoxItemListFragmentDirections.actionPujaBoxItemListFragmentToAddtoCartFragment();
+                action.setProductAddtoCartName("Ghati");
+                Navigation.findNavController(mView).navigate(action);
+            }
+        });
     }
 
     private void setData(){
