@@ -42,6 +42,7 @@ import com.autumntechcreation.click4panditcustomer.ui.shop.ShopRepository;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutRepository;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionRepository;
 import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusRepository;
+import com.autumntechcreation.click4panditcustomer.ui.wishlist.WishListRepository;
 import com.autumntechcreation.click4panditcustomer.util.AppConstants;
 
 import javax.inject.Singleton;
@@ -269,5 +270,11 @@ public class AppModule {
     @Singleton
     AddtoCartRepository provideAddtoCartRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new AddtoCartRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    WishListRepository provideWishListRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new WishListRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

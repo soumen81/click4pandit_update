@@ -27,6 +27,7 @@ public class PujaBrassItemListingViewModel extends ViewModel {
     public MutableLiveData<List<PujaBrassItemListingModel>> mPujaBrassItemListingModel;
     private SingleLiveEvent<Integer> mSelectedPujaBrassItem = new SingleLiveEvent<>();
     private SingleLiveEvent<Integer> mSelectedPujaBrassAddtoCart = new SingleLiveEvent<>();
+    private SingleLiveEvent<Integer> mSelectedPujaBrassWishlist = new SingleLiveEvent<>();
     @Inject
     public PujaBrassItemListingViewModel(PujaBrassItemListingRepository pujaBrassItemListingRepository) {
         this.mPujaBrassItemListingRepository=pujaBrassItemListingRepository;
@@ -92,5 +93,14 @@ public class PujaBrassItemListingViewModel extends ViewModel {
 
     public SingleLiveEvent<Integer> getSelectedPujaBrassAddtoCart() {
         return mSelectedPujaBrassAddtoCart;
+    }
+    public void onClickPujaBrassKitWishList(View view, int pos) {
+        Log.e("ClickPOSITION", view.getId() + "POSITION:" + Integer.toString(pos));
+
+        mSelectedPujaBrassWishlist.setValue(pos);
+    }
+
+    public SingleLiveEvent<Integer> getSelectedPujaBrassWishList() {
+        return mSelectedPujaBrassWishlist;
     }
 }

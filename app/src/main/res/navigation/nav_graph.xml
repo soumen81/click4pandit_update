@@ -936,12 +936,19 @@
             android:name="productAddtoCartName"
             android:defaultValue=""
             app:argType="string" />
+        <argument
+            android:name="productwishlistName"
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_pujaItemKitFragment_to_pujaItemKitDetailsFragment"
             app:destination="@id/pujaItemKitDetailsFragment" />
         <action
             android:id="@+id/action_pujaItemKitFragment_to_addtoCartFragment"
             app:destination="@id/addtoCartFragment" />
+        <action
+            android:id="@+id/action_pujaItemKitFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
     </fragment>
     <fragment
         android:id="@+id/pujaItemKitDetailsFragment"
@@ -964,13 +971,19 @@
             android:name="productAddtoCartName"
             android:defaultValue=""
             app:argType="string" />
-
+        <argument
+            android:name="productwishlistName"
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_pujaBoxItemListFragment_to_pujaBoxItemDetailsFragment"
             app:destination="@id/pujaBoxItemDetailsFragment" />
         <action
             android:id="@+id/action_pujaBoxItemListFragment_to_addtoCartFragment"
             app:destination="@id/addtoCartFragment" />
+        <action
+            android:id="@+id/action_pujaBoxItemListFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
     </fragment>
     <fragment
         android:id="@+id/pujaBoxItemDetailsFragment"
@@ -993,12 +1006,19 @@
             android:name="productAddtoCartName"
             android:defaultValue=""
             app:argType="string" />
+        <argument
+            android:name="productwishlistName"
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_pujaBrassItemListingFragment_to_pujaBrassItemDetailsFragment"
             app:destination="@id/pujaBrassItemDetailsFragment" />
         <action
             android:id="@+id/action_pujaBrassItemListingFragment_to_addtoCartFragment"
             app:destination="@id/addtoCartFragment" />
+        <action
+            android:id="@+id/action_pujaBrassItemListingFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
     </fragment>
     <fragment
         android:id="@+id/pujaBrassItemDetailsFragment"
@@ -1015,6 +1035,15 @@
         android:label="AddtoCartFragment" >
         <argument
             android:name="productAddtoCartName"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/wishListFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.wishlist.WishListFragment"
+        android:label="WishListFragment" >
+        <argument
+            android:name="productwishlistName"
             android:defaultValue=""
             app:argType="string" />
     </fragment>

@@ -24,6 +24,7 @@ import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.shop.ShopFragment;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutFragment;
 import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusFragment;
+import com.autumntechcreation.click4panditcustomer.ui.wishlist.WishListFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -102,4 +103,9 @@ public abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract AddtoCartFragment contributeAddtoCartFragment();
+
+    @ContributesAndroidInjector
+    abstract WishListFragment contributeWishListFragment();
+
+
 }

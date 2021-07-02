@@ -25,6 +25,7 @@ public class PujaItemKitViewModel extends ViewModel {
     public MutableLiveData<List<PujaItemKitListingModel>> mPujaItemKitListingModel;
     private SingleLiveEvent<Integer> mSelectedPujaItemKit = new SingleLiveEvent<>();
     private SingleLiveEvent<Integer> mSelectedPujaitemKitAddtoCart = new SingleLiveEvent<>();
+    private SingleLiveEvent<Integer> mSelectedPujaitemKitWishList = new SingleLiveEvent<>();
     @Inject
     public PujaItemKitViewModel(PujaItemKitRepository pujaItemKitRepository) {
         this.mPujaItemKitRepository=pujaItemKitRepository;
@@ -95,5 +96,15 @@ public class PujaItemKitViewModel extends ViewModel {
 
     public SingleLiveEvent<Integer> getSelectedPujaItemKitAddtoCart() {
         return mSelectedPujaitemKitAddtoCart;
+    }
+
+    public void onClickPujaItemKitWishList(View view, int pos) {
+        Log.e("ClickPOSITION", view.getId() + "POSITION:" + Integer.toString(pos));
+
+        mSelectedPujaitemKitWishList.setValue(pos);
+    }
+
+    public SingleLiveEvent<Integer> getSelectedPujaItemKitWishList() {
+        return mSelectedPujaitemKitWishList;
     }
 }

@@ -333,6 +333,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_pujaBoxItemListFragment_to_addtoCartFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_pujaBoxItemListFragment_to_pujaBoxItemDetailsFragment">
                               <value>
                                 <LayoutPositions />
@@ -366,6 +371,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_pujaBrassItemListingFragment_to_addtoCartFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_pujaBrassItemListingFragment_to_pujaBrassItemDetailsFragment">
                               <value>
                                 <LayoutPositions />
@@ -498,6 +508,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="wishListFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1740" />
+                            <option name="y" value="-1502" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

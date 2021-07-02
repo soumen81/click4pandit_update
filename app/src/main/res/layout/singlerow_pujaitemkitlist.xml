@@ -23,7 +23,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clPujaItemKit"
             android:layout_width="@dimen/dimen_130dp"
-            android:layout_height="@dimen/dimen_220dp"
+            android:layout_height="@dimen/dimen_250dp"
             android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@drawable/shopitem_border"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -126,6 +126,26 @@
                 android:textSize="@dimen/font_10sp"
                 android.support.design:layout_constraintTop_toBottomOf="@+id/tvPujaKitPrice"
                 app:layout_constraintRight_toRightOf="parent">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/tvPujaItemKitWishList"
+                style="@style/Style_TextView_FontBold"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@drawable/ic_newovalblack"
+                android:layout_marginLeft="@dimen/dimen_5dp"
+                android:onClick="@{(v) -> viewModel.onClickPujaItemKitWishList(v,position)}"
+                android:gravity="center"
+                android:text="@string/wishlist"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/font_10sp"
+                app:layout_constraintRight_toRightOf="parent"
+                android.support.design:layout_constraintLeft_toLeftOf="parent"
+                android.support.design:layout_constraintTop_toBottomOf="@+id/tvPujaItemKitShopNow">
 
             </TextView>
         </androidx.constraintlayout.widget.ConstraintLayout>

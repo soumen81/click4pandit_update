@@ -189,8 +189,9 @@
     <string name="checkdelivery">Check Delivery Pincode</string>
     <string name="productdimension">Product Dimension</string>
     <string name="productmaterial">Product Material</string>
-    <string name="productdesc">Product Description</string>
+     <string name="productdesc">Product Description</string>
     <string name="proceed">Proceed</string>
+    <string name="wishlist">WishList</string>
     <string name="team">Team Click4Pandit is happy to serve you! Our professionals are willing to provide you with
     timely assistance.Please register your query issue below and our team will get back to you within 24 hoours</string>
 </resources>

@@ -42,6 +42,7 @@ import com.autumntechcreation.click4panditcustomer.ui.shop.ShopViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.wishlist.WishListViewModel;
 import com.autumntechcreation.click4panditcustomer.viewmodel.ProjectViewModelFactory;
 
 import dagger.Binds;
@@ -236,4 +237,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(AddtoCartViewModel.class)
     abstract ViewModel bindAddtoCartViewModel(AddtoCartViewModel addtoCartViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(WishListViewModel.class)
+    abstract ViewModel bindWishListViewModel(WishListViewModel wishListViewModel);
 }

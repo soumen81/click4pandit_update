@@ -87,6 +87,14 @@ public class PujaBrassItemListingFragment extends Fragment implements Injectable
                 action.setProductAddtoCartName("Ghati");
                 Navigation.findNavController(mView).navigate(action);
             }
+        }); mPujaBrassItemListingViewModel.getSelectedPujaBrassWishList().observe(getActivity(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                PujaBrassItemListingFragmentDirections.ActionPujaBrassItemListingFragmentToWishListFragment action=
+                        PujaBrassItemListingFragmentDirections.actionPujaBrassItemListingFragmentToWishListFragment();
+                action.setProductwishlistName("Ghati");
+                Navigation.findNavController(mView).navigate(action);
+            }
         });
 
     }
