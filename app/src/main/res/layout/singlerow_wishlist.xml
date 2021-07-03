@@ -114,6 +114,7 @@
                     ></TextView>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <ImageView
+                android:id="@+id/imgvwRecycle"
                 android:layout_width="@dimen/dimen_30dp"
                 android:layout_height="@dimen/dimen_30dp"
                 android:layout_margin="@dimen/dimen_10dp"
@@ -121,14 +122,33 @@
                 app:layout_constraintRight_toRightOf="parent"
                 android:src="@drawable/recycle"></ImageView>
             <TextView
+                android:id="@+id/tvSubTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/blackColor"
                 android:layout_margin="@dimen/dimen_10dp"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/imgvwRecycle"
                 android:textSize="@dimen/font_14sp"
                 android:text="Sub Total"></TextView>
+            <TextView
+                android:id="@+id/tvBuyNow"
+                style="@style/Style_TextView_FontBold"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@drawable/ic_newovalblack"
+               android:layout_margin="@dimen/dimen_10dp"
+
+                android:gravity="center"
+                android:text="@string/buynow"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/font_10sp"
+                app:layout_constraintRight_toRightOf="parent"
+               app:layout_constraintBottom_toBottomOf="parent"
+                >
+
+            </TextView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

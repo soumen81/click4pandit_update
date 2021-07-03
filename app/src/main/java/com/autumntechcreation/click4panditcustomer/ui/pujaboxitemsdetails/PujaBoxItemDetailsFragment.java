@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,6 +75,16 @@ public class PujaBoxItemDetailsFragment extends Fragment implements Injectable {
         chartDetailsRecyclerviewView.setHasFixedSize(true);
         pujaBoxItemDetailsViewModel.init();
         setProductBoxDescDetails();
+
+        mFragmentPujaboxitemdetailsBinding.tvPujaBoxWishList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PujaBoxItemDetailsFragmentDirections.ActionPujaBoxItemDetailsFragmentToWishListFragment action=
+                        PujaBoxItemDetailsFragmentDirections.actionPujaBoxItemDetailsFragmentToWishListFragment();
+                action.setProductwishlistName("Ghati");
+                Navigation.findNavController(mView).navigate(action);
+            }
+        });
     }
     private void setProductBoxDescDetails(){
 

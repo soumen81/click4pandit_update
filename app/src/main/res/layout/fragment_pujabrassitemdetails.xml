@@ -170,6 +170,21 @@
 
                 </TextView>
                 <TextView
+                    android:id="@+id/tvPujaBrassWishList"
+                    style="@style/Style_TextView_FontBold"
+                    android:layout_width="120dp"
+                    android:layout_height="@dimen/dimen_30dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:background="@drawable/ic_newwishoval"
+                    android:gravity="center"
+                    android:text="@string/wishlist"
+                    android:textColor="@color/blueColor"
+                    android:textSize="@dimen/font_12sp"
+                    app:layout_constraintStart_toStartOf="@+id/tvPujaBrassItemAddtoCart"
+                    android.support.design:layout_constraintTop_toBottomOf="@+id/tvPujaBrassItemAddtoCart">
+
+                </TextView>
+                <TextView
                     android:id="@+id/tvCheckDeliveryPincode"
                     style="@style/Style_TextView_FontRegular"
                     android:layout_width="wrap_content"
@@ -178,8 +193,8 @@
                     android:text="@string/checkdelivery"
                     android:textColor="@color/blackColor"
                     android:textSize="@dimen/font_12sp"
-                    app:layout_constraintStart_toStartOf="@+id/tvPujaBrassItemAddtoCart"
-                    android.support.design:layout_constraintTop_toBottomOf="@+id/tvPujaBrassItemAddtoCart">
+                    app:layout_constraintStart_toStartOf="@+id/tvPujaBrassWishList"
+                    android.support.design:layout_constraintTop_toBottomOf="@+id/tvPujaBrassWishList">
 
                 </TextView>
                 <EditText

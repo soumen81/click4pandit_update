@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,7 @@ import com.autumntechcreation.click4panditcustomer.databinding.FragmentPujabrass
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.ui.pujaboxitemsdetails.PujaBoxItemDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.pujaboxitemsdetails.PujaBoxItemDetailsFragmentArgs;
+import com.autumntechcreation.click4panditcustomer.ui.pujaboxitemsdetails.PujaBoxItemDetailsFragmentDirections;
 import com.autumntechcreation.click4panditcustomer.ui.pujaboxitemsdetails.PujaBoxItemDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.pujaitemkitdetails.PujaItemProductDescModel;
 
@@ -73,6 +75,16 @@ public class PujaBrassItemDetailsFragment  extends Fragment implements Injectabl
         chartDetailsRecyclerviewView.setHasFixedSize(true);
         mPujaBrassItemDetailsViewModel.init();
         setProductBrassDescDetails();
+
+        mFragmentPujabrassitemdetailsBinding.tvPujaBrassWishList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PujaBrassItemDetailsFragmentDirections.ActionPujaBrassItemDetailsFragmentToWishListFragment action=
+                        PujaBrassItemDetailsFragmentDirections.actionPujaBrassItemDetailsFragmentToWishListFragment();
+                action.setProductwishlistName("Ghati");
+                Navigation.findNavController(mView).navigate(action);
+            }
+        });
     }
 
 

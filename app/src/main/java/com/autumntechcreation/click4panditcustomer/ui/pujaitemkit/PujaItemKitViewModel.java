@@ -98,13 +98,5 @@ public class PujaItemKitViewModel extends ViewModel {
         return mSelectedPujaitemKitAddtoCart;
     }
 
-    public void onClickPujaItemKitWishList(View view, int pos) {
-        Log.e("ClickPOSITION", view.getId() + "POSITION:" + Integer.toString(pos));
 
-        mSelectedPujaitemKitWishList.setValue(pos);
-    }
-
-    public SingleLiveEvent<Integer> getSelectedPujaItemKitWishList() {
-        return mSelectedPujaitemKitWishList;
-    }
 }

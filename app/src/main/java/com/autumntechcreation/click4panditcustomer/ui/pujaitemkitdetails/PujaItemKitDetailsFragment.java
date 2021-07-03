@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,7 @@ import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentArgs;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.pujabrassitemdetails.PujaBrassItemDetailsFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +75,17 @@ public class PujaItemKitDetailsFragment extends Fragment implements Injectable {
         chartDetailsRecyclerviewView.setHasFixedSize(true);
         mPujaItemKitDetailsViewModel.init();
         setProductDescDetails();
+
+
+        mFragmentPujaitemkitdetailsBinding.tvPujaItemWishList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PujaItemKitDetailsFragmentDirections.ActionPujaItemKitDetailsFragmentToWishListFragment action=
+                        PujaItemKitDetailsFragmentDirections.actionPujaItemKitDetailsFragmentToWishListFragment();
+                action.setProductwishlistName("Ghati");
+                Navigation.findNavController(mView).navigate(action);
+            }
+        });
     }
 
     private void setProductDescDetails(){

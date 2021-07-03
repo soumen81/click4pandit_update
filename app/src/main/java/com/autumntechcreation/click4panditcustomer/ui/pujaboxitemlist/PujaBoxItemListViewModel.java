@@ -86,15 +86,7 @@ public class PujaBoxItemListViewModel extends ViewModel {
     public SingleLiveEvent<Integer> getSelectedPujaBoxBuyNowListItem() {
         return mSelectedPujaBoxItemKit;
     }
- public void onClickPujaBoxWishList(View view, int pos) {
-        Log.e("ClickPOSITION", view.getId() + "POSITION:" + Integer.toString(pos));
 
-     mSelectedWishList.setValue(pos);
-    }
-
-    public SingleLiveEvent<Integer> getSelectedPujaBoxWishListItem() {
-        return mSelectedWishList;
-    }
 
     public void onClickPujaBoxAddtoCart(View view, int pos) {
         Log.e("ClickPOSITION", view.getId() + "POSITION:" + Integer.toString(pos));
