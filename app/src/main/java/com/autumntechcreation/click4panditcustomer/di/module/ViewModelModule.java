@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.autumntechcreation.click4panditcustomer.MainViewModel;
 import com.autumntechcreation.click4panditcustomer.di.qualifiers.ViewModelKey;
+import com.autumntechcreation.click4panditcustomer.intro.IntroductionViewModel;
 import com.autumntechcreation.click4panditcustomer.splash.SplashViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.address.AddressViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.addtocart.AddtoCartViewModel;
@@ -242,4 +243,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(WishListViewModel.class)
     abstract ViewModel bindWishListViewModel(WishListViewModel wishListViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(IntroductionViewModel.class)
+    abstract ViewModel bindIntroductionViewModel(IntroductionViewModel introductionViewModel);
 }

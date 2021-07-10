@@ -356,7 +356,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                 if  (item==null||(item.length()==0)){
                     Toast.makeText(getActivity(), "Please select the Location", Toast.LENGTH_SHORT).show();
                 }
-                else if(mFragmentBookingpujaBinding.tvSpinTypeOfLanguage.getSelectedItem().toString().trim().equalsIgnoreCase("Language")){
+                else if(mFragmentBookingpujaBinding.tvSpinTypeOfLanguage.getSelectedItem().toString().trim().equalsIgnoreCase("Community")){
                     Toast.makeText(getActivity(), "Invalid Community option! Select the correct option.", Toast.LENGTH_SHORT).show();
                 }else  if(mFragmentBookingpujaBinding.tvBookingDate.getText().equals("Choose Date")) {
                     Toast.makeText(getActivity(), "Please select the Date", Toast.LENGTH_SHORT).show();
@@ -582,7 +582,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
 
                             bookingLanguageModellist.clear();
                             mListLanguage.clear();
-                            mListLanguage.add(0,"Language");
+                            mListLanguage.add(0,"Community");
                             for (int i = 0; i < resource.data.size(); i++) {
                                 mListLanguage.add(resource.data.get(i).getLangMasterName());
                                 bookingLanguageModellist.add(resource.data.get(i));

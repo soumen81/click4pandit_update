@@ -87,6 +87,10 @@
             android:name=".ui.search.SearchActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".intro.IntroductionActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <!--Only add it if you need Auto OTP reading feature-->
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

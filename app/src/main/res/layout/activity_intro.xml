@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="IntroViewModel"
+            type="com.autumntechcreation.click4panditcustomer.intro.IntroductionViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_background3">
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carousal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:fillColor="#FFFFFFFF"
+        app:pageColor="#00000000"
+        app:radius="6dp"
+        app:slideInterval="3000"
+        app:strokeColor="#FF777777"
+        app:strokeWidth="1dp"
+        tools:ignore="MissingConstraints">
+
+    </com.synnapps.carouselview.CarouselView>
+    <TextView
+        android:id="@+id/tvStarted"
+        style="@style/Style_TextView_FontBold"
+        android:layout_width="@dimen/dimen_120dp"
+        android:layout_height="@dimen/dimen_30dp"
+        android:layout_marginBottom="@dimen/dimen_100dp"
+        android:background="@drawable/newroundedred"
+        android:gravity="center"
+        android:text="@string/started"
+        android:textColor="@color/whiteColor"
+        android:textSize="@dimen/font_14sp"
+
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+       android.support.design:layout_constraintBottom_toBottomOf="parent">
+
+    </TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

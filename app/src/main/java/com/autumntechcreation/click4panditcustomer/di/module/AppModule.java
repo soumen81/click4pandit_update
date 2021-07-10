@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.autumntechcreation.click4panditcustomer.intro.IntroductionRepository;
 import com.autumntechcreation.click4panditcustomer.network.AppExecutors;
 import com.autumntechcreation.click4panditcustomer.network.Webservice;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
@@ -276,5 +277,11 @@ public class AppModule {
     @Singleton
     WishListRepository provideWishListRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new WishListRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    IntroductionRepository introductionRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new IntroductionRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

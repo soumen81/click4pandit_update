@@ -107,27 +107,63 @@
                             android.support.design:layout_constraintLeft_toLeftOf="parent"
                             android.support.design:layout_constraintRight_toRightOf="parent"
                             android.support.design:layout_constraintTop_toBottomOf="@+id/tvContactUs"></View>
-
-
                         <TextView
-                            android:id="@+id/tvDescContact"
-                            android:layout_width="match_parent"
+                            android:id="@+id/firstLine"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blackColor"
-                            android:text="@string/team"
-                            android:textSize="@dimen/font_14sp"
-
-                            android:layout_margin="@dimen/dimen_10dp"
-                            android.support.design:layout_constraintLeft_toLeftOf="parent"
+                            android:textSize="@dimen/font_12sp"
+                            android:text="Team Click4Pandit is happy to serve you!"
+                            android:layout_marginTop="@dimen/dimen_10dp"
                             android.support.design:layout_constraintRight_toRightOf="parent"
+                            android.support.design:layout_constraintLeft_toLeftOf="parent"
                             android.support.design:layout_constraintTop_toBottomOf="@+id/viewcontactus"></TextView>
 
+                        <TextView
+                            android:id="@+id/twoLine"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/font_12sp"
+                            android:text="Our professionals are willing to provide "
+                            android.support.design:layout_constraintRight_toRightOf="parent"
+                            android.support.design:layout_constraintLeft_toLeftOf="parent"
+                            android.support.design:layout_constraintTop_toBottomOf="@+id/firstLine"></TextView>
+
+                        <TextView
+                            android:id="@+id/threeLine"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/font_12sp"
+                            android:text="you withtimely assistance.Please register"
+                            android.support.design:layout_constraintRight_toRightOf="parent"
+                            android.support.design:layout_constraintLeft_toLeftOf="parent"
+                            android.support.design:layout_constraintTop_toBottomOf="@+id/twoLine"></TextView>
+
+                        <TextView
+                            android:id="@+id/fourLine"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/font_12sp"
+                            android:text="your query issue below and our team will"
+                            android.support.design:layout_constraintRight_toRightOf="parent"
+                            android.support.design:layout_constraintLeft_toLeftOf="parent"
+                            android.support.design:layout_constraintTop_toBottomOf="@+id/threeLine"></TextView>
+
+                        <TextView
+                            android:id="@+id/fiveLine"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/font_12sp"
+                            android:text="get back to you within 24 hoour"
+                            android.support.design:layout_constraintRight_toRightOf="parent"
+                            android.support.design:layout_constraintLeft_toLeftOf="parent"
+                            android.support.design:layout_constraintTop_toBottomOf="@+id/fourLine"></TextView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/clContactDet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/buttonColor"
+                       android:paddingBottom="@dimen/dimen_10dp"
                         android.support.design:layout_constraintTop_toBottomOf="@+id/clHeaderContact"
                         >
                         <androidx.constraintlayout.widget.ConstraintLayout

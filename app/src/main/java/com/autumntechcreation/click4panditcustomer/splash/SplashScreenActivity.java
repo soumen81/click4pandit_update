@@ -16,6 +16,7 @@ import android.view.Window;
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.ActivitySplashBinding;
+import com.autumntechcreation.click4panditcustomer.intro.IntroductionActivity;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardActivity;
 
@@ -56,7 +57,8 @@ public class SplashScreenActivity extends AppCompatActivity {
                     finish();
                 }else {
 
-                    Intent intent = new Intent(SplashScreenActivity.this, DashBoardActivity.class);
+                    //Intent intent = new Intent(SplashScreenActivity.this, DashBoardActivity.class);
+                    Intent intent = new Intent(SplashScreenActivity.this, IntroductionActivity.class);
                     startActivity(intent);
                     sp.edit().putBoolean("logged",false).apply();
                     finish();

@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -65,6 +66,18 @@ public class ChangePasswordAcitivity extends AppCompatActivity {
                             .setTitleText("Error")
                             .setContentText("Please Enter Confirm New Password...")
                             .show();
+                }else if(!mActivityChangepasswordBinding.edtTxtNewPassword.getText().toString().equals(mActivityChangepasswordBinding.edtTxtConfirmPassword.getText().toString())){
+                    new SweetAlertDialog(ChangePasswordAcitivity.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Your password does'nt match with confirm password")
+                            .show();
+                }else if (TextUtils.isEmpty(mActivityChangepasswordBinding.edtTxtNewPassword.getText().toString()) || mActivityChangepasswordBinding.edtTxtConfirmPassword.getText().toString().length() < 6) {
+
+                    new SweetAlertDialog(ChangePasswordAcitivity.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("You must have 6 characters in your password")
+                            .show();
+
                 }else {
                     mChangePasswordViewModel.getChangePassword(mActivityChangepasswordBinding.edtTxtOldPassword.getText().toString(),
                             mActivityChangepasswordBinding.edtTxtNewPassword.getText().toString(),mActivityChangepasswordBinding.edtTxtConfirmPassword.getText().toString()).observe(ChangePasswordAcitivity.this,
