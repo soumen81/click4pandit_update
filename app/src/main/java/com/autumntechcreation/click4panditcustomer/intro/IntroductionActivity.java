@@ -29,7 +29,7 @@ public class IntroductionActivity extends AppCompatActivity {
     public ViewModelProvider.Factory viewModelFactory;
     IntroductionViewModel mIntroductionViewModel;
     ActivityIntroBinding mActivityIntroBinding;
-    private int[]mImager={R.drawable.pandit1,R.drawable.pandit2,R.drawable.pandit3};
+    private int[]mImager={R.drawable.ggg,R.drawable.ultimate5,R.drawable.right5};
     private String[]mImagetitle=new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
 
     @Override
@@ -38,7 +38,6 @@ public class IntroductionActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         mActivityIntroBinding = DataBindingUtil.setContentView(this, R.layout.activity_intro);
-
         AndroidInjection.inject(this);
         mIntroductionViewModel = ViewModelProviders.of(this,viewModelFactory).get(IntroductionViewModel.class);
         mActivityIntroBinding.setLifecycleOwner(this);

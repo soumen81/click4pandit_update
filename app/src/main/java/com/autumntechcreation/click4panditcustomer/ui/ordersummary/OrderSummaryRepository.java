@@ -91,7 +91,7 @@ public class OrderSummaryRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGID, pujaPackageId);//packageId
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGNOOFPANDIT, noOfPandit);
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGNOTE, "");
-               jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGTYPEDSCR, pkgDesc);
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGTYPEDSCR, pkgDesc);
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGTYPEID, pujaPackageId);
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJASUBCTGRYDSCR, subCategoryName);//Subtcategoryname
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJASUBCTGRYID, subCategoryId);//subcategoryid
@@ -106,6 +106,7 @@ public class OrderSummaryRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.TAXTYPID, 1001);
                 jsonObject.addProperty(AllUrlsAndConfig.UPDTSTAMP, dateTime);//date
                 jsonObject.addProperty(AllUrlsAndConfig.UPDTUSER, "");
+                jsonObject.addProperty(AllUrlsAndConfig.ORDERSRCTYPEID, 1003);
 
                 return mWebservice.NewOrder(url,jsonObject);
 

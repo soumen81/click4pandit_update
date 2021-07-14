@@ -86,6 +86,7 @@ public class AllUrlsAndConfig {
     public static final String TAXTYPID="TaxTypId";
     public static final String UPDTSTAMP="UpdtStamp";
     public static final String UPDTUSER="UpdtUser";
+    public static final String ORDERSRCTYPEID="OrdSrcTypId";
 
 //Parameter for Forgot Password
     public static final String LOGONIDDD="LogonId";

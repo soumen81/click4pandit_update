@@ -15,35 +15,36 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background3">
+    android:background="@drawable/newcarubackground">
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carousal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="400dp"
+        android.support.design:layout_constraintTop_toTopOf="parent"
+        android.support.design:layout_constraintBottom_toBottomOf="parent"
+        android.support.design:layout_constraintRight_toRightOf="parent"
+        android.support.design:layout_constraintLeft_toLeftOf="parent"
         app:fillColor="#FFFFFFFF"
         app:pageColor="#00000000"
-        app:radius="6dp"
         app:slideInterval="3000"
-        app:strokeColor="#FF777777"
-        app:strokeWidth="1dp"
         tools:ignore="MissingConstraints">
 
     </com.synnapps.carouselview.CarouselView>
     <TextView
         android:id="@+id/tvStarted"
         style="@style/Style_TextView_FontBold"
-        android:layout_width="@dimen/dimen_120dp"
+        android:layout_width="@dimen/dimen_100dp"
         android:layout_height="@dimen/dimen_30dp"
-        android:layout_marginBottom="@dimen/dimen_100dp"
+
         android:background="@drawable/newroundedred"
         android:gravity="center"
         android:text="@string/started"
         android:textColor="@color/whiteColor"
         android:textSize="@dimen/font_14sp"
-
+        android:layout_marginTop="@dimen/dimen_20dp"
         android.support.design:layout_constraintLeft_toLeftOf="parent"
         android.support.design:layout_constraintRight_toRightOf="parent"
-       android.support.design:layout_constraintBottom_toBottomOf="parent">
+     android.support.design:layout_constraintTop_toBottomOf="@+id/carousal">
 
     </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>
