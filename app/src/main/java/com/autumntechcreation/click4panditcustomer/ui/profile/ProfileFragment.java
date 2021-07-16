@@ -189,7 +189,13 @@ public class ProfileFragment extends Fragment implements Injectable {
                             .setTitleText("Error")
                             .setContentText("Please Enter Valid  Email Address...")
                             .show();
-                }else {
+                }if(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString().length()<10 ||(!Patterns.PHONE.matcher(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString()).matches())){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Please Enter Valid  MobileNo...")
+                            .show();
+                }
+                else {
                     mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(), emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
                 }
             }
@@ -207,6 +213,9 @@ public class ProfileFragment extends Fragment implements Injectable {
 
 
 
+    }
+    private boolean isValidMobile(String phone) {
+        return android.util.Patterns.PHONE.matcher(phone).matches();
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

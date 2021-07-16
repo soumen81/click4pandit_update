@@ -428,7 +428,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawerLayout.closeDrawer(GravityCompat.END);
         }
         if(backGround){
-            activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#D1453E"));
+            activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#d23e34"));
             activityMainBinding.imgvwWhiteback.setImageResource(R.drawable.ic_whiteback);
             activityMainBinding.header.setImageResource(R.drawable.ic_whitelogo);
             activityMainBinding.rlHeader.setBackgroundColor(Color.parseColor("#D1453E"));
