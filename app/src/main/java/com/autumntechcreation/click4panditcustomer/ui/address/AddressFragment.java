@@ -64,7 +64,7 @@ public class AddressFragment extends Fragment implements Injectable {
         super.onViewCreated(view, savedInstanceState);
         mView = view;
         navController = findNavController(mView);
-        ((MainActivity) getActivity()).setToolbar(false, true, false, false);
+        ((MainActivity) getActivity()).setToolbar(true, true, false, true);
     }
 
     @Override

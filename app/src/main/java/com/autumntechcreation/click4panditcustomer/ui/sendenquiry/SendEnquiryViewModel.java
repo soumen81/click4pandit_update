@@ -25,4 +25,7 @@ public class SendEnquiryViewModel extends ViewModel {
         return mSendEnquiryResponse;
 
     }
+    public String getEmail() {
+        return  mSendEnquiryRepository.getEmail();
+    }
 }

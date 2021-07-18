@@ -150,12 +150,12 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                             .setTitleText("Error")
                             .setContentText("Please Enter PinCode...")
                             .show();
-                }else if(mFragmentDifferentpujalocationBinding.edtTxtAdditionalInfo.getText().toString().trim().equals("")){
+                }/*else if(mFragmentDifferentpujalocationBinding.edtTxtAdditionalInfo.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
                             .setContentText("Please Enter Additional Info...")
                             .show();
-                }else{
+                }*/else{
                     DifferentPujaLocationFragmentDirections.ActionDifferentPujaLocationFragmentToBillingDetailsFragment action=
                             DifferentPujaLocationFragmentDirections.actionDifferentPujaLocationFragmentToBillingDetailsFragment();
                     action.setShippingAddress(mFragmentDifferentpujalocationBinding.edtTxtAddress.getText().toString());

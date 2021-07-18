@@ -47,6 +47,8 @@ public class SendEnquiryActivity extends AppCompatActivity {
         mActivitySendenquiryBinding.setLifecycleOwner(this);
         mActivitySendenquiryBinding.setSendEnquiryViewModel(mSendEnquiryViewModel);
         mActivitySendenquiryBinding.edtTxtBhumiPuja.setText("Bhoomi Puja");
+        String emailId=mSendEnquiryViewModel.getEmail();
+        mActivitySendenquiryBinding.edtTxtEmail.setText(emailId);
         mActivitySendenquiryBinding.edtTxtEmail.setEnabled(false);
         mActivitySendenquiryBinding.imgbackPrivacyPolicy.setOnClickListener(new View.OnClickListener() {
             @Override

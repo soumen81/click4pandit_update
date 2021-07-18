@@ -139,7 +139,7 @@ public class ProfileFragment extends Fragment implements Injectable {
         super.onViewCreated(view, savedInstanceState);
         mView = view;
         navController=findNavController(mView);
-        ((MainActivity) getActivity()).setToolbar(false,true,false,false);
+        ((MainActivity) getActivity()).setToolbar(true,true,false,true);
     }
 
     @Override
@@ -164,7 +164,7 @@ public class ProfileFragment extends Fragment implements Injectable {
         mFragmentProfileBinding.tvSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mFragmentProfileBinding.edtTxtFName.getText().toString().trim().equals("")){
+               /* if(mFragmentProfileBinding.edtTxtFName.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
                             .setContentText("Please Enter First Name...")
@@ -189,15 +189,22 @@ public class ProfileFragment extends Fragment implements Injectable {
                             .setTitleText("Error")
                             .setContentText("Please Enter Valid  Email Address...")
                             .show();
-                }if(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString().length()<10 ||(!Patterns.PHONE.matcher(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString()).matches())){
+                }*//*if(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString().length()<10 ||(!Patterns.PHONE.matcher(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString()).matches())){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
                             .setContentText("Please Enter Valid  MobileNo...")
                             .show();
-                }
-                else {
+                }*//*
+                else {*/
+                   // mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(), emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
+               // }
+
+
+
+
                     mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(), emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
-                }
+
+
             }
         });
 

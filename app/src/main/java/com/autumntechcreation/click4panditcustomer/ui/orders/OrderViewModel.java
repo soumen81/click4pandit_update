@@ -22,7 +22,7 @@ import javax.inject.Inject;
 public class OrderViewModel extends ViewModel {
     OrderListingAdapter mOrderListingAdapter;
     public MutableLiveData<List<OrderListModel>> mOrderListModel= new MutableLiveData<>();
-    private SingleLiveEvent<Integer> mSelectedOrderListItem=new SingleLiveEvent<>();
+    public SingleLiveEvent<Integer> mSelectedOrderListItem=new SingleLiveEvent<>();
     public LiveData<Resource<List<OrderListModel>>> mOrderListResponse;
     OrderRepository mOrderRepository;
     @Inject
@@ -80,6 +80,7 @@ public class OrderViewModel extends ViewModel {
     public void onClickOrderList(View view, int pos){
         Log.e("ClickPosition",view.getId()+"POSITION:"+Integer.toString(pos));
         mSelectedOrderListItem.setValue(pos);
+
     }
     public SingleLiveEvent<Integer> getOrderListItemsClick(){
         return mSelectedOrderListItem;

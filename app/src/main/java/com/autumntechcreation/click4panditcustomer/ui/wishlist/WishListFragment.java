@@ -58,7 +58,7 @@ public class WishListFragment extends Fragment implements Injectable {
         super.onViewCreated(view, savedInstanceState);
         mView = view;
         navController = findNavController(mView);
-        ((MainActivity) getActivity()).setToolbar(false, true, false, true);
+        ((MainActivity) getActivity()).setToolbar(true, true, false, true);
 
 
     }

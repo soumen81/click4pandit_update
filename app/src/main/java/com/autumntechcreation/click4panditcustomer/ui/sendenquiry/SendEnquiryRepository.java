@@ -83,4 +83,9 @@ public class SendEnquiryRepository {
             }
         }.asLiveData();
     }
+
+    public String getEmail(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.EMAIL, null);
+
+    }
 }
