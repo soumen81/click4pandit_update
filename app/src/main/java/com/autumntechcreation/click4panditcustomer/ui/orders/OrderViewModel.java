@@ -77,14 +77,6 @@ public class OrderViewModel extends ViewModel {
         }
     }
 
-    public void onClickOrderList(View view, int pos){
-        Log.e("ClickPosition",view.getId()+"POSITION:"+Integer.toString(pos));
-        mSelectedOrderListItem.setValue(pos);
-
-    }
-    public SingleLiveEvent<Integer> getOrderListItemsClick(){
-        return mSelectedOrderListItem;
-    }
 
 
 
@@ -108,4 +100,20 @@ public class OrderViewModel extends ViewModel {
             return "" + list.get(position).getBkgStsDscr();
         }
     }
+
+    public OrderListModel getSelectedOrder(int position) {
+        List<OrderListModel> list = mOrderListModel.getValue();
+        return list.get(position);
+    }
+
+    public void onClickOrderList(View view, int pos){
+        Log.e("ClickPosition",view.getId()+"POSITION:"+Integer.toString(pos));
+        mSelectedOrderListItem.setValue(pos);
+
+    }
+    public SingleLiveEvent<Integer> getOrderListItemsClick(){
+        return mSelectedOrderListItem;
+    }
+
+
 }

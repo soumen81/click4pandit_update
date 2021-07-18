@@ -154,16 +154,19 @@ public class OrderFragment extends Fragment implements Injectable {
         mOrderViewModel.getOrderListItemsClick().observe(getActivity(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer position) {
-                String pujaPackageTypeName=mOrderViewModel.mOrderListResponse.getValue().data.get(position).getPujaPkgTypName();
-                String custOrderDesc=mOrderViewModel.mOrderListResponse.getValue().data.get(position).getCustOrdDscr();
-                String pujaPackageDesc=mOrderViewModel.mOrderListResponse.getValue().data.get(position).getPujaPkgDescription();
-                String custOrderDate=mOrderViewModel.mOrderListResponse.getValue().data.get(position).getCustOrdDt();
-                String custOrderNo=mOrderViewModel.mOrderListResponse.getValue().data.get(position).getCustOrdNo();
-                String custPujaSubCategoryDesc=mOrderViewModel.mOrderListResponse.getValue().data.get(position).getPujaSubCtgryDscr();
-                Double custBkgPkgAmount=mOrderViewModel.mOrderListResponse.getValue().data.get(position).getCustBkgPkgAmt();
-                Double custBkgPkgTaxAmount=mOrderViewModel.mOrderListResponse.getValue().data.get(position).getCustBkgPkgTaxAmt();
-                Double custBkgPkgTotalAmount=mOrderViewModel.mOrderListResponse.getValue().data.get(position).getCustBkgPkgTotalAmt();
-                String statusBill=mOrderViewModel.mOrderListResponse.getValue().data.get(position).getBkgStsDscr();
+                Gson gson = new Gson();
+                gson.toJson(mOrderViewModel.getSelectedOrder(position));
+
+                String pujaPackageTypeName=mOrderViewModel.getSelectedOrder(position).getPujaPkgTypName();
+                String custOrderDesc=mOrderViewModel.getSelectedOrder(position).getCustOrdDscr();
+                String pujaPackageDesc=mOrderViewModel.getSelectedOrder(position).getPujaPkgDescription();
+                String custOrderDate=mOrderViewModel.getSelectedOrder(position).getCustOrdDt();
+                String custOrderNo=mOrderViewModel.getSelectedOrder(position).getCustOrdNo();
+                String custPujaSubCategoryDesc=mOrderViewModel.getSelectedOrder(position).getPujaSubCtgryDscr();
+                Double custBkgPkgAmount=mOrderViewModel.getSelectedOrder(position).getCustBkgPkgAmt();
+                Double custBkgPkgTaxAmount=mOrderViewModel.getSelectedOrder(position).getCustBkgPkgTaxAmt();
+                Double custBkgPkgTotalAmount=mOrderViewModel.getSelectedOrder(position).getCustBkgPkgTotalAmt();
+                String statusBill=mOrderViewModel.getSelectedOrder(position).getBkgStsDscr();
 
                 OrderFragmentDirections.ActionOrderFragmentToOrderDetailsFragment action=OrderFragmentDirections.actionOrderFragmentToOrderDetailsFragment();
                 action.setPackageTypeName(pujaPackageTypeName);
