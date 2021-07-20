@@ -114,7 +114,7 @@
     <string name="nointernet">No Internet</string>
     <string name="nointernetdetails">We are unable to connect Internet,Please stay with us</string>
     <string name="validation_error">Validation Error</string>
-    <string name="please_enter_valid_phone_number">Please enter Valid Phone Number</string>
+    <string name="please_enter_valid_phone_number">Please enter Valid \n Phone Number</string>
     <string name="rupeesign">\u20B9</string>
     <string name="success">Success</string>
     <string name="register">You have successsfully registered with us...</string>
@@ -195,4 +195,13 @@
     <string name="started">Started</string>
     <string name="team"><br>Team Click4Pandit is happy to serve you! </br><br>Our professionals are willing to provide you with</br>
         <br>timely assistance.Please register your query issue</br><br> below and our team will get back to you within 24 hoours</br></string>
+
+
+    <string name="please_enter_address">Please enter \n Address</string>
+    <string name="please_enter_state">Please enter \n State</string>
+    <string name="please_enter_city">Please enter \n City</string>
+    <string name="please_enter_pincode">Please enter \n Valid Pincode</string>
+    <string name="please_enter_firstname">Please Enter \n First Name</string>
+    <string name="please_enter_lastname">Please Enter \n Last Name</string>
+    <string name="please_enter_validemail">Please Enter Valid \n email Address</string>
 </resources>

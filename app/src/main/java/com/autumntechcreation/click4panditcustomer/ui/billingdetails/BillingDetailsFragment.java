@@ -286,19 +286,19 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
             public void onClick(View v) {
                 if(mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter First Name...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_firstname))
                             .show();
                 } else if(mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Last Name...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_lastname))
                             .show();
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(mFragmentBillingdetailsBinding.edtTxtEmail.getText().toString()).matches()||
                         (mFragmentBillingdetailsBinding.edtTxtEmail.getText().toString().trim().equals(""))){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Valid  Email Address...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_validemail))
                             .show();
                 } else if (!Patterns.PHONE.matcher(mFragmentBillingdetailsBinding.edtMobileNo.getText().toString()).matches()||
 
@@ -311,23 +311,23 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             .show();
                 } else if(mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Address...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_address))
                             .show();
                 }else if(mFragmentBillingdetailsBinding.edtTxtState.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter State...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_state))
                             .show();
                 }else if(mFragmentBillingdetailsBinding.edtTxtCity.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter City...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_city))
                             .show();
                 }else if(mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString().trim().equals("")||(mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString().length()<6)){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Valid PinCode...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_pincode))
                             .show();
                 }else{
 

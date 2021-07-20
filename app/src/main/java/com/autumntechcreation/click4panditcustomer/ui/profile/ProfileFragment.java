@@ -199,12 +199,21 @@ public class ProfileFragment extends Fragment implements Injectable {
                    // mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(), emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
                // }
 
-
+                if(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().length()>9||(!Patterns.PHONE.matcher(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString()).matches())) {
 
 
                     mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(), emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
-
-
+                }else if(!Patterns.PHONE.matcher(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString()).matches()||
+                        mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString().length()>9||
+                       mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString().trim().length()<10){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
+                            .show();
+                }
+                else{
+                    mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo,"", emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
+                }
             }
         });
 

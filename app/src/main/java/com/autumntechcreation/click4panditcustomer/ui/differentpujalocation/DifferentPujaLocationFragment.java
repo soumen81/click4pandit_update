@@ -107,19 +107,19 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
             public void onClick(View v) {
                 if(mFragmentDifferentpujalocationBinding.edtTxtFirstName.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter First Name...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_firstname))
                             .show();
                 }else if(mFragmentDifferentpujalocationBinding.edtTxtLastName.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Last Name...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_lastname))
                             .show();
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(mFragmentDifferentpujalocationBinding.edtTxtEmail.getText().toString()).matches()||
                         (mFragmentDifferentpujalocationBinding.edtTxtEmail.getText().toString().trim().equals(""))){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Valid  Email Address...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_validemail))
                             .show();
                 }else if (!Patterns.PHONE.matcher(mFragmentDifferentpujalocationBinding.edtAlternateMobileNo.getText().toString()).matches()||
 
@@ -132,23 +132,23 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                             .show();
                 } else if(mFragmentDifferentpujalocationBinding.edtTxtAddress.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Address...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_address))
                             .show();
                 }else if(mFragmentDifferentpujalocationBinding.edtTxtState.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter State...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_state))
                             .show();
                 }else if(mFragmentDifferentpujalocationBinding.edtTxtCity.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter City...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_city))
                             .show();
                 }else if(mFragmentDifferentpujalocationBinding.edtTxtPincode.getText().toString().trim().equals("")||(mFragmentDifferentpujalocationBinding.edtTxtPincode.getText().toString().length()<6)){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter PinCode...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_pincode))
                             .show();
                 }/*else if(mFragmentDifferentpujalocationBinding.edtTxtAdditionalInfo.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
