@@ -33,6 +33,7 @@ import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.Diff
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryFragment;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryFragmentDirections;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
+import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
 import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.cashfree.pg.CFPaymentService;
@@ -331,24 +332,17 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             .show();
                 }else{
 
-                  /*  if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getStatusShippingId()==1){
 
-                        mFragmentBillingdetailsBinding.tvLocation.setText(shippingAddress+","+shippingState+","+shippingCity+","+shippingPincode);
-
-                        mBillingDetailsViewModel.getProceedToPayForShippingAddress(shippingDateTime,shippingbkgId,mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString(),mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString(),
-                                mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),mFragmentBillingdetailsBinding.edtMobileNo.getText().toString(),
-                                mFragmentBillingdetailsBinding.edtTxtCity.getText().toString(),mFragmentBillingdetailsBinding.edtTxtState.getText().toString(),mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString(),Double.parseDouble(shippingOrderAmount),shippingOrderId,shippingFirstName,shippingLastName,shippingAlternateMobile,
-                                shippingemail,shippingAddress, shippingPincode,shippingAdditionalInfo
-                        ).observe(getActivity(), BillingDetailsFragment.this::handleProceedToPay);
-
-                    }*/
                     if(valueOfState==true){
                         mBillingDetailsViewModel.getProceedToPayForShippingAddress(pujaDatetime,shippingbkgId,mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString(),mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),shippingAddress2,shippingAddress3,mFragmentBillingdetailsBinding.edtMobileNo.getText().toString(),
                                 mFragmentBillingdetailsBinding.edtTxtCity.getText().toString(),mFragmentBillingdetailsBinding.edtTxtState.getText().toString(),mFragmentBillingdetailsBinding.edtTxtPincode.getText().toString(),Double.parseDouble(shippingOrderAmount),shippingOrderId,shippingFirstName,shippingLastName,shippingAlternateMobile,
                                 shippingemail,shippingAddress, shippingPincode,shippingAdditionalInfo
                         ).observe(getActivity(), BillingDetailsFragment.this::handleProceedToPay);
-                    } else{
+                    }
+
+                    else{
+
                         mBillingDetailsViewModel.getProceedToPayForBillingAddress(pujaDatetime,bkgId,mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString(),
                             mFragmentBillingdetailsBinding.edtTxtLastName.getText().toString(),mFragmentBillingdetailsBinding.edtTxtAddress.getText().toString(),
                             mFragmentBillingdetailsBinding.edtTxtAddress2.getText().toString(),mFragmentBillingdetailsBinding.edtTxtAddress3.getText().toString(),
@@ -358,6 +352,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                       }
 
                 }
+
+
             }
         });
 

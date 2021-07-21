@@ -54,12 +54,22 @@ public class ChangePasswordAcitivity extends AppCompatActivity {
                 if(mActivityChangepasswordBinding.edtTxtOldPassword.getText().toString().trim().equals("")){
                     new SweetAlertDialog(ChangePasswordAcitivity.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
-                            .setContentText("Please Enter Old Password...")
+                            .setContentText("Please Enter Old Password")
+                            .show();
+                }else if(mActivityChangepasswordBinding.edtTxtOldPassword.getText().toString().length() < 6){
+                    new SweetAlertDialog(ChangePasswordAcitivity.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("You must have 6 characters in your password")
                             .show();
                 }else if(mActivityChangepasswordBinding.edtTxtNewPassword.getText().toString().trim().equals("")){
                     new SweetAlertDialog(ChangePasswordAcitivity.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
                             .setContentText("Please Enter New Password...")
+                            .show();
+                }else if(mActivityChangepasswordBinding.edtTxtNewPassword.getText().toString().length() < 6){
+                    new SweetAlertDialog(ChangePasswordAcitivity.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("You must have 6 characters in your password")
                             .show();
                 }else if(mActivityChangepasswordBinding.edtTxtConfirmPassword.getText().toString().trim().equals("")){
                     new SweetAlertDialog(ChangePasswordAcitivity.this, SweetAlertDialog.ERROR_TYPE)
