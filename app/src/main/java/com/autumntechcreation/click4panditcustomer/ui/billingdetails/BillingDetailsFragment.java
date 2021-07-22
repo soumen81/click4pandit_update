@@ -285,6 +285,14 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         mFragmentBillingdetailsBinding.tvProceedtoPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*if(!Patterns.PHONE.matcher(mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString()).matches()||
+                        mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString().length()>9||
+                        mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString().trim().length()<10){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
+                            .show();
+                }*/
                 if(mFragmentBillingdetailsBinding.edtTxtFirstName.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(getResources().getString(R.string.validation_error))
