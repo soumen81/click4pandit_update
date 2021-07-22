@@ -78,13 +78,13 @@ public class LoginActivity extends AppCompatActivity {
                 if(!Patterns.EMAIL_ADDRESS.matcher(mActivityLoginBinding.edtTxtEmail.getText().toString()).matches()||
                         (mActivityLoginBinding.edtTxtEmail.getText().toString().trim().equals(""))){
                     new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter EmailId...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_validemail))
                             .show();
                 }else if(TextUtils.isEmpty(mActivityLoginBinding.edtTxtPassword.getText().toString()) || mActivityLoginBinding.edtTxtPassword.getText().toString().length() < 6){
                     new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("You must have 6 characters in your password...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_pass))
                             .show();
                 }else{
                     mLoginViewModel.getLoginResult(mActivityLoginBinding.edtTxtEmail.getText().toString(),

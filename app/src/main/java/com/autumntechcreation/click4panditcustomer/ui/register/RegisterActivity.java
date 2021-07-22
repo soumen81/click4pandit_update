@@ -105,31 +105,31 @@ public class RegisterActivity extends AppCompatActivity {
                 else if (!Patterns.EMAIL_ADDRESS.matcher(mActivityRegisterBinding.edtTxtEmail.getText().toString()).matches()||
                         (mActivityRegisterBinding.edtTxtEmail.getText().toString().trim().equals(""))){
                     new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Valid  Email Address...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_validemail))
                             .show();
                 }
                 else if(mActivityRegisterBinding.edtTxtPassword.getText().toString().trim().equals("")) {
                     new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Password...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_password))
                             .show();
                 }else if (TextUtils.isEmpty(mActivityRegisterBinding.edtTxtPassword.getText().toString()) || mActivityRegisterBinding.edtTxtPassword.getText().toString().length() < 6) {
 
                     new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("You must have 6 characters in your password")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_pass))
                             .show();
 
                 }else if(mActivityRegisterBinding.edtTxtConfirmPassword.getText().toString().trim().equals("")) {
                     new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Confirm Password...")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_confirmpasswprd))
                             .show();
                 }else if(!mActivityRegisterBinding.edtTxtConfirmPassword.getText().toString().equals(mActivityRegisterBinding.edtTxtPassword.getText().toString())){
                     new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Your password does'nt match with confirm password")
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.doesnotmatch))
                             .show();
                 }else {
                     mRegisterViewModel.getRegisterResult(mActivityRegisterBinding.edtTxtFirstName.getText().toString(), mActivityRegisterBinding.edtTxtLastName.getText().toString(),
