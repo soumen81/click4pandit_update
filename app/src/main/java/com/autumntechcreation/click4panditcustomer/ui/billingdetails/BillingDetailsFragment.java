@@ -3,9 +3,12 @@ package com.autumntechcreation.click4panditcustomer.ui.billingdetails;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -214,8 +217,16 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
             }
 
         }
-
-
+       /* if(mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString().length()>0) {
+            if (!Patterns.PHONE.matcher(mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString()).matches() ||
+                    mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString().length() > 9 ||
+                    mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString().trim().length() < 10) {
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText(getResources().getString(R.string.validation_error))
+                        .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
+                        .show();
+            }
+        }*/
 
 
 
@@ -280,6 +291,13 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
 
 
+       /* mFragmentBillingdetailsBinding.edtAlternateMobileNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+*/
 
 
         mFragmentBillingdetailsBinding.tvProceedtoPay.setOnClickListener(new View.OnClickListener() {
@@ -338,7 +356,13 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             .setTitleText(getResources().getString(R.string.validation_error))
                             .setContentText(getResources().getString(R.string.please_enter_pincode))
                             .show();
-                }else{
+                }else if  (mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString().trim().length()>0 &&
+                        !Patterns.PHONE.matcher(mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString()).matches()) {
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
+                            .show();
+                } else{
 
 
                     if(valueOfState==true){
@@ -526,7 +550,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
                         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
                         cfPaymentService.setOrientation(0);
-                       // cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
+                        //cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
                          cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "PROD", "#784BD2", "#FFFFFF", false);
 
 

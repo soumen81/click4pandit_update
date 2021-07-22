@@ -164,7 +164,7 @@ public class ProfileFragment extends Fragment implements Injectable {
         mFragmentProfileBinding.tvSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* if(mFragmentProfileBinding.edtTxtFName.getText().toString().trim().equals("")){
+                if(mFragmentProfileBinding.edtTxtFName.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
                             .setContentText("Please Enter First Name...")
@@ -189,31 +189,18 @@ public class ProfileFragment extends Fragment implements Injectable {
                             .setTitleText("Error")
                             .setContentText("Please Enter Valid  Email Address...")
                             .show();
-                }*//*if(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString().length()<10 ||(!Patterns.PHONE.matcher(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString()).matches())){
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Please Enter Valid  MobileNo...")
-                            .show();
-                }*//*
-                else {*/
-                   // mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(), emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
-               // }
-
-                if(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().length()>9||(!Patterns.PHONE.matcher(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString()).matches())) {
-
-
-                    mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(), emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
-                }else if(!Patterns.PHONE.matcher(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString()).matches()||
-                        mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString().length()>9||
-                       mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString().trim().length()<10){
+                }else if  (mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString().length()>0 &&
+                        !Patterns.PHONE.matcher(mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString()).matches()) {
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(getResources().getString(R.string.validation_error))
                             .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
                             .show();
                 }
-                else{
-                    mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo,"", emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
+                else {
+                    mProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentProfileBinding.edtTxtAlternateMobileNo.getText().toString(), emailId).observe(getActivity(), ProfileFragment.this::handleSaveCustomerProfile);
                 }
+
+
             }
         });
 
