@@ -138,6 +138,34 @@
                 app:layout_constraintTop_toTopOf="@+id/parent1" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputShippingMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:textColorHint="@color/blackColor"
+            android:hint="@string/mobileNo"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtShippingMobileNo"
+                style="@style/Style_TextView_FontLight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:maxLength="10"
+                android:inputType="number"
+                android:scrollbars="vertical"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputAlternateMobileNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,7 +174,7 @@
             android:layout_marginRight="@dimen/dimen_20dp"
             android:textColorHint="@color/blackColor"
             android:hint="@string/alternatemobileno"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputShippingMobileNo"
 
             >
 

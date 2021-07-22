@@ -121,16 +121,25 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                             .setTitleText(getResources().getString(R.string.validation_error))
                             .setContentText(getResources().getString(R.string.please_enter_validemail))
                             .show();
-                }else if (!Patterns.PHONE.matcher(mFragmentDifferentpujalocationBinding.edtAlternateMobileNo.getText().toString()).matches()||
+                }else if (!Patterns.PHONE.matcher(mFragmentDifferentpujalocationBinding.edtShippingMobileNo.getText().toString()).matches()||
 
-                        (mFragmentDifferentpujalocationBinding.edtAlternateMobileNo.getText().toString().trim().equals(""))||(mFragmentDifferentpujalocationBinding.edtAlternateMobileNo.getText().toString().trim().length()<10)){
+                        (mFragmentDifferentpujalocationBinding.edtShippingMobileNo.getText().toString().trim().equals(""))||(mFragmentDifferentpujalocationBinding.edtShippingMobileNo.getText().toString().trim().length()<10)){
                     //  Toast.makeText(SettingPageActivity.this,R.string.please_enter_valid_phone_number,Toast.LENGTH_SHORT).show();
 
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                             .setTitleText(getResources().getString(R.string.validation_error))
                             .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
                             .show();
-                } else if(mFragmentDifferentpujalocationBinding.edtTxtAddress.getText().toString().trim().equals("")){
+                } else if  (mFragmentDifferentpujalocationBinding.edtAlternateMobileNo.getText().toString().length()>0 &&
+                        !Patterns.PHONE.matcher(mFragmentDifferentpujalocationBinding.edtAlternateMobileNo.getText().toString()).matches()) {
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
+                            .show();
+                }
+
+
+                else if(mFragmentDifferentpujalocationBinding.edtTxtAddress.getText().toString().trim().equals("")){
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(getResources().getString(R.string.validation_error))
                             .setContentText(getResources().getString(R.string.please_enter_address))
@@ -168,7 +177,7 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                     action.setShippingLname(mFragmentDifferentpujalocationBinding.edtTxtLastName.getText().toString());
                     action.setShippingemail(mFragmentDifferentpujalocationBinding.edtTxtEmail.getText().toString());
                     action.setAdditionalInfo(mFragmentDifferentpujalocationBinding.edtTxtAdditionalInfo.getText().toString());
-                    action.setShippingMobile(mFragmentDifferentpujalocationBinding.edtAlternateMobileNo.getText().toString());
+                    action.setShippingMobile(mFragmentDifferentpujalocationBinding.edtShippingMobileNo.getText().toString());
                     action.setDateTime(pujaDatetime);
                     action.setShippingBkgId(shippingbkgId);
                     action.setOrderAmount(shippingorderAmount);
@@ -176,8 +185,12 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                     action.setCgstvalue(getCgstvalue);
                     action.setSgstvalue(getSgstvalue);
                     action.setOrderId(shippingorderId);
-                    action.setBillingAddress(getBillingAddress);
-                    action.setBillingPincode(getBillingPinCode);
+                    if(getBillingAddress!=null) {
+                        action.setBillingAddress(getBillingAddress);
+                    }
+                    if(getBillingPinCode!=null) {
+                        action.setBillingPincode(getBillingPinCode);
+                    }
                     if(getBillingAddress2!=null) {
                         action.setBillingAddress2(getBillingAddress2);
                     }if(getBillingAddress3!=null) {

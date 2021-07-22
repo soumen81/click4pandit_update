@@ -81,9 +81,9 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mFragmentBillingdetailsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_billingdetails, container, false);
         mFragmentBillingdetailsBinding.setLifecycleOwner(this);
-        if(billingAddress.equals("null")){
+       /* if(billingAddress.equals("null")){
             mFragmentBillingdetailsBinding.edtTxtAddress.setText("");
-        }
+        }*/
 
 
         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {

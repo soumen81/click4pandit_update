@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Click4Pandit</string>
-    <string name="firstName">First Name</string>
-    <string name="lastName">Last Name</string>
-    <string name="mobileNo">Mobile No</string>
-    <string name="email">Email</string>
+    <string name="firstName">First Name*</string>
+    <string name="lastName">Last Name*</string>
+    <string name="mobileNo">Mobile No*</string>
+    <string name="email">Email*</string>
     <string name="password">Password</string>
     <string name="confirmpassword">Confirm Password</string>
     <string name="createanaccount">By creating an account,you agree to our</string>
@@ -88,9 +88,9 @@
     <string name="billingdetails">Billing Details</string>
     <string name="alternatemobileno">Alternate Mobile Number</string>
     <string name="address">Address</string>
-    <string name="state">State</string>
-    <string name="city">City</string>
-    <string name="pincode">Pin Code</string>
+    <string name="state">State*</string>
+    <string name="city">City*</string>
+    <string name="pincode">Pin Code*</string>
     <string name="adddifferentloc">Different Puja Location</string>
     <string name="proceedtopay">Proceed to Pay</string>
     <string name="additionalinfo">Additional Information</string>
@@ -148,7 +148,7 @@
     <string name="panditpreference">Pandit Preference:</string>
     <string name="addnewaddress">Add New Address</string>
     <string name="saveaddress">Save Address</string>
-    <string name="address1">Address1</string>
+    <string name="address1">Address1*</string>
     <string name="address2">Address2</string>
     <string name="address3">Address3</string>
     <string name="edit">Edit</string>
