@@ -142,7 +142,7 @@ public class ProfileRepository {
                                                                            int custMasId,String updateStam,String updateUser,
                                                                            String orgStamp,String orgUser,String cloudImgId,String fileName,
                                                                         String cloudFileName,String mimeType,String imgAction,
-                                                                           String fileData  ) {
+                                                                           byte[] fileData  ) {
         return new NetworkBoundResource<CustomerGetProfileModel,CustomerGetProfileModel>(mAppExecutors) {
             private CustomerGetProfileModel resultsDb;
             @Override
@@ -192,7 +192,8 @@ public class ProfileRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.CLOUDFILENAME, cloudFileName);
                 jsonObject.addProperty(AllUrlsAndConfig.MIMETYPE, mimeType);
                 jsonObject.addProperty(AllUrlsAndConfig.IMGACTION, imgAction);
-                jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, fileData);
+                JsonArray jsonArray=new JsonArray();
+                jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, String.valueOf(fileData));
 
                 Log.e("testImgUpload", jsonObject.toString());
                 return mWebservice.customerAddProfileImage(url,jsonObject);
@@ -202,7 +203,7 @@ public class ProfileRepository {
     }
 
     public LiveData<Resource<CustomerGetProfileModel>> getProfileImageUpload(String fileName,String cloudFileName,String imgAction,
-                                                                                String fileData  ) {
+                                                                             String mimeType, byte[] fileData  ) {
         return new NetworkBoundResource<CustomerGetProfileModel,CustomerGetProfileModel>(mAppExecutors) {
             private CustomerGetProfileModel resultsDb;
             @Override
@@ -250,10 +251,15 @@ public class ProfileRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.CLOUDIMGID, str);
                 jsonObject.addProperty(AllUrlsAndConfig.ORGLFILENAME, fileName);
                 jsonObject.addProperty(AllUrlsAndConfig.CLOUDFILENAME, cloudFileName);
-                jsonObject.addProperty(AllUrlsAndConfig.MIMETYPE, str);
+                jsonObject.addProperty(AllUrlsAndConfig.MIMETYPE, mimeType);
                 jsonObject.addProperty(AllUrlsAndConfig.IMGACTION, imgAction);
+                JsonObject jsonObject1=new JsonObject();
+                JsonArray jsonArray=new JsonArray();
+                //jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, String.valueOf(fileData));
+                jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, String.valueOf(fileData));
+               /* jsonArray.add(jsonObject1);
+                jsonObject.add(AllUrlsAndConfig.FILEDATA,jsonArray);*/
 
-                jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, fileData);
                 Log.e("FILEDATA",fileData.toString());
 
 

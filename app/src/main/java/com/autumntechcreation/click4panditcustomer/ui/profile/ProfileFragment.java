@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -124,8 +125,9 @@ public class ProfileFragment extends Fragment implements Injectable {
             newCloudFileName,custMasterImgId,
             newmimeType,newImgAction="",newFileDate;
     boolean check = true;
-
+    byte[] imageInByte;
     ByteArrayOutputStream byteArrayOutputStream;
+    AssetManager assetManager;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -151,6 +153,8 @@ public class ProfileFragment extends Fragment implements Injectable {
         UUID uuid = UUID.randomUUID();
         uuidInString = uuid.toString();
         cloudFileName=uuidInString+".jpeg";
+
+        assetManager = getActivity().getAssets();
         mFragmentProfileBinding.imgVwEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,7 +211,9 @@ public class ProfileFragment extends Fragment implements Injectable {
         mFragmentProfileBinding.imgvwUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View  v) {
-                selectImage();
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, 1);
             }
         });
 
@@ -225,61 +231,30 @@ public class ProfileFragment extends Fragment implements Injectable {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
-                if (Build.VERSION.SDK_INT >= 23) {
-                    if (checkPermission()) {
-                Uri selectedImage = data.getData();
-                String picturePath = this.getRealPathFromURI(selectedImage);
-                Log.d("Picture Path", picturePath);
+                Uri uri = data.getData();
 
-                //Bitmap bitmap = ((BitmapDrawable)  mFragmentProfileBinding.imgVwProfile.getDrawable()).getBitmap();
-                // Bitmap bitmap = null;
+                String s =this.getRealPathFromURI(uri);
+                Log.d("Picture Path", s);
 
 
-                //File f=new File("C:\\Users\\Soumen\\Downloads\\pandit.png");
-
-                // You can use the API that requires the permission.
-
-                        File objFile = new File(picturePath);
-                        Log.e("FILEEEE", objFile + "");
-                        if (objFile.exists()) {
-                            Log.e("EXIST", objFile.exists() + "");
-                            if (objFile.canRead()) {
-                                Log.e("READ", objFile.canRead() + "");
-                            }
-                            if (objFile.isFile()) {
-                                Log.e("ISFILE", objFile.isFile() + "");
-                            }
-                            if (objFile.getTotalSpace() > 0) {
-                                Log.e("TOTALSPACE", objFile.getTotalSpace() + "");
-                            }
-
-
-                            try {
-                                fis = new FileInputStream(objFile);
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        byte[] data1 = new byte[(int) objFile.length()];
-                        try {
-                            fis.read(data1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                        data1 = bos.toByteArray();
-                        Log.e("DATAAAA1", data1 + "");
-                    }
-                }else{
-                    requestPermission();
-                }
-              /*  Path path = Paths.get(picturePath);
                 try {
-                    byte[] data2 = Files.readAllBytes(path);
-                    Log.e("DATA2222",data2+"");
+                    fixBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
                 } catch (IOException e) {
                     e.printStackTrace();
-                }*/
+                }
+                mFragmentProfileBinding.imgVwProfile.setImageBitmap(fixBitmap);
+                mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
+                mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
+
+
+                //Bitmap bitmap = ((BitmapDrawable)  mFragmentProfileBinding.imgVwProfile.getDrawable()).getBitmap();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                fixBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] imageInByte = baos.toByteArray();
+                Log.e("IMAGEBYTE",imageInByte.toString());
+                imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);
+                Log.e("IMAGE",imageString);
+
             }
 
 
@@ -305,61 +280,22 @@ public class ProfileFragment extends Fragment implements Injectable {
                 imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);*/
 
                 if (newImgAction.equals("UPDATE")) {
-                    mProfileViewModel.getAddProfileImageUpload(newCustMasterImageId, newCustMasterId, null, null, null, null, newCloudImgId,newOriginalFileName, newCloudFileName, newmimeType, "UPDATE", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+                    mProfileViewModel.getAddProfileImageUpload(newCustMasterImageId, newCustMasterId, null, null, null, null, newCloudImgId,newOriginalFileName, newCloudFileName, newmimeType, "UPDATE", imageInByte).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
                 } else {
 
-                    mProfileViewModel.getProfileImageUpload(uuidInString, cloudFileName, "ADD", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+                    mProfileViewModel.getProfileImageUpload(uuidInString, cloudFileName, "ADD",newOriginalFileName, imageInByte).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
                 }
             }
 
     }
-    private boolean checkPermission() {
-        int result = ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (result == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private void requestPermission() {
-
-        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            Toast.makeText(getActivity(), "Write External Storage permission allows us to do store images. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
-        } else {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
-        }
-    }
-
-    public void bitMaptoraw(Bitmap bitmap){
-        int width = bitmap.getWidth();
-
-        int height = bitmap.getHeight();
-
-
-
-        int[] pixels = new int[width * height];
-
-        bitmap.getPixels(pixels, 0, width, 0, 0, width, height);
-
-        byte[] pixelArray = new byte[pixels.length];
-
-        for(int i = 0; i <pixels.length ; i++) {
-
-            int pixel = pixels[i];
-
-            int A = Color.alpha(pixel);
-
-            int R = Color.red(pixel);
-
-            int G = Color.green(pixel);
-
-            int B = Color.blue(pixel);
-
-            pixelArray[i] = (byte) (0.2989 * R + 0.5870 * G + 0.1140 * B);
-
-
-        }
+    public String getRealPathFromURI(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        @SuppressWarnings("deprecation")
+        Cursor cursor = getActivity().managedQuery(uri, projection, null, null, null);
+        int column_index = cursor
+                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
     }
 
     private void selectImage() {
@@ -388,7 +324,7 @@ public class ProfileFragment extends Fragment implements Injectable {
     }
 
 
-  /*   if (newImgAction.equals("UPDATE")) {
+    /* if (newImgAction.equals("UPDATE")) {
         mProfileViewModel.getAddProfileImageUpload(newCustMasterImageId, newCustMasterId, null, null, null, null, newCloudImgId,newOriginalFileName, newCloudFileName, newmimeType, "UPDATE", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
     } else {
 
@@ -397,15 +333,7 @@ public class ProfileFragment extends Fragment implements Injectable {
 
 
 
-    public String getRealPathFromURI(Uri uri) {
-        String[] projection = { MediaStore.Images.Media.DATA };
-        @SuppressWarnings("deprecation")
-        Cursor cursor = getActivity().managedQuery(uri, projection, null, null, null);
-        int column_index = cursor
-                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
-    }
+
 
 
 
@@ -508,11 +436,11 @@ public class ProfileFragment extends Fragment implements Injectable {
                         }
                         custMasterProfileImageModel=String.valueOf(resource.data.custMasterProfileImageModel);
 
-                      byte[] imageBytes = Base64.decode(newFileDate, Base64.DEFAULT);
+                     /* byte[] imageBytes = Base64.decode(newFileDate, Base64.DEFAULT);
                          decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
                         mFragmentProfileBinding.imgVwProfile.setImageBitmap(decodedImage);
                         mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
-                        mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
+                        mFragmentProfileBinding.imgFace.setVisibility(View.GONE);*/
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;

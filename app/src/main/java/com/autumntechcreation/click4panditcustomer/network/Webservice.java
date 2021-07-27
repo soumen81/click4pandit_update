@@ -24,6 +24,7 @@ import com.autumntechcreation.click4panditcustomer.ui.profile.CustomerGetProfile
 import com.autumntechcreation.click4panditcustomer.ui.profile.SaveCustomerprofileModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryModel;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -177,6 +178,7 @@ public interface Webservice {
     @POST()
     LiveData<ApiResponse<CustomerGetProfileModel>> customerAddProfileImage(@Url String apiname,
                                                                                @Body JsonObject jsonObject
+
 
 
     );
