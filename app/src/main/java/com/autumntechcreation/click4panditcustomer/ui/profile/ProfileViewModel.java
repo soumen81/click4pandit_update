@@ -36,7 +36,7 @@ public class ProfileViewModel extends ViewModel {
                                                                               int custMasId,String updateStam,String updateUser,
                                                                               String orgStamp,String orgUser,String cloudImgId,String fileName,
                                                                                   String cloudFileName,String mimeType,String imgAction,
-                                                                                  byte[] fileData
+                                                                                  String fileData
                                                                               ) {
         mAddProfileImageModelResponse = new MutableLiveData<>();
         mAddProfileImageModelResponse = mProfileRepository.getAddProfileImageUpload(customerProfileImageId,custMasId,updateStam,updateUser,orgStamp,orgUser,cloudImgId,fileName,cloudFileName,
@@ -45,7 +45,7 @@ public class ProfileViewModel extends ViewModel {
 
     }public LiveData<Resource<CustomerGetProfileModel>> getProfileImageUpload(String fileName,
                                                                                   String cloudFileName,String imgAction,
-                                                                              String mimeType,byte[] fileData
+                                                                              String mimeType,String fileData
                                                                               ) {
         mAddProfileImageModelResponse = new MutableLiveData<>();
         mAddProfileImageModelResponse = mProfileRepository.getProfileImageUpload(fileName,cloudFileName,imgAction,mimeType,fileData);

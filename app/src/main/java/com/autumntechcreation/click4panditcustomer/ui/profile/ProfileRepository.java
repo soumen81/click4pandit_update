@@ -142,7 +142,7 @@ public class ProfileRepository {
                                                                            int custMasId,String updateStam,String updateUser,
                                                                            String orgStamp,String orgUser,String cloudImgId,String fileName,
                                                                         String cloudFileName,String mimeType,String imgAction,
-                                                                           byte[] fileData  ) {
+                                                                          String fileData  ) {
         return new NetworkBoundResource<CustomerGetProfileModel,CustomerGetProfileModel>(mAppExecutors) {
             private CustomerGetProfileModel resultsDb;
             @Override
@@ -193,7 +193,7 @@ public class ProfileRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.MIMETYPE, mimeType);
                 jsonObject.addProperty(AllUrlsAndConfig.IMGACTION, imgAction);
                 JsonArray jsonArray=new JsonArray();
-                jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, String.valueOf(fileData));
+                jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, fileData);
 
                 Log.e("testImgUpload", jsonObject.toString());
                 return mWebservice.customerAddProfileImage(url,jsonObject);
@@ -203,7 +203,7 @@ public class ProfileRepository {
     }
 
     public LiveData<Resource<CustomerGetProfileModel>> getProfileImageUpload(String fileName,String cloudFileName,String imgAction,
-                                                                             String mimeType, byte[] fileData  ) {
+                                                                             String mimeType, String fileData  ) {
         return new NetworkBoundResource<CustomerGetProfileModel,CustomerGetProfileModel>(mAppExecutors) {
             private CustomerGetProfileModel resultsDb;
             @Override
@@ -256,9 +256,11 @@ public class ProfileRepository {
                 JsonObject jsonObject1=new JsonObject();
                 JsonArray jsonArray=new JsonArray();
                 //jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, String.valueOf(fileData));
-                jsonObject.addProperty(AllUrlsAndConfig.FILEDATA, String.valueOf(fileData));
-               /* jsonArray.add(jsonObject1);
+               jsonObject.addProperty(AllUrlsAndConfig.FILEDATA,fileData);
+                /*jsonObject1.addProperty(AllUrlsAndConfig.FILEDATA, String.valueOf(fileData));
+                jsonArray.add(jsonObject1);
                 jsonObject.add(AllUrlsAndConfig.FILEDATA,jsonArray);*/
+               //jsonObject.add(AllUrlsAndConfig.FILEDATA,fileData);
 
                 Log.e("FILEDATA",fileData.toString());
 

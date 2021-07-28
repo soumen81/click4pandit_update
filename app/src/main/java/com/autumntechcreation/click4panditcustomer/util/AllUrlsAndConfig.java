@@ -25,7 +25,8 @@ public class AllUrlsAndConfig {
     public static final String ORDERLIST="/api/OrderSearch/SearchByStandardCriteria";
     public static final String ADDADDRESS="/api/ShippingAddress/SaveShippingAddress";
     public static final String ADDRESSLIST="/api/ShippingAddress/SearchShippingAddress";
-    public static final String SAVEPROFILEIMAGE="/api/Profile/SaveCustProfileImage";
+   // public static final String SAVEPROFILEIMAGE="/api/Profile/SaveCustProfileImage";
+    public static final String SAVEPROFILEIMAGE="/api/Profile/SaveCustProfileImageForAndroid";
     public static final String SENDEMAILCONTACT="/api/TriggerMail/SendEmailForContact";
 
 

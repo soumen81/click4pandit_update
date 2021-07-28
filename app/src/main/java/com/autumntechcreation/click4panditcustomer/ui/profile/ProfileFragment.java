@@ -121,9 +121,17 @@ public class ProfileFragment extends Fragment implements Injectable {
     String ConvertImage,fileName,encoded,fileData,custMasterProfileImageModel;
 
     String imageString="";
-    String uuidInString,cloudFileName,newLogonId,newDelFlag,newCloudImgId,newOriginalFileName,
-            newCloudFileName,custMasterImgId,
-            newmimeType,newImgAction="",newFileDate;
+    String uuidInString;
+    String cloudFileName;
+    String newLogonId;
+    String newDelFlag;
+    String newCloudImgId;
+    String newOriginalFileName;
+    String newCloudFileName;
+    String custMasterImgId;
+    String newmimeType;
+    String newImgAction="";
+    String newFileDate;
     boolean check = true;
     byte[] imageInByte;
     ByteArrayOutputStream byteArrayOutputStream;
@@ -250,7 +258,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                 //Bitmap bitmap = ((BitmapDrawable)  mFragmentProfileBinding.imgVwProfile.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 fixBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] imageInByte = baos.toByteArray();
+                imageInByte = baos.toByteArray();
                 Log.e("IMAGEBYTE",imageInByte.toString());
                 imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);
                 Log.e("IMAGE",imageString);
@@ -280,10 +288,10 @@ public class ProfileFragment extends Fragment implements Injectable {
                 imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);*/
 
                 if (newImgAction.equals("UPDATE")) {
-                    mProfileViewModel.getAddProfileImageUpload(newCustMasterImageId, newCustMasterId, null, null, null, null, newCloudImgId,newOriginalFileName, newCloudFileName, newmimeType, "UPDATE", imageInByte).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+                    mProfileViewModel.getAddProfileImageUpload(newCustMasterImageId, newCustMasterId, null, null, null, null, newCloudImgId,newOriginalFileName, newCloudFileName, newmimeType, "UPDATE", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
                 } else {
 
-                    mProfileViewModel.getProfileImageUpload(uuidInString, cloudFileName, "ADD",newOriginalFileName, imageInByte).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+                    mProfileViewModel.getProfileImageUpload(uuidInString, cloudFileName, "ADD",newOriginalFileName, imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
                 }
             }
 
@@ -436,11 +444,11 @@ public class ProfileFragment extends Fragment implements Injectable {
                         }
                         custMasterProfileImageModel=String.valueOf(resource.data.custMasterProfileImageModel);
 
-                     /* byte[] imageBytes = Base64.decode(newFileDate, Base64.DEFAULT);
+                      byte[] imageBytes = Base64.decode(newFileDate, Base64.DEFAULT);
                          decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
                         mFragmentProfileBinding.imgVwProfile.setImageBitmap(decodedImage);
                         mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
-                        mFragmentProfileBinding.imgFace.setVisibility(View.GONE);*/
+                        mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;

@@ -52,6 +52,7 @@ public   class CustMasterProfileImageModel {
 
 
 
+
     public String getReturnStatus() {
         return returnStatus;
     }
