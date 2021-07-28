@@ -260,6 +260,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                 fixBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 imageInByte = baos.toByteArray();
                 Log.e("IMAGEBYTE",imageInByte.toString());
+                //We are convert the Byte array to Base64 encoded String and Web end Convert from Base64 String to Byte Array for encoding add or update
                 imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);
                 Log.e("IMAGE",imageString);
 
@@ -443,7 +444,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                             newImgAction="ADD";
                         }
                         custMasterProfileImageModel=String.valueOf(resource.data.custMasterProfileImageModel);
-
+                    //If some one update the image from web end and show the image mobile image then decrypt the image here...
                       byte[] imageBytes = Base64.decode(newFileDate, Base64.DEFAULT);
                          decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
                         mFragmentProfileBinding.imgVwProfile.setImageBitmap(decodedImage);
