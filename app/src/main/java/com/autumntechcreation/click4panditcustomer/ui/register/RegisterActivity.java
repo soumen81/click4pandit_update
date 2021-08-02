@@ -41,13 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         mActivityRegisterBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-
         AndroidInjection.inject(this);
-
-
         mRegisterViewModel = ViewModelProviders.of(this,viewModelFactory).get(RegisterViewModel.class);
         mActivityRegisterBinding.setLifecycleOwner(this);
-
         mActivityRegisterBinding.setRegisterViewModel(mRegisterViewModel);
 
 
@@ -114,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
                             .setTitleText(getResources().getString(R.string.validation_error))
                             .setContentText(getResources().getString(R.string.please_enter_password))
                             .show();
-                }else if (TextUtils.isEmpty(mActivityRegisterBinding.edtTxtPassword.getText().toString()) || mActivityRegisterBinding.edtTxtPassword.getText().toString().length() < 6) {
+                }else if (TextUtils.isEmpty(mActivityRegisterBinding.edtTxtPassword.getText().toString()) || mActivityRegisterBinding.edtTxtPassword.getText().toString().length() < 8) {
 
                     new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(getResources().getString(R.string.validation_error))
@@ -235,7 +231,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-                        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText(this.getString(R.string.failed))
                                 .setContentText(returnMsg)
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {

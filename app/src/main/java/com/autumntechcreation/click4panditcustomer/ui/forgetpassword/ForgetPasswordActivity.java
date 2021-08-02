@@ -135,6 +135,22 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                         mForgetPasswordViewModel.getForTriggerPassword(mActivityForgetpasswordBinding.edtTxtEmail.getText().toString(),
                                 uuidInString).observe(ForgetPasswordActivity.this,
                                 ForgetPasswordActivity.this::handleTriggerMail);
+                    }else if(resource.data.returnStatus.equals("FAILED")){
+                        String returnMsg= (String) resource.data.returnErrMsg;
+                        Log.e("ERROR",returnMsg);
+
+
+
+                        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText(this.getString(R.string.failed))
+                                .setContentText(returnMsg)
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismiss();
+                                    }
+                                })
+                                .show();
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;
@@ -213,6 +229,22 @@ public class ForgetPasswordActivity extends AppCompatActivity {
 
 
 
+                    }else if(resource.data.returnStatus.equals("FAILED")){
+                        String returnMsg= (String) resource.data.returnErrMsg;
+                        Log.e("ERROR",returnMsg);
+
+
+
+                        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText(this.getString(R.string.failed))
+                                .setContentText(returnMsg)
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismiss();
+                                    }
+                                })
+                                .show();
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;

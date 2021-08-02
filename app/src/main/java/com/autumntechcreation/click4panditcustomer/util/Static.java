@@ -195,4 +195,28 @@ public class Static {
         System.out.println("Date Format with MM/dd/yyyy : " + strDate);
         return strDate;
     }
+    public static String newConvertTwentyfourHourToDate(String input) {
+        // Format of the date defined in the input String
+        DateFormat dateFormat
+                = new SimpleDateFormat("hh:mm aa");
+
+        // Change the pattern into 24 hour formate
+        DateFormat formate
+                = new SimpleDateFormat("HH:mm:ss");
+        Date time = null;
+        String output = "";
+
+        // Converting the input String to Date
+        try {
+            time = dateFormat.parse(input);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        // Changing the format of date
+        // and storing it in
+        // String
+        output = formate.format(time);
+        return output;
+    }
 }

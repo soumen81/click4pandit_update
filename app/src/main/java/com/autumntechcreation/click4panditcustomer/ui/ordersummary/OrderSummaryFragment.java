@@ -164,7 +164,14 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
          dd=cgstvalue+sgstvalue+Double.parseDouble(pujaAmount);
           finalAmount=Static.roundAvoid(dd,2);
         mFragmentOrdersummeryBinding.tvTotalValue.setText(Double.toString(finalAmount));
-        if(pujaTime.equals("7:00 AM")) {
+
+        String converttime=Static.newConvertTwentyfourHourToDate(pujaTime);
+        Log.e("CONVERTTIME",converttime);
+
+
+        pujaDateTime=Static.convertNewDate(pujaDate)+"T"+converttime;//"23/12/2014 10:22:12 PM"
+
+       /* if(pujaTime.equals("7:00 AM")) {
             subStrstr = pujaTime.substring(0, 4);
 
         pujaDateTime = Static.convertNewDate(pujaDate) + "T" +"0"+ subStrstr + ":00";//2021-06-17T07:30:00
@@ -304,7 +311,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
             subStr = pujaTime.substring(0, 5);
             pujaDateTime = Static.convertNewDate(pujaDate) + "T" + subStr + ":00";//2021-06-17T07:30:00
             Log.e("PUJADATETIME", pujaDateTime);
-        }
+        }*/
 
 
 
@@ -381,6 +388,9 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
                         action.setPujaAmount(pujaAmount);
                         action.setCgstvalue(Double.toString(cgstvalue));
                         action.setSgstvalue(Double.toString(sgstvalue));
+                        action.setProcedure(procedure);
+                        action.setPujaSamagries(pujaSamagri);
+                        action.setYajaman(yajaman);
                         Navigation.findNavController(mView).navigate(action);
 
 //pujaAmount,Double.toString(cgstvalue)Double.toString(sgstvalue)Double.toString(finalAmount)

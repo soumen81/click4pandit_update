@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                             .setTitleText(getResources().getString(R.string.validation_error))
                             .setContentText(getResources().getString(R.string.please_enter_validemail))
                             .show();
-                }else if(TextUtils.isEmpty(mActivityLoginBinding.edtTxtPassword.getText().toString()) || mActivityLoginBinding.edtTxtPassword.getText().toString().length() < 6){
+                }else if(TextUtils.isEmpty(mActivityLoginBinding.edtTxtPassword.getText().toString()) || mActivityLoginBinding.edtTxtPassword.getText().toString().length() < 8){
                     new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(getResources().getString(R.string.validation_error))
                             .setContentText(getResources().getString(R.string.please_enter_pass))
@@ -161,6 +161,22 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(in);
                         sp.edit().putBoolean("logged",true).apply();
                         finish();
+                    }else if(resource.data.returnStatus.equals("FAILED")){
+                        String returnMsg= (String) resource.data.returnErrMsg;
+                        Log.e("ERROR",returnMsg);
+
+
+
+                        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.failed))
+                                .setContentText(returnMsg)
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismiss();
+                                    }
+                                })
+                                .show();
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;

@@ -75,7 +75,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
     String orderAmount,shippingAddress,shippingAddress2,shippingAddress3,shippingCity,shippingState,shippingPincode,pujaDatetime,shippingFirstName,
             billingPinCode="",billingAddress="",billingAddress2="",billingAddress3="",shippingLastName,shippingemail,shippingAlternateMobile,shippingAdditionalInfo,shippingOrderAmount,pujaAmount,cgstValue,sgstValue;
 
-    String paymentorderID = "",paymentMode="",transactionTime="",referenceId="",txMsg="",txStatus="";
+    String paymentorderID = "",paymentMode="",transactionTime="",referenceId="",txMsg="",txStatus="",yajamanList="",
+            procedureList="",pujaSamagriList="";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -84,7 +85,19 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
        /* if(billingAddress.equals("null")){
             mFragmentBillingdetailsBinding.edtTxtAddress.setText("");
         }*/
-
+        if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getYajaman().length()>0){
+            yajamanList=BillingDetailsFragmentArgs.fromBundle(getArguments()).getYajaman();
+            Log.e("YAJAMANLIST", yajamanList);
+        } if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getProcedure().length()>0){
+            procedureList=BillingDetailsFragmentArgs.fromBundle(getArguments()).getProcedure();
+            Log.e("PROCEDURELIST", procedureList);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaSamagries().length()>0){
+            pujaSamagriList=BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaSamagries();
+            Log.e("PUJASAMAGRIESLIST", pujaSamagriList);
+        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getYajaman().length()>0){
+            yajamanList=BillingDetailsFragmentArgs.fromBundle(getArguments()).getYajaman();
+            Log.e("YAJAMANLIST", yajamanList);
+        }
 
         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
             pujaDatetime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();

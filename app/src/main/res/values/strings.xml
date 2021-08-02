@@ -202,7 +202,7 @@
     <string name="please_enter_state">Please enter \n State</string>
     <string name="please_enter_city">Please enter \n City</string>
     <string name="doesnotmatch">Your password does not match \n with confirm password</string>
-    <string name="please_enter_pass">You must have 6 characters in your password</string>
+    <string name="please_enter_pass">You must have 8 characters in your password</string>
     <string name="please_enter_password">Please enter \n password</string>
     <string name="please_enter_pincode">Please enter \n Valid Pincode</string>
     <string name="please_enter_firstname">Please Enter \n First Name</string>

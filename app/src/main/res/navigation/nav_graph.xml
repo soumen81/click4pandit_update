@@ -462,6 +462,21 @@
             android:name="ShippingAddress3"
             android:defaultValue=""
             app:argType="string" />
+        <argument
+            android:name="procedure"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="pujaSamagries"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="yajaman"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
 
         <action
             android:id="@+id/action_billingDetailsFragment_to_differentPujaLocationFragment"
