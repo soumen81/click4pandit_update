@@ -35,7 +35,7 @@ public class OrderSummaryRepository {
     }
 
     public LiveData<Resource<OrderSummeryModel>> getOrderGenerate(int languageId, String pujaLanguageName, double amount, double cgstsgst,
-                                                                double totalAmount, String pkgDesc, int pujaPackageId,int noOfPandit,
+                                                                double totalAmount, String pkgDesc,int pujaPackageTypeId, int pujaPackageId,int noOfPandit,
                                                                   String subCategoryName,int subCategoryId,String locationName,int locationId,
                                                                   String dateTime) {
         return new NetworkBoundResource<OrderSummeryModel,OrderSummeryModel>(mAppExecutors) {
@@ -92,7 +92,7 @@ public class OrderSummaryRepository {
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGNOOFPANDIT, noOfPandit);
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGNOTE, "");
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGTYPEDSCR, pkgDesc);
-                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGTYPEID, pujaPackageId);
+                jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJAPKGTYPEID, pujaPackageTypeId);
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJASUBCTGRYDSCR, subCategoryName);//Subtcategoryname
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGPUJASUBCTGRYID, subCategoryId);//subcategoryid
                 jsonObject.addProperty(AllUrlsAndConfig.CUSTBKGSUBLCLTYNAME, locationName);//LocationName

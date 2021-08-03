@@ -52,7 +52,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
     NavController navController;
     String pujaName,pujaAmount,pujaDesc,procedure,pujaSamagri,yajaman,locationName,languageName,
             pujaDate,pujaTime,packageTypeIdDesc,subcategoryName,isAllSamagries,pujaDateTime,subStr="",subStrstr="";
-    int subCategoryId,pujPackageId,locationId,languageId,noOfPandit;
+    int subCategoryId,pujPackageId,pujPackageTypeId,locationId,languageId,noOfPandit;
     double dd,finalAmount;
     double sgstvalue,cgstvalue;
     @Nullable
@@ -89,6 +89,8 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         Log.e("SubCategoryId",""+subCategoryId);
         pujPackageId=OrderSummaryFragmentArgs.fromBundle(getArguments()).getPujaPackageId();
         Log.e("pujPackageId",""+pujPackageId);
+        pujPackageTypeId=OrderSummaryFragmentArgs.fromBundle(getArguments()).getPujaPackageTypeId();
+        Log.e("pujPackageTypeId",""+pujPackageTypeId);
          locationId=BookingPujaFragmentArgs.fromBundle(getArguments()).getLocationId();
         Log.e("locationId",""+locationId);
         languageId=BookingPujaFragmentArgs.fromBundle(getArguments()).getLanguageId();
@@ -320,7 +322,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
             public void onChanged(Void aVoid) {
                 // findNavController(mView).navigate(OrderSummaryFragmentDirections.actionOrderSummaryFragmentToBillingDetailsFragment());
                 mOrderSummaryViewModel.getNewOrderResult(languageId,languageName,Double.parseDouble(pujaAmount),cgstsgst,finalAmount,pujaDesc,
-                        pujPackageId,noOfPandit,subcategoryName,subCategoryId,locationName,locationId,pujaDateTime).observe(getActivity(),OrderSummaryFragment.this::handleNewOrderGenerate);
+                       pujPackageTypeId, pujPackageId,noOfPandit,subcategoryName,subCategoryId,locationName,locationId,pujaDateTime).observe(getActivity(),OrderSummaryFragment.this::handleNewOrderGenerate);
             }
         });
 

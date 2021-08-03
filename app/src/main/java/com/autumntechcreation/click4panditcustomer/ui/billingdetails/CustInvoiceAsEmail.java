@@ -14,13 +14,13 @@ public class CustInvoiceAsEmail {
     private CustInvoice custInvoice;
     @SerializedName("pujaSamagriForDeliveryList")
     @Expose
-    private List<Object> pujaSamagriForDeliveryList = null;
+    private List<PujaSamagriForDelivery> pujaSamagriForDeliveryList = null;
     @SerializedName("pujaPrcdrList")
     @Expose
-    private List<Object> pujaPrcdrList = null;
+    private List<PujaPrcdr> pujaPrcdrList = null;
     @SerializedName("pujasamagriHHList")
     @Expose
-    private List<Object> pujasamagriHHList = null;
+    private List<PujasamagriHH> pujasamagriHHList = null;
 
     public CustBkg getCustBkg() {
         return custBkg;
@@ -38,29 +38,28 @@ public class CustInvoiceAsEmail {
         this.custInvoice = custInvoice;
     }
 
-    public List<Object> getPujaSamagriForDeliveryList() {
+    public List<PujaSamagriForDelivery> getPujaSamagriForDeliveryList() {
         return pujaSamagriForDeliveryList;
     }
 
-    public void setPujaSamagriForDeliveryList(List<Object> pujaSamagriForDeliveryList) {
+    public void setPujaSamagriForDeliveryList(List<PujaSamagriForDelivery> pujaSamagriForDeliveryList) {
         this.pujaSamagriForDeliveryList = pujaSamagriForDeliveryList;
     }
 
-    public List<Object> getPujaPrcdrList() {
+    public List<PujaPrcdr> getPujaPrcdrList() {
         return pujaPrcdrList;
     }
 
-    public void setPujaPrcdrList(List<Object> pujaPrcdrList) {
+    public void setPujaPrcdrList(List<PujaPrcdr> pujaPrcdrList) {
         this.pujaPrcdrList = pujaPrcdrList;
     }
 
-    public List<Object> getPujasamagriHHList() {
+    public List<PujasamagriHH> getPujasamagriHHList() {
         return pujasamagriHHList;
     }
 
-    public void setPujasamagriHHList(List<Object> pujasamagriHHList) {
+    public void setPujasamagriHHList(List<PujasamagriHH> pujasamagriHHList) {
         this.pujasamagriHHList = pujasamagriHHList;
     }
-
 
 }

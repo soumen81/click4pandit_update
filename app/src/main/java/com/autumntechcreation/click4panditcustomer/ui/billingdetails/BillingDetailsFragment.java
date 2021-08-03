@@ -46,6 +46,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -628,7 +629,10 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
                         CustBkg custBkg=resource.data.custInvoiceAsEmail.getCustBkg();
                         CustInvoice  custInvoice= resource.data.custInvoiceAsEmail.getCustInvoice();
-                        mBillingDetailsViewModel.getSendEmailInvoice(custBkg,custInvoice).observe(getActivity(),BillingDetailsFragment.this::handlegetSendEmailInvoice);
+                        List<PujaSamagriForDelivery> pujaSamagriForDelivery=resource.data.custInvoiceAsEmail.getPujaSamagriForDeliveryList();
+                        List<PujaPrcdr> pujaPrcdrList=resource.data.custInvoiceAsEmail.getPujaPrcdrList();
+                        List<PujasamagriHH> pujasamagriHH=resource.data.custInvoiceAsEmail.getPujasamagriHHList();
+                        mBillingDetailsViewModel.getSendEmailInvoice(custBkg,custInvoice,pujaSamagriForDelivery,pujaPrcdrList,pujasamagriHH).observe(getActivity(),BillingDetailsFragment.this::handlegetSendEmailInvoice);
 
                     }
 

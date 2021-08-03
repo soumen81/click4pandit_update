@@ -12,14 +12,14 @@ import com.autumntechcreation.click4panditcustomer.network.NetworkBoundResource;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.network.Webservice;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
-import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
-import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
 import com.autumntechcreation.click4panditcustomer.util.AbsentLiveData;
 import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -364,7 +364,10 @@ public class BillingDetailsRepository {
     }
 
 
-    public LiveData<Resource<SendEmailForCustInvoiceModel>> sendCustomerInvoice(CustBkg custBkg, CustInvoice custInvoice) {
+    public LiveData<Resource<SendEmailForCustInvoiceModel>> sendCustomerInvoice(CustBkg custBkg, CustInvoice custInvoice,
+                                                                                List<PujaSamagriForDelivery> listPujaSamagriForDelivery,
+                                                                                List<PujaPrcdr> listPujaPrcdcr,
+                                                                                List<PujasamagriHH> listpujasamagriHHList) {
         return new NetworkBoundResource<SendEmailForCustInvoiceModel,SendEmailForCustInvoiceModel>(mAppExecutors) {
             private SendEmailForCustInvoiceModel resultsDb;
             @Override
@@ -410,6 +413,25 @@ public class BillingDetailsRepository {
 
                 jsonObject.add("custBkg", jobj);
                 jsonObject.add("custInvoice", jobj2);
+
+
+                //PujaSamagriForDelivery List
+                JsonElement jelemInvoice3 = gson.fromJson(gson.toJson(listPujaSamagriForDelivery), JsonElement.class);
+                JsonArray jsonArrayReportsPathObject = new JsonArray();
+                JsonArray jobj3 = jelemInvoice3.getAsJsonArray();
+                jsonObject.add("pujaSamagriForDeliveryList", jobj3);
+                //PujaPrcdcr List
+                JsonElement jelemInvoice4 = gson.fromJson(gson.toJson(listPujaPrcdcr), JsonElement.class);
+                JsonArray jsonArrayPujaPrcdcrObject = new JsonArray();
+                JsonArray jobj4 = jelemInvoice4.getAsJsonArray();
+                jsonObject.add("pujaPrcdrList", jobj4);
+
+                //pujasamagriHHList List
+                JsonElement jelemInvoice5 = gson.fromJson(gson.toJson(listpujasamagriHHList), JsonElement.class);
+                JsonArray jsonArraypujasamagriHHListObject = new JsonArray();
+                JsonArray jobj5 = jelemInvoice5.getAsJsonArray();
+                jsonObject.add("pujasamagriHHList", jobj5);
+
 
 
 

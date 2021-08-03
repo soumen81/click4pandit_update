@@ -9,6 +9,7 @@ public class ChoosePackageListModel {
     @SerializedName("pujaPkgId")
     @Expose
     public Integer pujaPkgId;
+
     @SerializedName("pujaPkgTypeId")
     @Expose
     public Integer pujaPkgTypeId;
@@ -69,6 +70,13 @@ public class ChoosePackageListModel {
     public void setPujaPkgId(Integer pujaPkgId) {
         this.pujaPkgId = pujaPkgId;
     }
+
+
+
+
+
+
+
 
     public Integer getPujaPkgTypeId() {
         return pujaPkgTypeId;

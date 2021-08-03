@@ -24,12 +24,12 @@ public class OrderSummaryViewModel extends ViewModel {
 
 
     public LiveData<Resource<OrderSummeryModel>> getNewOrderResult(int languageId, String pujaLanguageName, double amount, double cgstsgst,
-                                                                   double totalAmount, String pkgDesc, int pujaPackageId,int noOfPandit,
+                                                                   double totalAmount, String pkgDesc,int pujaPackageTypeId, int pujaPackageId,int noOfPandit,
                                                                    String subCategoryName,int subCategoryId,String locationName,int locationId,
                                                                    String dateTime) {
         mOrderSummeryModelResponse = new MutableLiveData<>();
         mOrderSummeryModelResponse = mOrderSummaryRepository.getOrderGenerate(languageId, pujaLanguageName, amount, cgstsgst, totalAmount,
-                pkgDesc, pujaPackageId,noOfPandit,subCategoryName,subCategoryId,locationName,locationId,dateTime);
+                pkgDesc,pujaPackageTypeId, pujaPackageId,noOfPandit,subCategoryName,subCategoryId,locationName,locationId,dateTime);
         return mOrderSummeryModelResponse;
 
     }

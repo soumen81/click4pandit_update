@@ -85,7 +85,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
     ArrayList<BookingLanguageModel> bookingLanguageModellist = new ArrayList<BookingLanguageModel>();
     String locName="",pujaLang="",pujaDate="",pujaTime="",packageTypeIdDesc="",
             subcategoryName="",isAllSamagries="",selectedTime="";
-    int subCategoryId,pujPackageId,locationId,languageId,noOfPandit;
+    int subCategoryId,pujPackageId,locationId,languageId,noOfPandit,pujPackageTypeId;
     SimpleDateFormat sdf;
     Calendar calendar;
     BookingLocationModel bookingLocationModel;
@@ -116,6 +116,8 @@ public class BookingPujaFragment extends Fragment implements Injectable {
         Log.e("SubCategoryId",""+subCategoryId);
         pujPackageId=BookingPujaFragmentArgs.fromBundle(getArguments()).getPujaPackageId();
         Log.e("pujPackageId",""+pujPackageId);
+        pujPackageTypeId=BookingPujaFragmentArgs.fromBundle(getArguments()).getPujaPackageTypeId();
+        Log.e("pujPackageTypeId",""+pujPackageTypeId);
         isAllSamagries=BookingPujaFragmentArgs.fromBundle(getArguments()).getIsAllSamagries();
         Log.e("isAllSamagries",""+isAllSamagries);
         noOfPandit=BookingPujaFragmentArgs.fromBundle(getArguments()).getNoOfPandit();
@@ -382,6 +384,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
                     action.setSubCategoryName(subcategoryName);
                     action.setSubCategoryId(subCategoryId);
                     action.setPujaPackageId(pujPackageId);
+                    action.setPujaPackageTypeId(pujPackageTypeId);
                     action.setLocationId(locationId);
                     action.setLanguageId(languageId);
                     action.setIsAllSamagries(isAllSamagries);

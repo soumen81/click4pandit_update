@@ -68,7 +68,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
     AlertDialog mDialogForChoosePackage = null;
     String pujaName;
     String pujaAmount,pujaDesc,packageTypeIdDesc,isAllSamagries;
-    int pujaPackageId,noOfPandit;
+    int pujaPackageId,noOfPandit,pujaPackageTypeId;
     String procedures="",pujaSamagries="",Yajaman="",subCategoryName="";
 
     @Nullable
@@ -202,7 +202,9 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                     packageTypeIdDesc = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr();
                     pujaAmount = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString();
                     pujaDesc = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr();
-                    pujaPackageId = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeId();
+                    pujaPackageTypeId = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeId();
+                    pujaPackageId = mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgId();
+
                     mDialogChoosepackageDetailsBinding.tvStandardPackage.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgTypeIdDscr());
                     mDialogChoosepackageDetailsBinding.tvStandardAmount.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgAmount().toString());
                     mDialogChoosepackageDetailsBinding.tvPujaDesc.setText(mChoosePackageViewModel.mChoosePackageList.getValue().data.get(position).getPujaPkgDscr());
@@ -258,6 +260,7 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
                     action.setSubCategoryName(subCategoryName);
                     action.setSubCategoryId(subCategoryId);
                     action.setPujaPackageId(pujaPackageId);
+                    action.setPujaPackageTypeId(pujaPackageTypeId);
                     action.setIsAllSamagries(isAllSamagries);
                     action.setNoOfPandit(noOfPandit);
                     Navigation.findNavController(mView).navigate(action);

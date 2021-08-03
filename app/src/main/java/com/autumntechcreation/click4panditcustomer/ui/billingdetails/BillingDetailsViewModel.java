@@ -12,6 +12,8 @@ import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryM
 import com.autumntechcreation.click4panditcustomer.util.SingleLiveEvent;
 import com.google.gson.JsonObject;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 public class BillingDetailsViewModel extends ViewModel {
@@ -57,9 +59,12 @@ public class BillingDetailsViewModel extends ViewModel {
         mUpdateInvoiceResponse = mBillingDetailsRepository.updateinvoice(orderId);
         return mUpdateInvoiceResponse;
 
-    }public LiveData<Resource<SendEmailForCustInvoiceModel>> getSendEmailInvoice(CustBkg custBkg, CustInvoice custInvoice) {
+    }public LiveData<Resource<SendEmailForCustInvoiceModel>> getSendEmailInvoice(CustBkg custBkg, CustInvoice custInvoice,
+                                                                                 List<PujaSamagriForDelivery> listPujaSamagriForDelivery,
+                                                                                 List<PujaPrcdr> listPujaPrcdcr,
+                                                                                 List<PujasamagriHH> listpujasamagriHHList) {
         mSendEmailInvoiceResponse = new MutableLiveData<>();
-        mSendEmailInvoiceResponse = mBillingDetailsRepository.sendCustomerInvoice(custBkg,custInvoice);
+        mSendEmailInvoiceResponse = mBillingDetailsRepository.sendCustomerInvoice(custBkg,custInvoice,listPujaSamagriForDelivery,listPujaPrcdcr,listpujasamagriHHList);
         return mSendEmailInvoiceResponse;
 
     }
