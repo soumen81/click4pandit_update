@@ -8,8 +8,8 @@ android {
         applicationId "com.autumntechcreation.click4panditcustomer"
         minSdkVersion versions.min_sdk
         targetSdkVersion versions.target_sdk
-        versionCode 18
-        versionName "1.17"
+        versionCode 20
+        versionName "1.19"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         javaCompileOptions {
