@@ -1,6 +1,10 @@
 package com.autumntechcreation.click4panditcustomer.ui.editprofile;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +16,28 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentEditprofileBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
+import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.Resource;
+import com.autumntechcreation.click4panditcustomer.ui.profile.CustomerGetProfileModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment;
+import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragmentDirections;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.profile.SaveCustomerprofileModel;
+import com.autumntechcreation.click4panditcustomer.util.Static;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.inject.Inject;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -31,7 +48,8 @@ public class EditprofileFragment extends Fragment implements Injectable {
     FragmentEditprofileBinding mFragmentEditprofileBinding;
     private View mView;
     NavController navController;
-
+    int custMasterId;
+    String firstName,lastName,emailId,mobileNo,imgActionValue;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,6 +72,203 @@ public class EditprofileFragment extends Fragment implements Injectable {
 
         mEditProfileViewModel = ViewModelProviders.of(EditprofileFragment.this, viewModelFactory).get(EditProfileViewModel.class);
         mFragmentEditprofileBinding.setEditProfileViewModel(mEditProfileViewModel);
+
+        mFragmentEditprofileBinding.tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findNavController(mView).navigate(EditprofileFragmentDirections.actionEditprofileFragmentToProfileFragment());
+            }
+        });
+        mEditProfileViewModel.customerGetProfile().observe(getActivity(),
+                EditprofileFragment.this::handlegetCustomerProfile);
+
+        mFragmentEditprofileBinding.tvSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mFragmentEditprofileBinding.edtTxtFName.getText().toString().trim().equals("")){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Please Enter First Name...")
+                            .show();
+                } else if(mFragmentEditprofileBinding.edtTxtLName.getText().toString().trim().equals("")){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Please Enter Last Name...")
+                            .show();
+                } else if (!Patterns.PHONE.matcher(mFragmentEditprofileBinding.edtTxtMobile.getText().toString()).matches()||
+
+                        (mFragmentEditprofileBinding.edtTxtMobile.getText().toString().trim().equals(""))||(mFragmentEditprofileBinding.edtTxtMobile.getText().toString().trim().length()<10)){
+                    //  Toast.makeText(SettingPageActivity.this,R.string.please_enter_valid_phone_number,Toast.LENGTH_SHORT).show();
+
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
+                            .show();
+                }else if (!Patterns.EMAIL_ADDRESS.matcher(mFragmentEditprofileBinding.edtTxtEmail.getText().toString()).matches()||
+                        (mFragmentEditprofileBinding.edtTxtEmail.getText().toString().trim().equals(""))){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Error")
+                            .setContentText("Please Enter Valid  Email Address...")
+                            .show();
+                }else if  (mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString().length()>0 &&
+                        !Patterns.PHONE.matcher(mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString()).matches()) {
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
+                            .show();
+                }else if(mFragmentEditprofileBinding.edtTxtMobile.getText().toString().equals(mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString())){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.mobilenodoesnotmatch))
+                            .show();
+                }else{
+                    mEditProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString(), emailId).observe(getActivity(), EditprofileFragment.this::handleSaveCustomerProfile);
+                }
+            }
+        });
     }
 
+
+    private void handlegetCustomerProfile(Resource<CustomerGetProfileModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+
+                    break;
+                case LOADING:
+                    Log.e("handleRegisterResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleRegisterResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleRegisterResponse", resource.status + "");
+                    Log.e("handleRegisterResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleRegisterResponse", json + "");
+
+                    firstName=resource.data.custMasterProfileDataModel.firstName;
+                    lastName=resource.data.custMasterProfileDataModel.lastName;
+                    emailId=resource.data.custMasterProfileDataModel.emailId;
+                    mobileNo=resource.data.custMasterProfileDataModel.mobile;
+
+                    custMasterId=resource.data.custMasterProfileDataModel.custMasterId;
+
+
+                        mFragmentEditprofileBinding.edtTxtFName.setText(firstName);
+                        mFragmentEditprofileBinding.edtTxtLName.setText(lastName);
+                        mFragmentEditprofileBinding.edtTxtMobile.setText(mobileNo);
+                        mFragmentEditprofileBinding.edtTxtEmail.setText(emailId);
+                        mFragmentEditprofileBinding.edtTxtEmail.setEnabled(false);
+
+
+
+
+
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    }
+
+
+
+    private void handleSaveCustomerProfile(Resource<SaveCustomerprofileModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null && resource.data == null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data == null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+
+                    break;
+                case LOADING:
+                    Log.e("handleRegisterResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleRegisterResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleRegisterResponse", resource.status + "");
+                    Log.e("handleRegisterResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleRegisterResponse", json + "");
+                    if (resource.data.returnStatus.equals("SUCCESS")) {
+
+                       String strAlternateMobileNo= mEditProfileViewModel.storeAlternateMobileNo(mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString());
+                        EditprofileFragmentDirections.ActionEditprofileFragmentToProfileFragment action=
+                                EditprofileFragmentDirections.actionEditprofileFragmentToProfileFragment();
+                        action.setAlterMobileNo(strAlternateMobileNo);
+                        Navigation.findNavController(mView).navigate(action);
+
+
+                    }
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    }
 }

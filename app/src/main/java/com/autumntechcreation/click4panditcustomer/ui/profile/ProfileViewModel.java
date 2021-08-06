@@ -55,4 +55,8 @@ public class ProfileViewModel extends ViewModel {
     public String getEmail(){
         return mProfileRepository.getEmail();
     }
+
+    public String getAlternateMobileNo(){
+        return mProfileRepository.getAlternateMobileNo();
+    }
 }

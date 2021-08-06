@@ -34,8 +34,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="535" />
-                            <option name="y" value="-1196" />
+                            <option name="x" value="408" />
+                            <option name="y" value="-1041" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -198,6 +198,15 @@
                             <option name="x" value="615" />
                             <option name="y" value="321" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_editprofileFragment_to_profileFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -412,6 +421,15 @@
                             <option name="x" value="1173" />
                             <option name="y" value="-1496" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_pujaItemKitDetailsFragment_to_wishListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

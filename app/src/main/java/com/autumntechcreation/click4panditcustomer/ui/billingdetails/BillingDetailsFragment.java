@@ -376,7 +376,13 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                             .setTitleText(getResources().getString(R.string.validation_error))
                             .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
                             .show();
-                } else{
+                }else if(mFragmentBillingdetailsBinding.edtMobileNo.getText().toString().equals(mFragmentBillingdetailsBinding.edtAlternateMobileNo.getText().toString())){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.mobilenodoesnotmatch))
+                            .show();
+                }
+                else{
 
 
                     if(valueOfState==true){
@@ -564,8 +570,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
                         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
                         cfPaymentService.setOrientation(0);
-                       // cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
-                         cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "PROD", "#784BD2", "#FFFFFF", false);
+                        cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
+                         //cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "PROD", "#784BD2", "#FFFFFF", false);
 
 
 
@@ -721,8 +727,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         }
     }
     private Map<String, String> getInputParams() {
-        //String appId = "6159303c6dd0fdc88e24a424f39516";//TEST
-         String appId = "10732304e9cb87da1696501a98323701";//PRODUCTION
+        String appId = "6159303c6dd0fdc88e24a424f39516";//TEST
+         //String appId = "10732304e9cb87da1696501a98323701";//PRODUCTION
         String strorderId = String.valueOf(orderId);
         String strorderAmount = orderAmount;
         String orderNote = "Puja";

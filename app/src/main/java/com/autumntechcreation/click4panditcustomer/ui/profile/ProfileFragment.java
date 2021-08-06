@@ -31,6 +31,7 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -54,11 +55,13 @@ import com.autumntechcreation.click4panditcustomer.databinding.FragmentProfileBi
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
+import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsFragmentArgs;
 import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordAcitivity;
 import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationFragment;
 import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryFragmentDirections;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
+import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusFragmentArgs;
 import com.autumntechcreation.click4panditcustomer.util.ImageProcessClass;
 import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.github.dhaval2404.imagepicker.ImagePicker;
@@ -129,9 +132,9 @@ public class ProfileFragment extends Fragment implements Injectable {
     String newOriginalFileName;
     String newCloudFileName;
     String custMasterImgId;
-    String newmimeType;
-    String newImgAction="";
-    String newFileDate;
+    String newmimeType,strMimeType="";
+    String newImgAction="",fileExt="",getAlternateNo;
+    String newFileDate="",picturePath="",imageName="";
     boolean check = true;
     byte[] imageInByte;
     ByteArrayOutputStream byteArrayOutputStream;
@@ -141,6 +144,11 @@ public class ProfileFragment extends Fragment implements Injectable {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mFragmentProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
         mFragmentProfileBinding.setLifecycleOwner(this);
+
+        if(ProfileFragmentArgs.fromBundle(getArguments()).getAlterMobileNo().length()>0) {
+            getAlternateNo = ProfileFragmentArgs.fromBundle(getArguments()).getAlterMobileNo();
+            Log.e("ALTERNATENO", getAlternateNo);
+        }
 
         return mFragmentProfileBinding.getRoot();
     }
@@ -158,12 +166,18 @@ public class ProfileFragment extends Fragment implements Injectable {
 
         mProfileViewModel = ViewModelProviders.of(ProfileFragment.this, viewModelFactory).get(ProfileViewModel.class);
         mFragmentProfileBinding.setProfileViewModel(mProfileViewModel);
+        if(getAlternateNo!=null) {
+            mFragmentProfileBinding.edtTxtAlternateMobileNo.setText(getAlternateNo);
+        }else{
+
+            mFragmentProfileBinding.edtTxtAlternateMobileNo.setText( mProfileViewModel.getAlternateMobileNo());
+        }
         UUID uuid = UUID.randomUUID();
         uuidInString = uuid.toString();
-        cloudFileName=uuidInString+".jpeg";
+      //  cloudFileName=uuidInString+".jpeg";
 
         assetManager = getActivity().getAssets();
-        mFragmentProfileBinding.imgVwEdit.setOnClickListener(new View.OnClickListener() {
+        mFragmentProfileBinding.imgvwUpdateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 findNavController(mView).navigate(ProfileFragmentDirections.actionProfileFragmentToEditprofileFragment());
@@ -240,10 +254,20 @@ public class ProfileFragment extends Fragment implements Injectable {
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
                 Uri uri = data.getData();
-
-                String s =this.getRealPathFromURI(uri);
-                Log.d("Picture Path", s);
-
+                    //Get picture path
+                 picturePath =this.getRealPathFromURI(uri);
+                Log.d("Picture Path", picturePath);
+                Uri file = Uri.fromFile(new File(picturePath));
+                //Name of the file extension
+                 fileExt = MimeTypeMap.getFileExtensionFromUrl(file.toString());
+                Log.d("FILE Extension", fileExt);
+                //Mime Type
+                 strMimeType=Static.getMimeType(file);
+                Log.e("MIMETYPE",strMimeType);
+                //FileName
+                File f = new File(picturePath);
+                 imageName = f.getName();
+                Log.e("ImageName",imageName);
 
                 try {
                     fixBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
@@ -264,35 +288,19 @@ public class ProfileFragment extends Fragment implements Injectable {
                 imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);
                 Log.e("IMAGE",imageString);
 
+
+
             }
 
 
-                /*InputStream inputStream = getActivity().getAssets().open(f);
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                mFragmentProfileBinding.imgVwProfile.setImageBitmap(bitmap);
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG,80,stream);
-                byte[] byteArray = stream.toByteArray();
-                Bitmap compressedBitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
-                mFragmentProfileBinding.imgVwProfile.setImageBitmap(compressedBitmap);*/
-                /*try {
-                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                mFragmentProfileBinding.imgVwProfile.setImageBitmap(bitmap);
-                mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
-                mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] imageInByte = baos.toByteArray();
-                imageString = Base64.encodeToString(imageInByte, Base64.DEFAULT);*/
+
 
                 if (newImgAction.equals("UPDATE")) {
                     mProfileViewModel.getAddProfileImageUpload(newCustMasterImageId, newCustMasterId, null, null, null, null, newCloudImgId,newOriginalFileName, newCloudFileName, newmimeType, "UPDATE", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
                 } else {
+                    mProfileViewModel.getAddProfileImageUpload(newCustMasterImageId, newCustMasterId, null, null, null, null, uuidInString,imageName, uuidInString+"."+fileExt, strMimeType, "ADD", imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
+                   // mProfileViewModel.getProfileImageUpload(uuidInString, cloudFileName, "ADD",newOriginalFileName, imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
 
-                    mProfileViewModel.getProfileImageUpload(uuidInString, cloudFileName, "ADD",newOriginalFileName, imageString).observe(getActivity(), ProfileFragment.this::handleUploadForImage);
                 }
             }
 
@@ -402,6 +410,7 @@ public class ProfileFragment extends Fragment implements Injectable {
                     mobileNo=resource.data.custMasterProfileDataModel.mobile;
                     custMasterId=resource.data.custMasterProfileDataModel.custMasterId;
 
+
                     if(resource.data.custMasterProfileImageModel==null){
                         mFragmentProfileBinding.edtTxtFName.setText(firstName);
                         mFragmentProfileBinding.edtTxtLastName.setText(lastName);
@@ -445,11 +454,13 @@ public class ProfileFragment extends Fragment implements Injectable {
                         }
                         custMasterProfileImageModel=String.valueOf(resource.data.custMasterProfileImageModel);
                     //If some one update the image from web end and show the image mobile image then decrypt the image here...
-                      byte[] imageBytes = Base64.decode(newFileDate, Base64.DEFAULT);
-                         decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-                        mFragmentProfileBinding.imgVwProfile.setImageBitmap(decodedImage);
-                        mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
-                        mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
+                        if(newFileDate!=null) {
+                            byte[] imageBytes = Base64.decode(newFileDate, Base64.DEFAULT);
+                            decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                            mFragmentProfileBinding.imgVwProfile.setImageBitmap(decodedImage);
+                            mFragmentProfileBinding.tvInitial.setVisibility(View.GONE);
+                            mFragmentProfileBinding.imgFace.setVisibility(View.GONE);
+                        }
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;
@@ -579,7 +590,8 @@ public class ProfileFragment extends Fragment implements Injectable {
                     String json = gson.toJson(resource.data);
                     Log.e("handleImageResponse", json + "");
 
-
+                    /*byte[] imageBytes = Base64.decode(newFileDate, Base64.DEFAULT);
+                    decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);*/
 
                    // if(resource.data.custMasterProfileImageModel.returnStatus.equals("SUCCESS")) {
 

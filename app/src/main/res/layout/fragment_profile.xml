@@ -127,6 +127,15 @@
        app:layout_constraintTop_toBottomOf="@+id/viewProfile"
        app:layout_constraintLeft_toRightOf="@+id/clImage"></ImageView>
 
+
+        <ImageView
+            android:id="@+id/imgvwUpdateProfile"
+            android:layout_width="@dimen/dimen_20dp"
+            android:layout_height="@dimen/dimen_20dp"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintTop_toBottomOf="@+id/clImage"
+           app:layout_constraintStart_toStartOf="@+id/imgvwUpdate"></ImageView>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayoutFName"
         android:layout_width="match_parent"
@@ -325,6 +334,7 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@drawable/ic_newovalblack"
             android:gravity="center"
+            android:visibility="gone"
             android:text="@string/savechanges"
             android:textColor="@color/whiteColor"
             android:textSize="@dimen/font_14sp"

@@ -193,6 +193,7 @@
     <string name="proceed">Proceed</string>
     <string name="wishlist">WishList</string>
     <string name="started">Started</string>
+    <string name="cancel">Cancel</string>
     <string name="team"><br>Team Click4Pandit is happy to serve you! </br><br>Our professionals are willing to provide you with</br>
         <br>timely assistance.Please register your query issue</br><br> below and our team will get back to you within 24 hoours</br></string>
 
@@ -208,4 +209,5 @@
     <string name="please_enter_firstname">Please Enter \n First Name</string>
     <string name="please_enter_lastname">Please Enter \n Last Name</string>
     <string name="please_enter_validemail">Please Enter Valid \n email Address</string>
+    <string name="mobilenodoesnotmatch">mobileno shouldn\'t same alternate mobileno</string>
 </resources>

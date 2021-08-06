@@ -279,4 +279,8 @@ public class ProfileRepository {
         return  mSharedPrefsHelper.get(SharedPrefsHelper.EMAIL, null);
 
     }
+
+    public String getAlternateMobileNo(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.ALTERNATEMOBNO, null);
+    }
 }

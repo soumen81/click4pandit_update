@@ -324,6 +324,7 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@drawable/ic_newovalblack"
             android:gravity="center"
+            android:visibility="gone"
             android:text="@string/savechanges"
             android:textColor="@color/whiteColor"
             android:textSize="@dimen/font_14sp"
