@@ -370,6 +370,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if(id==R.id.differentPujaLocationFragment ) {
             selectedPosition(5);
 
+        }else if(id==R.id.editprofileFragment ) {
+            selectedPosition(6);
+
         }
 
        /* if (getFragmentManager().getBackStackEntryCount() > 0) {
