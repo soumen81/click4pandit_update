@@ -105,6 +105,7 @@ public class ProfileFragment extends Fragment implements Injectable {
     public ViewModelProvider.Factory viewModelFactory;
     ProfileViewModel mProfileViewModel;
     FragmentProfileBinding mFragmentProfileBinding;
+
     private View mView;
     NavController navController;
     int custMasterId,custMasterProfImgId,custMasterIdvalue,newCustMasterId,newCustMasterImageId;
