@@ -108,7 +108,7 @@ public class OrderFragment extends Fragment implements Injectable {
                     itHasMoreDataToLoad = true;
                     isLoading = false;
                     mSkip = 1;
-                    searchText="This Month";
+                    searchText="This-Month";
                     mOrderViewModel.getOrderList(searchText,mSkip).observe(getActivity(), OrderFragment.this::handleOrderList);
 
 
@@ -116,7 +116,7 @@ public class OrderFragment extends Fragment implements Injectable {
                     itHasMoreDataToLoad = true;
                     isLoading = false;
                     mSkip = 1;
-                    searchText="Last Month";
+                    searchText="Last-Month";
                    mOrderViewModel.getOrderList(searchText,mSkip).observe(getActivity(), OrderFragment.this::handleOrderList);
 
                 }

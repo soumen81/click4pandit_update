@@ -1,5 +1,6 @@
 package com.autumntechcreation.click4panditcustomer.ui.editprofile;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
@@ -24,11 +25,13 @@ import com.autumntechcreation.click4panditcustomer.databinding.FragmentEditprofi
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
+import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.ui.profile.CustomerGetProfileModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragmentDirections;
 import com.autumntechcreation.click4panditcustomer.ui.profile.ProfileViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.SaveCustomerprofileModel;
+import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
 import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.google.gson.Gson;
 
@@ -121,7 +124,23 @@ public class EditprofileFragment extends Fragment implements Injectable {
                             .setTitleText(getResources().getString(R.string.validation_error))
                             .setContentText(getResources().getString(R.string.mobilenodoesnotmatch))
                             .show();
-                }else{
+                }else if(mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString().length()==0){
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.mobilenoblank))
+                            .show();
+                }else if (!Patterns.PHONE.matcher(mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString()).matches()||
+
+                        (mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString().trim().equals(""))||(mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString().trim().length()<10)){
+                    //  Toast.makeText(SettingPageActivity.this,R.string.please_enter_valid_phone_number,Toast.LENGTH_SHORT).show();
+
+                    new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText(getResources().getString(R.string.validation_error))
+                            .setContentText(getResources().getString(R.string.please_enter_valid_phone_number))
+                            .show();
+                }
+
+                else{
                     mEditProfileViewModel.getForSaveCustomerProfile(custMasterId, firstName, lastName, mobileNo, mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString(), emailId).observe(getActivity(), EditprofileFragment.this::handleSaveCustomerProfile);
                 }
             }
@@ -185,8 +204,11 @@ public class EditprofileFragment extends Fragment implements Injectable {
 
 
                         mFragmentEditprofileBinding.edtTxtFName.setText(firstName);
+                        mFragmentEditprofileBinding.edtTxtFName.setEnabled(false);
                         mFragmentEditprofileBinding.edtTxtLName.setText(lastName);
+                        mFragmentEditprofileBinding.edtTxtLName.setEnabled(false);
                         mFragmentEditprofileBinding.edtTxtMobile.setText(mobileNo);
+                        mFragmentEditprofileBinding.edtTxtMobile.setEnabled(false);
                         mFragmentEditprofileBinding.edtTxtEmail.setText(emailId);
                         mFragmentEditprofileBinding.edtTxtEmail.setEnabled(false);
 
@@ -255,11 +277,24 @@ public class EditprofileFragment extends Fragment implements Injectable {
                     if (resource.data.returnStatus.equals("SUCCESS")) {
 
                        String strAlternateMobileNo= mEditProfileViewModel.storeAlternateMobileNo(mFragmentEditprofileBinding.edtTxtAlternateMobile.getText().toString());
-                        EditprofileFragmentDirections.ActionEditprofileFragmentToProfileFragment action=
-                                EditprofileFragmentDirections.actionEditprofileFragmentToProfileFragment();
-                        action.setAlterMobileNo(strAlternateMobileNo);
-                        Navigation.findNavController(mView).navigate(action);
+                       Log.e("ALTERNATENO",strAlternateMobileNo);
+                       // findNavController(mView).navigate(EditprofileFragmentDirections.actionEditprofileFragmentToProfileFragment());
 
+
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText(this.getString(R.string.success))
+                                .setContentText(this.getString(R.string.editprofilesucess))
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismiss();
+
+                                    }
+                                })
+
+
+                                .show();
 
                     }
                     DisplayDialog.getInstance().dismissAlertDialog();

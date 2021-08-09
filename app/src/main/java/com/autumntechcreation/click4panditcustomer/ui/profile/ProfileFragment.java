@@ -146,10 +146,10 @@ public class ProfileFragment extends Fragment implements Injectable {
         mFragmentProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
         mFragmentProfileBinding.setLifecycleOwner(this);
 
-        if(ProfileFragmentArgs.fromBundle(getArguments()).getAlterMobileNo().length()>0) {
+       /* if(ProfileFragmentArgs.fromBundle(getArguments()).getAlterMobileNo().length()>0) {
             getAlternateNo = ProfileFragmentArgs.fromBundle(getArguments()).getAlterMobileNo();
             Log.e("ALTERNATENO", getAlternateNo);
-        }
+        }*/
 
         return mFragmentProfileBinding.getRoot();
     }
@@ -167,12 +167,13 @@ public class ProfileFragment extends Fragment implements Injectable {
 
         mProfileViewModel = ViewModelProviders.of(ProfileFragment.this, viewModelFactory).get(ProfileViewModel.class);
         mFragmentProfileBinding.setProfileViewModel(mProfileViewModel);
-        if(getAlternateNo!=null) {
+
+       /* if(getAlternateNo!=null) {
             mFragmentProfileBinding.edtTxtAlternateMobileNo.setText(getAlternateNo);
         }else{
 
             mFragmentProfileBinding.edtTxtAlternateMobileNo.setText( mProfileViewModel.getAlternateMobileNo());
-        }
+        }*/
         UUID uuid = UUID.randomUUID();
         uuidInString = uuid.toString();
       //  cloudFileName=uuidInString+".jpeg";
@@ -246,6 +247,13 @@ public class ProfileFragment extends Fragment implements Injectable {
 
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mFragmentProfileBinding.edtTxtAlternateMobileNo.setText( mProfileViewModel.getAlternateMobileNo());
+    }
+
     private boolean isValidMobile(String phone) {
         return android.util.Patterns.PHONE.matcher(phone).matches();
     }

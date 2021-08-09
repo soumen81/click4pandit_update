@@ -613,10 +613,7 @@
         android:id="@+id/profileFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.profile.ProfileFragment"
         android:label="ProfileFragment" >
-        <argument
-            android:name="alterMobileNo"
-            android:defaultValue=""
-            app:argType="string" />
+
         <action
             android:id="@+id/action_profileFragment_to_editprofileFragment"
             app:destination="@id/editprofileFragment" />
@@ -629,10 +626,7 @@
         android:id="@+id/editprofileFragment"
         android:name="com.autumntechcreation.click4panditcustomer.ui.editprofile.EditprofileFragment"
         android:label="EditprofileFragment" >
-        <argument
-            android:name="alterMobileNo"
-            android:defaultValue=""
-            app:argType="string" />
+
         <action
             android:id="@+id/action_editprofileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
