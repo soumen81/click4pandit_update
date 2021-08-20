@@ -74,7 +74,7 @@ public class LoginRepository {
                /* jsonObject.addProperty(AllUrlsAndConfig.FIRSTNAME, "null");
                 jsonObject.addProperty(AllUrlsAndConfig.LASTNAME, "null");
                 jsonObject.addProperty(AllUrlsAndConfig.MOBILE, "null");*/
-
+                Log.e("Result",jsonObject.toString());
 
                 return mWebservice.Login(url,jsonObject);
 

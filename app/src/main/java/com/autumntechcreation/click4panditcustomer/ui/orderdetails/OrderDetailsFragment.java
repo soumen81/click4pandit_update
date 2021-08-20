@@ -74,11 +74,6 @@ public class OrderDetailsFragment extends Fragment implements Injectable {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
-
-
-
-
         mFragmentOrderdetailsBinding.tvPackageValue.setText(packageTypeName);
         mFragmentOrderdetailsBinding.tvPanditDetails.setText(orderDesc);
         mFragmentOrderdetailsBinding.tvDateTimeValue.setText(Static.convertToDate(custOrderDate));

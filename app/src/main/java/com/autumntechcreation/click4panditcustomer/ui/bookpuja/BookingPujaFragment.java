@@ -338,7 +338,7 @@ public class BookingPujaFragment extends Fragment implements Injectable {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 try {
-                    languageId=mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position).getLangMasterId();
+                    languageId=mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position-1).getLangMasterId();
                     pujaLang = mBookingPujaViewModel.mBookingLanguageList.getValue().data.get(position-1).getLangMasterName();
                 }catch (Exception e){
                     e.printStackTrace();
