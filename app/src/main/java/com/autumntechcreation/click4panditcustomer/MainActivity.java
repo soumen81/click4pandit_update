@@ -17,8 +17,10 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -38,7 +40,16 @@ import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.ui.search.SearchActivity;
 import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.OnSuccessListener;
+import com.google.android.play.core.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
+
+import org.jsoup.Jsoup;
 
 import java.util.List;
 
@@ -49,6 +60,8 @@ import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
+
+import static com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         HasSupportFragmentInjector, ConnectivityReceiver.ConnectivityReceiverListener {
@@ -75,19 +88,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Bundle bundle;
     boolean doubleBackToExitPressedOnce = false;
     private FirebaseAnalytics mFirebaseAnalytics;
+    private int REQUEST_CODE=11;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         AndroidInjection.inject(this);
 
         activityMainBinding.setLifecycleOwner(this);
         drawerLayout = activityMainBinding.drawerLayout;
         fragmentManager = getSupportFragmentManager();
-
-
         mMainViewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(MainViewModel.class);
         activityMainBinding.setLifecycleOwner(this);
@@ -110,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         sp = getSharedPreferences("login",MODE_PRIVATE);
 
-        /*Button crashButton = new Button(this);
+     /*   Button crashButton = new Button(this);
         crashButton.setText("Test Crash");
         crashButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -172,6 +183,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        AppUpdateManager appUpdateManager= AppUpdateManagerFactory.create(MainActivity.this);
+        Task<AppUpdateInfo> appUpdateInfoTask=appUpdateManager.getAppUpdateInfo();
+        appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
+            @Override
+            public void onSuccess(AppUpdateInfo result) {
+                if(result.updateAvailability()== UpdateAvailability.UPDATE_AVAILABLE &&
+                result.isUpdateTypeAllowed(IMMEDIATE)){
+                    try {
+                        appUpdateManager.startUpdateFlowForResult(result,IMMEDIATE,MainActivity.this,REQUEST_CODE);
+                    } catch (IntentSender.SendIntentException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
 
     }
 
@@ -185,9 +211,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
              bundle = data.getExtras();
 
+        }else if(requestCode==REQUEST_CODE){
+            Toast.makeText(MainActivity.this,"Start Download",Toast.LENGTH_SHORT).show();
+            if(resultCode==RESULT_OK){
+                Log.d("FAILED","Update Flow Failed"+resultCode);
+            }
         }
         Log.e("SOUMMMMMEN","onActivityResult");
     }
+
+
     public Bundle returnPaymentDetails(){
 
         return bundle;

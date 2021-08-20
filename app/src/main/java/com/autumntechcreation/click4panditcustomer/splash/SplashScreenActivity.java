@@ -19,12 +19,14 @@ import com.autumntechcreation.click4panditcustomer.databinding.ActivitySplashBin
 import com.autumntechcreation.click4panditcustomer.intro.IntroductionActivity;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
 import com.autumntechcreation.click4panditcustomer.ui.dashboard.DashBoardActivity;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
 
-public class SplashScreenActivity extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity  {
 
 
     @Inject
@@ -45,6 +47,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         mSplashViewModel = ViewModelProviders.of(this,viewModelFactory).get(SplashViewModel.class);
         mActivitySplashBinding.setLifecycleOwner(this);
         mActivitySplashBinding.setSplashViewModel(mSplashViewModel);
+
+
+
 
         handler=new Handler();
         handler.postDelayed(new Runnable() {
