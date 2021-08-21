@@ -3,8 +3,8 @@ package com.autumntechcreation.click4panditcustomer.util;
 public class AllUrlsAndConfig {
     public static String SIGNUP="/api/NonFnctnlCncrn/SignUp";
 
-    public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";//TEST
-   //public static String BASE_URL="https://prod-webapi-click4pandit.azurewebsites.net";//PRODUCTION
+    //public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";//TEST
+   public static String BASE_URL="https://prod-webapi-click4pandit.azurewebsites.net";//PRODUCTION
     public static String LOGIN="/api/NonFnctnlCncrn/Login";
     public static final String PUJATYPES = "/api/PujaCtgry/GetPujaCategories";
     public static final String PUJACATEGORIES = "/api/PujaSubCtgry/GetPujaSubCtgryByPujaCtgryId";

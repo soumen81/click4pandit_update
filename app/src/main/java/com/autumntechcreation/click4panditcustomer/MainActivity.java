@@ -16,10 +16,13 @@ import androidx.navigation.fragment.NavHostFragment;
 
 
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -183,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        AppUpdateManager appUpdateManager= AppUpdateManagerFactory.create(MainActivity.this);
+        /*AppUpdateManager appUpdateManager= AppUpdateManagerFactory.create(MainActivity.this);
         Task<AppUpdateInfo> appUpdateInfoTask=appUpdateManager.getAppUpdateInfo();
         appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
             @Override
@@ -197,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 }
             }
-        });
+        });*/
 
     }
 
@@ -211,12 +214,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
              bundle = data.getExtras();
 
-        }else if(requestCode==REQUEST_CODE){
+        }/*else if(requestCode==REQUEST_CODE){
             Toast.makeText(MainActivity.this,"Start Download",Toast.LENGTH_SHORT).show();
             if(resultCode==RESULT_OK){
                 Log.d("FAILED","Update Flow Failed"+resultCode);
             }
-        }
+        }*/
         Log.e("SOUMMMMMEN","onActivityResult");
     }
 
@@ -459,6 +462,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Static.deleteCache(MainActivity.this);
     }
 
+
+
     public  void setToolbar(Boolean isMenu, Boolean isBack, Boolean isLockDrawer, Boolean backGround) {
         if (isMenu) {
             activityMainBinding.txtMenu.setVisibility(View.VISIBLE);
@@ -514,5 +519,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.getMenu().getItem(pos).setChecked(true);
     }
 
+    public void updateApp(){
+        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+        // Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener(result -> {
+
+            if (result.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && result.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+//                requestUpdate(result);
+                android.view.ContextThemeWrapper ctw = new android.view.ContextThemeWrapper(this,R.style.AlertDialogCustom);
+                final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(ctw);
+                alertDialogBuilder.setTitle("Update NTT Netmagic");
+                alertDialogBuilder.setCancelable(false);
+                alertDialogBuilder.setIcon(R.drawable.google_play);
+                alertDialogBuilder.setMessage("Fitness Trainer recommends that you update to the latest version for a seamless & enhanced performance of the app.");
+                alertDialogBuilder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        try{
+                            startActivity(new Intent("android.intent.action.VIEW", Uri.parse("market://details?id="+getPackageName())));
+                        }
+                        catch (ActivityNotFoundException e){
+                            startActivity(new Intent("android.intent.action.VIEW", Uri.parse("https://play.google.com/store/apps/details?id="+getPackageName())));
+                        }
+                    }
+                });
+                alertDialogBuilder.setNegativeButton("No Thanks",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+                alertDialogBuilder.show();
+
+            } else {
+
+            }
+        });
+    }
 
 }
