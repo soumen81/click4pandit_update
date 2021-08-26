@@ -484,6 +484,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="shopCategoryFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1440" />
+                            <option name="y" value="-594" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="shopFragment">
                     <value>
                       <LayoutPositions>

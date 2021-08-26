@@ -1071,6 +1071,10 @@
             android:defaultValue=""
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/shopCategoryFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryFragment"
+        android:label="ShopCategoryFragment" />
 
 
 </navigation>

@@ -3,24 +3,16 @@ manifest
 ADDED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:1:1-10:12
 INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:1:1-10:12
 INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:1:1-10:12
-INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:1:1-10:12
-INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:1:1-10:12
-INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:1:1-10:12
-INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:1:1-10:12
 	package
 		ADDED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:2:5-35
 		INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml
 		INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml
 	android:versionName
 		ADDED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:4:5-32
-		INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml
-		INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:1:11-69
 	android:versionCode
 		ADDED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:3:5-28
-		INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml
-		INJECTED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml
 application
 ADDED from D:\WorkArea\Updateproject\Click4PanditCustomer\library\src\main\AndroidManifest.xml:8:5-20
 uses-sdk

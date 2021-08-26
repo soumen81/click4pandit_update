@@ -40,6 +40,7 @@ import com.autumntechcreation.click4panditcustomer.ui.register.RegisterRepositor
 import com.autumntechcreation.click4panditcustomer.ui.search.SearchRepository;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.shop.ShopRepository;
+import com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryRepository;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutRepository;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionRepository;
 import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusRepository;
@@ -283,5 +284,10 @@ public class AppModule {
     @Singleton
     IntroductionRepository introductionRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new IntroductionRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+    @Provides
+    @Singleton
+    ShopCategoryRepository shopCategoryRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new ShopCategoryRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

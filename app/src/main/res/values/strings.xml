@@ -212,4 +212,13 @@
     <string name="please_enter_validemail">Please Enter Valid \n email Address</string>
     <string name="mobilenodoesnotmatch">mobileno shouldn\'t same alternate mobileno</string>
     <string name="mobilenoblank">Alternate mobileno shouldn\'t  be blank</string>
+
+    <!--Notification-->
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="default_notification_channel_name" translatable="true">default_notification_channel_name</string>
+    <string name="notify">Notification Status</string>
+    <string name="activenotification">Notification Activated</string>
+    <string name="deactivenotification">Notification DeActivated</string>
+
+    <string name="sorry_you_not_online_msg">Sorry! You are not online anymore</string>
 </resources>

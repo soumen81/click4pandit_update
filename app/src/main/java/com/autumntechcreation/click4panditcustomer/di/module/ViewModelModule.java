@@ -40,6 +40,7 @@ import com.autumntechcreation.click4panditcustomer.ui.search.SearchViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.shop.ShopViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusViewModel;
@@ -248,4 +249,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(IntroductionViewModel.class)
     abstract ViewModel bindIntroductionViewModel(IntroductionViewModel introductionViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ShopCategoryViewModel.class)
+    abstract ViewModel bindShopCategoryViewModel(ShopCategoryViewModel shopCategoryViewModel);
 }

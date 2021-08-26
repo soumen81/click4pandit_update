@@ -1,16 +1,20 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+
+    ext {
+        kotlin_version = '1.5.21'
+    }
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.android.tools.build:gradle:4.2.2'
         classpath 'com.google.gms:google-services:4.3.10'
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.7.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -45,6 +49,6 @@ versions.map="15.0.1"
 versions.timberVersion = "4.6.1"
 versions.retrofitVersion = "2.3.0"
 versions.okhttpVersion = "3.4.1"
-versions.daggerVersion = "2.16"
+versions.daggerVersion = "2.20"
 versions.map="16.0.0"
 ext.versions = versions
