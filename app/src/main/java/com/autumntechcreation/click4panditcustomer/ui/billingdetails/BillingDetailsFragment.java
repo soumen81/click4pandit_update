@@ -1,7 +1,10 @@
 package com.autumntechcreation.click4panditcustomer.ui.billingdetails;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,6 +30,7 @@ import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentBillingdetailsBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.MyReceiver;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragmentArgs;
@@ -78,6 +82,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
     String paymentorderID = "",paymentMode="",transactionTime="",referenceId="",txMsg="",txStatus="",yajamanList="",
             procedureList="",pujaSamagriList="";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -476,12 +481,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                                     .setContentText("Unhandle Error")
                                     .show();
                         }
-                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
-
-                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText(this.getString(R.string.nointernet))
-                                .setContentText(this.getString(R.string.nointernetdetails))
-                                .show();
+                    } else if (!Static.isNetworkAvailable(getActivity())) {
 
                     }
 
@@ -539,12 +539,7 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                                     .setContentText("Unhandle Error")
                                     .show();
                         }
-                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
-
-                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText(this.getString(R.string.nointernet))
-                                .setContentText(this.getString(R.string.nointernetdetails))
-                                .show();
+                    } else if (!Static.isNetworkAvailable(getActivity())) {
 
                     }
 
@@ -570,8 +565,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
 
                         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
                         cfPaymentService.setOrientation(0);
-                       cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
-                        // cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "PROD", "#784BD2", "#FFFFFF", false);
+                      // cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "TEST", "#784BD2", "#FFFFFF", false);
+                         cfPaymentService.doPayment(BillingDetailsFragment.this.getActivity(), getInputParams(), cashFreeToken, "PROD", "#784BD2", "#FFFFFF", false);
 
 
 
@@ -607,12 +602,14 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                                     .setContentText("Unhandle Error")
                                     .show();
                         }
-                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+                    } /*else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
 
                         new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText(this.getString(R.string.nointernet))
                                 .setContentText(this.getString(R.string.nointernetdetails))
                                 .show();
+
+                    }*/else if (!Static.isNetworkAvailable(getActivity())) {
 
                     }
 
@@ -677,15 +674,9 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
                                     .setContentText("Unhandle Error")
                                     .show();
                         }
-                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
-
-                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText(this.getString(R.string.nointernet))
-                                .setContentText(this.getString(R.string.nointernetdetails))
-                                .show();
+                    } else if (!Static.isNetworkAvailable(getActivity())) {
 
                     }
-
                     break;
                 case LOADING:
                     Log.e("handleCashFreeTokenResponse", "LOADING");
@@ -727,8 +718,8 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         }
     }
     private Map<String, String> getInputParams() {
-        String appId = "6159303c6dd0fdc88e24a424f39516";//TEST
-         //String appId = "10732304e9cb87da1696501a98323701";//PRODUCTION
+        //String appId = "6159303c6dd0fdc88e24a424f39516";//TEST
+         String appId = "10732304e9cb87da1696501a98323701";//PRODUCTION
         String strorderId = String.valueOf(orderId);
         String strorderAmount = orderAmount;
         String orderNote = "Puja";

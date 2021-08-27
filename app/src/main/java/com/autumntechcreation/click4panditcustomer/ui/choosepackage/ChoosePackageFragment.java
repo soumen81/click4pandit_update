@@ -1,7 +1,10 @@
 package com.autumntechcreation.click4panditcustomer.ui.choosepackage;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -29,6 +32,7 @@ import com.autumntechcreation.click4panditcustomer.databinding.DialogChoosepacka
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentChoosepackageBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.MyReceiver;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragmentDirections;
@@ -38,6 +42,7 @@ import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderFragment;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryActivity;
+import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.google.gson.Gson;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
@@ -298,10 +303,9 @@ public class ChoosePackageFragment extends Fragment implements Injectable {
             switch (resource.status) {
                 case ERROR:
                     DisplayDialog.getInstance().dismissAlertDialog();
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Something went wrong")
-                            .show();
+                    if (!Static.isNetworkAvailable(getActivity())) {
+
+                    }
                     break;
                 case LOADING:
 

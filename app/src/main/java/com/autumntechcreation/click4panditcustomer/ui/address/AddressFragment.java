@@ -1,5 +1,8 @@
 package com.autumntechcreation.click4panditcustomer.ui.address;
 
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,12 +26,10 @@ import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentAddressbookBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.MyReceiver;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
-import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment;
-import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaViewModel;
-import com.autumntechcreation.click4panditcustomer.ui.orders.OrderFragment;
-import com.autumntechcreation.click4panditcustomer.ui.orders.OrderListModel;
-import com.autumntechcreation.click4panditcustomer.ui.orders.OrderViewModel;
+
+import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -55,6 +56,7 @@ public class AddressFragment extends Fragment implements Injectable {
 
         mFragmentAddressbookBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_addressbook, container, false);
         mFragmentAddressbookBinding.setLifecycleOwner(this);
+
         return mFragmentAddressbookBinding.getRoot();
 
     }
@@ -163,16 +165,16 @@ public class AddressFragment extends Fragment implements Injectable {
             }
         });
     }
+
     private void handleAddressList(Resource<List<AddressListModel>> resource) {
         if (resource != null) {
             JSONObject jsonObject = null;
             switch (resource.status) {
                 case ERROR:
                     DisplayDialog.getInstance().dismissAlertDialog();
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Something went wrong")
-                            .show();
+                     if (!Static.isNetworkAvailable(getActivity())) {
+
+                }
                     break;
                 case LOADING:
 

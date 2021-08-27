@@ -27,6 +27,7 @@ import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentDirections;
+import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
@@ -215,10 +216,7 @@ public class HomeFragment extends Fragment implements Injectable {
             switch (resource.status) {
                 case ERROR:
                     DisplayDialog.getInstance().dismissAlertDialog();
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Something went wrong")
-                            .show();
+
                     break;
                 case LOADING:
 
@@ -286,10 +284,7 @@ public class HomeFragment extends Fragment implements Injectable {
             switch (resource.status) {
                 case ERROR:
                     DisplayDialog.getInstance().dismissAlertDialog();
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Error")
-                            .setContentText("Something went wrong")
-                            .show();
+
                     break;
                 case LOADING:
 

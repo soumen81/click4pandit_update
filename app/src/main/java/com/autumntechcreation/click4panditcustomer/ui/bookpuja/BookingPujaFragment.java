@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -40,6 +43,7 @@ import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentBookingpujaBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.MyReceiver;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentArgs;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
@@ -396,6 +400,8 @@ public class BookingPujaFragment extends Fragment implements Injectable {
 
     }
 
+
+
     public void showTimePicker(){
         final Calendar cldr = Calendar.getInstance();
         TimePickerDialog picker;
@@ -457,10 +463,13 @@ public class BookingPujaFragment extends Fragment implements Injectable {
             switch (resource.status) {
                 case ERROR:
                     DisplayDialog.getInstance().dismissAlertDialog();
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                   /* new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
                             .setContentText("Something went wrong")
-                            .show();
+                            .show();*/
+                    if (!Static.isNetworkAvailable(getActivity())) {
+
+                    }
                     break;
                 case LOADING:
 
@@ -555,10 +564,13 @@ public class BookingPujaFragment extends Fragment implements Injectable {
             switch (resource.status) {
                 case ERROR:
                     DisplayDialog.getInstance().dismissAlertDialog();
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                   /* new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Error")
                             .setContentText("Something went wrong")
-                            .show();
+                            .show();*/
+                    if (!Static.isNetworkAvailable(getActivity())) {
+
+                    }
                     break;
                 case LOADING:
 

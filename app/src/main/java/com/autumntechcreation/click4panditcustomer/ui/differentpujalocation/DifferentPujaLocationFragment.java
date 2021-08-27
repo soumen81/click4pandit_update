@@ -1,5 +1,6 @@
 package com.autumntechcreation.click4panditcustomer.ui.differentpujalocation;
 
+import android.content.BroadcastReceiver;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -20,6 +21,7 @@ import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentDifferentpujalocationBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
+import com.autumntechcreation.click4panditcustomer.network.MyReceiver;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsFragmentArgs;
 import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsViewModel;
@@ -84,6 +86,8 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
             getBillingPinCode=BillingDetailsFragmentArgs.fromBundle(getArguments()).getBillingPincode();
             Log.e("BILLINGPINCODE",getBillingPinCode);
         }
+
+
         return mFragmentDifferentpujalocationBinding.getRoot();
     }
     @Override

@@ -1,5 +1,8 @@
 package com.autumntechcreation.click4panditcustomer.ui.orders;
 
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -27,6 +30,7 @@ import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentOrderBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.MyReceiver;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragment;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageListModel;
@@ -63,6 +67,7 @@ public class OrderFragment extends Fragment implements Injectable {
     int mSkip = 1,mTop = 5;
     boolean isLoading = false, itHasMoreDataToLoad = true,isFilter=false;
     String searchText = "";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -227,7 +232,6 @@ public class OrderFragment extends Fragment implements Injectable {
         });
 
     }
-
 
 
 

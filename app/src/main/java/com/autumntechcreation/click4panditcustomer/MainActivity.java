@@ -17,11 +17,14 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -37,6 +40,7 @@ import android.widget.Toast;
 
 import com.autumntechcreation.click4panditcustomer.databinding.ActivityMainBinding;
 import com.autumntechcreation.click4panditcustomer.network.ConnectivityReceiver;
+import com.autumntechcreation.click4panditcustomer.network.MyReceiver;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginActivity;
@@ -92,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     boolean doubleBackToExitPressedOnce = false;
     private FirebaseAnalytics mFirebaseAnalytics;
     private int REQUEST_CODE=11;
+    private BroadcastReceiver MyReceiver = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -201,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });*/
-
+        MyReceiver=new MyReceiver();
     }
 
     @Override
@@ -556,4 +561,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        broadcastIntent();
+    }
+
+    public void broadcastIntent(){
+        registerReceiver(MyReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(MyReceiver);
+
+    }
 }

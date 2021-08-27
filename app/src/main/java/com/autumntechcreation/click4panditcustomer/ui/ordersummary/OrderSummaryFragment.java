@@ -1,6 +1,9 @@
 package com.autumntechcreation.click4panditcustomer.ui.ordersummary;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +25,7 @@ import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentOrdersummeryBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
+import com.autumntechcreation.click4panditcustomer.network.MyReceiver;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragment;
 import com.autumntechcreation.click4panditcustomer.ui.bookpuja.BookingPujaFragmentArgs;
@@ -55,6 +59,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
     int subCategoryId,pujPackageId,pujPackageTypeId,locationId,languageId,noOfPandit;
     double dd,finalAmount;
     double sgstvalue,cgstvalue;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -99,6 +104,7 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
         Log.e("isAllSamagries",""+isAllSamagries);
         noOfPandit=BookingPujaFragmentArgs.fromBundle(getArguments()).getNoOfPandit();
         Log.e("noOfPandit",""+noOfPandit);
+
         return mFragmentOrdersummeryBinding.getRoot();
     }
     @Override
@@ -213,15 +219,9 @@ public class OrderSummaryFragment extends Fragment implements Injectable {
                                     .setContentText("Unhandle Error")
                                     .show();
                         }
-                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+                    }else if (!Static.isNetworkAvailable(getActivity())) {
 
-                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText(this.getString(R.string.nointernet))
-                                .setContentText(this.getString(R.string.nointernetdetails))
-                                .show();
-
-                    }
-
+                }
                     break;
                 case LOADING:
                     Log.e("handleRegisterResponse", "LOADING");
