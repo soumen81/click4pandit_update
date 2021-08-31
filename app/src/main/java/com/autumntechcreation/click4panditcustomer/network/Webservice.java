@@ -18,6 +18,7 @@ import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.TriggerMail
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
+import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderListModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.CustomerGetProfileModel;
@@ -187,6 +188,13 @@ public interface Webservice {
     @POST()
     LiveData<ApiResponse<ContactUsModel>> SendEmailForContactUs(@Url String apiname,
                                                                 @Body JsonObject jsonObject
+
+    );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<List<NewPujaItemKitListModel>>> getPujaPujaItemKitList(@Url String apiname,
+                                                                       @Body JsonObject jsonObject
 
     );
 }

@@ -3,6 +3,7 @@ package com.autumntechcreation.click4panditcustomer.util;
 public class AllUrlsAndConfig {
     public static String SIGNUP="/api/NonFnctnlCncrn/SignUp";
 
+    public static String STORE_BASE_URL="https://dev-brnch-webapi-click4pandit.azurewebsites.net";//TEST
     //public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";//TEST
    public static String BASE_URL="https://prod-webapi-click4pandit.azurewebsites.net";//PRODUCTION
     public static String LOGIN="/api/NonFnctnlCncrn/Login";
@@ -28,6 +29,7 @@ public class AllUrlsAndConfig {
    // public static final String SAVEPROFILEIMAGE="/api/Profile/SaveCustProfileImage";
     public static final String SAVEPROFILEIMAGE="/api/Profile/SaveCustProfileImageForAndroid";
     public static final String SENDEMAILCONTACT="/api/TriggerMail/SendEmailForContact";
+    public static final String PRODUCTITEMKITLIST="/api/Product/SearchProductByStandardCriteria";
 
 
 
@@ -241,6 +243,15 @@ public class AllUrlsAndConfig {
     public static final String EXPLAINYOURISSUE="ExplainYourIssue";
     public static final String KEY="key";
     public static final String VALUE="value";
-
+    //Parameter for Product Item Kit List
+    public static final String PRODUCTNAME="ProductName";
+    public static final String PRODUCTMASTERID="ProdMasterId";
+    public static final String DELFFLGG="DelFlg";
+    public static final String PAGESSIZE="PageSize";
+    public static final String PAGEIINDEX="PageIndex";
+    public static final String PRODUCTIONCATEGORYMODELLIST="ProdCtgryModelList";
+    public static final String PRODUCTIONTYPEMODELLIST="ProdTypModelList";
+    public static final String PRODUCTIONMTRLTYPEMODELLIST="ProdMtrlTypModelList";
+    public static final String PRODUCTIONRANGECRITERIAMODELLIST="PriceRangeCriteriaModelList";
 
 }

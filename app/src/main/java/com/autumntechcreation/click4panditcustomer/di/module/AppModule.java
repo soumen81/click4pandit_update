@@ -24,6 +24,7 @@ import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileRep
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
+import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListRepository;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderRepository;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryRepository;
@@ -289,5 +290,11 @@ public class AppModule {
     @Singleton
     ShopCategoryRepository shopCategoryRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new ShopCategoryRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    NewPujaItemKitListRepository newPujaItemKitListRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new NewPujaItemKitListRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

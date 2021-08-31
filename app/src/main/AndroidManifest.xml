@@ -110,7 +110,7 @@
             </intent-filter>
         </service>
 
-        <receiver android:name="MyReceiver">
+        <receiver android:name=".network.MyReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />

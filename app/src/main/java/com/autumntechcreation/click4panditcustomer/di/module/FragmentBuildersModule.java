@@ -10,6 +10,7 @@ import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackag
 import com.autumntechcreation.click4panditcustomer.ui.differentpujalocation.DifferentPujaLocationFragment;
 import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditprofileFragment;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
+import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitList;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderFragment;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryFragment;
@@ -110,6 +111,9 @@ public abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract ShopCategoryFragment contributeShopCategoryFragment();
+
+    @ContributesAndroidInjector
+    abstract NewPujaItemKitList contributeNewPujaItemKitList();
 
 
 }

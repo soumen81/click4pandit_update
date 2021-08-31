@@ -22,6 +22,7 @@ import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileVie
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderViewModel;
@@ -254,4 +255,9 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ShopCategoryViewModel.class)
     abstract ViewModel bindShopCategoryViewModel(ShopCategoryViewModel shopCategoryViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewPujaItemKitListViewModel.class)
+    abstract ViewModel bindNewPujaItemKitListViewModel(NewPujaItemKitListViewModel newPujaItemKitListViewModel);
 }
