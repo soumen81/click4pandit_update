@@ -4,55 +4,40 @@
     xmlns:android.support.design="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="position"
             type="java.lang.Integer"/>
         <variable
             name="viewModel"
-            type="com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListViewModel" />
-        <variable
-            name="newpujaitemlist"
-            type="com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel"></variable>
+            type="com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clPujaItemKit"
+        android:id="@+id/clPujaBoxItemKit"
         android:layout_width="@dimen/dimen_130dp"
         android:layout_height="@dimen/dimen_220dp"
         android:layout_marginTop="@dimen/dimen_10dp"
         android:background="@drawable/shopitem_border"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
         >
-
-
-
-
-
         <ImageView
-
-            android:id="@+id/imgPujaItemKit"
+            android:id="@+id/imgPujaBoxItem"
             android:layout_width="150dp"
             android:layout_height="@dimen/dimen_100dp"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:layout_marginTop="@dimen/dimen_10dp"
-            android:layout_marginRight="@dimen/dimen_10dp"
-            app:pujaitemkit_img="@{position}"
+            android:layout_margin="@dimen/dimen_10dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-        </ImageView>
-        <!--app:pujaitemkit_img="@{position}"-->
+            app:pujaboxitem_img="@{position}"
+            ></ImageView>
         <ImageView
-            android:id="@+id/imgWishItemKit"
+            android:id="@+id/imgWishPujaBox"
             android:layout_width="@dimen/dimen_25dp"
             android:layout_height="@dimen/dimen_25dp"
             android:src="@drawable/wish"
@@ -62,100 +47,94 @@
 
         </ImageView>
 
-        <!--  app:puja_item_kit_img="@{position}"-->
-
-
         <TextView
-            android:id="@+id/tvPujaItemKitName"
-            style="@style/Style_TextView_FontSemiBold"
+            android:id="@+id/tvPujaBoxItemKitName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_5dp"
+            android:text="@{viewModel.getPujaItemBoxName(position)}"
+            style="@style/Style_TextView_FontSemiBold"
             android:singleLine="true"
             android:ellipsize="end"
-            android:text="@{viewModel.getPujaItemKitName(position)}"
+            android:textSize="@dimen/font_10sp"
+            android:layout_marginTop="@dimen/dimen_5dp"
             android:textColor="@color/blackColor"
-            android:textSize="@dimen/font_10sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgPujaItemKit"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/imgPujaBoxItem"></TextView>
 
         <TextView
-            android:id="@+id/tvPujaKitQuantity"
+            android:id="@+id/tvPujaBoxKitQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.getPujaItemBoxQuantity(position)}"
+            style="@style/Style_TextView_FontSemiBold"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="@dimen/font_10sp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:textColor="@color/buttonColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPujaBoxItemKitName"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="@dimen/font_10sp"
+            android:text="@string/rupeesign"
+            android:textColor="@color/buttonColor"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginRight="2dp"
+            app:layout_constraintRight_toLeftOf="@+id/tvPujaBoxPrice"
+            app:layout_constraintTop_toBottomOf="@+id/tvPujaBoxKitQuantity"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/tvPujaBoxPrice"
             style="@style/Style_TextView_FontSemiBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_5dp"
-            android:textSize="@dimen/font_10sp"
-            android:text="@{viewModel.getPujaItemKitQuantity(position)}"
+            android:text="@{viewModel.getPujaItemBoxPrice(position)}"
             android:textColor="@color/buttonColor"
             android:singleLine="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPujaItemKitName"></TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/font_10sp"
-        android:text="@string/rupeesign"
-        android:textColor="@color/buttonColor"
-        android:layout_marginTop="@dimen/dimen_5dp"
-        android:layout_marginRight="2dp"
-        app:layout_constraintRight_toLeftOf="@+id/tvPujaKitPrice"
-        app:layout_constraintTop_toBottomOf="@+id/tvPujaKitQuantity"
-        ></TextView>
-
-        <TextView
-            android:id="@+id/tvPujaKitPrice"
-            style="@style/Style_TextView_FontSemiBold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_5dp"
-            android:text="@{viewModel.getPujaItemKitPrice(position)}"
-            android:textColor="@color/buttonColor"
-            android:singleLine="true"
+            android:ellipsize="end"
             android:textSize="@dimen/font_10sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPujaKitQuantity"></TextView>
-
+            app:layout_constraintTop_toBottomOf="@+id/tvPujaBoxKitQuantity"></TextView>
         <TextView
-            android:id="@+id/tvPujaItemKitShopNow"
+            android:id="@+id/tvPujaBoxItemKitShopNow"
             style="@style/Style_TextView_FontBold"
             android:layout_width="80dp"
             android:layout_height="@dimen/dimen_30dp"
-            android:layout_marginLeft="@dimen/dimen_5dp"
             android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@drawable/ic_newovalred"
+            android:layout_marginLeft="@dimen/dimen_5dp"
             android:gravity="center"
             android:text="@string/addtocart"
             android:textColor="@color/whiteColor"
             android:textSize="@dimen/font_10sp"
             android.support.design:layout_constraintLeft_toLeftOf="parent"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/tvPujaKitPrice">
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvPujaBoxPrice">
 
         </TextView>
-
         <TextView
-            android:id="@+id/tvPujaItemKitBuyNow"
+            android:id="@+id/tvPujaBoxKitBuyNow"
             style="@style/Style_TextView_FontBold"
             android:layout_width="@dimen/dimen_50dp"
             android:layout_height="@dimen/dimen_30dp"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:layout_marginRight="@dimen/dimen_5dp"
             android:background="@drawable/ic_newovalblack"
+            android:layout_marginRight="@dimen/dimen_5dp"
             android:gravity="center"
-
             android:text="@string/buynow"
             android:textColor="@color/whiteColor"
             android:textSize="@dimen/font_10sp"
-            android.support.design:layout_constraintTop_toBottomOf="@+id/tvPujaKitPrice"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvPujaBoxPrice">
 
         </TextView>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

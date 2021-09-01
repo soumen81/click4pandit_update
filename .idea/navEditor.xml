@@ -244,6 +244,30 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="newPujaBoxItemList">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="462" />
+                            <option name="y" value="1560" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="newPujaBrassItemListFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="505" />
+                            <option name="y" value="1934" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="newPujaItemKitList">
                     <value>
                       <LayoutPositions>
@@ -501,9 +525,23 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="87" />
-                            <option name="y" value="1172" />
+                            <option name="x" value="-166" />
+                            <option name="y" value="1459" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_shopCategoryFragment_to_newPujaBoxItemList">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_shopCategoryFragment_to_newPujaItemKitList">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

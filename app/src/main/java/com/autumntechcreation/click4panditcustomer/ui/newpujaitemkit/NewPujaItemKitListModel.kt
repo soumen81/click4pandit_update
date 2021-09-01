@@ -1,10 +1,11 @@
 package com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit
 
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.gson.annotations.Expose
-
 import com.google.gson.annotations.SerializedName
-
-
 
 
 class NewPujaItemKitListModel {

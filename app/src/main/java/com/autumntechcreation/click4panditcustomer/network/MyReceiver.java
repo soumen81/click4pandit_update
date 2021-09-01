@@ -18,10 +18,10 @@ public class MyReceiver extends BroadcastReceiver {
         }*/
         if(status.equals("Wifi enabled")){
             Log.e("WIFI","Wifi enable");
-            Toast.makeText(context, "Your Wifi is enable", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Your Wifi is enable", Toast.LENGTH_SHORT).show();
         }else if(status.equals("Mobile data enabled")){
             Log.e("MOBILEDATA","Mobile data enabled");
-            Toast.makeText(context, "Your Mobile data is enabled", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Your Mobile data is enabled", Toast.LENGTH_SHORT).show();
         }else if(status.equals("No internet is available")) {
             Toast.makeText(context, "Please Check your Internet Connection", Toast.LENGTH_LONG).show();
         }else {

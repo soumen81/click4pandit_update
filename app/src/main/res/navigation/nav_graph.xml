@@ -1079,11 +1079,25 @@
             android:name="pujaItemKitListId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <argument
+            android:name="pujaItemBoxListId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="pujaItemBrassListId"
+            android:defaultValue="-1"
+            app:argType="integer" />
         <action
             android:id="@+id/action_shopCategoryFragment_to_newPujaItemKitList"
             app:destination="@id/newPujaItemKitList" >
 
         </action>
+        <action
+            android:id="@+id/action_shopCategoryFragment_to_newPujaBoxItemList"
+            app:destination="@id/newPujaBoxItemList" />
+        <action
+            android:id="@+id/action_shopCategoryFragment_to_newPujaBrassItemListFragment"
+            app:destination="@id/newPujaBrassItemListFragment" />
     </fragment>
     <fragment
         android:id="@+id/newPujaItemKitList"
@@ -1091,6 +1105,24 @@
         android:label="NewPujaItemKitList" >
         <argument
             android:name="pujaItemKitListId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPujaBoxItemList"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemList"
+        android:label="NewPujaBoxItemList" >
+        <argument
+            android:name="pujaItemBoxListId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPujaBrassItemListFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListFragment"
+        android:label="NewPujaBrassItemListFragment">
+        <argument
+            android:name="pujaItemBrassListId"
             android:defaultValue="-1"
             app:argType="integer" />
     </fragment>

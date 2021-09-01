@@ -1,6 +1,5 @@
-package com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit
+package com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,71 +15,66 @@ import com.autumntechcreation.click4panditcustomer.BaseFragment
 import com.autumntechcreation.click4panditcustomer.Click4PanditApp
 import com.autumntechcreation.click4panditcustomer.MainActivity
 import com.autumntechcreation.click4panditcustomer.R
-import com.autumntechcreation.click4panditcustomer.databinding.FragmentNewpujaitemkitlistBinding
+import com.autumntechcreation.click4panditcustomer.databinding.FragmentNewpujaboxitemlistBinding
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog
 import com.autumntechcreation.click4panditcustomer.network.Resource
 import com.autumntechcreation.click4panditcustomer.network.Status
+import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel
 import dagger.android.support.AndroidSupportInjection
-import org.json.JSONException
-import org.json.JSONObject
 import javax.inject.Inject
 
 
-class NewPujaItemKitList : BaseFragment() {
+class NewPujaBoxItemList : BaseFragment(){
+
     private lateinit var mView: View
-    private lateinit var mNewPujaItemKitListViewModel: NewPujaItemKitListViewModel
-    private lateinit var mFragmentNewpujaitemkitlistBinding: FragmentNewpujaitemkitlistBinding
-    var pujaitemKitListid: Int? = null
+    private lateinit var mNewPujaBoxItemListViewModel: NewPujaBoxItemListViewModel
+    private lateinit var mFragmentNewpujaboxitemlistBinding: FragmentNewpujaboxitemlistBinding
     @Inject
-    lateinit var mNewPujaItemKitListFactory: NewPujaItemKitListFactory
+    lateinit var mNewPujaBoxItemListFactory: NewPujaBoxItemListFactory
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        mFragmentNewpujaitemkitlistBinding =
+        mFragmentNewpujaboxitemlistBinding =
             DataBindingUtil.inflate(inflater, defineLayoutResource(), container, false)
-        mFragmentNewpujaitemkitlistBinding.lifecycleOwner = this
-        mView = mFragmentNewpujaitemkitlistBinding.root
-       // val bundle = arguments
+        mFragmentNewpujaboxitemlistBinding.lifecycleOwner = this
+        mView = mFragmentNewpujaboxitemlistBinding.root
+        // val bundle = arguments
 
         return mView
 
     }
     override fun defineLayoutResource(): Int {
-        return R.layout.fragment_newpujaitemkitlist
+        return R.layout.fragment_newpujaboxitemlist
     }
 
     override fun initializeComponent(view: View, savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
 
         mView = view;
-        mNewPujaItemKitListViewModel =
-            ViewModelProviders.of(activity as FragmentActivity, mNewPujaItemKitListFactory)
-                .get(NewPujaItemKitListViewModel::class.java)
+        mNewPujaBoxItemListViewModel =
+            ViewModelProviders.of(activity as FragmentActivity, mNewPujaBoxItemListFactory)
+                .get(NewPujaBoxItemListViewModel::class.java)
         (activity as MainActivity?)!!.setToolbar(true, true, false, true)
 
-        mFragmentNewpujaitemkitlistBinding.viewModel = mNewPujaItemKitListViewModel
+        mFragmentNewpujaboxitemlistBinding.viewModel = mNewPujaBoxItemListViewModel
+       /* mFragmentNewpujaboxitemlistBinding.rvNewPujaBoxItemList.layoutManager = GridLayoutManager(
+            Click4PanditApp.getInstance(), 2)*/
+        mNewPujaBoxItemListViewModel.init()
 
-       /* val llm = LinearLayoutManager(activity)
-        llm.orientation = RecyclerView.VERTICAL
-        mFragmentNewpujaitemkitlistBinding.rvNewPujaItemKitList.layoutManager = llm*/
-       // mFragmentNewpujaitemkitlistBinding.rvNewPujaItemKitList.layoutManager = GridLayoutManager(Click4PanditApp.getInstance(), 2)
-        mNewPujaItemKitListViewModel.init()
-
-        mNewPujaItemKitListViewModel.getPujaItemKitList().observe(this, Observer {
-            handlePujaItemKitList(it)
+        mNewPujaBoxItemListViewModel.getPujaItemBoxList().observe(this, Observer {
+            handlePujaItemBoxList(it)
 
         })
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val args: NewPujaItemKitListArgs by navArgs()
-        val pujaItemKitListId = args.pujaItemKitListId
-        Log.e("VALUE",pujaItemKitListId.toString())
+        val args: NewPujaBoxItemListArgs by navArgs()
+        val pujaItemBoxListId = args.pujaItemBoxListId
+        Log.e("VALUE",pujaItemBoxListId.toString())
     }
 
 
-    private fun handlePujaItemKitList(resource: Resource<List<NewPujaItemKitListModel>>?) {
+    private fun handlePujaItemBoxList(resource: Resource<List<NewPujaItemKitListModel>>?) {
         if (resource != null) {
 
             when (resource.status) {
@@ -98,7 +92,6 @@ class NewPujaItemKitList : BaseFragment() {
                     DisplayDialog.getInstance()
                         .showAlertDialog(activity, activity!!.getString(R.string.please_wait))
 
-
                 }
                 Status.SUCCESS -> {
                     if (resource.data != null) {
@@ -107,9 +100,8 @@ class NewPujaItemKitList : BaseFragment() {
                         list = resource.data as ArrayList<NewPujaItemKitListModel>
                         list.size;
                         Log.e("handlePendingDocumentResponse", list.size.toString());
-                        mNewPujaItemKitListViewModel.setPujaItemKitAdapter(list)
 
-
+                        mNewPujaBoxItemListViewModel.setPujaItemBoxAdapter(list)
                         DisplayDialog.getInstance().dismissAlertDialog()
                     } else {
 
@@ -119,5 +111,4 @@ class NewPujaItemKitList : BaseFragment() {
             }
         }
     }
-
 }

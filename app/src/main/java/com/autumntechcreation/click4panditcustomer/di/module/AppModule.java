@@ -24,6 +24,8 @@ import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileRep
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
+import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListRepository;
+import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListRepository;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListRepository;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderRepository;
@@ -296,5 +298,17 @@ public class AppModule {
     @Singleton
     NewPujaItemKitListRepository newPujaItemKitListRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new NewPujaItemKitListRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    NewPujaBoxItemListRepository newPujaBoxItemListRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new NewPujaBoxItemListRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    NewPujaBrassItemListRepository newPujaBrassItemListRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new NewPujaBrassItemListRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 }

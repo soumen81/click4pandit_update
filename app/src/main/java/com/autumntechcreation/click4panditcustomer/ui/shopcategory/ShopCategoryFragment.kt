@@ -56,15 +56,22 @@ class ShopCategoryFragment : BaseFragment() {
         mFragmentShopcategoryBinding.viewModel = mShopCategoryViewModel
 
         mFragmentShopcategoryBinding.tvPujaItemKitShopNow.setOnClickListener(View.OnClickListener {
-            /*val action=ShopCategoryFragmentDirections.actionShopCategoryFragmentToNewPujaItemKitList()
-            action.pujaItemKitListId=1
-            Navigation.findNavController(mView).navigate(action)*/
-
-
 
             val action1 = ShopCategoryFragmentDirections.actionShopCategoryFragmentToNewPujaItemKitList()
             action1.pujaItemKitListId=1
             Navigation.findNavController(mView).navigate(action1)
+        })
+        mFragmentShopcategoryBinding.tvPujaBoxShopNow.setOnClickListener(View.OnClickListener {
+
+            val action2 = ShopCategoryFragmentDirections.actionShopCategoryFragmentToNewPujaBoxItemList()
+            action2.pujaItemBoxListId=2
+            Navigation.findNavController(mView).navigate(action2)
+        })
+        mFragmentShopcategoryBinding.tvPujaBrassItemShopNow.setOnClickListener(View.OnClickListener {
+
+            val action3 = ShopCategoryFragmentDirections.actionShopCategoryFragmentToNewPujaBrassItemListFragment()
+            action3.pujaItemBrassListId=3
+            Navigation.findNavController(mView).navigate(action3)
         })
 
     }
