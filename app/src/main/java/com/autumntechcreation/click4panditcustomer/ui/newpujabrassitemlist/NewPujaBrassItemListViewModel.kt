@@ -55,7 +55,7 @@ class NewPujaBrassItemListViewModel @Inject constructor(private val mNewPujaBras
         return list!!.get(position).prodMasterName!!
     }fun getPujaItemBrassQuantity(position: Int): String {
         val list = newPujaItemBrassList!!.getValue()
-        return list!!.get(position).prodUnit?.toString()!!+" "+list!!.get(position).prodUnitTypDscr
+        return list!!.get(position).prodUnit?.toString()!!+" "+list!!.get(position).prodWtDscr
     }fun getPujaItemBrassPrice(position: Int): String {
         val list = newPujaItemBrassList!!.getValue()
         return list!!.get(position).prodPrice.toString()

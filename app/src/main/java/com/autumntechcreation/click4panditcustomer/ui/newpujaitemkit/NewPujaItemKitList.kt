@@ -63,8 +63,9 @@ class NewPujaItemKitList : BaseFragment() {
        /* val llm = LinearLayoutManager(activity)
         llm.orientation = RecyclerView.VERTICAL
         mFragmentNewpujaitemkitlistBinding.rvNewPujaItemKitList.layoutManager = llm*/
-       // mFragmentNewpujaitemkitlistBinding.rvNewPujaItemKitList.layoutManager = GridLayoutManager(Click4PanditApp.getInstance(), 2)
+        mFragmentNewpujaitemkitlistBinding.rvNewPujaItemKitList.layoutManager = GridLayoutManager(Click4PanditApp.getInstance(), 2)
         mNewPujaItemKitListViewModel.init()
+
 
         mNewPujaItemKitListViewModel.getPujaItemKitList().observe(this, Observer {
             handlePujaItemKitList(it)

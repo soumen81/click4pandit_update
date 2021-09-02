@@ -57,8 +57,8 @@ class NewPujaBoxItemList : BaseFragment(){
         (activity as MainActivity?)!!.setToolbar(true, true, false, true)
 
         mFragmentNewpujaboxitemlistBinding.viewModel = mNewPujaBoxItemListViewModel
-       /* mFragmentNewpujaboxitemlistBinding.rvNewPujaBoxItemList.layoutManager = GridLayoutManager(
-            Click4PanditApp.getInstance(), 2)*/
+        mFragmentNewpujaboxitemlistBinding.rvNewPujaBoxItemList.layoutManager = GridLayoutManager(
+            Click4PanditApp.getInstance(), 2)
         mNewPujaBoxItemListViewModel.init()
 
         mNewPujaBoxItemListViewModel.getPujaItemBoxList().observe(this, Observer {

@@ -38,7 +38,9 @@ class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKi
     var newPujaItemKitList: MutableLiveData<ArrayList<NewPujaItemKitListModel>>? =
         MutableLiveData<ArrayList<NewPujaItemKitListModel>>();
     var pujaItemKitListLiveData: LiveData<Resource<List<NewPujaItemKitListModel>>>? = null
+
     fun init() {
+
         newPujaItemKitListAdapter = NewPujaItemKitListAdapter(R.layout.singlerow_newpujaitemkitlist, this)
     }
 
@@ -83,20 +85,20 @@ class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKi
         return list!!.get(position).prodPrice.toString()
     }
 
-    @BindingAdapter("pujaItemKitListAdapter")
+/*    @BindingAdapter("pujaItemKitListAdapter")
     fun bindRecyclerViewAdapter(recyclerView: RecyclerView, adapter: RecyclerView.Adapter<*>?) {
         recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 2)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
-    }
-    @BindingAdapter("pujaitemkit_img")
+    }*/
+  /*  @BindingAdapter("pujaitemkit_img")
     fun pujaitemkitimg(img: ImageView, position: Int) {
         val list = newPujaItemKitList!!.getValue()
         Glide.with(img.context)
             .load(list!!.get(position).prodImgDataURL)
             .into(img)
 
-    }
+    }*/
 
 
 

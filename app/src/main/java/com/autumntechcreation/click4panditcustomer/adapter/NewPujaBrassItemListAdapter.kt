@@ -9,6 +9,9 @@ import com.autumntechcreation.click4panditcustomer.BR
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListViewModel
 import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListViewModel
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.singlerow_newpujabrassitemlist.view.*
+import kotlinx.android.synthetic.main.singlerow_pujaboxitemlist.view.*
 
 class NewPujaBrassItemListAdapter (private val layoutId: Int, internal var mNewPujaBrassItemListViewModel: NewPujaBrassItemListViewModel):
     RecyclerView.Adapter<NewPujaBrassItemListAdapter.MyViewHolder>(){
@@ -34,11 +37,17 @@ class NewPujaBrassItemListAdapter (private val layoutId: Int, internal var mNewP
     }
 
     inner class MyViewHolder internal constructor(internal val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
+        val imageThumb = binding.root.imgPujaBrassItem
         internal fun bind(viewModel: NewPujaBrassItemListViewModel, position: Int?) {
             // viewModel.fetchDogBreedImagesAt(position);
             binding.setVariable(BR.viewModel, viewModel)
             binding.setVariable(BR.position, position)
             binding.executePendingBindings()
+            val url= position?.let { mNewPujaItemKitListModel!!.get(it).prodImgDataURL }
+            Glide.with(imageThumb)
+                .load(url)
+                .into(imageThumb)
+
         }
     }
     fun setNewPujaItemBrassAdapterList(listNewPujaItemKitListModel:List<NewPujaItemKitListModel>) {

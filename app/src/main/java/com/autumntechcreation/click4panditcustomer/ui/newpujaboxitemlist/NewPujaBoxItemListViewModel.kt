@@ -60,26 +60,12 @@ class NewPujaBoxItemListViewModel @Inject constructor(private val mNewPujaBoxIte
         return list!!.get(position).prodMasterName!!
     }fun getPujaItemBoxQuantity(position: Int): String {
         val list = newPujaItemBoxList!!.getValue()
-        return list!!.get(position).prodUnit?.toString()!!+" "+list!!.get(position).prodUnitTypDscr
+        return list!!.get(position).prodUnit?.toString()!!+" "+list!!.get(position).prodWtDscr
     }fun getPujaItemBoxPrice(position: Int): String {
         val list = newPujaItemBoxList!!.getValue()
         return list!!.get(position).prodPrice.toString()
     }
 
-    @BindingAdapter("pujaBoxListAdapter")
-    fun bindRecyclerViewAdapter(recyclerView: RecyclerView, adapter: RecyclerView.Adapter<*>?) {
-        recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 2)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = adapter
-    }
 
-        @BindingAdapter("pujaboxitem_img")
-        fun  pujaboxitemimg(img: ImageView, position: Int): String {
-            val list = newPujaItemBoxList!!.getValue()
-            Glide.with(img.context)
-                .load(list!!.get(position).prodImgDataURL)
-                .into(img)
-            return list!!.get(position).prodImgDataURL!!
-        }
 
 }
