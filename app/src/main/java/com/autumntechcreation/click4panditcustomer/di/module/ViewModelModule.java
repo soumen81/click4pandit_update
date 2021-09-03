@@ -22,6 +22,8 @@ import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileVie
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.newgiftboxlist.NewGiftBoxListViewModel;
+
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListViewModel;
@@ -272,4 +274,12 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(NewPujaBrassItemListViewModel.class)
     abstract ViewModel bindNewPujaBrassItemListViewModel(NewPujaBrassItemListViewModel newPujaBrassItemListViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewGiftBoxListViewModel.class)
+    abstract ViewModel bindNewGiftBoxListViewModel(NewGiftBoxListViewModel newGiftBoxListViewModel);
+
+
+
 }

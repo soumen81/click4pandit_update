@@ -76,8 +76,8 @@ class NewPujaItemKitList : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val args: NewPujaItemKitListArgs by navArgs()
-        val pujaItemKitListId = args.pujaItemKitListId
-        Log.e("VALUE",pujaItemKitListId.toString())
+        val prodCategoryId = args.pujaItemKitListId
+        Log.e("VALUE",prodCategoryId.toString())
     }
 
 

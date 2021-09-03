@@ -1,4 +1,4 @@
-package com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist
+package com.autumntechcreation.click4panditcustomer.ui.newgiftboxlist
 
 import android.os.Bundle
 import android.util.Log
@@ -15,8 +15,7 @@ import com.autumntechcreation.click4panditcustomer.BaseFragment
 import com.autumntechcreation.click4panditcustomer.Click4PanditApp
 import com.autumntechcreation.click4panditcustomer.MainActivity
 import com.autumntechcreation.click4panditcustomer.R
-import com.autumntechcreation.click4panditcustomer.databinding.FragmentNewpujaboxitemlistBinding
-import com.autumntechcreation.click4panditcustomer.databinding.FragmentNewpujabrassitemlistBinding
+import com.autumntechcreation.click4panditcustomer.databinding.FragmentNewgiftboxlistBinding
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog
 import com.autumntechcreation.click4panditcustomer.network.Resource
 import com.autumntechcreation.click4panditcustomer.network.Status
@@ -27,53 +26,57 @@ import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItem
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-class NewPujaBrassItemListFragment : BaseFragment(){
+
+class NewGiftBoxListFragment : BaseFragment() {
     private lateinit var mView: View
-    private lateinit var mNewPujaBrassItemListViewModel: NewPujaBrassItemListViewModel
-    private lateinit var mFragmentNewpujabrassitemlistBinding: FragmentNewpujabrassitemlistBinding
+    private lateinit var mNewGiftBoxListViewModel: NewGiftBoxListViewModel
+    private lateinit var mFragmentNewgiftboxlistBinding: FragmentNewgiftboxlistBinding
     @Inject
-    lateinit var mNewPujaBrassItemListFactory: NewPujaBrassItemListFactory
+    lateinit var mNewGiftBoxListFactory: NewGiftBoxListFactory
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mFragmentNewpujabrassitemlistBinding =
+
+        mFragmentNewgiftboxlistBinding =
             DataBindingUtil.inflate(inflater, defineLayoutResource(), container, false)
-        mFragmentNewpujabrassitemlistBinding.lifecycleOwner = this
-        mView = mFragmentNewpujabrassitemlistBinding.root
+        mFragmentNewgiftboxlistBinding.lifecycleOwner = this
+        mView = mFragmentNewgiftboxlistBinding.root
         // val bundle = arguments
 
         return mView
+
     }
     override fun defineLayoutResource(): Int {
-        return R.layout.fragment_newpujabrassitemlist
+        return R.layout.fragment_newgiftboxlist
     }
 
     override fun initializeComponent(view: View, savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
 
         mView = view;
-        mNewPujaBrassItemListViewModel =
-            ViewModelProviders.of(activity as FragmentActivity, mNewPujaBrassItemListFactory)
-                .get(NewPujaBrassItemListViewModel::class.java)
+        mNewGiftBoxListViewModel =
+            ViewModelProviders.of(activity as FragmentActivity, mNewGiftBoxListFactory)
+                .get(NewGiftBoxListViewModel::class.java)
         (activity as MainActivity?)!!.setToolbar(true, true, false, true)
 
-        mFragmentNewpujabrassitemlistBinding.viewModel = mNewPujaBrassItemListViewModel
+        mFragmentNewgiftboxlistBinding.viewModel = mNewGiftBoxListViewModel
 
-        mFragmentNewpujabrassitemlistBinding.rvNewPujaBrassItemList.layoutManager = GridLayoutManager(
+        mFragmentNewgiftboxlistBinding.rvNewPujaGiftBoxItemList.layoutManager = GridLayoutManager(
             Click4PanditApp.getInstance(), 2)
-        mNewPujaBrassItemListViewModel.init()
+        mNewGiftBoxListViewModel.init()
 
-        mNewPujaBrassItemListViewModel.getPujaItemBrassList().observe(this, Observer {
-            handlePujaItemBrassList(it)
+        mNewGiftBoxListViewModel.getPujaGiftBoxList().observe(this, Observer {
+            handlePujaGiftBoxList(it)
 
         })
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val args: NewPujaBrassItemListFragmentArgs by navArgs()
-        val prodCategoryId = args.pujaItemBrassListId
+        val args: NewGiftBoxListFragmentArgs by navArgs()
+        val prodCategoryId = args.pujaGiftBoxListId
         Log.e("VALUE",prodCategoryId.toString())
     }
-    private fun handlePujaItemBrassList(resource: Resource<List<NewPujaItemKitListModel>>?) {
+
+    private fun handlePujaGiftBoxList(resource: Resource<List<NewPujaItemKitListModel>>?) {
         if (resource != null) {
 
             when (resource.status) {
@@ -100,7 +103,7 @@ class NewPujaBrassItemListFragment : BaseFragment(){
                         list.size;
                         Log.e("handlePendingDocumentResponse", list.size.toString());
 
-                        mNewPujaBrassItemListViewModel.setPujaItemBrassAdapter(list)
+                        mNewGiftBoxListViewModel.setPujaGiftBoxAdapter(list)
                         DisplayDialog.getInstance().dismissAlertDialog()
                     } else {
 

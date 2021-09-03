@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="position"
+            type="java.lang.Integer"/>
+        <variable
+            name="viewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clPujaItemKit"
+        android:layout_width="@dimen/dimen_200dp"
+        android:layout_height="@dimen/dimen_280dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:background="@drawable/shopitem_border"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
+        <ImageView
+            android:id="@+id/imgPujaItemKit"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/dimen_200dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/dimen_5dp"
+
+            ></ImageView>
+        <TextView
+            android:id="@+id/tvPujaItemKit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.getShopCategoryDesc(position)}"
+            style="@style/Style_TextView_FontSemiBold"
+            android:textSize="@dimen/font_14sp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:textColor="@color/blackColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgPujaItemKit"></TextView>
+
+        <TextView
+            android:id="@+id/tvPujaItemKitShopNow"
+            style="@style/Style_TextView_FontBold"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/ic_newovalblack"
+            android:gravity="center"
+            android:onClick="@{(v) -> viewModel.onClickShopCategoryItem(v,position)}"
+            android:text="@string/shopnow"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/font_14sp"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvPujaItemKit">
+        </TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

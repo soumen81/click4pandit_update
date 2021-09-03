@@ -25,6 +25,7 @@ import com.autumntechcreation.click4panditcustomer.ui.profile.CustomerGetProfile
 import com.autumntechcreation.click4panditcustomer.ui.profile.SaveCustomerprofileModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryModel;
+import com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryModel;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -195,6 +196,11 @@ public interface Webservice {
     @POST()
     LiveData<ApiResponse<List<NewPujaItemKitListModel>>> getPujaPujaItemKitList(@Url String apiname,
                                                                        @Body JsonObject jsonObject
+
+    );
+
+    @GET()
+    LiveData<ApiResponse<List<ShopCategoryModel>>> getShopCategoryList(@Url String apiname
 
     );
 }
