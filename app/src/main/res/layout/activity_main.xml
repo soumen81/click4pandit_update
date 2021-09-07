@@ -123,19 +123,45 @@
                                         android:visibility="gone"
                                         android:layout_marginTop="@dimen/dimen_12dp"
                                         android:layout_marginRight="@dimen/dimen_10dp"
-                                        android:layout_toLeftOf="@+id/imgCart">
+                                        android:layout_toLeftOf="@+id/frame">
 
                                     </ImageView>
+                                    <FrameLayout
+                                        android:id="@+id/frame"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:clipToPadding="false"
+                                        android:layout_marginTop="@dimen/dimen_5dp"
+                                        android:focusable="true"
+                                          android:layout_marginRight="@dimen/dimen_10dp"
+                                        android:layout_alignParentRight="true">
+
                                     <ImageView
                                         android:id="@+id/imgCart"
                                         android:layout_width="@dimen/dimen_20dp"
                                         android:layout_height="@dimen/dimen_20dp"
-                                        android:visibility="gone"
-                                        android:layout_marginTop="@dimen/dimen_12dp"
+                                        android:layout_marginTop="@dimen/dimen_10dp"
                                         android:layout_marginRight="@dimen/dimen_50dp"
                                         android:layout_alignParentRight="true">
 
                                     </ImageView>
+                                        <TextView
+                                            android:id="@+id/tvCartCount"
+                                            android:layout_width="@dimen/dimen_17dp"
+                                            android:layout_height="@dimen/dimen_17dp"
+                                            android:gravity="center"
+                                            android:text=""
+                                            android:textStyle="bold"
+                                            android:layout_gravity="right|end|top"
+                                            android:textSize="@dimen/font_7sp"
+                                            android:textColor="@color/blackColor"
+                                            android:layout_marginRight="@dimen/dimen_50dp"
+                                            android:background="@drawable/badge_itemcount"
+                                            android:layout_alignParentRight="true"
+                                            >
+
+                                        </TextView>
+                                    </FrameLayout>
                                     <ImageButton
                                         android:id="@+id/txt_menu"
                                         android:layout_width="@dimen/dimen_40dp"

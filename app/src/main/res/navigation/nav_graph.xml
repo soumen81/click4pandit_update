@@ -1111,9 +1111,33 @@
         android:name="com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitList"
         android:label="NewPujaItemKitList" >
         <argument
+            android:name="prodPrice"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="prodMasterId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="myArg"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel"
+            />
+        <argument
             android:name="pujaItemKitListId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <argument
+            android:name="pujaSamagriCategoryId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_newPujaItemKitList_to_newAddtoCartListFragment"
+            app:destination="@id/newAddtoCartListFragment" />
+        <action
+            android:id="@+id/action_newPujaItemKitList_to_newWishListFragment"
+            app:destination="@id/newWishListFragment" />
     </fragment>
     <fragment
         android:id="@+id/newPujaBoxItemList"
@@ -1123,6 +1147,12 @@
             android:name="pujaItemBoxListId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_newPujaBoxItemList_to_newAddtoCartListFragment"
+            app:destination="@id/newAddtoCartListFragment" />
+        <action
+            android:id="@+id/action_newPujaBoxItemList_to_newWishListFragment"
+            app:destination="@id/newWishListFragment" />
     </fragment>
     <fragment
         android:id="@+id/newPujaBrassItemListFragment"
@@ -1132,6 +1162,12 @@
             android:name="pujaItemBrassListId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_newPujaBrassItemListFragment_to_newAddtoCartListFragment"
+            app:destination="@id/newAddtoCartListFragment" />
+        <action
+            android:id="@+id/action_newPujaBrassItemListFragment_to_newWishListFragment"
+            app:destination="@id/newWishListFragment" />
     </fragment>
     <fragment
         android:id="@+id/newGiftBoxListFragment"
@@ -1139,6 +1175,44 @@
         android:label="NewGiftBoxListFragment" >
         <argument
             android:name="pujaGiftBoxListId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_newGiftBoxListFragment_to_newAddtoCartListFragment"
+            app:destination="@id/newAddtoCartListFragment" />
+        <action
+            android:id="@+id/action_newGiftBoxListFragment_to_newWishListFragment"
+            app:destination="@id/newWishListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newAddtoCartListFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListFragment"
+        android:label="NewAddtoCartListFragment" >
+        <argument
+            android:name="myArg"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel"
+            />
+        <argument
+            android:name="pujaSamagriCategoryId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="prodMasterId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="prodPrice"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/newWishListFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.newwishlist.NewWishListFragment"
+        android:label="NewWishListFragment" >
+        <argument
+            android:name="pujaSamagriCategoryId"
             android:defaultValue="-1"
             app:argType="integer" />
     </fragment>

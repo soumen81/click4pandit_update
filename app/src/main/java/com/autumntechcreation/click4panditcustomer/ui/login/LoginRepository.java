@@ -12,6 +12,7 @@ import com.autumntechcreation.click4panditcustomer.network.NetworkBoundResource;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.network.Webservice;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
+import com.autumntechcreation.click4panditcustomer.ui.home.CartItemCountModel;
 import com.autumntechcreation.click4panditcustomer.util.AbsentLiveData;
 import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig;
 import com.google.gson.JsonObject;
@@ -82,7 +83,53 @@ public class LoginRepository {
         }.asLiveData();
     }
 
+//Cart Count Api
+public LiveData<Resource<CartItemCountModel>> getCartCountItem() {
+    return new NetworkBoundResource<CartItemCountModel,CartItemCountModel>(mAppExecutors) {
+        private CartItemCountModel resultsDb;
+        @Override
+        protected void saveCallResult(@NonNull CartItemCountModel data) {
+            resultsDb=data;
+        }
 
+        @Override
+        protected boolean shouldFetch(@Nullable CartItemCountModel data) {
+            return true;
+        }
+
+        @NonNull
+        @Override
+        protected LiveData<CartItemCountModel>loadFromDb() {
+            if (resultsDb == null) {
+                return AbsentLiveData.create();
+            }else {
+                return new LiveData<CartItemCountModel>() {
+                    @Override
+                    protected void onActive() {
+                        super.onActive();
+                        setValue(resultsDb);
+                    }
+                };
+            }
+        }
+
+        @NonNull
+        @Override
+        protected LiveData<ApiResponse<CartItemCountModel>> createCall() {
+
+            String url= AllUrlsAndConfig.STORE_BASE_URL+AllUrlsAndConfig.CHECKCARTCOUNT;
+
+            Log.e("URL",url);
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty(AllUrlsAndConfig.LOGONIDDDD, getEmail());
+
+
+            return mWebservice.getCartItemCount(url,jsonObject);
+
+        }
+    }.asLiveData();
+
+}
 
 
     public void storeUserName(String userName){
@@ -96,6 +143,13 @@ public class LoginRepository {
         mSharedPrefsHelper.put(SharedPrefsHelper.MOBILE, mobile);
     } public void storeEmail(String email){
         mSharedPrefsHelper.put(SharedPrefsHelper.EMAIL, email);
+    }
+
+    public void storeCartCount(String cartCount){
+        mSharedPrefsHelper.put(SharedPrefsHelper.CARTCOUNT, cartCount);
+    }
+    public String getcartCount(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.CARTCOUNT, null);
     }
 
     public String getUserName(){

@@ -48,6 +48,16 @@
     </group>
     <group
         android:id="@+id/grp6"
+        android:visible="true"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_wishlist"
+            android:icon="@drawable/wish_black"
+            android:title="@string/wishlist" />
+    </group>
+    <group
+        android:id="@+id/grp7"
         android:checkableBehavior="single">
 
         <item
@@ -56,7 +66,7 @@
             android:title="@string/helpsupport" />
     </group>
     <group
-        android:id="@+id/grp7"
+        android:id="@+id/grp8"
         android:checkableBehavior="single">
 
         <item
@@ -65,7 +75,7 @@
             android:title="@string/changepassword" />
     </group>
     <group
-        android:id="@+id/grp8"
+        android:id="@+id/grp9"
         android:checkableBehavior="single">
 
         <item

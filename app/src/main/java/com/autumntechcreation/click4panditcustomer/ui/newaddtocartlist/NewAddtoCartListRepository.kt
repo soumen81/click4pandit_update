@@ -1,0 +1,159 @@
+package com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist
+
+import android.util.Log
+import androidx.lifecycle.LiveData
+import com.autumntechcreation.click4panditcustomer.network.*
+import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper
+import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitAddtoCartOrBuyNowModel
+import com.autumntechcreation.click4panditcustomer.util.AbsentLiveData
+import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig
+import com.google.gson.JsonObject
+import javax.inject.Inject
+
+class NewAddtoCartListRepository @Inject constructor(
+    private val mAppExecutors: AppExecutors, private  val mWebservice: Webservice, private val mSharedPrefsHelper: SharedPrefsHelper
+){
+    fun getNewAddtoCartList(): LiveData<Resource<List<NewAddtoCartListModel>>>? {
+        return object : NetworkBoundResource<List<NewAddtoCartListModel>, List<NewAddtoCartListModel>>(mAppExecutors) {
+            private var resultsDb: List<NewAddtoCartListModel>? = null
+
+            override fun shouldFetch(data: List<NewAddtoCartListModel>?): Boolean {
+                return true
+            }
+
+            override fun saveCallResult(item: List<NewAddtoCartListModel>) {
+                resultsDb = item
+            }
+
+            override fun loadFromDb(): LiveData<List<NewAddtoCartListModel>> {
+                return if (resultsDb == null) {
+                    AbsentLiveData.create()
+                } else {
+                    object : LiveData<List<NewAddtoCartListModel>>() {
+                        protected override fun onActive() {
+                            super.onActive()
+                            value = resultsDb
+                        }
+                    }
+                }
+            }
+
+            override fun createCall(): LiveData<ApiResponse<List<NewAddtoCartListModel>>> {
+                Log.e("BoundResource", "createCall")
+                var url: String = "";
+
+                url = AllUrlsAndConfig.STORE_BASE_URL + AllUrlsAndConfig.SHOPPINGCARTITEMLIST
+                var jsonObject = JsonObject()
+                jsonObject.addProperty(AllUrlsAndConfig.LOGID,getEmail())
+                return mWebservice.getNewAddtoCartList(url,jsonObject)
+            }
+
+        }.asLiveData()
+    }
+
+
+
+
+    fun getAddtoCartBuyNowForPujaSamagri(prodMasterId: Int,productPrice:Int): LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>?{
+        return object : NetworkBoundResource<NewPujaItemKitAddtoCartOrBuyNowModel, NewPujaItemKitAddtoCartOrBuyNowModel>(mAppExecutors){
+            private var resultsDb: NewPujaItemKitAddtoCartOrBuyNowModel? = null
+
+            override fun shouldFetch(data: NewPujaItemKitAddtoCartOrBuyNowModel?): Boolean {
+                return true
+            }
+
+            override fun saveCallResult(item: NewPujaItemKitAddtoCartOrBuyNowModel) {
+                resultsDb = item
+            }
+
+            override fun loadFromDb(): LiveData<NewPujaItemKitAddtoCartOrBuyNowModel> {
+                return if (resultsDb == null) {
+                    AbsentLiveData.create()
+                } else {
+                    object : LiveData<NewPujaItemKitAddtoCartOrBuyNowModel>() {
+                        protected override fun onActive() {
+                            super.onActive()
+                            value = resultsDb
+                        }
+                    }
+                }
+            }
+            override fun createCall(): LiveData<ApiResponse<NewPujaItemKitAddtoCartOrBuyNowModel>> {
+                Log.e("BoundResource", "createCall")
+
+                val url = AllUrlsAndConfig.STORE_BASE_URL+AllUrlsAndConfig.ADDTOCARTBUYNOWFORPUJASAMAGRI
+                val str: String? = null
+                var jsonObject= JsonObject()
+                jsonObject.addProperty(AllUrlsAndConfig.ISGUESUSERR,"N")
+                jsonObject.addProperty(AllUrlsAndConfig.LOOGONID,getEmail())
+                jsonObject.addProperty(AllUrlsAndConfig.PRODCUSTSCID,str)
+                jsonObject.addProperty(AllUrlsAndConfig.DELLFLGG,"N")
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDMASTERID,prodMasterId)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCDT,str)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCQTY,1)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCRATE,productPrice)
+                jsonObject.addProperty(AllUrlsAndConfig.CURRID,1001)
+
+                return mWebservice.getAddtoCartBuyNowForPujaSamagri(url,jsonObject )
+            }
+
+        }.asLiveData()
+    }
+
+
+
+
+
+    fun getRemoveForPujaItem(productCustScId: Int,prodMasterId:Int,productPrice:Double,prodCustScDate:String,updateCartQuantity:Int): LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>?{
+        return object : NetworkBoundResource<NewPujaItemKitAddtoCartOrBuyNowModel, NewPujaItemKitAddtoCartOrBuyNowModel>(mAppExecutors){
+            private var resultsDb: NewPujaItemKitAddtoCartOrBuyNowModel? = null
+
+            override fun shouldFetch(data: NewPujaItemKitAddtoCartOrBuyNowModel?): Boolean {
+                return true
+            }
+
+            override fun saveCallResult(item: NewPujaItemKitAddtoCartOrBuyNowModel) {
+                resultsDb = item
+            }
+
+            override fun loadFromDb(): LiveData<NewPujaItemKitAddtoCartOrBuyNowModel> {
+                return if (resultsDb == null) {
+                    AbsentLiveData.create()
+                } else {
+                    object : LiveData<NewPujaItemKitAddtoCartOrBuyNowModel>() {
+                        protected override fun onActive() {
+                            super.onActive()
+                            value = resultsDb
+                        }
+                    }
+                }
+            }
+            override fun createCall(): LiveData<ApiResponse<NewPujaItemKitAddtoCartOrBuyNowModel>> {
+                Log.e("BoundResource", "createCall")
+
+                val url = AllUrlsAndConfig.STORE_BASE_URL+AllUrlsAndConfig.REMOVECARTITEMLIST
+                val str: String? = null
+                var jsonObject= JsonObject()
+                jsonObject.addProperty(AllUrlsAndConfig.ISGUESUSERR,"N")
+                jsonObject.addProperty(AllUrlsAndConfig.LOOGONID,getEmail())
+                jsonObject.addProperty(AllUrlsAndConfig.PRODCUSTSCID,productCustScId)
+                jsonObject.addProperty(AllUrlsAndConfig.DELLFLGG,"Y")
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDMASTERID,prodMasterId)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCDT,prodCustScDate)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCQTY,updateCartQuantity)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCRATE,productPrice)
+                jsonObject.addProperty(AllUrlsAndConfig.CURRID,1001)
+
+                return mWebservice.getAddtoCartBuyNowForPujaSamagri(url,jsonObject )
+            }
+
+        }.asLiveData()
+    }
+
+    fun getEmail(): String? {
+        return mSharedPrefsHelper[SharedPrefsHelper.EMAIL, null]
+    }
+    fun getcartCount(): String? {
+        return mSharedPrefsHelper[SharedPrefsHelper.CARTCOUNT, null]
+    }
+}

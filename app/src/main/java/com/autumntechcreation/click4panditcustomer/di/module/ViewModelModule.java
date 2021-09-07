@@ -22,11 +22,13 @@ import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileVie
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newgiftboxlist.NewGiftBoxListViewModel;
 
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.newwishlist.NewWishListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderViewModel;
@@ -279,6 +281,17 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(NewGiftBoxListViewModel.class)
     abstract ViewModel bindNewGiftBoxListViewModel(NewGiftBoxListViewModel newGiftBoxListViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewAddtoCartListViewModel.class)
+    abstract ViewModel bindNewAddtoCartListViewModel(NewAddtoCartListViewModel newAddtoCartListViewModel);
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewWishListViewModel.class)
+    abstract ViewModel bindNewWishListViewModel(NewWishListViewModel newWishListViewModel);
 
 
 

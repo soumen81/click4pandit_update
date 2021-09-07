@@ -24,11 +24,13 @@ import com.autumntechcreation.click4panditcustomer.ui.editprofile.EditProfileRep
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordRepository;
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
+import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListRepository;
 import com.autumntechcreation.click4panditcustomer.ui.newgiftboxlist.NewGiftBoxListRepository;
 
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListRepository;
 import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListRepository;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListRepository;
+import com.autumntechcreation.click4panditcustomer.ui.newwishlist.NewWishListRepository;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderRepository;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummaryRepository;
@@ -318,6 +320,17 @@ public class AppModule {
     @Singleton
     NewGiftBoxListRepository newGiftBoxListRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new NewGiftBoxListRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    NewAddtoCartListRepository newAddtoCartListRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new NewAddtoCartListRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+    @Provides
+    @Singleton
+    NewWishListRepository newWishListRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new NewWishListRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 
 

@@ -1,5 +1,6 @@
 package com.autumntechcreation.click4panditcustomer.ui.home;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,15 +24,20 @@ import androidx.navigation.Navigation;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
+import com.autumntechcreation.click4panditcustomer.databinding.ActivityMainBinding;
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentHomeBinding;
 import com.autumntechcreation.click4panditcustomer.di.Injectable;
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
+import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordAcitivity;
+import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordModel;
 import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageFragmentDirections;
 import com.autumntechcreation.click4panditcustomer.util.Static;
+import com.google.gson.Gson;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -54,6 +61,7 @@ public class HomeFragment extends Fragment implements Injectable {
     int pujaSubCategoryId;
     int pujaCategoryId;
     String subCategoryName;
+    ActivityMainBinding activityMainBinding;
     private int[] mImager = {R.drawable.pandit1, R.drawable.pandit2, R.drawable.pandit3, R.drawable.pandit4, R.drawable.pandit5};
     private String[] mImagetitle = new String[]{"Pandit1,Pandit2,Pandit3,Pandit4,Pandit5"};
 
@@ -67,7 +75,7 @@ public class HomeFragment extends Fragment implements Injectable {
     List<String> mListCategoryPuja = new ArrayList<>();
     ArrayList<PujaCategoryModel> pujaCategoryModellist = new ArrayList<PujaCategoryModel>();
 
-
+    TextView tvCartCount;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,8 +91,6 @@ public class HomeFragment extends Fragment implements Injectable {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mView = view;
-
-
         navController = findNavController(mView);
         ((MainActivity) getActivity()).setToolbar(true, false, false, true);
     }
@@ -202,13 +208,96 @@ public class HomeFragment extends Fragment implements Injectable {
             }
         });
 
+      //  mHomeViewModel.getCartCountItem().observe(getActivity(), HomeFragment.this::handleAddtoCartItemCount);
+
+         tvCartCount = (TextView) getActivity().findViewById(R.id.tvCartCount);
+
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-       // mHomeViewModel.getPujaTypesList().observe(getActivity(), HomeFragment.this::handlePujaTypesList);
+        tvCartCount.setText(mHomeViewModel.storeCartCount());
     }
+
+    @Override
+    public void onAttach( Context context) {
+        super.onAttach(context);
+       /* */
+
+
+    }
+
+    private void handleAddtoCartItemCount(Resource<CartItemCountModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(getActivity()) && resource.data==null) {
+
+                        new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+                    break;
+                case LOADING:
+                    Log.e("handleForgetResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(getActivity(), getActivity().getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleForgetPasswordResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleForgetPasswordResponse", resource.status + "");
+                    Log.e("handleForgetPasswordResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleForgetPasswordResponse", json + "");
+
+                   /* if(resource.data.getReturnStatus().equals("SUCCESS")){
+                        int cartCount=resource.data.getReturnCartValue().getCartItemCount();
+                        Log.e("CARTCOUNT", String.valueOf(cartCount));
+
+                        if(cartCount>0) {
+                            textview.setText(String.valueOf(cartCount));
+                        }
+                    }*//*else if(resource.data.getReturnCartValue().equals(null)){
+                        textview.setVisibility(View.GONE);
+                    }*/
+
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    }
+
+
 
     private void handlePujaTypesList(Resource<List<PujaTypesModel>> resource) {
         if (resource != null) {

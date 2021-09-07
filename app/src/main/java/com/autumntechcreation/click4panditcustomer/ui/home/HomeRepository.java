@@ -1,6 +1,7 @@
 package com.autumntechcreation.click4panditcustomer.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.autumntechcreation.click4panditcustomer.network.NetworkBoundResource;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.network.Webservice;
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper;
+import com.autumntechcreation.click4panditcustomer.ui.changepassword.ChangePasswordModel;
 import com.autumntechcreation.click4panditcustomer.util.AbsentLiveData;
 import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig;
 import com.google.gson.JsonObject;
@@ -130,6 +132,61 @@ public LiveData<Resource<List<PujaCategoryModel>>> getPujaCategoriesList(int  pu
 
     }
 
+
+
+    public LiveData<Resource<CartItemCountModel>> getCartCountItem() {
+        return new NetworkBoundResource<CartItemCountModel,CartItemCountModel>(mAppExecutors) {
+            private CartItemCountModel resultsDb;
+            @Override
+            protected void saveCallResult(@NonNull CartItemCountModel data) {
+                resultsDb=data;
+            }
+
+            @Override
+            protected boolean shouldFetch(@Nullable CartItemCountModel data) {
+                return true;
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<CartItemCountModel>loadFromDb() {
+                if (resultsDb == null) {
+                    return AbsentLiveData.create();
+                }else {
+                    return new LiveData<CartItemCountModel>() {
+                        @Override
+                        protected void onActive() {
+                            super.onActive();
+                            setValue(resultsDb);
+                        }
+                    };
+                }
+            }
+
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<CartItemCountModel>> createCall() {
+
+                String url= AllUrlsAndConfig.STORE_BASE_URL+AllUrlsAndConfig.CHECKCARTCOUNT;
+
+                Log.e("URL",url);
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty(AllUrlsAndConfig.LOGONIDDDD, getEmail());
+
+
+                return mWebservice.getCartItemCount(url,jsonObject);
+
+            }
+        }.asLiveData();
+
+    }
+    public String getEmail(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.EMAIL, null);
+
+    }
+    public String getcartCount(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.CARTCOUNT, null);
+    }
 }
 
 

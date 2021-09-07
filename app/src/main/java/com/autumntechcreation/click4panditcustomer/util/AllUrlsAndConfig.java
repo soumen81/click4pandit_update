@@ -31,6 +31,13 @@ public class AllUrlsAndConfig {
     public static final String SENDEMAILCONTACT="/api/TriggerMail/SendEmailForContact";
     public static final String PRODUCTITEMKITLIST="/api/Product/SearchProductByStandardCriteria";
     public static final String SHOPCATEGORYLIST="/api/ProductCommon/GetProdCtgryList";
+    public static final String CHECKCARTCOUNT="/api/ShoppingCart/CheckCartItemCount";
+    public static final String SHOPPINGCARTITEMLIST="/api/ShoppingCart/GetProdShoppingCartItems";
+    public static final String WISHLISTITEM="/api/Wishlist/GetCustWishlistItems";
+    public static final String REMOVEWISHLISTITEM="/api/Wishlist/UpdateCustWishlist";
+    public static final String ADDTOCARTBUYNOWFORPUJASAMAGRI="/api/ShoppingCart/UpdateProdShoppingCart";
+    public static final String REMOVECARTITEMLIST="/api/ShoppingCart/UpdateProdShoppingCart";
+    public static final String ADDTOWISHLIST="/api/Wishlist/UpdateCustWishlist";
 
 
 
@@ -254,5 +261,27 @@ public class AllUrlsAndConfig {
     public static final String PRODUCTIONTYPEMODELLIST="ProdTypModelList";
     public static final String PRODUCTIONMTRLTYPEMODELLIST="ProdMtrlTypModelList";
     public static final String PRODUCTIONRANGECRITERIAMODELLIST="PriceRangeCriteriaModelList";
+
+
+    //Parameter for AddtoCartBuyNow
+    public static final String ISGUESUSERR="IsGuestUser";
+    public static final String LOOGONID="LogonId";
+    public static final String PRODCUSTSCID="ProdCustScId";
+    public static final String DELLFLGG="DelFlg";
+    public static final String PRODDMASTERID="ProdMasterId";
+    public static final String PRODDCUSTSCDT="ProdCustScDt";
+    public static final String PRODDCUSTSCQTY="ProdCustScQty";
+    public static final String PRODDCUSTSCRATE="ProdCustScRate";
+    public static final String CURRID="CurId";
+
+    //Parameter for WishList
+    public static final String LOOGOONID="LogonId";
+    public static final String PRODUCTCUSTWISHLISTID="ProdCustWshlstId";
+    public static final String DDELFLG="DelFlg";
+    public static final String PRODMASTERID="ProdMasterId";
+    public static final String PRODCUSTSCWISHLISTQTY="ProdCustScWshlstQty";
+    public static final String PRODCUSTSCWISHLISTRATE="ProdCustScWshlstRate";
+    public static final String CURIID="CurId";
+
 
 }

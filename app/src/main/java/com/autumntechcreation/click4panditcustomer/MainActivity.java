@@ -119,7 +119,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         email= hView.findViewById(R.id.txtname);
         userName.setText("Hi"+" "+mMainViewModel.getFirstName());
         email.setText(mMainViewModel.getEmail());
-
+       // activityMainBinding.tvCartCount.setText(mMainViewModel.getCartCount());
+       // Log.e("CARTCOUNTVALUE",mMainViewModel.getCartCount());
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage("Loading");
         mProgressDialog.setCancelable(false);
@@ -306,6 +307,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 tabSelected = 6;
                 NavHostFragment navHostShop= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
                     navHostShop.getNavController().navigate(R.id.shopCategoryFragment);
+                //isHomeFragment=false;
+
+                break;
+            case R.id.menu_wishlist:
+                tabSelected = 7;
+                NavHostFragment navHostWish= (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                navHostWish.getNavController().navigate(R.id.newWishListFragment);
                 //isHomeFragment=false;
 
                 break;
@@ -497,8 +505,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             activityMainBinding.imgvwWhiteback.setBackgroundColor(Color.parseColor("#D1453E"));
             activityMainBinding.imgSearch.setImageResource(R.drawable.ic_search);
             activityMainBinding.imgSearch.setBackgroundColor(Color.parseColor("#D1453E"));
-            activityMainBinding.imgCart.setImageResource(R.drawable.cart);
+            activityMainBinding.imgCart.setImageResource(R.drawable.shoppingcart);
             activityMainBinding.imgCart.setBackgroundColor(Color.parseColor("#D1453E"));
+            activityMainBinding.frame.setBackgroundColor(Color.parseColor("#D1453E"));
         }else{
             activityMainBinding.toolbar.setBackgroundColor(Color.parseColor("#FFFFFF"));
             activityMainBinding.rlHeader.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -507,8 +516,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             activityMainBinding.imgvwWhiteback.setImageResource(R.drawable.ic_back);
             activityMainBinding.imgSearch.setImageResource(R.drawable.ic_loupe);
             activityMainBinding.imgSearch.setBackgroundColor(Color.parseColor("#FFFFFF"));
-            activityMainBinding.imgCart.setImageResource(R.drawable.cart_black);
+            activityMainBinding.imgCart.setImageResource(R.drawable.shoppingcart);
             activityMainBinding.imgCart.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            activityMainBinding.frame.setBackgroundColor(Color.parseColor("#FFFFFF"));
             activityMainBinding.header.setImageResource(R.drawable.ic_black_logo);
         }
 

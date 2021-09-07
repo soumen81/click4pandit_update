@@ -129,6 +129,7 @@
 
 
     <!--FONT-->
+    <dimen name="font_5sp">@dimen/_5ssp</dimen>
     <dimen name="font_7sp">@dimen/_7ssp</dimen>
     <dimen name="font_8sp">@dimen/_8ssp</dimen>
     <dimen name="font_9sp">@dimen/_9ssp</dimen>

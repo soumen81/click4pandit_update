@@ -15,10 +15,16 @@ import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackag
 import com.autumntechcreation.click4panditcustomer.ui.contactus.ContactUsModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordModel;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.TriggerMailModel;
+import com.autumntechcreation.click4panditcustomer.ui.home.CartItemCountModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
+import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListModel;
+import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.AddWishListItemModel;
+import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitAddtoCartOrBuyNowModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel;
+import com.autumntechcreation.click4panditcustomer.ui.newwishlist.DeleteWishListModel;
+import com.autumntechcreation.click4panditcustomer.ui.newwishlist.NewWishListItemModel;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderListModel;
 import com.autumntechcreation.click4panditcustomer.ui.ordersummary.OrderSummeryModel;
 import com.autumntechcreation.click4panditcustomer.ui.profile.CustomerGetProfileModel;
@@ -201,6 +207,51 @@ public interface Webservice {
 
     @GET()
     LiveData<ApiResponse<List<ShopCategoryModel>>> getShopCategoryList(@Url String apiname
+
+    );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<CartItemCountModel>> getCartItemCount(@Url String apiname,
+                                                                           @Body JsonObject jsonObject
+
+    );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<List<NewAddtoCartListModel>>> getNewAddtoCartList(@Url String apiname,
+                                                                              @Body JsonObject jsonObject
+
+    );
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<List<NewWishListItemModel>>> getNewWishList(@Url String apiname,
+                                                                     @Body JsonObject jsonObject
+
+    );
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<List<NewWishListItemModel>>> getAddtoCartBuyNow(@Url String apiname,
+                                                                     @Body JsonObject jsonObject
+
+    );
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<NewPujaItemKitAddtoCartOrBuyNowModel>> getAddtoCartBuyNowForPujaSamagri(@Url String apiname,
+                                                                                                 @Body JsonObject jsonObject
+
+    );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<DeleteWishListModel>> getDeleteWishListItem(@Url String apiname,
+                                                                     @Body JsonObject jsonObject
+
+    );
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<AddWishListItemModel>> getAddWishListItem(@Url String apiname,
+                                                                   @Body JsonObject jsonObject
 
     );
 }

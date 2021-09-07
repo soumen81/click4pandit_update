@@ -22,4 +22,5 @@ public class MainViewModel extends ViewModel {
     public String getFirstName(){
         return mLoginRepository.getFirstName();
     }
+
 }

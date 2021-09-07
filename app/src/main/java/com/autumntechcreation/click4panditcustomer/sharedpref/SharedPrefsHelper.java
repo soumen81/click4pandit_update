@@ -17,6 +17,7 @@ public class SharedPrefsHelper {
     public static String ENTERED_HOME_ACTIVITY = "ENTERED_HOME_ACTIVITY";
     public static String EMAIL = "email";
     public static String ALTERNATEMOBNO = "alternateMobileNo";
+    public static String CARTCOUNT = "cartCount";
 
     private SharedPreferences mSharedPreferences;
 

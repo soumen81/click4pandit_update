@@ -1,35 +1,18 @@
 package com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit
 
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
+import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.autumntechcreation.click4panditcustomer.R
 import com.autumntechcreation.click4panditcustomer.adapter.NewPujaItemKitListAdapter
 import com.autumntechcreation.click4panditcustomer.network.Resource
-import com.bumptech.glide.Glide
+import com.autumntechcreation.click4panditcustomer.ui.newwishlist.DeleteWishListModel
+import com.autumntechcreation.click4panditcustomer.util.SingleLiveEvent
 import com.google.gson.Gson
 import java.util.*
 import javax.inject.Inject
-
-
-/*@BindingAdapter("pujaitemkit_img")
-fun pujaitemkitImg(view: ImageView, position: Int) {
-
-    var newPujaItemKitListt: MutableLiveData<ArrayList<NewPujaItemKitListModel>>? =
-        MutableLiveData<ArrayList<NewPujaItemKitListModel>>();
-    val list = newPujaItemKitListt!!.getValue()
-
-    Glide.with(view.context)
-        .load(list!!.get(position).prodImgDataURL)
-        .into(view)
-
-}*/
-
-
 
 
 class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKitListRepository: NewPujaItemKitListRepository) : ViewModel() {
@@ -38,7 +21,11 @@ class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKi
     var newPujaItemKitList: MutableLiveData<ArrayList<NewPujaItemKitListModel>>? =
         MutableLiveData<ArrayList<NewPujaItemKitListModel>>();
     var pujaItemKitListLiveData: LiveData<Resource<List<NewPujaItemKitListModel>>>? = null
-
+    private val mSelectedBuyNowPujaItemSamagri = SingleLiveEvent<Int>()
+    private val mSelectedAddtoCartItem = SingleLiveEvent<Int>()
+    private val mSelectedWishListItem = SingleLiveEvent<Int>()
+    var addWishListModelLiveData: LiveData<Resource<AddWishListItemModel>>? = null
+    var newPujaItemKitAddtoCartOrBuyNowModelLiveData: LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>? = null
     fun init() {
 
         newPujaItemKitListAdapter = NewPujaItemKitListAdapter(R.layout.singlerow_newpujaitemkitlist, this)
@@ -49,6 +36,22 @@ class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKi
         pujaItemKitListLiveData = MutableLiveData()
         pujaItemKitListLiveData = mNewPujaItemKitListRepository.getPujaItemKitList()
         return pujaItemKitListLiveData as LiveData<Resource<List<NewPujaItemKitListModel>>>
+
+    }
+
+
+
+    fun getNewPujaItemKitAddtoCartOrBuyNow(prodMasterId: Int, productPrice: Int): LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>> {
+        newPujaItemKitAddtoCartOrBuyNowModelLiveData = MutableLiveData()
+        newPujaItemKitAddtoCartOrBuyNowModelLiveData = mNewPujaItemKitListRepository.getAddtoCartBuyNowForPujaSamagri(prodMasterId, productPrice)
+        return newPujaItemKitAddtoCartOrBuyNowModelLiveData as LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>
+
+    }
+
+    fun getAddForWishListItem(prodMasterId:Int,prodCustWishLisQty:Int,prodCustscWishListRate:Double): LiveData<Resource<AddWishListItemModel>> {
+        addWishListModelLiveData = MutableLiveData()
+        addWishListModelLiveData = mNewPujaItemKitListRepository.getAddItemForWishListItem(prodMasterId, prodCustWishLisQty,prodCustscWishListRate)
+        return addWishListModelLiveData as LiveData<Resource<AddWishListItemModel>>
 
     }
 
@@ -85,20 +88,32 @@ class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKi
         return list!!.get(position).prodPrice.toString()
     }
 
-/*    @BindingAdapter("pujaItemKitListAdapter")
-    fun bindRecyclerViewAdapter(recyclerView: RecyclerView, adapter: RecyclerView.Adapter<*>?) {
-        recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 2)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = adapter
-    }*/
-  /*  @BindingAdapter("pujaitemkit_img")
-    fun pujaitemkitimg(img: ImageView, position: Int) {
-        val list = newPujaItemKitList!!.getValue()
-        Glide.with(img.context)
-            .load(list!!.get(position).prodImgDataURL)
-            .into(img)
 
-    }*/
+    fun onClickBuyNowPujaSamagriItemList(view: View, pos: Int) {
+        Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
+        mSelectedBuyNowPujaItemSamagri.setValue(pos)
+    }
+
+    fun getSelectedPujaItemSamagriListItem(): SingleLiveEvent<Int> {
+        return mSelectedBuyNowPujaItemSamagri
+    }
+ fun onClickAddtoCartPujaSamagriItemList(view: View, pos: Int) {
+        Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
+     mSelectedAddtoCartItem.setValue(pos)
+    }
+
+    fun getSelectedaddtoCartListItem(): SingleLiveEvent<Int> {
+        return mSelectedAddtoCartItem
+    }
+
+    fun onClickWishListPujaSamagriItemList(view: View, pos: Int) {
+        Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
+        mSelectedWishListItem.setValue(pos)
+    }
+
+    fun getSelectedmSelectedWishListItem(): SingleLiveEvent<Int> {
+        return mSelectedWishListItem
+    }
 
 
 

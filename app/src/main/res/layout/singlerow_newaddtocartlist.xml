@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+        <variable
+            name="newPujaItemKitListModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel"/>
+        <variable
+            name="viewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_200dp"
+        android:paddingBottom="@dimen/dimen_10dp"
+        android:layout_margin="@dimen/dimen_5dp"
+        android:background="@drawable/shopitem_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <ImageView
+            android:id="@+id/imgVwNewAddtoCart"
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_80dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </ImageView>
+        <TextView
+            android:id="@+id/tvAddtoCartProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@{viewModel.getAddtoCartProductName(position)}"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgVwNewAddtoCart"
+            ></TextView>
+        <TextView
+            android:id="@+id/tvRupee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="@dimen/font_10sp"
+            android:text="@string/rupeesign"
+            android:textColor="@color/buttonColor"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            app:layout_constraintRight_toLeftOf="@+id/tvAddtoCartProductPrice"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddtoCartProductName"
+            ></TextView>
+        <TextView
+            android:id="@+id/tvAddtoCartProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.getAddtoCartProductPrice(position)}"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddtoCartProductName"
+            app:layout_constraintLeft_toRightOf="@+id/tvRupee"
+
+            android:layout_margin="@dimen/dimen_10dp"
+            ></TextView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:background="@drawable/shopitem_border"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddtoCartProductPrice"
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            >
+            <TextView
+                android:id="@+id/tvMinusQuantity"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:text="-"
+                android:textSize="@dimen/font_20sp"
+                android:textColor="@color/blackColor"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"></TextView>
+
+            <View
+                android:layout_width="@dimen/dimen_1dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:background="@color/blackColor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvMinusQuantity"></View>
+            <TextView
+                android:id="@+id/tvQuantityIncrease"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:text="1"
+                android:textSize="@dimen/font_18sp"
+                android:textColor="@color/blackColor"
+                android:gravity="center"
+                app:layout_constraintLeft_toRightOf="@+id/tvMinusQuantity"
+                app:layout_constraintTop_toTopOf="parent"
+                ></TextView>
+            <View
+                android:layout_width="@dimen/dimen_1dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:background="@color/blackColor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvQuantityIncrease"></View>
+            <TextView
+                android:id="@+id/tvQuantityPlus"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:text="+"
+                android:textSize="@dimen/font_18sp"
+                android:textColor="@color/blackColor"
+                android:gravity="center"
+                app:layout_constraintLeft_toRightOf="@+id/tvQuantityIncrease"
+                app:layout_constraintTop_toTopOf="parent"
+                ></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imgVwDeleteAddtoCartItem"
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:onClick="@{(v) -> viewModel.onClickDeleteForItemList(v,position)}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@drawable/recycle"></ImageView>
+       <!-- <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blackColor"
+            android:layout_margin="@dimen/dimen_10dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/font_14sp"
+            android:text="Sub Total"></TextView>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

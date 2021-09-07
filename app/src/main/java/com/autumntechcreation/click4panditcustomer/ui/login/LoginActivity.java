@@ -16,6 +16,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
@@ -23,6 +24,7 @@ import com.autumntechcreation.click4panditcustomer.databinding.ActivityLoginBind
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog;
 import com.autumntechcreation.click4panditcustomer.network.Resource;
 import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPasswordActivity;
+import com.autumntechcreation.click4panditcustomer.ui.home.CartItemCountModel;
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterActivity;
 import com.autumntechcreation.click4panditcustomer.util.Static;
 import com.google.gson.Gson;
@@ -147,6 +149,7 @@ public class LoginActivity extends AppCompatActivity {
                     String json = gson.toJson(resource.data);
                     Log.e("handleLoginResponse", json + "");
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
+                        mLoginViewModel.getCartCountItem().observe(LoginActivity.this, LoginActivity.this::handleAddtoCartItemCount);
                         String userName=resource.data.firstName + resource.data.lastName;
                         String mobileNo=resource.data.mobile;
                         String firstName=resource.data.firstName;
@@ -157,6 +160,9 @@ public class LoginActivity extends AppCompatActivity {
                         mLoginViewModel.storelastName(lastName);
                         String emailAddress=mLoginViewModel.storeEmail(mActivityLoginBinding.edtTxtEmail.getText().toString());
                         Log.e("emailAddress",emailAddress);
+
+
+
                         Intent in=new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(in);
                         sp.edit().putBoolean("logged",true).apply();
@@ -178,6 +184,78 @@ public class LoginActivity extends AppCompatActivity {
                                 })
                                 .show();
                     }
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    break;
+                default:
+                    DisplayDialog.getInstance().dismissAlertDialog();
+
+                    break;
+            }
+        }
+    }
+
+
+
+
+    private void handleAddtoCartItemCount(Resource<CartItemCountModel> resource) {
+        if (resource != null) {
+
+            switch (resource.status) {
+                case ERROR:
+
+                    DisplayDialog.getInstance().dismissAlertDialog();
+                    if (resource.message != null &&  resource.data==null) {
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(resource.message);
+
+                            new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText(jsonObject.getString("error"))
+                                    .setContentText(jsonObject.getString("error_description"))
+                                    .show();
+
+                        } catch (JSONException e) {
+                            new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error")
+                                    .setContentText("Unhandle Error")
+                                    .show();
+                        }
+                    } else if (!Static.isNetworkAvailable(LoginActivity.this) && resource.data==null) {
+
+                        new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(this.getString(R.string.nointernet))
+                                .setContentText(this.getString(R.string.nointernetdetails))
+                                .show();
+
+                    }
+                    break;
+                case LOADING:
+                    Log.e("handleForgetResponse", "LOADING");
+                    DisplayDialog.getInstance().showAlertDialog(LoginActivity.this, LoginActivity.this.getString(R.string.please_wait));
+
+
+                    break;
+                case SUCCESS:
+                    Log.e("handleForgetPasswordResponse", "SUCCESS");
+                    // Log.e("handleLoginResponse",resource.message);
+                    Log.e("handleForgetPasswordResponse", resource.status + "");
+                    Log.e("handleForgetPasswordResponse", resource.data + "");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(resource.data);
+                    Log.e("handleForgetPasswordResponse", json + "");
+                    //TextView textview = (TextView) getActivity().findViewById(R.id.tvCartCount);
+                    if(resource.data.getReturnStatus().equals("SUCCESS")){
+                        int cartCount=resource.data.getReturnCartValue().getCartItemCount();
+                        Log.e("CARTCOUNT", String.valueOf(cartCount));
+                        mLoginViewModel.storeCartCount(String.valueOf(cartCount));
+                        Log.e("STORECARTCOUNT",  mLoginViewModel.storeCartCount(String.valueOf(cartCount)));
+                       /* if(cartCount>0) {
+                            textview.setText(String.valueOf(cartCount));
+                        }*/
+                    }/*else if(resource.data.getReturnCartValue().equals(null)){
+                        textview.setVisibility(View.GONE);
+                    }*/
+
                     DisplayDialog.getInstance().dismissAlertDialog();
                     break;
                 default:

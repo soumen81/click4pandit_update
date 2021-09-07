@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.autumntechcreation.click4panditcustomer.network.Resource;
+import com.autumntechcreation.click4panditcustomer.ui.home.CartItemCountModel;
 import com.autumntechcreation.click4panditcustomer.util.SingleLiveEvent;
 
 import javax.inject.Inject;
@@ -17,7 +18,7 @@ public class LoginViewModel extends ViewModel {
     private SingleLiveEvent<Void> mclickForgetPassword = new SingleLiveEvent<>();
     LoginRepository mLoginRepository;
     private LiveData<Resource<LoginResponse>> mLoginResponseResult;
-
+    private LiveData<Resource<CartItemCountModel>> mCartItemCountModelResponse;
     @Inject
     public LoginViewModel(LoginRepository loginRepository) {
         this.mLoginRepository = loginRepository;
@@ -30,7 +31,11 @@ public class LoginViewModel extends ViewModel {
         return mLoginResponseResult;
 
     }
-
+    public LiveData<Resource<CartItemCountModel>> getCartCountItem() {
+        mCartItemCountModelResponse=new MutableLiveData<>();
+        mCartItemCountModelResponse=mLoginRepository.getCartCountItem();
+        return mCartItemCountModelResponse;
+    }
 
     public void onClickForLogin(View view) {
         Log.e("Click", view.getId() + "");
@@ -79,6 +84,11 @@ public class LoginViewModel extends ViewModel {
         mLoginRepository.storeEmail(email);
      return email;
  }
+
+    public String storeCartCount(String cartCount) {
+        mLoginRepository.storeCartCount(cartCount);
+        return cartCount;
+    }
 
     public void deleteSharedPreference() {
         mLoginRepository.deleteSharedPreference();

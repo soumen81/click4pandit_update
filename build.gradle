@@ -51,4 +51,5 @@ versions.retrofitVersion = "2.3.0"
 versions.okhttpVersion = "3.4.1"
 versions.daggerVersion = "2.20"
 versions.map="16.0.0"
+versions.work_version = "2.3.4"
 ext.versions = versions

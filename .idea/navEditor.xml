@@ -244,6 +244,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="newAddtoCartListFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1226" />
+                            <option name="y" value="1503" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="newGiftBoxListFragment">
                     <value>
                       <LayoutPositions>
@@ -252,6 +264,15 @@
                             <option name="x" value="512" />
                             <option name="y" value="2341" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_newGiftBoxListFragment_to_newAddtoCartListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -265,6 +286,15 @@
                             <option name="y" value="1560" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_newPujaBoxItemList_to_newAddtoCartListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -273,9 +303,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="505" />
-                            <option name="y" value="1934" />
+                            <option name="x" value="488" />
+                            <option name="y" value="1951" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_newPujaBrassItemListFragment_to_newAddtoCartListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -285,8 +324,29 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="477" />
-                            <option name="y" value="1167" />
+                            <option name="x" value="474" />
+                            <option name="y" value="1114" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_newPujaItemKitList_to_newAddtoCartListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="newWishListFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1245" />
+                            <option name="y" value="2120" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -543,6 +603,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_shopCategoryFragment_to_newGiftBoxListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_shopCategoryFragment_to_newPujaBoxItemList">
                               <value>
                                 <LayoutPositions />

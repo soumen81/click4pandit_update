@@ -6,10 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.autumntechcreation.click4panditcustomer.BaseFragment
@@ -20,10 +23,14 @@ import com.autumntechcreation.click4panditcustomer.databinding.FragmentNewpujait
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog
 import com.autumntechcreation.click4panditcustomer.network.Resource
 import com.autumntechcreation.click4panditcustomer.network.Status
+import com.autumntechcreation.click4panditcustomer.ui.newwishlist.DeleteWishListModel
+import com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryFragmentDirections
+import com.google.gson.Gson
 import dagger.android.support.AndroidSupportInjection
 import org.json.JSONException
 import org.json.JSONObject
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 
 class NewPujaItemKitList : BaseFragment() {
@@ -31,6 +38,8 @@ class NewPujaItemKitList : BaseFragment() {
     private lateinit var mNewPujaItemKitListViewModel: NewPujaItemKitListViewModel
     private lateinit var mFragmentNewpujaitemkitlistBinding: FragmentNewpujaitemkitlistBinding
     var pujaitemKitListid: Int? = null
+    var cartCount: Int = 0
+
     @Inject
     lateinit var mNewPujaItemKitListFactory: NewPujaItemKitListFactory
 
@@ -71,6 +80,40 @@ class NewPujaItemKitList : BaseFragment() {
             handlePujaItemKitList(it)
 
         })
+
+        mNewPujaItemKitListViewModel.getSelectedPujaItemSamagriListItem().observe(this, Observer {
+            var mNewPujaItemKitListModel: NewPujaItemKitListModel = mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it)
+            var prodMasterId:Int= mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodMasterId!!
+            var prodPrice:Double= mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodPrice!!
+            val action = NewPujaItemKitListDirections.actionNewPujaItemKitListToNewAddtoCartListFragment()
+            action.setMyArg(mNewPujaItemKitListModel)
+            action.prodMasterId=prodMasterId
+            action.prodPrice= prodPrice.roundToInt()
+            Navigation.findNavController(mView).navigate(action)
+        })
+
+
+        mNewPujaItemKitListViewModel.getSelectedaddtoCartListItem().observe(this, Observer {
+            mNewPujaItemKitListViewModel.getNewPujaItemKitAddtoCartOrBuyNow(mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodMasterId!!,
+                mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodPrice!!.toInt()
+            )
+                .observe(activity as FragmentActivity, Observer {
+                    if (isDeviceOnline()) {
+                        handlePujaItemKitAddtoCartOrBuyNowResponse(it)
+                    }
+                })
+        })
+
+        mNewPujaItemKitListViewModel.getSelectedmSelectedWishListItem().observe(this, Observer {
+            mNewPujaItemKitListViewModel.getAddForWishListItem(mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodMasterId!!,
+                cartCount, mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodPrice!!
+            ).observe(activity as FragmentActivity,
+                Observer {
+                    if (isDeviceOnline()) {
+                        handleAddWishListItemResponse(it)
+                    }
+                })
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,6 +122,143 @@ class NewPujaItemKitList : BaseFragment() {
         val prodCategoryId = args.pujaItemKitListId
         Log.e("VALUE",prodCategoryId.toString())
     }
+
+
+    private fun handleAddWishListItemResponse(resource: Resource<AddWishListItemModel>?) {
+        if (resource != null) {
+
+            when (resource.status) {
+                Status.ERROR -> {
+                    Log.e("AddWishListItemModelResponse", "ERROR")
+                    Log.e("AddWishListItemModelResponse", resource.message)
+                    Log.e("AddWishListItemModelResponse", resource.status.toString() + "")
+                    Log.e("AddWishListItemModelResponse", resource.data.toString() + "")
+                    //  if (resource.message != null && resource.data == null) {
+                    if (resource.message != null && resource.data == null) {
+                        val jsonObject: JSONObject
+                        try {
+                            jsonObject = JSONObject(resource.message)
+
+
+
+
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+
+                        }
+
+                    }
+                }
+                Status.LOADING -> {
+                    Log.e("AddWishListItemModelResponse", "LOADING")
+                    Log.e("AddWishListItemModelResponse", resource.data.toString() + "")
+
+                }
+                Status.SUCCESS -> {
+                    if (resource.data != null) {
+                        Log.e("AddWishListItemModelResponse", resource.data.toString())
+                        val gson = Gson()
+                        val json = gson.toJson(resource.data)
+                        Log.e("AddWishListItemModelResponse_SUCCESS", json.toString())
+                        if (resource.data.returnStatus.equals("SUCCESS")) {
+
+                          Toast.makeText(activity!!,"Item Added SucessFully in the WishList",Toast.LENGTH_SHORT).show()
+
+                        }
+
+
+                    } else {
+                    }
+
+                }
+                else -> {
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+    private fun handlePujaItemKitAddtoCartOrBuyNowResponse(resource: Resource<NewPujaItemKitAddtoCartOrBuyNowModel>?) {
+        if (resource != null) {
+
+            when (resource.status) {
+                Status.ERROR -> {
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", "ERROR")
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.message)
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.status.toString() + "")
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.data.toString() + "")
+                    //  if (resource.message != null && resource.data == null) {
+                    if (resource.message != null && resource.data == null) {
+                        val jsonObject: JSONObject
+                        try {
+                            jsonObject = JSONObject(resource.message)
+
+
+
+
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+
+                        }
+
+                    }
+                }
+                Status.LOADING -> {
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", "LOADING")
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.data.toString() + "")
+
+                }
+                Status.SUCCESS -> {
+                    if (resource.data != null) {
+                        Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.data.toString())
+                        val gson = Gson()
+                        val json = gson.toJson(resource.data)
+                        Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse_SUCCESS", json.toString())
+                        if (resource.data.returnStatus.equals("SUCCESS")) {
+                             cartCount =resource.data.returnCartValue!!.cartItemCount
+                            //  mHomeViewModel.getCartCountItem().observe(getActivity(), HomeFragment.this::handleAddtoCartItemCount);
+                            val tvCartCount = activity!!.findViewById<View>(R.id.tvCartCount) as TextView
+                            // val storeCartCount:String?=mNewAddtoCartListViewModel.storeCartCount()
+                            // val updateCount:String?= Integer.toString(cartCount)
+                            //val totalCartCount:String?=storeCartCount+updateCount
+                            tvCartCount.setText(Integer.toString(cartCount))
+
+                        }
+
+
+                    } else {
+                    }
+
+                }
+                else -> {
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     private fun handlePujaItemKitList(resource: Resource<List<NewPujaItemKitListModel>>?) {

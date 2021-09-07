@@ -55,14 +55,25 @@
             android:id="@+id/imgWishItemKit"
             android:layout_width="@dimen/dimen_25dp"
             android:layout_height="@dimen/dimen_25dp"
+
             android:src="@drawable/wish"
-            android:layout_margin="@dimen/dimen_10dp"
+            android:onClick="@{(v) -> viewModel.onClickWishListPujaSamagriItemList(v,position)}"
+            android:layout_margin="@dimen/dimen_20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </ImageView>
 
-        <!--  app:puja_item_kit_img="@{position}"-->
+       <!-- <ImageView
+            android:id="@+id/imgBlackWishItemKit"
+            android:layout_width="@dimen/dimen_25dp"
+            android:layout_height="@dimen/dimen_25dp"
+            android:src="@drawable/wish_black"
+            android:layout_margin="@dimen/dimen_20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ImageView>-->
 
 
         <TextView
@@ -129,6 +140,7 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             android:background="@drawable/ic_newovalred"
             android:gravity="center"
+            android:onClick="@{(v) -> viewModel.onClickAddtoCartPujaSamagriItemList(v,position)}"
             android:text="@string/addtocart"
             android:textColor="@color/whiteColor"
             android:textSize="@dimen/font_10sp"
@@ -146,7 +158,7 @@
             android:layout_marginRight="@dimen/dimen_5dp"
             android:background="@drawable/ic_newovalblack"
             android:gravity="center"
-
+            android:onClick="@{(v) -> viewModel.onClickBuyNowPujaSamagriItemList(v,position)}"
             android:text="@string/buynow"
             android:textColor="@color/whiteColor"
             android:textSize="@dimen/font_10sp"
