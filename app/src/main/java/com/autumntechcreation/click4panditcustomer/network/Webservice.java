@@ -20,6 +20,7 @@ import com.autumntechcreation.click4panditcustomer.ui.home.PujaCategoryModel;
 import com.autumntechcreation.click4panditcustomer.ui.home.PujaTypesModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginResponse;
 import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListModel;
+import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.UpdateCartItemCountModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.AddWishListItemModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitAddtoCartOrBuyNowModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel;
@@ -252,6 +253,13 @@ public interface Webservice {
     @POST()
     LiveData<ApiResponse<AddWishListItemModel>> getAddWishListItem(@Url String apiname,
                                                                    @Body JsonObject jsonObject
+
+    );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<UpdateCartItemCountModel>> getUpdateForPujaSamagri(@Url String apiname,
+                                                                            @Body JsonObject jsonObject
 
     );
 }

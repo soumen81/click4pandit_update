@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
@@ -38,6 +39,7 @@ class NewAddtoCartListFragment : BaseFragment(){
     var prodMasterId:Int = 0
     var prodPrice:Int = 0
     var cartCount: Int=0
+    var minteger = 1
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         mFragmentNewaddtocartlistBinding =
@@ -99,6 +101,7 @@ class NewAddtoCartListFragment : BaseFragment(){
         mNewAddtoCartListViewModel.getNewPujaItemKitAddtoCartOrBuyNow(prodMasterId, prodPrice)
             .observe(activity as FragmentActivity, Observer {
                 if (isDeviceOnline()) {
+
                     handlePujaItemKitAddtoCartOrBuyNowResponse(it)
                 }
             })
@@ -117,7 +120,102 @@ class NewAddtoCartListFragment : BaseFragment(){
             })
         })
 
+        mNewAddtoCartListViewModel.getSelectedMinusForListItem().observe(this, Observer {
+
+        })
+        mNewAddtoCartListViewModel.getSelectedUpdateForListItem().observe(this, Observer {
+
+
+
+            mNewAddtoCartListViewModel.getUpdateAddToCart(mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,prodMasterId,
+                mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!, mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!).observe(activity as FragmentActivity,
+                {
+                    if (isDeviceOnline()) {
+                        handlePujaItemKitUpdateResponse(it)
+                    }
+                })
+
+        })
+        mNewAddtoCartListViewModel.getSelectedAddForListItem().observe(this, Observer {
+            
+        })
+
     }
+
+
+
+    private fun handlePujaItemKitUpdateResponse(resource: Resource<UpdateCartItemCountModel>?) {
+        if (resource != null) {
+
+            when (resource.status) {
+                Status.ERROR -> {
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", "ERROR")
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.message)
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.status.toString() + "")
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.data.toString() + "")
+                    //  if (resource.message != null && resource.data == null) {
+                    if (resource.message != null && resource.data == null) {
+                        val jsonObject: JSONObject
+                        try {
+                            jsonObject = JSONObject(resource.message)
+
+
+
+
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+
+                        }
+
+                    }
+                }
+                Status.LOADING -> {
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", "LOADING")
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.data.toString() + "")
+
+                }
+                Status.SUCCESS -> {
+                    if (resource.data != null) {
+                        Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.data.toString())
+                        val gson = Gson()
+                        val json = gson.toJson(resource.data)
+                        Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse_SUCCESS", json.toString())
+                        if (resource.data.returnStatus.equals("SUCCESS")) {
+                            cartCount =resource.data.returnCartValue!!.cartItemCount
+                            //  mHomeViewModel.getCartCountItem().observe(getActivity(), HomeFragment.this::handleAddtoCartItemCount);
+                            val tvCartCount = activity!!.findViewById<View>(R.id.tvCartCount) as TextView
+                            // val storeCartCount:String?=mNewAddtoCartListViewModel.storeCartCount()
+                            // val updateCount:String?= Integer.toString(cartCount)
+                            //val totalCartCount:String?=storeCartCount+updateCount
+                            tvCartCount.setText(Integer.toString(cartCount))
+                          /*  mNewAddtoCartListViewModel.getAddtoCartItemList().observe(activity!!, Observer {
+
+                                handleAddToCartItemList(it)
+
+                            })*/
+                        }
+                    } else {
+                    }
+
+                }
+                else -> {
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -158,21 +256,24 @@ class NewAddtoCartListFragment : BaseFragment(){
                         val json = gson.toJson(resource.data)
                         Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse_SUCCESS", json.toString())
                         if (resource.data.returnStatus.equals("SUCCESS")) {
-                            cartCount =resource.data.returnCartValue!!.cartItemCount
-                            //  mHomeViewModel.getCartCountItem().observe(getActivity(), HomeFragment.this::handleAddtoCartItemCount);
-                            val tvCartCount = activity!!.findViewById<View>(R.id.tvCartCount) as TextView
-                           // val storeCartCount:String?=mNewAddtoCartListViewModel.storeCartCount()
-                           // val updateCount:String?= Integer.toString(cartCount)
-                            //val totalCartCount:String?=storeCartCount+updateCount
-                            tvCartCount.setText(Integer.toString(cartCount))
+                            if(cartCount==0){
+                                Toast.makeText(activity,"Cart is Empty",Toast.LENGTH_SHORT).show()
+                            }else {
+                                cartCount = resource.data.returnCartValue!!.cartItemCount
+                                //  mHomeViewModel.getCartCountItem().observe(getActivity(), HomeFragment.this::handleAddtoCartItemCount);
+                                val tvCartCount =
+                                    activity!!.findViewById<View>(R.id.tvCartCount) as TextView
+                                // val storeCartCount:String?=mNewAddtoCartListViewModel.storeCartCount()
+                                // val updateCount:String?= Integer.toString(cartCount)
+                                //val totalCartCount:String?=storeCartCount+updateCount
+                                tvCartCount.setText(Integer.toString(cartCount))
+                            }
                             mNewAddtoCartListViewModel.getAddtoCartItemList().observe(activity!!, Observer {
 
                                 handleAddToCartItemList(it)
 
                             })
                         }
-
-
                     } else {
                     }
 

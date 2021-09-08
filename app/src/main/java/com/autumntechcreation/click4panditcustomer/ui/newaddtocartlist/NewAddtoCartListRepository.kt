@@ -150,6 +150,55 @@ class NewAddtoCartListRepository @Inject constructor(
         }.asLiveData()
     }
 
+
+
+    fun getUpdateAddToCart(productCustScId:Int,prodMasterId: Int,productPrice:Double,productCustScDate:String): LiveData<Resource<UpdateCartItemCountModel>>?{
+        return object : NetworkBoundResource<UpdateCartItemCountModel, UpdateCartItemCountModel>(mAppExecutors){
+            private var resultsDb: UpdateCartItemCountModel? = null
+
+            override fun shouldFetch(data: UpdateCartItemCountModel?): Boolean {
+                return true
+            }
+
+            override fun saveCallResult(item: UpdateCartItemCountModel) {
+                resultsDb = item
+            }
+
+            override fun loadFromDb(): LiveData<UpdateCartItemCountModel> {
+                return if (resultsDb == null) {
+                    AbsentLiveData.create()
+                } else {
+                    object : LiveData<UpdateCartItemCountModel>() {
+                        protected override fun onActive() {
+                            super.onActive()
+                            value = resultsDb
+                        }
+                    }
+                }
+            }
+            override fun createCall(): LiveData<ApiResponse<UpdateCartItemCountModel>> {
+                Log.e("BoundResource", "createCall")
+
+                val url = AllUrlsAndConfig.STORE_BASE_URL+AllUrlsAndConfig.UPDATECARTITEM
+                val str: String? = null
+                var jsonObject= JsonObject()
+                jsonObject.addProperty(AllUrlsAndConfig.ISGUESUSERR,"N")
+                jsonObject.addProperty(AllUrlsAndConfig.LOOGONID,getEmail())
+                jsonObject.addProperty(AllUrlsAndConfig.PRODCUSTSCID,productCustScId)
+                jsonObject.addProperty(AllUrlsAndConfig.DELLFLGG,"N")
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDMASTERID,prodMasterId)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCDT,productCustScDate)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCQTY,1)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCRATE,productPrice)
+                jsonObject.addProperty(AllUrlsAndConfig.CURRID,1001)
+
+                return mWebservice.getUpdateForPujaSamagri(url,jsonObject )
+            }
+
+        }.asLiveData()
+    }
+
+
     fun getEmail(): String? {
         return mSharedPrefsHelper[SharedPrefsHelper.EMAIL, null]
     }

@@ -2,6 +2,7 @@ package com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist
 
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +11,7 @@ import com.autumntechcreation.click4panditcustomer.adapter.NewAddtoCartListAdapt
 import com.autumntechcreation.click4panditcustomer.network.Resource
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitAddtoCartOrBuyNowModel
 import com.autumntechcreation.click4panditcustomer.util.SingleLiveEvent
+import kotlinx.android.synthetic.main.singlerow_newaddtocartlist.view.*
 import java.util.*
 import javax.inject.Inject
 
@@ -20,7 +22,12 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
         MutableLiveData<ArrayList<NewAddtoCartListModel>>();
     var newAddtoCartLiveData: LiveData<Resource<List<NewAddtoCartListModel>>>? = null
     private val mSelectedDeleteForItem = SingleLiveEvent<Int>()
+    private val mSelectedMinusForItem = SingleLiveEvent<Int>()
+    private val mSelectedUpdateForItem = SingleLiveEvent<Int>()
+    private val mSelectedAddForItem = SingleLiveEvent<Int>()
     var newPujaItemKitAddtoCartOrBuyNowModelLiveData: LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>? = null
+    var updateCartItemCountModelLiveData: LiveData<Resource<UpdateCartItemCountModel>>? = null
+    var minteger = 0
     fun init() {
         newAddtoCartListAdapter = NewAddtoCartListAdapter(R.layout.singlerow_newaddtocartlist, this)
     }
@@ -35,6 +42,13 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
         newPujaItemKitAddtoCartOrBuyNowModelLiveData = MutableLiveData()
         newPujaItemKitAddtoCartOrBuyNowModelLiveData = mNewAddtoCartListRepository.getRemoveForPujaItem(productCustScId, prodMasterId,productPrice,prodCustScDate,updateCartQuantity)
         return newPujaItemKitAddtoCartOrBuyNowModelLiveData as LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>
+
+    }
+
+    fun getUpdateAddToCart(productCustScId:Int,prodMasterId: Int,productPrice:Double,productCustScDate:String): LiveData<Resource<UpdateCartItemCountModel>> {
+        updateCartItemCountModelLiveData = MutableLiveData()
+        updateCartItemCountModelLiveData = mNewAddtoCartListRepository.getUpdateAddToCart(productCustScId, prodMasterId,productPrice,productCustScDate)
+        return updateCartItemCountModelLiveData as LiveData<Resource<UpdateCartItemCountModel>>
 
     }
 
@@ -79,4 +93,41 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
     fun getSelectedDeleteForListItem(): SingleLiveEvent<Int> {
         return mSelectedDeleteForItem
     }
+
+    fun onClickMinusForItemList(view: View, pos: Int) {
+        Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
+
+        minteger -= 1
+        view.tvMinusQuantity.setText(""+minteger)
+
+        mSelectedMinusForItem.setValue(pos)
+    }
+
+    fun getSelectedMinusForListItem(): SingleLiveEvent<Int> {
+        return mSelectedMinusForItem
+    }
+
+    fun onClickUpdateForItemList(view: View, pos: Int) {
+        Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
+       // view.tvQuantityIncrease.setText(""+minteger)
+        mSelectedUpdateForItem.setValue(pos)
+    }
+
+    fun getSelectedUpdateForListItem(): SingleLiveEvent<Int> {
+        return mSelectedUpdateForItem
+    }
+    fun onClickAddForItemList(view: View, pos: Int) {
+        Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
+        minteger += 1
+       view.tvQuantityPlus.setText(""+minteger)
+        mSelectedAddForItem.setValue(pos)
+    }
+
+    fun getSelectedAddForListItem(): SingleLiveEvent<Int> {
+        return mSelectedAddForItem
+    }
+
+
+
+
 }

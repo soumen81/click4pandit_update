@@ -2,6 +2,7 @@ package com.autumntechcreation.click4panditcustomer.ui.shopcategory
 
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -53,5 +54,7 @@ class ShopCategoryViewModel @Inject constructor(private val mShopCategoryReposit
     fun getSelectedShopCategoryListItem(): SingleLiveEvent<Int> {
         return mSelectedShopCategory
     }
+
+
 
 }

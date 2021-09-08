@@ -38,6 +38,7 @@ public class AllUrlsAndConfig {
     public static final String ADDTOCARTBUYNOWFORPUJASAMAGRI="/api/ShoppingCart/UpdateProdShoppingCart";
     public static final String REMOVECARTITEMLIST="/api/ShoppingCart/UpdateProdShoppingCart";
     public static final String ADDTOWISHLIST="/api/Wishlist/UpdateCustWishlist";
+    public static final String UPDATECARTITEM="/api/ShoppingCart/UpdateProdShoppingCart";
 
 
 
