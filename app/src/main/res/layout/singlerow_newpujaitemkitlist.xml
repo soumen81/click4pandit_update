@@ -23,6 +23,7 @@
         android:layout_width="@dimen/dimen_130dp"
         android:layout_height="@dimen/dimen_220dp"
         android:layout_marginTop="@dimen/dimen_10dp"
+        android:onClick="@{(v) -> viewModel.onClickSamagriItemListRedirect(v,position)}"
         android:background="@drawable/shopitem_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -55,8 +56,7 @@
             android:id="@+id/imgWishItemKit"
             android:layout_width="@dimen/dimen_25dp"
             android:layout_height="@dimen/dimen_25dp"
-
-            android:src="@drawable/wish"
+           android:src="@drawable/wish"
             android:onClick="@{(v) -> viewModel.onClickWishListPujaSamagriItemList(v,position)}"
             android:layout_margin="@dimen/dimen_20dp"
             app:layout_constraintLeft_toLeftOf="parent"

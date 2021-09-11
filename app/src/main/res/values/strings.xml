@@ -219,6 +219,9 @@
     <string name="notify">Notification Status</string>
     <string name="activenotification">Notification Activated</string>
     <string name="deactivenotification">Notification DeActivated</string>
+    <string name="PujaSamagriItems">Puja Samagri Items</string>
+    <string name="PujaBrassItems">Puja Brass Items</string>
+    <string name="PujaSamagriboxes">Puja Samagri Boxes</string>
 
     <string name="sorry_you_not_online_msg">Sorry! You are not online anymore</string>
 </resources>

@@ -25,9 +25,12 @@ import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newgiftboxlist.NewGiftBoxListViewModel;
 
+import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemdetails.NewPujaBoxItemDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemdetails.NewPujaBrassItemDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.newpujasamagrilistdetails.NewPujaSamagriListDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newwishlist.NewWishListViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsViewModel;
@@ -292,6 +295,21 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(NewWishListViewModel.class)
     abstract ViewModel bindNewWishListViewModel(NewWishListViewModel newWishListViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewPujaSamagriListDetailsViewModel.class)
+    abstract ViewModel bindNewPujaSamagriListDetailsViewModel(NewPujaSamagriListDetailsViewModel newPujaSamagriListDetailsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewPujaBrassItemDetailsViewModel.class)
+    abstract ViewModel bindNewPujaBrassItemDetailsViewModel(NewPujaBrassItemDetailsViewModel newPujaBrassItemDetailsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewPujaBoxItemDetailsViewModel.class)
+    abstract ViewModel bindNewPujaBoxItemDetailsViewModel(NewPujaBoxItemDetailsViewModel newPujaBoxItemDetailsViewModel);
 
 
 

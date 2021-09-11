@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.autumntechcreation.click4panditcustomer.network.*
 import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper
+import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.AddWishListItemModel
+import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitAddtoCartOrBuyNowModel
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel
 import com.autumntechcreation.click4panditcustomer.util.AbsentLiveData
 import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig
@@ -62,6 +64,100 @@ class NewPujaBoxItemListRepository @Inject constructor(
 
         }.asLiveData()
     }
+
+
+
+    fun getAddtoCartBuyNowForPujaBox(prodMasterId: Int,productPrice:Int): LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>?{
+        return object : NetworkBoundResource<NewPujaItemKitAddtoCartOrBuyNowModel, NewPujaItemKitAddtoCartOrBuyNowModel>(mAppExecutors){
+            private var resultsDb: NewPujaItemKitAddtoCartOrBuyNowModel? = null
+
+            override fun shouldFetch(data: NewPujaItemKitAddtoCartOrBuyNowModel?): Boolean {
+                return true
+            }
+
+            override fun saveCallResult(item: NewPujaItemKitAddtoCartOrBuyNowModel) {
+                resultsDb = item
+            }
+
+            override fun loadFromDb(): LiveData<NewPujaItemKitAddtoCartOrBuyNowModel> {
+                return if (resultsDb == null) {
+                    AbsentLiveData.create()
+                } else {
+                    object : LiveData<NewPujaItemKitAddtoCartOrBuyNowModel>() {
+                        protected override fun onActive() {
+                            super.onActive()
+                            value = resultsDb
+                        }
+                    }
+                }
+            }
+            override fun createCall(): LiveData<ApiResponse<NewPujaItemKitAddtoCartOrBuyNowModel>> {
+                Log.e("BoundResource", "createCall")
+
+                val url = AllUrlsAndConfig.STORE_BASE_URL+AllUrlsAndConfig.ADDTOCARTBUYNOWFORPUJASAMAGRI
+                val str: String? = null
+                var jsonObject= JsonObject()
+                jsonObject.addProperty(AllUrlsAndConfig.ISGUESUSERR,"N")
+                jsonObject.addProperty(AllUrlsAndConfig.LOOGONID,getEmail())
+                jsonObject.addProperty(AllUrlsAndConfig.PRODCUSTSCID,str)
+                jsonObject.addProperty(AllUrlsAndConfig.DELLFLGG,"N")
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDMASTERID,prodMasterId)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCDT,str)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCQTY,1)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCRATE,productPrice)
+                jsonObject.addProperty(AllUrlsAndConfig.CURRID,1001)
+
+                return mWebservice.getAddtoCartBuyNowForPujaSamagri(url,jsonObject )
+            }
+
+        }.asLiveData()
+    }
+
+    fun getAddItemForWishPujaBoxListItem(prodMasterId:Int,prodCustWishLisQty:Int,prodCustscWishListRate:Double): LiveData<Resource<AddWishListItemModel>>?{
+        return object : NetworkBoundResource<AddWishListItemModel, AddWishListItemModel>(mAppExecutors){
+            private var resultsDb: AddWishListItemModel? = null
+
+            override fun shouldFetch(data: AddWishListItemModel?): Boolean {
+                return true
+            }
+
+            override fun saveCallResult(item: AddWishListItemModel) {
+                resultsDb = item
+            }
+
+            override fun loadFromDb(): LiveData<AddWishListItemModel> {
+                return if (resultsDb == null) {
+                    AbsentLiveData.create()
+                } else {
+                    object : LiveData<AddWishListItemModel>() {
+                        protected override fun onActive() {
+                            super.onActive()
+                            value = resultsDb
+                        }
+                    }
+                }
+            }
+            override fun createCall(): LiveData<ApiResponse<AddWishListItemModel>> {
+                Log.e("BoundResource", "createCall")
+
+                val url = AllUrlsAndConfig.STORE_BASE_URL+AllUrlsAndConfig.ADDTOWISHLIST
+                val str: String? = null
+                var jsonObject= JsonObject()
+                jsonObject.addProperty(AllUrlsAndConfig.LOOGOONID,getEmail())
+                jsonObject.addProperty(AllUrlsAndConfig.PRODUCTCUSTWISHLISTID,str)
+                jsonObject.addProperty(AllUrlsAndConfig.DDELFLG,"N")
+                jsonObject.addProperty(AllUrlsAndConfig.PRODMASTERID,prodMasterId)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODCUSTSCWISHLISTQTY,prodCustWishLisQty)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODCUSTSCWISHLISTRATE,prodCustscWishListRate)
+                jsonObject.addProperty(AllUrlsAndConfig.CURIID,1001)
+
+                return mWebservice.getAddWishListItem(url,jsonObject )
+            }
+
+        }.asLiveData()
+    }
+
+
     fun getEmail(): String? {
         return mSharedPrefsHelper[SharedPrefsHelper.EMAIL, null]
     }

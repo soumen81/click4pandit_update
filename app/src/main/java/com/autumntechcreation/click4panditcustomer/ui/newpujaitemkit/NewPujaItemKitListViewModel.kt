@@ -2,13 +2,16 @@ package com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit
 
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.autumntechcreation.click4panditcustomer.R
 import com.autumntechcreation.click4panditcustomer.adapter.NewPujaItemKitListAdapter
 import com.autumntechcreation.click4panditcustomer.network.Resource
-import com.autumntechcreation.click4panditcustomer.ui.newwishlist.DeleteWishListModel
+import com.autumntechcreation.click4panditcustomer.ui.choosepackage.ChoosePackageViewModel
 import com.autumntechcreation.click4panditcustomer.util.SingleLiveEvent
 import com.google.gson.Gson
 import java.util.*
@@ -24,6 +27,7 @@ class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKi
     private val mSelectedBuyNowPujaItemSamagri = SingleLiveEvent<Int>()
     private val mSelectedAddtoCartItem = SingleLiveEvent<Int>()
     private val mSelectedWishListItem = SingleLiveEvent<Int>()
+    private val mSelectedRedirectedSamagriListItem = SingleLiveEvent<Int>()
     var addWishListModelLiveData: LiveData<Resource<AddWishListItemModel>>? = null
     var newPujaItemKitAddtoCartOrBuyNowModelLiveData: LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>? = null
     fun init() {
@@ -108,13 +112,42 @@ class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKi
 
     fun onClickWishListPujaSamagriItemList(view: View, pos: Int) {
         Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
+
+
         mSelectedWishListItem.setValue(pos)
+       /* val newPujaItemKitListModel =
+            newPujaItemKitList!!.value!![pos]
+        if (newPujaItemKitListModel.isSelect) {
+            view.setBackgroundResource(R.drawable.wish)
+        } else {
+            view.setBackgroundResource(R.drawable.wish_black)
+        }*/
     }
 
     fun getSelectedmSelectedWishListItem(): SingleLiveEvent<Int> {
         return mSelectedWishListItem
     }
 
+    fun onClickSamagriItemListRedirect(view: View,pos: Int){
+        Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
+        mSelectedRedirectedSamagriListItem.setValue(pos)
+    }
+    fun getSelectedRedirectedSamagriListItem(): SingleLiveEvent<Int> {
+        return mSelectedRedirectedSamagriListItem
+    }
+   /* @BindingAdapter("load_back")
+    fun loadBack(view: ImageView, position: Int) {
+        Log.e("ImageId", position.toString() + "")
+        var newPujaItemKitList: MutableLiveData<ArrayList<NewPujaItemKitListModel>>? =
+            MutableLiveData<ArrayList<NewPujaItemKitListModel>>();
+        val newPujaItemKitListModel =
+            newPujaItemKitList!!.value!![position]
+        if (newPujaItemKitListModel.isSelect) {
+            view.setBackgroundResource(R.drawable.wish)
+        } else {
+            view.setBackgroundResource(R.drawable.wish_black)
+        }
+    }*/
 
 
 }

@@ -54,7 +54,7 @@
             android:layout_width="@dimen/dimen_120dp"
             android:layout_height="@dimen/dimen_30dp"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:background="@drawable/ic_newovalblack"
+            android:background="@drawable/newroundblack"
             android:gravity="center"
             android:onClick="@{(v) -> viewModel.onClickShopCategoryItem(v,position)}"
             android:text="@string/shopnow"

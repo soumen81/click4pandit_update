@@ -2,10 +2,6 @@ package com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit
 
 import android.os.Parcel
 import android.os.Parcelable
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -99,6 +95,10 @@ class NewPujaItemKitListModel() : Parcelable {
     @Expose
      var prodImgDataURL: String? = null
 
+    @SerializedName("isSelect")
+    @Expose
+    var isSelect = false
+
     constructor(parcel: Parcel) : this() {
         totalCount = parcel.readValue(Int::class.java.classLoader) as? Int
         rowNo = parcel.readValue(Int::class.java.classLoader) as? Int
@@ -122,6 +122,7 @@ class NewPujaItemKitListModel() : Parcelable {
         delFlg = parcel.readString()
         cloudImgId = parcel.readString()
         prodImgDataURL = parcel.readString()
+        isSelect= (parcel.readValue(Boolean::class.java.classLoader) as? Boolean)!!
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -147,6 +148,7 @@ class NewPujaItemKitListModel() : Parcelable {
         parcel.writeString(delFlg)
         parcel.writeString(cloudImgId)
         parcel.writeString(prodImgDataURL)
+        parcel.writeString(isSelect.toString())
     }
 
     override fun describeContents(): Int {

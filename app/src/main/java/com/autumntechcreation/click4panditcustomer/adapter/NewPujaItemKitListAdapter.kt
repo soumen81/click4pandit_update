@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListViewModel
 import com.autumntechcreation.click4panditcustomer.BR
+import com.autumntechcreation.click4panditcustomer.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.singlerow_newpujaitemkitlist.view.*
 
@@ -36,6 +37,7 @@ class NewPujaItemKitListAdapter (private val layoutId: Int, internal var mNewPuj
 
     inner class MyViewHolder internal constructor(internal val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
         val imageThumb = binding.root.imgPujaItemKit
+        //val imageWishThumb = binding.root.imgWishItemKit
 
         internal fun bind(viewModel: NewPujaItemKitListViewModel, position: Int?) {
             // viewModel.fetchDogBreedImagesAt(position);
@@ -43,9 +45,17 @@ class NewPujaItemKitListAdapter (private val layoutId: Int, internal var mNewPuj
             binding.setVariable(BR.position, position)
             binding.executePendingBindings()
             val url= position?.let { mNewPujaItemKitListModel!!.get(it).prodImgDataURL }
+
             Glide.with(imageThumb)
                 .load(url)
                 .into(imageThumb)
+           /* val urlWish= position?.let { mNewPujaItemKitListModel!!.get(it).isSelect }
+
+            if(urlWish!!.equals(false)){
+                imageWishThumb.setBackgroundResource(R.drawable.wish)
+            }else if(urlWish!!.equals(true)){
+                imageWishThumb.setBackgroundResource(R.drawable.wish_black)
+            }*/
         }
     }
     fun setNewPujaItemKitAdapterList(listNewPujaItemKitListModel:List<NewPujaItemKitListModel>) {

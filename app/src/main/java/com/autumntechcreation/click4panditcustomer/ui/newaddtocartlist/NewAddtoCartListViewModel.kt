@@ -27,7 +27,7 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
     private val mSelectedAddForItem = SingleLiveEvent<Int>()
     var newPujaItemKitAddtoCartOrBuyNowModelLiveData: LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>? = null
     var updateCartItemCountModelLiveData: LiveData<Resource<UpdateCartItemCountModel>>? = null
-    var minteger = 0
+    var minteger = 1
     fun init() {
         newAddtoCartListAdapter = NewAddtoCartListAdapter(R.layout.singlerow_newaddtocartlist, this)
     }
@@ -45,9 +45,9 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
 
     }
 
-    fun getUpdateAddToCart(productCustScId:Int,prodMasterId: Int,productPrice:Double,productCustScDate:String): LiveData<Resource<UpdateCartItemCountModel>> {
+    fun getUpdateAddToCart(productCustScId:Int,prodMasterId: Int,productPrice:Double,productCustScDate:String,prodCustscQty:Int): LiveData<Resource<UpdateCartItemCountModel>> {
         updateCartItemCountModelLiveData = MutableLiveData()
-        updateCartItemCountModelLiveData = mNewAddtoCartListRepository.getUpdateAddToCart(productCustScId, prodMasterId,productPrice,productCustScDate)
+        updateCartItemCountModelLiveData = mNewAddtoCartListRepository.getUpdateAddToCart(productCustScId, prodMasterId,productPrice,productCustScDate,prodCustscQty)
         return updateCartItemCountModelLiveData as LiveData<Resource<UpdateCartItemCountModel>>
 
     }
@@ -80,6 +80,11 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
         val list = newAddtoCartList!!.getValue()
         return list!!.get(position).prodCustScRate?.toString()!!
     }
+   /* fun getAddtoCartProductQuantity(position: Int):Int{
+        minteger += 1
+        val list = newAddtoCartList!!.getValue()
+        return list!!.get(position).prodCustScQty!!+minteger
+    }*/
 
     fun storeCartCount(): String? {
         return mNewAddtoCartListRepository.getcartCount()
@@ -97,8 +102,8 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
     fun onClickMinusForItemList(view: View, pos: Int) {
         Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
 
-        minteger -= 1
-        view.tvMinusQuantity.setText(""+minteger)
+       /* minteger -= 1
+        view.tvMinusQuantity.setText(""+minteger)*/
 
         mSelectedMinusForItem.setValue(pos)
     }
@@ -118,8 +123,8 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
     }
     fun onClickAddForItemList(view: View, pos: Int) {
         Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
-        minteger += 1
-       view.tvQuantityPlus.setText(""+minteger)
+       /* minteger += 1
+       view.tvQuantityPlus.setText(""+minteger)*/
         mSelectedAddForItem.setValue(pos)
     }
 

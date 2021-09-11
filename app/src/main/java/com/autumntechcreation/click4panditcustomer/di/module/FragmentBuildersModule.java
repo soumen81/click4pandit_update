@@ -13,9 +13,12 @@ import com.autumntechcreation.click4panditcustomer.ui.home.HomeFragment;
 import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListFragment;
 import com.autumntechcreation.click4panditcustomer.ui.newgiftboxlist.NewGiftBoxListFragment;
 
+import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemdetails.NewPujaBoxItemDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemList;
+import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemdetails.NewPujaBrassItemDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListFragment;
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitList;
+import com.autumntechcreation.click4panditcustomer.ui.newpujasamagrilistdetails.NewPujaSamagriListDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.newwishlist.NewWishListFragment;
 import com.autumntechcreation.click4panditcustomer.ui.orderdetails.OrderDetailsFragment;
 import com.autumntechcreation.click4panditcustomer.ui.orders.OrderFragment;
@@ -135,6 +138,15 @@ public abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract NewWishListFragment contributeNewWishListFragment();
+
+    @ContributesAndroidInjector
+    abstract NewPujaSamagriListDetailsFragment contributeNewPujaSamagriListDetailsFragment();
+
+    @ContributesAndroidInjector
+    abstract NewPujaBrassItemDetailsFragment contributeNewPujaBrassItemDetailsFragment();
+
+    @ContributesAndroidInjector
+    abstract NewPujaBoxItemDetailsFragment contributeNewPujaBoxItemDetailsFragment();
 
 
 

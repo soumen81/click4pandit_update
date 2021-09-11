@@ -25,5 +25,174 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </androidx.recyclerview.widget.RecyclerView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clTotalAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/whiteColor"
+        android:paddingBottom="@dimen/dimen_10dp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tvSubTotal"
+            style="@style/Style_TextView_FontSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/subtotal"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/tvSubTotalValue"
+            style="@style/Style_TextView_FontSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/subtotalvalue"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_5dp"
+            android:text="@string/rupeesign"
+            android:textColor="@color/blackColor"
+            app:layout_constraintRight_toLeftOf="@+id/tvSubTotalValue"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/tvCgst"
+            style="@style/Style_TextView_FontSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/cgst"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubTotal"></TextView>
+
+        <TextView
+            android:id="@+id/tvCgstValue"
+            style="@style/Style_TextView_FontSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/cgstvalue"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubTotalValue"></TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_5dp"
+            android:text="@string/rupeesign"
+            android:textColor="@color/blackColor"
+            app:layout_constraintRight_toLeftOf="@+id/tvCgstValue"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubTotalValue"></TextView>
+
+        <TextView
+            android:id="@+id/tvSgst"
+            style="@style/Style_TextView_FontSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/sgst"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCgst"></TextView>
+
+        <TextView
+            android:id="@+id/tvSgstValue"
+            style="@style/Style_TextView_FontSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/sgstvalue"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCgstValue"></TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_5dp"
+            android:text="@string/rupeesign"
+            android:textColor="@color/blackColor"
+            app:layout_constraintRight_toLeftOf="@+id/tvSgstValue"
+            app:layout_constraintTop_toBottomOf="@+id/tvCgstValue"></TextView>
+
+        <TextView
+            android:id="@+id/tvTotal"
+            style="@style/Style_TextView_FontSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/total"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSgst"></TextView>
+
+        <TextView
+            android:id="@+id/tvTotalValue"
+            style="@style/Style_TextView_FontSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_10dp"
+            android:text="@string/totalvalue"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSgstValue"></TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_5dp"
+            android:text="@string/rupeesign"
+            android:textColor="@color/blackColor"
+            app:layout_constraintRight_toLeftOf="@+id/tvTotalValue"
+            app:layout_constraintTop_toBottomOf="@+id/tvSgstValue"></TextView>
+        <TextView
+            android:id="@+id/tvConfirm"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:background="@drawable/ic_newovalblack"
+            android:gravity="center"
+            style="@style/Style_TextView_FontSemiBold"
+            android:textSize="@dimen/font_12sp"
+            android:textColor="@color/whiteColor"
+
+
+            android:text="@string/submit"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalValue">
+        </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

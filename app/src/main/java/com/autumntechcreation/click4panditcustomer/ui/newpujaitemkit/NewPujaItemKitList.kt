@@ -1,6 +1,5 @@
 package com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,8 +22,6 @@ import com.autumntechcreation.click4panditcustomer.databinding.FragmentNewpujait
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog
 import com.autumntechcreation.click4panditcustomer.network.Resource
 import com.autumntechcreation.click4panditcustomer.network.Status
-import com.autumntechcreation.click4panditcustomer.ui.newwishlist.DeleteWishListModel
-import com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryFragmentDirections
 import com.google.gson.Gson
 import dagger.android.support.AndroidSupportInjection
 import org.json.JSONException
@@ -104,7 +101,36 @@ class NewPujaItemKitList : BaseFragment() {
                 })
         })
 
+        mNewPujaItemKitListViewModel.getSelectedRedirectedSamagriListItem().observe(this, Observer {
+            var prodMasterIdd:Int= mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodMasterId!!
+            val action=NewPujaItemKitListDirections.actionNewPujaItemKitListToNewPujaSamagriListDetailsFragment()
+            action.setProdMasterId(prodMasterIdd)
+            Navigation.findNavController(mView).navigate(action)
+        })
+
         mNewPujaItemKitListViewModel.getSelectedmSelectedWishListItem().observe(this, Observer {
+
+            var newPujaItemKitList: java.util.ArrayList<NewPujaItemKitListModel>? =
+                mNewPujaItemKitListViewModel.newPujaItemKitList!!.value
+            //For select background color change
+            val listNewPujaItemKitListModel: MutableList<NewPujaItemKitListModel> =
+                mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!
+            Log.e("SIZE", newPujaItemKitList!!.size.toString() + "")
+            for (i in newPujaItemKitList!!.indices) {
+                val choosePackageListModel1 = newPujaItemKitList[i]
+                if (i == it) {
+                    choosePackageListModel1.isSelect==true
+
+                } else {
+                    choosePackageListModel1.isSelect==false
+
+                }
+                newPujaItemKitList[i] = choosePackageListModel1
+            }
+            val gson = Gson()
+            Log.e("CLICK", gson.toJson(newPujaItemKitList))
+            mNewPujaItemKitListViewModel.setPujaItemKitAdapter(newPujaItemKitList)
+
             mNewPujaItemKitListViewModel.getAddForWishListItem(mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodMasterId!!,
                 cartCount, mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodPrice!!
             ).observe(activity as FragmentActivity,
@@ -288,6 +314,14 @@ class NewPujaItemKitList : BaseFragment() {
                         list = resource.data as ArrayList<NewPujaItemKitListModel>
                         list.size;
                         Log.e("handlePendingDocumentResponse", list.size.toString());
+
+
+
+
+
+
+
+
                         mNewPujaItemKitListViewModel.setPujaItemKitAdapter(list)
 
 

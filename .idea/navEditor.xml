@@ -272,7 +272,24 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_newGiftBoxListFragment_to_newWishListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="newPujaBoxItemDetailsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1233" />
+                            <option name="y" value="3724" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -293,7 +310,29 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_newPujaBoxItemList_to_newPujaBoxItemDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_newPujaBoxItemList_to_newWishListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="newPujaBrassItemDetailsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1244" />
+                            <option name="y" value="3303" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -314,6 +353,16 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_newPujaBrassItemListFragment_to_newPujaBrassItemDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_newPujaBrassItemListFragment_to_newWishListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -324,8 +373,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="474" />
-                            <option name="y" value="1114" />
+                            <option name="x" value="452" />
+                            <option name="y" value="1125" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -335,7 +384,29 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_newPujaItemKitList_to_newPujaSamagriListDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_newPujaItemKitList_to_newWishListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="newPujaSamagriListDetailsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1247" />
+                            <option name="y" value="2792" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

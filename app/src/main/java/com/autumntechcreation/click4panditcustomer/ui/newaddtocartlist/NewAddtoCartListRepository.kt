@@ -152,7 +152,7 @@ class NewAddtoCartListRepository @Inject constructor(
 
 
 
-    fun getUpdateAddToCart(productCustScId:Int,prodMasterId: Int,productPrice:Double,productCustScDate:String): LiveData<Resource<UpdateCartItemCountModel>>?{
+    fun getUpdateAddToCart(productCustScId:Int,prodMasterId: Int,productPrice:Double,productCustScDate:String,prodCustscQty:Int): LiveData<Resource<UpdateCartItemCountModel>>?{
         return object : NetworkBoundResource<UpdateCartItemCountModel, UpdateCartItemCountModel>(mAppExecutors){
             private var resultsDb: UpdateCartItemCountModel? = null
 
@@ -188,7 +188,7 @@ class NewAddtoCartListRepository @Inject constructor(
                 jsonObject.addProperty(AllUrlsAndConfig.DELLFLGG,"N")
                 jsonObject.addProperty(AllUrlsAndConfig.PRODDMASTERID,prodMasterId)
                 jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCDT,productCustScDate)
-                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCQTY,1)
+                jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCQTY,prodCustscQty)
                 jsonObject.addProperty(AllUrlsAndConfig.PRODDCUSTSCRATE,productPrice)
                 jsonObject.addProperty(AllUrlsAndConfig.CURRID,1001)
 

@@ -37,7 +37,7 @@ class NewPujaItemBoxListAdapter (private val layoutId: Int, internal var mNewPuj
     }
 
     inner class MyViewHolder internal constructor(internal val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
-        val imageThumb = binding.root.imgWishPujaBox
+        val imageThumb = binding.root.imgPujaBoxItem
         internal fun bind(viewModel: NewPujaBoxItemListViewModel, position: Int?) {
             // viewModel.fetchDogBreedImagesAt(position);
             binding.setVariable(BR.viewModel, viewModel)

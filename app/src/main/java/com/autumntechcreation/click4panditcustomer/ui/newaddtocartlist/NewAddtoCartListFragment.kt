@@ -40,6 +40,7 @@ class NewAddtoCartListFragment : BaseFragment(){
     var prodPrice:Int = 0
     var cartCount: Int=0
     var minteger = 1
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         mFragmentNewaddtocartlistBinding =
@@ -121,23 +122,31 @@ class NewAddtoCartListFragment : BaseFragment(){
         })
 
         mNewAddtoCartListViewModel.getSelectedMinusForListItem().observe(this, Observer {
-
-        })
-        mNewAddtoCartListViewModel.getSelectedUpdateForListItem().observe(this, Observer {
-
-
-
+            minteger -= 1
             mNewAddtoCartListViewModel.getUpdateAddToCart(mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,prodMasterId,
-                mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!, mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!).observe(activity as FragmentActivity,
+                mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!, mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!,minteger).observe(activity as FragmentActivity,
                 {
                     if (isDeviceOnline()) {
                         handlePujaItemKitUpdateResponse(it)
                     }
                 })
+        })
+        mNewAddtoCartListViewModel.getSelectedUpdateForListItem().observe(this, Observer {
+
+
+
+
 
         })
         mNewAddtoCartListViewModel.getSelectedAddForListItem().observe(this, Observer {
-            
+            minteger += 1
+            mNewAddtoCartListViewModel.getUpdateAddToCart(mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,prodMasterId,
+                mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!, mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!,minteger).observe(activity as FragmentActivity,
+                {
+                    if (isDeviceOnline()) {
+                        handlePujaItemKitUpdateResponse(it)
+                    }
+                })
         })
 
     }
@@ -256,9 +265,7 @@ class NewAddtoCartListFragment : BaseFragment(){
                         val json = gson.toJson(resource.data)
                         Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse_SUCCESS", json.toString())
                         if (resource.data.returnStatus.equals("SUCCESS")) {
-                            if(cartCount==0){
-                                Toast.makeText(activity,"Cart is Empty",Toast.LENGTH_SHORT).show()
-                            }else {
+
                                 cartCount = resource.data.returnCartValue!!.cartItemCount
                                 //  mHomeViewModel.getCartCountItem().observe(getActivity(), HomeFragment.this::handleAddtoCartItemCount);
                                 val tvCartCount =
@@ -267,7 +274,7 @@ class NewAddtoCartListFragment : BaseFragment(){
                                 // val updateCount:String?= Integer.toString(cartCount)
                                 //val totalCartCount:String?=storeCartCount+updateCount
                                 tvCartCount.setText(Integer.toString(cartCount))
-                            }
+
                             mNewAddtoCartListViewModel.getAddtoCartItemList().observe(activity!!, Observer {
 
                                 handleAddToCartItemList(it)
@@ -315,7 +322,15 @@ class NewAddtoCartListFragment : BaseFragment(){
                         list = resource.data as ArrayList<NewAddtoCartListModel>
                         list.size;
                         Log.e("handlePendingDocumentResponse", list.size.toString());
+                        if(list.size==0){
+                            Toast.makeText(activity!!,"Cart is Empty",Toast.LENGTH_SHORT).show()
+                        }
 
+                        var totalPrice = 0
+                        for (i in 0 until list!!.size) {
+                            totalPrice += list.get(i).prodCustScRate!!.toInt()
+                        }
+                        mFragmentNewaddtocartlistBinding.tvSubTotalValue.setText(""+totalPrice)
                         mNewAddtoCartListViewModel.setAddtoCartListAdapter(list)
                         DisplayDialog.getInstance().dismissAlertDialog()
                     } else {

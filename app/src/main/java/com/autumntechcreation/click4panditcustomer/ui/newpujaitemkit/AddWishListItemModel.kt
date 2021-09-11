@@ -19,4 +19,8 @@ class AddWishListItemModel {
     @SerializedName("prodCustWshlstId")
     @Expose
      var prodCustWshlstId: Int? = null
+
+    @SerializedName("isSelect")
+    @Expose
+    var isSelect = false
 }

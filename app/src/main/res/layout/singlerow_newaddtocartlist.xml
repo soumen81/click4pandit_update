@@ -48,13 +48,12 @@
             android:id="@+id/tvRupee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:textSize="@dimen/font_10sp"
             android:text="@string/rupeesign"
             android:textColor="@color/buttonColor"
-            android:layout_marginTop="@dimen/dimen_10dp"
-            android:layout_marginLeft="@dimen/dimen_20dp"
-            app:layout_constraintRight_toLeftOf="@+id/tvAddtoCartProductPrice"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            app:layout_constraintStart_toStartOf="@+id/tvAddtoCartProductName"
+
             app:layout_constraintTop_toBottomOf="@+id/tvAddtoCartProductName"
             ></TextView>
         <TextView
@@ -64,8 +63,8 @@
             android:text="@{viewModel.getAddtoCartProductPrice(position)}"
             app:layout_constraintTop_toBottomOf="@+id/tvAddtoCartProductName"
             app:layout_constraintLeft_toRightOf="@+id/tvRupee"
-
-            android:layout_margin="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_3dp"
             ></TextView>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clQuantity"
@@ -99,7 +98,6 @@
                 android:id="@+id/tvQuantityIncrease"
                 android:layout_width="@dimen/dimen_30dp"
                 android:layout_height="@dimen/dimen_30dp"
-                android:text="1"
 
                 android:onClick="@{(v) -> viewModel.onClickUpdateForItemList(v,position)}"
                 android:textSize="@dimen/font_18sp"
