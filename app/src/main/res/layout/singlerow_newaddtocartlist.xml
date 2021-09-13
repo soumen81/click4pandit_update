@@ -98,8 +98,8 @@
                 android:id="@+id/tvQuantityIncrease"
                 android:layout_width="@dimen/dimen_30dp"
                 android:layout_height="@dimen/dimen_30dp"
+                android:text="@{viewModel.getProductCustScQuantity(position)}"
 
-                android:onClick="@{(v) -> viewModel.onClickUpdateForItemList(v,position)}"
                 android:textSize="@dimen/font_18sp"
                 android:textColor="@color/blackColor"
                 android:gravity="center"

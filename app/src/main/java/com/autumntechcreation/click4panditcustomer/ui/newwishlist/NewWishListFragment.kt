@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.autumntechcreation.click4panditcustomer.BaseFragment
@@ -21,12 +24,15 @@ import com.autumntechcreation.click4panditcustomer.databinding.FragmentNewwishli
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog
 import com.autumntechcreation.click4panditcustomer.network.Resource
 import com.autumntechcreation.click4panditcustomer.network.Status
+import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListFragmentDirections
 import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListModel
 import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListFactory
 import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListViewModel
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitAddtoCartOrBuyNowModel
 import com.google.gson.Gson
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.layout_emptycart.view.*
+import kotlinx.android.synthetic.main.layout_emptywishlist.view.*
 import org.json.JSONException
 import org.json.JSONObject
 import javax.inject.Inject
@@ -82,6 +88,12 @@ class NewWishListFragment: BaseFragment() {
                 })
 
         })
+
+        mFragmentNewwishlistBinding.clEmptyWishList.tvKeepshoppingWishList.setOnClickListener{
+            val action = NewWishListFragmentDirections.actionNewWishListFragmentToShopCategoryFragment()
+            action.wishValue=1002
+            Navigation.findNavController(mView).navigate(action)
+        }
     }
 
     private fun handleRemoveWishListItemResponse(resource: Resource<DeleteWishListModel>?) {
@@ -168,9 +180,14 @@ class NewWishListFragment: BaseFragment() {
                         list = resource.data as ArrayList<NewWishListItemModel>
                         list.size;
                         Log.e("handleWishListResponse", list.size.toString());
+                        if(list.size==0){
+                            mFragmentNewwishlistBinding.clEmptyWishList.visibility=VISIBLE
+                        }else {
+                            mFragmentNewwishlistBinding.clEmptyWishList.visibility=GONE
+                            mNewWishListViewModel.setWishListItemAdapter(list)
+                        }
+                            DisplayDialog.getInstance().dismissAlertDialog()
 
-                        mNewWishListViewModel.setWishListItemAdapter(list)
-                        DisplayDialog.getInstance().dismissAlertDialog()
                     } else {
 
                     }

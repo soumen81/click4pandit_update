@@ -23,6 +23,7 @@ import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPassw
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.newgiftboxitemdetails.NewGiftBoxDetailsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.newgiftboxlist.NewGiftBoxListViewModel;
 
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemdetails.NewPujaBoxItemDetailsViewModel;
@@ -310,6 +311,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(NewPujaBoxItemDetailsViewModel.class)
     abstract ViewModel bindNewPujaBoxItemDetailsViewModel(NewPujaBoxItemDetailsViewModel newPujaBoxItemDetailsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewGiftBoxDetailsViewModel.class)
+    abstract ViewModel bindNewGiftBoxDetailsViewModel(NewGiftBoxDetailsViewModel newGiftBoxDetailsViewModel);
 
 
 

@@ -222,6 +222,10 @@
     <string name="PujaSamagriItems">Puja Samagri Items</string>
     <string name="PujaBrassItems">Puja Brass Items</string>
     <string name="PujaSamagriboxes">Puja Samagri Boxes</string>
+    <string name="emtycartmsg">Your Cart is Empty.</string>
+    <string name="findsamagries">Keep shopping  to find a Samagries</string>
+    <string name="keepshopping">Keep Shopping</string>
+    <string name="emtywishlistmsg">Your WishList is empty</string>
 
     <string name="sorry_you_not_online_msg">Sorry! You are not online anymore</string>
 </resources>

@@ -25,6 +25,7 @@ import com.autumntechcreation.click4panditcustomer.ui.forgetpassword.ForgetPassw
 import com.autumntechcreation.click4panditcustomer.ui.home.HomeRepository;
 import com.autumntechcreation.click4panditcustomer.ui.login.LoginRepository;
 import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListRepository;
+import com.autumntechcreation.click4panditcustomer.ui.newgiftboxitemdetails.NewGiftBoxDetailsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.newgiftboxlist.NewGiftBoxListRepository;
 
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemdetails.NewPujaBoxItemDetailsRepository;
@@ -352,6 +353,12 @@ public class AppModule {
     @Singleton
     NewPujaBoxItemDetailsRepository newPujaBoxItemDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new NewPujaBoxItemDetailsRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    NewGiftBoxDetailsRepository newGiftBoxDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new NewGiftBoxDetailsRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 
 

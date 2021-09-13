@@ -249,8 +249,20 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1226" />
-                            <option name="y" value="1503" />
+                            <option name="x" value="1984" />
+                            <option name="y" value="1650" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="newGiftBoxDetailsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1220" />
+                            <option name="y" value="4300" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -268,6 +280,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_newGiftBoxListFragment_to_newAddtoCartListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_newGiftBoxListFragment_to_newGiftBoxDetailsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

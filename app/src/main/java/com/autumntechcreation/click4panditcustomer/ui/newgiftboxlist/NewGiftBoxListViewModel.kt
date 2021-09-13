@@ -27,6 +27,7 @@ class NewGiftBoxListViewModel @Inject constructor(private val mNewGiftBoxListRep
     private val mSelectedBuyNowPujaItemGiftBoxes = SingleLiveEvent<Int>()
     private val mSelectedAddtoCartPujaItemGiftBoxes = SingleLiveEvent<Int>()
     private val mSelectedWishListGiftBox = SingleLiveEvent<Int>()
+    private val mSelectedGiftBoxDetails = SingleLiveEvent<Int>()
     var addWishListGiftBoxModelLiveData: LiveData<Resource<AddWishListItemModel>>? = null
     var newGiftBoxAddtoCartOrBuyNowModelLiveData: LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>? = null
     fun init() {
@@ -116,5 +117,14 @@ class NewGiftBoxListViewModel @Inject constructor(private val mNewGiftBoxListRep
 
     fun getSelectedGiftBoxWishListItem(): SingleLiveEvent<Int> {
         return mSelectedWishListGiftBox
+    }
+
+    fun onClickGiftBoxListDetails(view: View, pos: Int) {
+        Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
+        mSelectedGiftBoxDetails.setValue(pos)
+    }
+
+    fun getSelectedGiftBoxItemDetails(): SingleLiveEvent<Int> {
+        return mSelectedGiftBoxDetails
     }
 }

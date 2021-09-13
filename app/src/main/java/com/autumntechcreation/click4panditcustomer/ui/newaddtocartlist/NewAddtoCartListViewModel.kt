@@ -80,11 +80,10 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
         val list = newAddtoCartList!!.getValue()
         return list!!.get(position).prodCustScRate?.toString()!!
     }
-   /* fun getAddtoCartProductQuantity(position: Int):Int{
-        minteger += 1
-        val list = newAddtoCartList!!.getValue()
-        return list!!.get(position).prodCustScQty!!+minteger
-    }*/
+  fun getProductCustScQuantity(position: Int):String{
+      val list=newAddtoCartList!!.getValue()
+      return list!!.get(position).prodCustScQty.toString()
+  }
 
     fun storeCartCount(): String? {
         return mNewAddtoCartListRepository.getcartCount()
@@ -101,10 +100,6 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
 
     fun onClickMinusForItemList(view: View, pos: Int) {
         Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
-
-       /* minteger -= 1
-        view.tvMinusQuantity.setText(""+minteger)*/
-
         mSelectedMinusForItem.setValue(pos)
     }
 
@@ -112,15 +107,7 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
         return mSelectedMinusForItem
     }
 
-    fun onClickUpdateForItemList(view: View, pos: Int) {
-        Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
-       // view.tvQuantityIncrease.setText(""+minteger)
-        mSelectedUpdateForItem.setValue(pos)
-    }
 
-    fun getSelectedUpdateForListItem(): SingleLiveEvent<Int> {
-        return mSelectedUpdateForItem
-    }
     fun onClickAddForItemList(view: View, pos: Int) {
         Log.e("ClickPOSITION", view.id.toString() + "POSITION:" + Integer.toString(pos))
        /* minteger += 1

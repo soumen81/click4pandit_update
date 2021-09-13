@@ -23,6 +23,7 @@ import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog
 import com.autumntechcreation.click4panditcustomer.network.Resource
 import com.autumntechcreation.click4panditcustomer.network.Status
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListArgs
+import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListDirections
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListFactory
 import com.autumntechcreation.click4panditcustomer.ui.newpujaboxitemlist.NewPujaBoxItemListViewModel
 import com.autumntechcreation.click4panditcustomer.ui.newpujabrassitemlist.NewPujaBrassItemListFragmentDirections
@@ -111,6 +112,13 @@ class NewGiftBoxListFragment : BaseFragment() {
                         handleAddWishListItemGiftBoxResponse(it)
                     }
                 })
+        })
+
+        mNewGiftBoxListViewModel.getSelectedGiftBoxItemDetails().observe(this, Observer {
+            var prodMasterIdd:Int=mNewGiftBoxListViewModel.newPujaGiftBoxList!!.value!!.get(it).prodMasterId!!
+            val action= NewGiftBoxListFragmentDirections.actionNewGiftBoxListFragmentToNewGiftBoxDetailsFragment()
+            action.setProdMasterId(prodMasterIdd)
+            Navigation.findNavController(mView).navigate(action)
         })
 
 

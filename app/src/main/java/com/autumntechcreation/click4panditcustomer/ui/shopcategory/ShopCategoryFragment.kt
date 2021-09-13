@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.autumntechcreation.click4panditcustomer.BaseFragment
 import com.autumntechcreation.click4panditcustomer.MainActivity
@@ -18,6 +19,11 @@ import com.autumntechcreation.click4panditcustomer.databinding.FragmentShopcateg
 import com.autumntechcreation.click4panditcustomer.loader.DisplayDialog
 import com.autumntechcreation.click4panditcustomer.network.Resource
 import com.autumntechcreation.click4panditcustomer.network.Status
+import com.autumntechcreation.click4panditcustomer.ui.billingdetails.BillingDetailsFragmentArgs
+import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListFragment
+import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListFragmentArgs
+import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusFragmentArgs
+import com.google.gson.Gson
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -26,6 +32,9 @@ class ShopCategoryFragment : BaseFragment() {
     private lateinit var mShopCategoryViewModel: ShopCategoryViewModel
     private lateinit var mFragmentShopcategoryBinding: FragmentShopcategoryBinding
     private var alShopCategoryModel: List<ShopCategoryModel>? = null
+    var cartValue:Int = 0
+    var wishValue:Int = 0
+
     @Inject
     lateinit var mShopCategoryFactory: ShopCategoryFactory
 
@@ -34,6 +43,14 @@ class ShopCategoryFragment : BaseFragment() {
             DataBindingUtil.inflate(inflater, defineLayoutResource(), container, false)
         mFragmentShopcategoryBinding.lifecycleOwner = this
         mView = mFragmentShopcategoryBinding.root
+
+
+        val args: ShopCategoryFragmentArgs by navArgs()
+        val gson = Gson()
+        Log.e("OBJECT",gson.toJson(args))
+        val pujaSamagri=args
+        cartValue=args.cartValue
+        wishValue=args.wishValue
         return mFragmentShopcategoryBinding.root
     }
 
