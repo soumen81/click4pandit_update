@@ -226,6 +226,8 @@
     <string name="findsamagries">Keep shopping  to find a Samagries</string>
     <string name="keepshopping">Keep Shopping</string>
     <string name="emtywishlistmsg">Your WishList is empty</string>
+    <string name="diffbillingaddress">Different Billing Address</string>
+    <string name="shippingdetails">Shipping Details</string>
 
     <string name="sorry_you_not_online_msg">Sorry! You are not online anymore</string>
 </resources>

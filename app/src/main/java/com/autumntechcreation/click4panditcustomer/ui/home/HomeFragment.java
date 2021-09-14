@@ -210,7 +210,7 @@ public class HomeFragment extends Fragment implements Injectable {
 
       //  mHomeViewModel.getCartCountItem().observe(getActivity(), HomeFragment.this::handleAddtoCartItemCount);
 
-         tvCartCount = (TextView) getActivity().findViewById(R.id.tvCartCount);
+
 
 
     }
@@ -218,7 +218,17 @@ public class HomeFragment extends Fragment implements Injectable {
     @Override
     public void onResume() {
         super.onResume();
-        tvCartCount.setText(mHomeViewModel.storeCartCount());
+        tvCartCount = (TextView) getActivity().findViewById(R.id.tvCartCount);
+        String storeCartCount= mHomeViewModel.getUpdateCartCount();
+        if(storeCartCount!=null) {
+            tvCartCount.setVisibility(View.VISIBLE);
+            tvCartCount.setText(storeCartCount);
+        }else if(storeCartCount==null){
+            tvCartCount.setVisibility(View.GONE);
+        }
+      /*  int updateStoreCartCount=Integer.parseInt(mHomeViewModel.storeUpdateCartCount());
+        int totalCartCount=storeCartCount+updateStoreCartCount;
+        tvCartCount.setText(Integer.toString(totalCartCount));*/
     }
 
     @Override

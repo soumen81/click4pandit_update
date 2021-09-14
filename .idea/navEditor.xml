@@ -253,6 +253,15 @@
                             <option name="y" value="1650" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_newAddtoCartListFragment_to_shopCategoryFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -433,8 +442,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1245" />
-                            <option name="y" value="2120" />
+                            <option name="x" value="1985" />
+                            <option name="y" value="2420" />
                           </Point>
                         </option>
                       </LayoutPositions>

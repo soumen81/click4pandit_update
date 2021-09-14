@@ -40,5 +40,8 @@ public class HomeViewModel extends ViewModel {
     public String storeCartCount() {
        return mHomeRepository.getcartCount();
 
+    }public String getUpdateCartCount() {
+       return mHomeRepository.getupdateCartCount();
+
     }
 }

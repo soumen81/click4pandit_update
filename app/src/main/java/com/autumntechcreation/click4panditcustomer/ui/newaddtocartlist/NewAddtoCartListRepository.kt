@@ -205,4 +205,7 @@ class NewAddtoCartListRepository @Inject constructor(
     fun getcartCount(): String? {
         return mSharedPrefsHelper[SharedPrefsHelper.CARTCOUNT, null]
     }
+    fun storeUpdateCartCount(updateCartCount: String?) {
+        mSharedPrefsHelper.put(SharedPrefsHelper.UPDATECARTCOUNT, updateCartCount)
+    }
 }

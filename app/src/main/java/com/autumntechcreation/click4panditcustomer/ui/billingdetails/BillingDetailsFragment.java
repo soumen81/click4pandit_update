@@ -100,10 +100,10 @@ public class BillingDetailsFragment extends Fragment implements Injectable {
         }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaSamagries().length()>0){
             pujaSamagriList=BillingDetailsFragmentArgs.fromBundle(getArguments()).getPujaSamagries();
             Log.e("PUJASAMAGRIESLIST", pujaSamagriList);
-        }if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getYajaman().length()>0){
+        }/*if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getYajaman().length()>0){
             yajamanList=BillingDetailsFragmentArgs.fromBundle(getArguments()).getYajaman();
             Log.e("YAJAMANLIST", yajamanList);
-        }
+        }*/
 
         if(BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime().length()>0) {
             pujaDatetime = BillingDetailsFragmentArgs.fromBundle(getArguments()).getDateTime();

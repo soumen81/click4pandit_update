@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android.support.design="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.autumntechcreation.click4panditcustomer.ui.shopbillingaddress.ShopBillingAddressViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/whiteColor"
+        android:paddingBottom="@dimen/dimen_10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvShopBillingDetails"
+            style="@style/Style_TextView_FontBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:text="@string/billingdetails"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/font_14sp"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <View
+            android:id="@+id/viewShopBillingDetails"
+            android:layout_width="@dimen/dimen_130dp"
+            android:layout_height="@dimen/dimen_2dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:background="#D1453E"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvShopBillingDetails"></View>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutShopBillingFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/firstName"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/viewShopBillingDetails"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtShopBillingFirstName"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:editable="false"
+                android:inputType="text"
+                android:scrollbars="vertical"
+                android:maxLength="60"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutShopBillingLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/lastName"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutShopBillingFirstName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtShopBillingLastName"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:editable="false"
+                android:inputType="text"
+                android:scrollbars="vertical"
+                android:maxLength="60"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutShopBillingEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/email"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutShopBillingLastName"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtShopBillingEmail"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:editable="false"
+                android:inputType="textEmailAddress"
+                android:scrollbars="vertical"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputShopBillingMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:textColorHint="@color/colorBadge"
+            android:hint="@string/mobileNo"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutShopBillingEmail"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtShopBillingMobileNo"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:editable="false"
+                android:maxLength="10"
+                android:inputType="number"
+                android:scrollbars="vertical"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputShopBillingAlternateMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:textColorHint="@color/colorBadge"
+            android:hint="@string/alternatemobileno"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputShopBillingMobileNo"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtShopBillingAlternateMobileNo"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:maxLength="10"
+                android:editable="false"
+                android:inputType="number"
+                android:scrollbars="vertical"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutShopBillingAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/address1"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputShopBillingAlternateMobileNo"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtShopBillingAddress"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:scrollbars="vertical"
+                android:maxLength="40"
+                android:inputType="textPostalAddress"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutShopBillingAddress2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/address2"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutShopBillingAddress"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtShopBillingAddress2"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:scrollbars="vertical"
+                android:maxLength="40"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutShopBillingAddress3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/address3"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutShopBillingAddress2"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtShopBillingAddress3"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:scrollbars="vertical"
+                android:maxLength="40"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutShopBillingState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/state"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutShopBillingAddress3"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtShopBillingState"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:editable="false"
+                android:inputType="text"
+                android:scrollbars="vertical"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutShopBillingCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/city"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutShopBillingState"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtShopBillingCity"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:scrollbars="vertical"
+                android:editable="false"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutShopBillingPincode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorBadge"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:hint="@string/pincode"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutShopBillingCity"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTxtShopBillingPincode"
+                style="@style/Style_TextView_FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:maxLength="6"
+                android:inputType="number"
+                android:scrollbars="vertical"
+                android:singleLine="true"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent1"
+                app:layout_constraintTop_toTopOf="@+id/parent1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/tvShopBillingDiffLoc"
+            style="@style/Style_TextView_FontRegular"
+            android:layout_width="@dimen/dimen_220dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/ic_newovalblack"
+            android:paddingLeft="@dimen/dimen_5dp"
+            android:paddingRight="@dimen/dimen_5dp"
+            android:gravity="center"
+            android:text="@string/diffbillingaddress"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/font_14sp"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/inputLayoutShopBillingPincode">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvShopBillingSubmit"
+            style="@style/Style_TextView_FontRegular"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/ic_newovalblack"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/font_14sp"
+            android.support.design:layout_constraintLeft_toLeftOf="parent"
+            android.support.design:layout_constraintRight_toRightOf="parent"
+            android.support.design:layout_constraintTop_toBottomOf="@+id/tvShopBillingDiffLoc">
+
+        </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

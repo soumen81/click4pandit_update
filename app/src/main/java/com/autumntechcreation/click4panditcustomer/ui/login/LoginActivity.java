@@ -149,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
                     String json = gson.toJson(resource.data);
                     Log.e("handleLoginResponse", json + "");
                     if ( resource.data.returnStatus.equals("SUCCESS")) {
-                        mLoginViewModel.getCartCountItem().observe(LoginActivity.this, LoginActivity.this::handleAddtoCartItemCount);
+
                         String userName=resource.data.firstName + resource.data.lastName;
                         String mobileNo=resource.data.mobile;
                         String firstName=resource.data.firstName;
@@ -160,13 +160,11 @@ public class LoginActivity extends AppCompatActivity {
                         mLoginViewModel.storelastName(lastName);
                         String emailAddress=mLoginViewModel.storeEmail(mActivityLoginBinding.edtTxtEmail.getText().toString());
                         Log.e("emailAddress",emailAddress);
+                        mLoginViewModel.getCartCountItem().observe(LoginActivity.this, LoginActivity.this::handleAddtoCartItemCount);
 
 
 
-                        Intent in=new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(in);
-                        sp.edit().putBoolean("logged",true).apply();
-                        finish();
+
                     }else if(resource.data.returnStatus.equals("FAILED")){
                         String returnMsg= (String) resource.data.returnErrMsg;
                         Log.e("ERROR",returnMsg);
@@ -245,10 +243,22 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e("handleForgetPasswordResponse", json + "");
                     //TextView textview = (TextView) getActivity().findViewById(R.id.tvCartCount);
                     if(resource.data.getReturnStatus().equals("SUCCESS")){
-                        int cartCount=resource.data.getReturnCartValue().getCartItemCount();
-                        Log.e("CARTCOUNT", String.valueOf(cartCount));
-                        mLoginViewModel.storeCartCount(String.valueOf(cartCount));
-                        Log.e("STORECARTCOUNT",  mLoginViewModel.storeCartCount(String.valueOf(cartCount)));
+                        if(resource.data.getReturnCartValue()==null){
+                            Intent in = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(in);
+                            sp.edit().putBoolean("logged", true).apply();
+                            finish();
+                        }else {
+                            int cartCount = resource.data.getReturnCartValue().getCartItemCount();
+                            Log.e("CARTCOUNT", String.valueOf(cartCount));
+                            mLoginViewModel.storeCartCount(String.valueOf(cartCount));
+                            Log.e("STORECARTCOUNT", mLoginViewModel.storeCartCount(String.valueOf(cartCount)));
+
+                            Intent in = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(in);
+                            sp.edit().putBoolean("logged", true).apply();
+                            finish();
+                        }
                        /* if(cartCount>0) {
                             textview.setText(String.valueOf(cartCount));
                         }*/

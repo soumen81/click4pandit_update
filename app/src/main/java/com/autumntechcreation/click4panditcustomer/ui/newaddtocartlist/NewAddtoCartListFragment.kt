@@ -307,31 +307,26 @@ class NewAddtoCartListFragment : BaseFragment(){
                             if(resource.data.returnCartValue==null){
                                 mFragmentNewaddtocartlistBinding.clTotalAmount.visibility= GONE
                                 mFragmentNewaddtocartlistBinding.clEmptyCart.visibility= VISIBLE
+                                val tvCartCount =
+                                    activity!!.findViewById<View>(R.id.tvCartCount) as TextView
+                                tvCartCount.visibility= GONE
+                                mNewAddtoCartListViewModel.storeUpdateCartCount("")
                             }else if(cartCount!=null) {
                                     cartCount = resource.data.returnCartValue!!.cartItemCount
                                     val tvCartCount =
                                         activity!!.findViewById<View>(R.id.tvCartCount) as TextView
+                                tvCartCount.visibility= VISIBLE
                                 mFragmentNewaddtocartlistBinding.clEmptyCart.visibility= GONE
                                 mFragmentNewaddtocartlistBinding.clTotalAmount.visibility= VISIBLE
                                     // val storeCartCount:String?=mNewAddtoCartListViewModel.storeCartCount()
                                     // val updateCount:String?= Integer.toString(cartCount)
                                     //val totalCartCount:String?=storeCartCount+updateCount
                                     tvCartCount.setText(Integer.toString(cartCount))
+                                    mNewAddtoCartListViewModel.storeUpdateCartCount(cartCount.toString())
                                 }
 
 
-                           /* if(resource.data.returnCartValue==null){
-                                Toast.makeText(activity!!,"Cart is Empty",Toast.LENGTH_SHORT).show()
-                            }*/
-                           /* if(cartCount!=null) {
-                                cartCount = resource.data.returnCartValue!!.cartItemCount
-                                val tvCartCount =
-                                    activity!!.findViewById<View>(R.id.tvCartCount) as TextView
-                                // val storeCartCount:String?=mNewAddtoCartListViewModel.storeCartCount()
-                                // val updateCount:String?= Integer.toString(cartCount)
-                                //val totalCartCount:String?=storeCartCount+updateCount
-                                tvCartCount.setText(Integer.toString(cartCount))
-                            }*/
+
 
                             mNewAddtoCartListViewModel.getAddtoCartItemList().observe(activity!!, Observer {
 
@@ -400,15 +395,7 @@ class NewAddtoCartListFragment : BaseFragment(){
                         finalAmount= cgstvalue + sgstvalue + totalPrice.toDouble()
                         mFragmentNewaddtocartlistBinding.tvTotalValue.setText(""+finalAmount)
 
-                    } /*else if(resource.data!=null){
-                        var list = ArrayList<NewAddtoCartListModel>()
-                        list = resource.data as ArrayList<NewAddtoCartListModel>
-                        list.size;
-                        if(list.size==0 ||cartCount==0){
-                            Toast.makeText(activity!!,"Cart is Empty",Toast.LENGTH_SHORT).show()
-                        }
-
-                    }*/else{
+                    } else{
 
                     }
                 }

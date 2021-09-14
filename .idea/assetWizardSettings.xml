@@ -297,8 +297,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_cart_red" />
-                            <entry key="sourceFile" value="C:\Users\AUTUMN TECH\Downloads\cart_red.svg" />
+                            <entry key="outputName" value="ic_wishlist_empty" />
+                            <entry key="sourceFile" value="C:\Users\AUTUMN TECH\Downloads\wishlist_empty.svg" />
                           </map>
                         </option>
                       </PersistentState>

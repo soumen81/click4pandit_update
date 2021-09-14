@@ -431,7 +431,7 @@ public class BillingDetailsRepository {
                 JsonArray jsonArraypujasamagriHHListObject = new JsonArray();
                 JsonArray jobj5 = jelemInvoice5.getAsJsonArray();
                 jsonObject.add("pujasamagriHHList", jobj5);
-
+                Log.e("ResultSendEmail",jsonObject.toString());
 
 
 

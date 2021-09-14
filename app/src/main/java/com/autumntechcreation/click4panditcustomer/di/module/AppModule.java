@@ -51,7 +51,9 @@ import com.autumntechcreation.click4panditcustomer.ui.register.RegisterRepositor
 import com.autumntechcreation.click4panditcustomer.ui.search.SearchRepository;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsRepository;
 import com.autumntechcreation.click4panditcustomer.ui.shop.ShopRepository;
+import com.autumntechcreation.click4panditcustomer.ui.shopbillingaddress.ShopBillingAddressRepository;
 import com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryRepository;
+import com.autumntechcreation.click4panditcustomer.ui.shopshippingaddress.ShopShippingAddressRepository;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutRepository;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionRepository;
 import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusRepository;
@@ -359,6 +361,18 @@ public class AppModule {
     @Singleton
     NewGiftBoxDetailsRepository newGiftBoxDetailsRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
         return new NewGiftBoxDetailsRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    ShopBillingAddressRepository shopBillingAddressRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new ShopBillingAddressRepository(appExecutors,webservice,sharedPrefsHelper);
+    }
+
+    @Provides
+    @Singleton
+    ShopShippingAddressRepository shopShippingAddressRepository(AppExecutors appExecutors, Webservice webservice, SharedPrefsHelper sharedPrefsHelper) {
+        return new ShopShippingAddressRepository(appExecutors,webservice,sharedPrefsHelper);
     }
 
 

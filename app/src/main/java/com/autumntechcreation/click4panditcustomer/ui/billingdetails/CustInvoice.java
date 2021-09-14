@@ -25,9 +25,6 @@ public class CustInvoice {
     @SerializedName("custOrdId")
     @Expose
     private Integer custOrdId;
-
-
-
     @SerializedName("custOrdNo")
     @Expose
     private String custOrdNo;
@@ -163,6 +160,18 @@ public class CustInvoice {
     @SerializedName("invStsId")
     @Expose
     private Integer invStsId;
+
+    @SerializedName("custInvNo")
+    @Expose
+    private String custInvNo;
+
+    @SerializedName("taxAmtInWord")
+    @Expose
+    private String taxAmtInWord;
+
+    @SerializedName("totalAmtInWord")
+    @Expose
+    private String totalAmtInWord;
 
     public Integer getCustInvId() {
         return custInvId;
@@ -579,5 +588,31 @@ public class CustInvoice {
     public void setInvStsId(Integer invStsId) {
         this.invStsId = invStsId;
     }
+
+    public String getCustInvNo() {
+        return custInvNo;
+    }
+
+    public void setCustInvNo(String custInvNo) {
+        this.custInvNo = custInvNo;
+    }
+
+    public String getTaxAmtInWord() {
+        return taxAmtInWord;
+    }
+
+    public void setTaxAmtInWord(String taxAmtInWord) {
+        this.taxAmtInWord = taxAmtInWord;
+    }
+
+    public String getTotalAmtInWord() {
+        return totalAmtInWord;
+    }
+
+    public void setTotalAmtInWord(String totalAmtInWord) {
+        this.totalAmtInWord = totalAmtInWord;
+    }
+
+
 
 }

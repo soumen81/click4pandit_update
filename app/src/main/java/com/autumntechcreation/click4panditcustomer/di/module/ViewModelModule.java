@@ -51,7 +51,9 @@ import com.autumntechcreation.click4panditcustomer.ui.search.SearchViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.settings.SettingsViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.shop.ShopViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.shopbillingaddress.ShopBillingAddressViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryViewModel;
+import com.autumntechcreation.click4panditcustomer.ui.shopshippingaddress.ShopShippingAddressViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.signout.SignOutViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.termscondition.TermsConditionViewModel;
 import com.autumntechcreation.click4panditcustomer.ui.transactionstatus.TransactionStatusViewModel;
@@ -316,6 +318,16 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(NewGiftBoxDetailsViewModel.class)
     abstract ViewModel bindNewGiftBoxDetailsViewModel(NewGiftBoxDetailsViewModel newGiftBoxDetailsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ShopBillingAddressViewModel.class)
+    abstract ViewModel bindShopBillingAddressViewModel(ShopBillingAddressViewModel shopBillingAddressViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ShopShippingAddressViewModel.class)
+    abstract ViewModel bindShopShippingAddressViewModel(ShopShippingAddressViewModel shopShippingAddressViewModel);
 
 
 

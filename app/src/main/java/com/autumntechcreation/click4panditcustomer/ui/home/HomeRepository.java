@@ -187,6 +187,9 @@ public LiveData<Resource<List<PujaCategoryModel>>> getPujaCategoriesList(int  pu
     public String getcartCount(){
         return  mSharedPrefsHelper.get(SharedPrefsHelper.CARTCOUNT, null);
     }
+    public String getupdateCartCount(){
+        return  mSharedPrefsHelper.get(SharedPrefsHelper.UPDATECARTCOUNT, null);
+    }
 }
 
 
