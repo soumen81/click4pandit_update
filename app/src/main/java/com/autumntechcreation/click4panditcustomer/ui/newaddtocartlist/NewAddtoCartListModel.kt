@@ -78,7 +78,7 @@ class NewAddtoCartListModel {
 
     @SerializedName("prodWtUmTypId")
     @Expose
-     var prodWtUmTypId: Any? = null
+     var prodWtUmTypId: Int? = null
 
     @SerializedName("prodWtUmTypDscr")
     @Expose

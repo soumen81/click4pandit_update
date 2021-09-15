@@ -25,7 +25,6 @@ import com.autumntechcreation.click4panditcustomer.network.Resource
 import com.autumntechcreation.click4panditcustomer.network.Status
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitAddtoCartOrBuyNowModel
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitListModel
-import com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryFragmentDirections
 import com.autumntechcreation.click4panditcustomer.util.Static
 import com.google.gson.Gson
 import dagger.android.support.AndroidSupportInjection
@@ -49,14 +48,15 @@ class NewAddtoCartListFragment : BaseFragment(){
     var cgstvalue:Double=0.0
     var totalTax:Double=0.0
     var finalAmount:Double=0.0
-
+    var status:Int=0
+    var list = ArrayList<NewAddtoCartListModel>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         mFragmentNewaddtocartlistBinding =
             DataBindingUtil.inflate(inflater, defineLayoutResource(), container, false)
         mFragmentNewaddtocartlistBinding.lifecycleOwner = this
         mView = mFragmentNewaddtocartlistBinding.root
-        // val bundle = arguments
+
 
         return mView
 
@@ -89,7 +89,6 @@ class NewAddtoCartListFragment : BaseFragment(){
 
 
 
-
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -108,72 +107,98 @@ class NewAddtoCartListFragment : BaseFragment(){
         val pujaSamagri=args
              prodMasterId=args.prodMasterId
              prodPrice=args.prodPrice
-        mNewAddtoCartListViewModel.getNewPujaItemKitAddtoCartOrBuyNow(prodMasterId, prodPrice)
-            .observe(activity as FragmentActivity, Observer {
-                if (isDeviceOnline()) {
+        status=args.statusId
 
-                    handlePujaItemKitAddtoCartOrBuyNowResponse(it)
-                }
+        if(status==1){
+            mNewAddtoCartListViewModel.getAddtoCartItemList().observe(requireActivity(), Observer {
+
+                handleAddToCartItemListFromCart(it)
+
             })
+        }
 
-        mNewAddtoCartListViewModel.getSelectedDeleteForListItem().observe(this, Observer {
-            mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!
-            mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!
-            mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!
 
-        mNewAddtoCartListViewModel.getRemoveForPujaItem(mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,prodMasterId,
-            mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!, mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!,cartCount).observe(activity as FragmentActivity,
-            Observer {
-                if (isDeviceOnline()) {
-                    handlePujaItemKitAddtoCartOrBuyNowResponse(it)
-                }
-            })
-        })
-
-        mNewAddtoCartListViewModel.getSelectedMinusForListItem().observe(this, Observer {
-            minteger -= 1
-            if(minteger<1) {
-                minteger = 1;
-
-                mNewAddtoCartListViewModel.getUpdateAddToCart(
-                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,
-                    prodMasterId,
-                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!,
-                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!,
-                    minteger
-                ).observe(activity as FragmentActivity,
-                    {
-                        if (isDeviceOnline()) {
-                            handlePujaItemKitUpdateResponse(it)
-                        }
-                    })
-            }
-
-                mNewAddtoCartListViewModel.getUpdateAddToCart(
-                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,
-                    prodMasterId,
-                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!,
-                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!,
-                    minteger
-                ).observe(activity as FragmentActivity,
-                    {
-                        if (isDeviceOnline()) {
-                            handlePujaItemKitUpdateResponse(it)
-                        }
-                    })
-
-        })
-
-        mNewAddtoCartListViewModel.getSelectedAddForListItem().observe(this, Observer {
-            minteger += 1
-            mNewAddtoCartListViewModel.getUpdateAddToCart(mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,prodMasterId,
-                mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!, mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!,minteger).observe(activity as FragmentActivity,
-                {
+        if(prodMasterId>=0 && prodPrice>=0) {
+            mNewAddtoCartListViewModel.getNewPujaItemKitAddtoCartOrBuyNow(prodMasterId, prodPrice)
+                .observe(activity as FragmentActivity, Observer {
                     if (isDeviceOnline()) {
-                        handlePujaItemKitUpdateResponse(it)
+
+                        handlePujaItemKitAddtoCartOrBuyNowResponse(it)
                     }
                 })
-        })
+        }
+        if(prodMasterId>=0) {
+            mNewAddtoCartListViewModel.getSelectedDeleteForListItem().observe(this, Observer {
+                mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!
+                mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!
+                mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!
+
+                mNewAddtoCartListViewModel.getRemoveForPujaItem(
+                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,
+                    prodMasterId,
+                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!,
+                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!,
+                    cartCount
+                ).observe(activity as FragmentActivity,
+                    Observer {
+                        if (isDeviceOnline()) {
+                            handlePujaItemKitAddtoCartOrBuyNowResponse(it)
+                        }
+                    })
+            })
+        }
+        if(prodMasterId>=0) {
+            mNewAddtoCartListViewModel.getSelectedMinusForListItem().observe(this, Observer {
+                minteger -= 1
+                if (minteger < 1) {
+                    minteger = 1;
+
+                    mNewAddtoCartListViewModel.getUpdateAddToCart(
+                        mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,
+                        prodMasterId,
+                        mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!,
+                        mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!,
+                        minteger
+                    ).observe(activity as FragmentActivity,
+                        {
+                            if (isDeviceOnline()) {
+                                handlePujaItemKitUpdateResponse(it)
+                            }
+                        })
+                }
+
+                mNewAddtoCartListViewModel.getUpdateAddToCart(
+                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,
+                    prodMasterId,
+                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!,
+                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!,
+                    minteger
+                ).observe(activity as FragmentActivity,
+                    {
+                        if (isDeviceOnline()) {
+                            handlePujaItemKitUpdateResponse(it)
+                        }
+                    })
+
+            })
+        }
+
+        if(prodMasterId>=0) {
+            mNewAddtoCartListViewModel.getSelectedAddForListItem().observe(this, Observer {
+                minteger += 1
+                mNewAddtoCartListViewModel.getUpdateAddToCart(
+                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScId!!,
+                    prodMasterId,
+                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScRate!!,
+                    mNewAddtoCartListViewModel.newAddtoCartList!!.value!!.get(it).prodCustScDt!!,
+                    minteger).observe(activity as FragmentActivity,
+                    {
+                        if (isDeviceOnline()) {
+                            handlePujaItemKitUpdateResponse(it)
+                        }
+                    })
+            })
+        }
 
 
         mFragmentNewaddtocartlistBinding.clEmptyCart.tvKeepshopping.setOnClickListener{
@@ -181,13 +206,77 @@ class NewAddtoCartListFragment : BaseFragment(){
             action.cartValue=1001
             Navigation.findNavController(mView).navigate(action)
         }
-      /*  mFragmentNewaddtocartlistBinding.clEmptyCart.setOnClickListener {
-            val action = NewAddtoCartListFragmentDirections.actionNewAddtoCartListFragmentToShopCategoryFragment()
-            action.cartValue=1001
-            Navigation.findNavController(mView).navigate(action)
-        }*/
+        mFragmentNewaddtocartlistBinding.tvProceedToBillingAddress.setOnClickListener{
+
+            mNewAddtoCartListViewModel.getNewProductOrder(list)!!.observe(activity as FragmentActivity,
+                {
+                    if (isDeviceOnline()) {
+                        handleShopNewProductOrderResponse(it)
+                    }
+                })
+        }
+
+
+
 
     }
+
+    override fun onResume() {
+        super.onResume()
+
+    }
+
+    private fun handleShopNewProductOrderResponse(resource: Resource<NewProductOrderModel>?) {
+        if (resource != null) {
+
+            when (resource.status) {
+                Status.ERROR -> {
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", "ERROR")
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.message)
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.status.toString() + "")
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.data.toString() + "")
+                    //  if (resource.message != null && resource.data == null) {
+                    if (resource.message != null && resource.data == null) {
+                        val jsonObject: JSONObject
+                        try {
+                            jsonObject = JSONObject(resource.message)
+
+
+
+
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+
+                        }
+
+                    }
+                }
+                Status.LOADING -> {
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", "LOADING")
+                    Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.data.toString() + "")
+
+                }
+                Status.SUCCESS -> {
+                    if (resource.data != null) {
+                        Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse", resource.data.toString())
+                        val gson = Gson()
+                        val json = gson.toJson(resource.data)
+                        Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse_SUCCESS", json.toString())
+                        if (resource.data.returnStatus.equals("SUCCESS")) {
+                            val action = NewAddtoCartListFragmentDirections.actionNewAddtoCartListFragmentToShopBillingAddressFragment()
+                            action.custOrdTypId=1003
+                            Navigation.findNavController(mView).navigate(action)
+                        }
+                    } else {
+                    }
+
+                }
+                else -> {
+                }
+            }
+        }
+    }
+
 
 
 
@@ -370,10 +459,11 @@ class NewAddtoCartListFragment : BaseFragment(){
                         .showAlertDialog(activity, activity!!.getString(R.string.please_wait))
 
                 }
+
                 Status.SUCCESS -> {
                     if (resource.data != null) {
                         Log.e("handlePendingDocumentResponse", resource.data.toString())
-                        var list = ArrayList<NewAddtoCartListModel>()
+
                         list = resource.data as ArrayList<NewAddtoCartListModel>
                         list.size;
                         Log.e("handlePendingDocumentResponse", list.size.toString());
@@ -394,6 +484,62 @@ class NewAddtoCartListFragment : BaseFragment(){
                         mFragmentNewaddtocartlistBinding.tvSgstValue.setText(sgstvalue.toString())
                         finalAmount= cgstvalue + sgstvalue + totalPrice.toDouble()
                         mFragmentNewaddtocartlistBinding.tvTotalValue.setText(""+finalAmount)
+
+
+                    } else{
+
+                    }
+                }
+
+            }
+        }
+    }
+
+    private fun handleAddToCartItemListFromCart(resource: Resource<List<NewAddtoCartListModel>>?) {
+        if (resource != null) {
+
+            when (resource.status) {
+                Status.ERROR -> {
+                    Log.e("handlePocumentResponse", "ERROR")
+                    Log.e("handlePendingDocumentResponse", resource.message)
+                    Log.e("handlePendingDocumentResponse", resource.status.toString() + "")
+                    Log.e("handlePendingDocumentResponse", resource.data.toString() + "")
+                    DisplayDialog.getInstance().dismissAlertDialog()
+
+                }
+                Status.LOADING -> {
+                    Log.e("handlePendingDocumentResponse", "LOADING")
+                    Log.e("handlePendingDocumentResponse", resource.data.toString() + "")
+                    DisplayDialog.getInstance()
+                        .showAlertDialog(activity, activity!!.getString(R.string.please_wait))
+
+                }
+
+                Status.SUCCESS -> {
+                    if (resource.data != null) {
+                        Log.e("handlePendingDocumentResponse", resource.data.toString())
+                       // var list = ArrayList<NewAddtoCartListModel>()
+                        list = resource.data as ArrayList<NewAddtoCartListModel>
+                        list.size;
+                        Log.e("handlePendingDocumentResponse", list.size.toString());
+
+
+                        var totalPrice:Double= 0.0
+                        for (i in 0 until list!!.size) {
+                            totalPrice += list.get(i).prodCustScRate!! * list.get(i).prodCustScQty!!
+                        }
+                        mNewAddtoCartListViewModel.setAddtoCartListAdapter(list)
+                        DisplayDialog.getInstance().dismissAlertDialog()
+                        mFragmentNewaddtocartlistBinding.tvSubTotalValue.setText(""+totalPrice)
+                        val cgst: Double = totalPrice.toDouble() * 9 / 100
+                        cgstvalue = Static.roundAvoid(cgst, 2)
+                        mFragmentNewaddtocartlistBinding.tvCgstValue.setText(cgstvalue.toString())
+                        val sgst:Double=totalPrice.toDouble()*9/100
+                        sgstvalue=Static.roundAvoid(sgst,2)
+                        mFragmentNewaddtocartlistBinding.tvSgstValue.setText(sgstvalue.toString())
+                        finalAmount= cgstvalue + sgstvalue + totalPrice.toDouble()
+                        mFragmentNewaddtocartlistBinding.tvTotalValue.setText(""+finalAmount)
+
 
                     } else{
 

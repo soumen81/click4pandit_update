@@ -40,6 +40,7 @@ public class AllUrlsAndConfig {
     public static final String ADDTOWISHLIST="/api/Wishlist/UpdateCustWishlist";
     public static final String UPDATECARTITEM="/api/ShoppingCart/UpdateProdShoppingCart";
     public static final String PUJASAMAGRIDETAILS="/api/Product/GetProductByProdMasterId";
+    public static final String NEWPRODORDER="/api/Checkout/NewProdOrder";
 
 
 
@@ -286,5 +287,9 @@ public class AllUrlsAndConfig {
     public static final String CURIID="CurId";
     //Parameter for PujaSamagriDetails
     public static final String PROMASTERID="ProdMasterId";
+    //Parameter for NewOrder
+    public static final String ISSGUESTUSER="IsGuestUser";
+    public static final String LOGGGONIDD="LogonId";
+    public static final String CUSTORDTYPEID="CustOrdTypId";
 
 }

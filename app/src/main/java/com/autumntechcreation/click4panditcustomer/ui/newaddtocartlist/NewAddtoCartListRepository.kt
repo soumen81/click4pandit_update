@@ -7,6 +7,9 @@ import com.autumntechcreation.click4panditcustomer.sharedpref.SharedPrefsHelper
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitAddtoCartOrBuyNowModel
 import com.autumntechcreation.click4panditcustomer.util.AbsentLiveData
 import com.autumntechcreation.click4panditcustomer.util.AllUrlsAndConfig
+import com.google.gson.Gson
+import com.google.gson.JsonArray
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import javax.inject.Inject
 
@@ -193,6 +196,60 @@ class NewAddtoCartListRepository @Inject constructor(
                 jsonObject.addProperty(AllUrlsAndConfig.CURRID,1001)
 
                 return mWebservice.getUpdateForPujaSamagri(url,jsonObject )
+            }
+
+        }.asLiveData()
+    }
+
+
+
+
+    fun getNewProductOrder(listNewAddtoCartModel:List<NewAddtoCartListModel>): LiveData<Resource<NewProductOrderModel>>?{
+        return object : NetworkBoundResource<NewProductOrderModel, NewProductOrderModel>(mAppExecutors){
+            private var resultsDb: NewProductOrderModel? = null
+
+            override fun shouldFetch(data: NewProductOrderModel?): Boolean {
+                return true
+            }
+
+            override fun saveCallResult(item: NewProductOrderModel) {
+                resultsDb = item
+            }
+
+            override fun loadFromDb(): LiveData<NewProductOrderModel> {
+                return if (resultsDb == null) {
+                    AbsentLiveData.create()
+                } else {
+                    object : LiveData<NewProductOrderModel>() {
+                        protected override fun onActive() {
+                            super.onActive()
+                            value = resultsDb
+                        }
+                    }
+                }
+            }
+            override fun createCall(): LiveData<ApiResponse<NewProductOrderModel>> {
+                Log.e("BoundResource", "createCall")
+
+                val url = AllUrlsAndConfig.STORE_BASE_URL+ AllUrlsAndConfig.NEWPRODORDER
+                val str: String? = null
+                val gson = Gson()
+                var jsonObject= JsonObject()
+                val jsonObjCustOrderInfoModel = JsonObject()
+                jsonObjCustOrderInfoModel.addProperty(AllUrlsAndConfig.ISSGUESTUSER, "N")
+                jsonObjCustOrderInfoModel.addProperty(AllUrlsAndConfig.LOGGGONIDD, getEmail())
+                jsonObjCustOrderInfoModel.addProperty(AllUrlsAndConfig.CUSTORDTYPEID, 1003)
+                jsonObject.add("CustOrderInfoModel", jsonObjCustOrderInfoModel)
+
+                //ProdCustScModelList
+                val jelemInvoice5: JsonElement = gson.fromJson<JsonElement>(gson.toJson(listNewAddtoCartModel),
+                    JsonElement::class.java)
+                val jsonProdCustScModelList = JsonArray()
+                val jobj5 = jelemInvoice5.asJsonArray
+                jsonObject.add("ProdCustScModelList", jobj5)
+                Log.e("ResultNewOroductOrder", jsonObject.toString())
+
+                return mWebservice.getNewProductOrder(url,jsonObject )
             }
 
         }.asLiveData()

@@ -24,10 +24,16 @@
             android:defaultValue=""
             app:argType="string"
             app:nullable="true" />
-
+        <argument
+            android:name="statusId"
+            android:defaultValue="-1"
+            app:argType="integer" />
         <action
             android:id="@+id/action_homeFragmentFragment_to_choosePackageFragment"
             app:destination="@id/choosePackageFragment" />
+        <action
+            android:id="@+id/action_homeFragmentFragment_to_newAddtoCartListFragment"
+            app:destination="@id/newAddtoCartListFragment" />
 
     </fragment>
 
@@ -1233,6 +1239,10 @@
         android:name="com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListFragment"
         android:label="NewAddtoCartListFragment" >
         <argument
+            android:name="statusId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
             android:name="myArg"
             android:defaultValue="@null"
             app:nullable="true"
@@ -1240,6 +1250,10 @@
             />
         <argument
             android:name="pujaSamagriCategoryId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="CustOrdTypId"
             android:defaultValue="-1"
             app:argType="integer" />
         <argument
@@ -1257,6 +1271,9 @@
         <action
             android:id="@+id/action_newAddtoCartListFragment_to_shopCategoryFragment"
             app:destination="@id/shopCategoryFragment" />
+        <action
+            android:id="@+id/action_newAddtoCartListFragment_to_shopBillingAddressFragment"
+            app:destination="@id/shopBillingAddressFragment" />
     </fragment>
     <fragment
         android:id="@+id/newWishListFragment"
@@ -1309,6 +1326,20 @@
             android:name="prodMasterId"
             android:defaultValue="-1"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopBillingAddressFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.shopbillingaddress.ShopBillingAddressFragment"
+        android:label="ShopBillingAddressFragment">
+        <argument
+            android:name="CustOrdTypId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopShippingAddressFragment"
+        android:name="com.autumntechcreation.click4panditcustomer.ui.shopshippingaddress.ShopShippingAddressFragment"
+        android:label="ShopShippingAddressFragment">
     </fragment>
 
 

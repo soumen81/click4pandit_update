@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -210,9 +211,16 @@ public class HomeFragment extends Fragment implements Injectable {
 
       //  mHomeViewModel.getCartCountItem().observe(getActivity(), HomeFragment.this::handleAddtoCartItemCount);
 
-
-
-
+        ImageView mFrameLayout = getActivity().findViewById(R.id.imgCart);
+        mFrameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeFragmentDirections.ActionHomeFragmentFragmentToNewAddtoCartListFragment action =
+                        HomeFragmentDirections.actionHomeFragmentFragmentToNewAddtoCartListFragment();
+                action.setStatusId(1);
+                Navigation.findNavController(mView).navigate(action);
+            }
+        });
     }
 
     @Override

@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.autumntechcreation.click4panditcustomer.R
 import com.autumntechcreation.click4panditcustomer.adapter.NewAddtoCartListAdapter
 import com.autumntechcreation.click4panditcustomer.network.Resource
+import com.autumntechcreation.click4panditcustomer.ui.billingdetails.*
 import com.autumntechcreation.click4panditcustomer.ui.newpujaitemkit.NewPujaItemKitAddtoCartOrBuyNowModel
 import com.autumntechcreation.click4panditcustomer.util.SingleLiveEvent
 import kotlinx.android.synthetic.main.singlerow_newaddtocartlist.view.*
@@ -24,11 +25,20 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
     private val mSelectedMinusForItem = SingleLiveEvent<Int>()
     private val mSelectedUpdateForItem = SingleLiveEvent<Int>()
     private val mSelectedAddForItem = SingleLiveEvent<Int>()
+    var mNewProductOrderModelResponse: LiveData<Resource<NewProductOrderModel>>? = null
+
     var newPujaItemKitAddtoCartOrBuyNowModelLiveData: LiveData<Resource<NewPujaItemKitAddtoCartOrBuyNowModel>>? = null
     var updateCartItemCountModelLiveData: LiveData<Resource<UpdateCartItemCountModel>>? = null
     var minteger = 1
     fun init() {
         newAddtoCartListAdapter = NewAddtoCartListAdapter(R.layout.singlerow_newaddtocartlist, this)
+    }
+
+
+    fun getNewProductOrder(listNewAddtoCartModel: List<NewAddtoCartListModel>): LiveData<Resource<NewProductOrderModel>>? {
+        mNewProductOrderModelResponse = MutableLiveData<Resource<NewProductOrderModel>>()
+        mNewProductOrderModelResponse = mNewAddtoCartListRepository.getNewProductOrder(listNewAddtoCartModel)
+        return mNewProductOrderModelResponse
     }
 
 
@@ -70,11 +80,9 @@ class NewAddtoCartListViewModel @Inject constructor(private val mNewAddtoCartLis
     }
     fun getAddtoCartProductName(position: Int): String {
         val list = newAddtoCartList!!.getValue()
-        if(list!=null) {
+
             return list!!.get(position).prodMasterName!!
-        }else{
-           return ""
-        }
+
     }fun getAddtoCartProductPrice(position: Int): String {
         val list = newAddtoCartList!!.getValue()
         return list!!.get(position).prodCustScRate?.toString()!!
