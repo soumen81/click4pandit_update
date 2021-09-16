@@ -119,6 +119,7 @@ class NewAddtoCartListFragment : BaseFragment(){
 
 
         if(prodMasterId>=0 && prodPrice>=0) {
+
             mNewAddtoCartListViewModel.getNewPujaItemKitAddtoCartOrBuyNow(prodMasterId, prodPrice)
                 .observe(activity as FragmentActivity, Observer {
                     if (isDeviceOnline()) {
@@ -263,8 +264,10 @@ class NewAddtoCartListFragment : BaseFragment(){
                         val json = gson.toJson(resource.data)
                         Log.e("NewPujaItemKitAddtoCartOrBuyNowModelResponse_SUCCESS", json.toString())
                         if (resource.data.returnStatus.equals("SUCCESS")) {
-                            val action = NewAddtoCartListFragmentDirections.actionNewAddtoCartListFragmentToShopBillingAddressFragment()
+                            val productOrderId:Int= resource.data.prodOrderId!!
+                            val action = NewAddtoCartListFragmentDirections.actionNewAddtoCartListFragmentToShopShippingAddressFragment()
                             action.custOrdTypId=1003
+                            action.productOrderId=productOrderId
                             Navigation.findNavController(mView).navigate(action)
                         }
                     } else {

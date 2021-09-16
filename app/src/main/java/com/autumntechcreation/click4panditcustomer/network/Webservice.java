@@ -35,6 +35,7 @@ import com.autumntechcreation.click4panditcustomer.ui.profile.SaveCustomerprofil
 import com.autumntechcreation.click4panditcustomer.ui.register.RegisterResponse;
 import com.autumntechcreation.click4panditcustomer.ui.sendenquiry.SendEnquiryModel;
 import com.autumntechcreation.click4panditcustomer.ui.shopcategory.ShopCategoryModel;
+import com.autumntechcreation.click4panditcustomer.ui.shopshippingaddress.DeliveryAddressModel;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -274,6 +275,13 @@ public interface Webservice {
     @Headers({"Content-Type:application/json"})
     @POST()
     LiveData<ApiResponse<NewProductOrderModel>> getNewProductOrder(@Url String apiname,
+                                                                   @Body JsonObject jsonObject
+
+    );
+
+    @Headers({"Content-Type:application/json"})
+    @POST()
+    LiveData<ApiResponse<DeliveryAddressModel>> getDeliveryAddress(@Url String apiname,
                                                                    @Body JsonObject jsonObject
 
     );

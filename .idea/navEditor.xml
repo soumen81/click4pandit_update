@@ -227,6 +227,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_homeFragmentFragment_to_newAddtoCartListFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -249,12 +254,17 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1984" />
-                            <option name="y" value="1650" />
+                            <option name="x" value="1994" />
+                            <option name="y" value="1560" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_newAddtoCartListFragment_to_shopBillingAddressFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_newAddtoCartListFragment_to_shopCategoryFragment">
                               <value>
                                 <LayoutPositions />
@@ -703,9 +713,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="3200" />
-                            <option name="y" value="1610" />
+                            <option name="x" value="3290" />
+                            <option name="y" value="1460" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_shopBillingAddressFragment_to_shopShippingAddressFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -785,6 +804,15 @@
                             <option name="x" value="3240" />
                             <option name="y" value="2370" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_shopShippingAddressFragment_to_shopBillingAddressFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

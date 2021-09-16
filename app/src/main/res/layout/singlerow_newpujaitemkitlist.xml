@@ -5,6 +5,7 @@
 
     <data>
 
+
         <variable
             name="position"
             type="java.lang.Integer"/>
@@ -56,7 +57,7 @@
             android:id="@+id/imgWishItemKit"
             android:layout_width="@dimen/dimen_25dp"
             android:layout_height="@dimen/dimen_25dp"
-           android:src="@drawable/wish"
+            android:src="@drawable/wish"
             android:onClick="@{(v) -> viewModel.onClickWishListPujaSamagriItemList(v,position)}"
             android:layout_margin="@dimen/dimen_20dp"
             app:layout_constraintLeft_toLeftOf="parent"

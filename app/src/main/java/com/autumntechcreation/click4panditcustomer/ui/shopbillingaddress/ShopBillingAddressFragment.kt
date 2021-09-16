@@ -9,12 +9,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.autumntechcreation.click4panditcustomer.BaseFragment
 import com.autumntechcreation.click4panditcustomer.MainActivity
 import com.autumntechcreation.click4panditcustomer.R
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentShopbillingaddressBinding
+import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListFragmentDirections
 import com.google.gson.Gson
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -54,6 +56,8 @@ class ShopBillingAddressFragment: BaseFragment() {
         (activity as MainActivity?)!!.setToolbar(true, true, false, true)
 
         mFragmentShopbillingaddressBinding.viewModel = mShopBillingAddressViewModel
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -73,7 +77,9 @@ class ShopBillingAddressFragment: BaseFragment() {
         val custOrdTypIdd=args
         custOrdTypId=args.custOrdTypId
 
+
         mFragmentShopbillingaddressBinding.tvShopBillingSubmit.setOnClickListener {
+
             if (mFragmentShopbillingaddressBinding.edtTxtShopBillingFirstName.getText().toString().trim().equals("")) {
                 SweetAlertDialog(activity, SweetAlertDialog.ERROR_TYPE)
                     .setTitleText(resources.getString(R.string.validation_error))
@@ -153,6 +159,8 @@ class ShopBillingAddressFragment: BaseFragment() {
 
 
             }
+
         }
+
     }
 }

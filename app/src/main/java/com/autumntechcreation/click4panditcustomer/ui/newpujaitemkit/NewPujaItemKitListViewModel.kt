@@ -17,7 +17,30 @@ import com.google.gson.Gson
 import java.util.*
 import javax.inject.Inject
 
+/*@BindingAdapter("pujaitemkit_img")
+fun pujaitemkitImg(imgView: ImageView, boolean: LiveData<Boolean>?) {
 
+    when(boolean?.value){
+        true -> imgView.setImageResource(R.drawable.wish)
+        false ->  imgView.setImageResource(R.drawable.wish_black)
+    }
+}*/
+
+
+
+/*@BindingAdapter("load_imgwish")
+fun loadImgWish(view: ImageView, position: Int) {
+    Log.e("ImageId", position.toString() + "")
+    var newPujaItemKitList: MutableLiveData<ArrayList<NewPujaItemKitListModel>>? =
+        MutableLiveData<ArrayList<NewPujaItemKitListModel>>();
+   // var addWishListModelLiveData: LiveData<Resource<AddWishListItemModel>>? = null
+    var newPujaListModel = newPujaItemKitList!!.value!![position]
+    if (newPujaListModel!!.isSelect) {
+        view.setBackgroundResource(R.drawable.wish)
+    } else {
+        view.setBackgroundResource(R.drawable.wish_black)
+    }
+}*/
 class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKitListRepository: NewPujaItemKitListRepository) : ViewModel() {
     var newPujaItemKitListAdapter: NewPujaItemKitListAdapter? = null
         internal set
@@ -115,12 +138,15 @@ class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKi
 
 
         mSelectedWishListItem.setValue(pos)
-       /* val newPujaItemKitListModel =
-            newPujaItemKitList!!.value!![pos]
-        if (newPujaItemKitListModel.isSelect) {
-            view.setBackgroundResource(R.drawable.wish)
+       /* val list = newPujaItemKitList!!.getValue()
+        if (list!!.get(pos).isSelect==true) {
+            return R.drawable.wish
+        } else if (list!!.get(pos).isSelect==false) {
+
+            return R.drawable.wish_black
         } else {
-            view.setBackgroundResource(R.drawable.wish_black)
+
+            return R.drawable.wish
         }*/
     }
 
@@ -135,19 +161,19 @@ class NewPujaItemKitListViewModel @Inject constructor(private val mNewPujaItemKi
     fun getSelectedRedirectedSamagriListItem(): SingleLiveEvent<Int> {
         return mSelectedRedirectedSamagriListItem
     }
-   /* @BindingAdapter("load_back")
-    fun loadBack(view: ImageView, position: Int) {
-        Log.e("ImageId", position.toString() + "")
-        var newPujaItemKitList: MutableLiveData<ArrayList<NewPujaItemKitListModel>>? =
-            MutableLiveData<ArrayList<NewPujaItemKitListModel>>();
-        val newPujaItemKitListModel =
-            newPujaItemKitList!!.value!![position]
-        if (newPujaItemKitListModel.isSelect) {
-            view.setBackgroundResource(R.drawable.wish)
-        } else {
-            view.setBackgroundResource(R.drawable.wish_black)
-        }
-    }*/
+   /* fun pujaitemkitImg(position: Int):Int {
 
+        val list = newPujaItemKitList!!.getValue()
+        if (list!!.get(position).isSelect==true) {
+            return R.drawable.wish
+        } else if (list!!.get(position).isSelect==false) {
+
+            return R.drawable.wish_black
+        } else {
+
+            return R.drawable.wish
+        }
+    }
+*/
 
 }

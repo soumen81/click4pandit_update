@@ -113,23 +113,23 @@ class NewPujaItemKitList : BaseFragment() {
             var newPujaItemKitList: java.util.ArrayList<NewPujaItemKitListModel>? =
                 mNewPujaItemKitListViewModel.newPujaItemKitList!!.value
             //For select background color change
-            val listNewPujaItemKitListModel: MutableList<NewPujaItemKitListModel> =
-                mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!
+
             Log.e("SIZE", newPujaItemKitList!!.size.toString() + "")
-            for (i in newPujaItemKitList!!.indices) {
-                val choosePackageListModel1 = newPujaItemKitList[i]
+           // mNewPujaItemKitListViewModel.pujaitemkitImg(it)
+           /* for (i in newPujaItemKitList!!.indices) {
+                val newPujaitemKitListItem= newPujaItemKitList[i]
                 if (i == it) {
-                    choosePackageListModel1.isSelect==true
+                    newPujaitemKitListItem.isSelect==true
 
                 } else {
-                    choosePackageListModel1.isSelect==false
+                    newPujaitemKitListItem.isSelect==false
 
                 }
-                newPujaItemKitList[i] = choosePackageListModel1
+                newPujaItemKitList[i] = newPujaitemKitListItem
             }
             val gson = Gson()
-            Log.e("CLICK", gson.toJson(newPujaItemKitList))
-            mNewPujaItemKitListViewModel.setPujaItemKitAdapter(newPujaItemKitList)
+            Log.e("CLICK", gson.toJson(newPujaItemKitList))*/
+          //  mNewPujaItemKitListViewModel.setPujaItemKitAdapter(newPujaItemKitList)
 
             mNewPujaItemKitListViewModel.getAddForWishListItem(mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodMasterId!!,
                 cartCount, mNewPujaItemKitListViewModel.newPujaItemKitList!!.value!!.get(it).prodPrice!!

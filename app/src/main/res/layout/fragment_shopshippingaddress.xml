@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_30dp"
-                android:text="@string/shippingdetails"
+                android:text="@string/deliverydetails"
                 android:textColor="@color/blackColor"
                 android:textSize="@dimen/font_14sp"
                 android.support.design:layout_constraintLeft_toLeftOf="parent"
@@ -43,7 +43,7 @@
 
             <View
                 android:id="@+id/viewShopShippingDetails"
-                android:layout_width="@dimen/dimen_130dp"
+                android:layout_width="@dimen/dimen_110dp"
                 android:layout_height="@dimen/dimen_2dp"
                 android:layout_marginTop="@dimen/dimen_5dp"
                 android:background="#D1453E"

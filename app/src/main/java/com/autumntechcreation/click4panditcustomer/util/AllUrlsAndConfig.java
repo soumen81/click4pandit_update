@@ -4,8 +4,8 @@ public class AllUrlsAndConfig {
     public static String SIGNUP="/api/NonFnctnlCncrn/SignUp";
 
     public static String STORE_BASE_URL="https://dev-brnch-webapi-click4pandit.azurewebsites.net";//TEST
-    public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";//TEST
-    //public static String BASE_URL="https://prod-webapi-click4pandit.azurewebsites.net";//PRODUCTION
+    //public static String BASE_URL="https://webapi-click4pandit.azurewebsites.net";//TEST
+    public static String BASE_URL="https://prod-webapi-click4pandit.azurewebsites.net";//PRODUCTION
     public static String LOGIN="/api/NonFnctnlCncrn/Login";
     public static final String PUJATYPES = "/api/PujaCtgry/GetPujaCategories";
     public static final String PUJACATEGORIES = "/api/PujaSubCtgry/GetPujaSubCtgryByPujaCtgryId";
@@ -41,6 +41,7 @@ public class AllUrlsAndConfig {
     public static final String UPDATECARTITEM="/api/ShoppingCart/UpdateProdShoppingCart";
     public static final String PUJASAMAGRIDETAILS="/api/Product/GetProductByProdMasterId";
     public static final String NEWPRODORDER="/api/Checkout/NewProdOrder";
+    public static final String DELIVERYADDRESS="/api/ProdOrder/UpdateAddressAndGetProdOrdSummary";
 
 
 
@@ -291,5 +292,70 @@ public class AllUrlsAndConfig {
     public static final String ISSGUESTUSER="IsGuestUser";
     public static final String LOGGGONIDD="LogonId";
     public static final String CUSTORDTYPEID="CustOrdTypId";
+
+    //Parameter for ShopShipping Address
+    public static final String ISGUUESTUSER="IsGuestUser";
+    public static final String LGGONID="LogonId";
+    public static final String PRODORDERID="ProdOrderId";
+    public static final String PRODORDERAMOUNT="ProdOrderAmount";
+    public static final String TAXAMOUNT="TaxAmount";
+    public static final String CCURID="CurId";
+    public static final String CUSTORDTYPID="CustOrdTypId";
+
+    public static final String PRODCUSTADDLINFOID="ProdCustAddlInfoId";
+    public static final String UPDATESTAMPP="UpdtStamp";
+    public static final String UPDATEUSERR="UpdtUser";
+    public static final String OORGLSTAMP="OrglStamp";
+    public static final String OORGLUSER="OrglUser";
+    public static final String DEELFLGG="DelFlg";
+    public static final String CCUSTMASTERID="CustMasterId";
+    public static final String PRODCUSTORDID="ProdCustOrdId";
+    public static final String FNAME="FirstName";
+    public static final String LNAME="LastName";
+    public static final String MOBB1="Mob1";
+    public static final String MOBB2="Mob2";
+    public static final String EMAILADDRES="EmailAddr";
+    public static final String ADDRR1="Addr1";
+    public static final String ADDRR2="Addr2";
+    public static final String ADDRR3="Addr3";
+    public static final String CCCITYID="CtyId";
+    public static final String CCITYDESCR="CityDescr";
+    public static final String SSTID="StId";
+    public static final String SSTDESCR="StDescr";
+    public static final String CCNTRYID="CntryId";
+    public static final String CCNTRYDESCR="CntryDescr";
+    public static final String PPOSTAl="Postal";
+    public static final String SHIPPINGADDLINFODESCR="ShippingAddlInfoDscr";
+    public static final String SEQNO="SeqNo";
+    public static final String DSPPORDD="DspOrd";
+
+    public static final String PRODCUSBILLINGADDRID="ProdCustBillingAddrId";
+    public static final String BILLINGADDRUPDTSTAMP="BillingAddrUpdtStamp";
+    public static final String BILLINGADDRUPDTUSER="BillingAddrUpdtUser";
+    public static final String BILLINGADDRORGLSTAMP="BillingAddrOrglStamp";
+    public static final String BILLINGADDRORGLUSER="BillingAddrOrglUser";
+    public static final String BILLINGADDRDELFLG="BillingAddrDelFlg";
+    public static final String BILLINGADDRCUSTMASTERID="BillingAddrCustMasterId";
+    public static final String BILLINGADDRPRODCUSTORDID="BillingAddrProdCustOrdId";
+    public static final String BILLINGADDRFIRSTNAME="BillingAddrFirstName";
+    public static final String BILLINGADDRLASTNAME="BillingAddrLastName";
+    public static final String BILLINGADDRMOB1="BillingAddrMob1";
+    public static final String BILLINGADDRMOB2="BillingAddrMob2";
+    public static final String BILLINGADDREMAILADDR="BillingAddrEmailAddr";
+    public static final String BILLINGADDRADDR1="BillingAddrAddr1";
+    public static final String BILLINGADDRADDR2="BillingAddrAddr2";
+    public static final String BILLINGADDRADDR3="BillingAddrAddr3";
+    public static final String BILLINGADDRCITYID="BillingAddrCtyId";
+    public static final String BILLINGADDRCITYDESCR="BillingAddrCityDescr";
+    public static final String BILLINGADDRSTID="BillingAddrStId";
+    public static final String BILLINGADDRSTDESCR="BillingAddrStDescr";
+    public static final String BILLINGADDRCNTRYID="BillingAddrCntryId";
+    public static final String BILLINGADDRCNTRYDESCR="BillingAddrCntryDescr";
+    public static final String BILLINGADDRPOSTAL="BillingAddrPostal";
+    public static final String BILLINGADDRSEQNO="BillingAddrSeqNo";
+    public static final String BILLINGADDRDSPORD="BillingAddrDspOrd";
+
+
+
 
 }
