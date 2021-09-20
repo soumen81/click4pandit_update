@@ -6,8 +6,10 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -16,9 +18,13 @@ import com.autumntechcreation.click4panditcustomer.BaseFragment
 import com.autumntechcreation.click4panditcustomer.MainActivity
 import com.autumntechcreation.click4panditcustomer.R
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentShopshippingaddressBinding
+import com.autumntechcreation.click4panditcustomer.network.Resource
+import com.autumntechcreation.click4panditcustomer.network.Status
 import com.autumntechcreation.click4panditcustomer.ui.shopbillingaddress.ShopBillingAddressFragmentArgs
 import com.google.gson.Gson
 import dagger.android.support.AndroidSupportInjection
+import org.json.JSONException
+import org.json.JSONObject
 import javax.inject.Inject
 
 class ShopShippingAddressFragment: BaseFragment() {
@@ -27,6 +33,12 @@ class ShopShippingAddressFragment: BaseFragment() {
     private lateinit var mFragmentShopshippingaddressBinding: FragmentShopshippingaddressBinding
     var custOrdTypId: Int = 0
     var productOrderId: Int = 0
+     var shopBillingFName:String=""
+     var shopBillingLName:String=""
+     var shopBillingEmail:String=""
+     var shopBillingMobile:String=""
+     var shopBillingAddress:String=""
+     var shopBillingPincode:String=""
 
     @Inject
     lateinit var mShopShippingAddressFactory: ShopShippingAddressFactory
@@ -70,11 +82,65 @@ class ShopShippingAddressFragment: BaseFragment() {
         val custOrdTypIdd = args
         custOrdTypId = args.custOrdTypId
         productOrderId = args.productOrderId
+        if(shopBillingFName.isNotEmpty()){
+            shopBillingFName=args.shopBillingFName
+        }else{
+            shopBillingFName=""
+        }
+        if( shopBillingLName.isNotEmpty()){
+            shopBillingLName=args.shopBillingLName
+        }else{
+            shopBillingLName=""
+        }
+        if( shopBillingEmail.isNotEmpty()){
+            shopBillingEmail=args.shopBillingEmail
+        }else{
+            shopBillingEmail=""
+        }
+        if( shopBillingMobile.isNotEmpty()){
+            shopBillingMobile=args.shopBillingMobile
+        }else{
+            shopBillingMobile=""
+        }
+        if(shopBillingAddress.isNotEmpty()){
+            shopBillingAddress=args.shopBillingAddress1
+        }else{
+            shopBillingAddress=""
+        }
+        if( shopBillingPincode.isNotEmpty()){
+            shopBillingPincode=args.shopBillingPincode
+        }else{
+            shopBillingPincode=""
+        }
+
+
+
+        val firstName: String = mShopShippingAddressViewModel.getFirstName()!!
+        val lastName: String = mShopShippingAddressViewModel.getLastName()!!
+        val emailId: String = mShopShippingAddressViewModel.getEmail()!!
+        val mobileNo: String = mShopShippingAddressViewModel.getMobile()!!
+        mFragmentShopshippingaddressBinding.edtTxtShopShippingFirstName.setText(firstName)
+        mFragmentShopshippingaddressBinding.edtTxtShopShippingLastName.setText(lastName)
+        mFragmentShopshippingaddressBinding.edtShopBillingMobileNo.setText(mobileNo)
+        mFragmentShopshippingaddressBinding.edtTxtShopShippingEmail.setText(emailId)
+        mFragmentShopshippingaddressBinding.edtTxtShopShippingState.setText("West Bengal")
+        mFragmentShopshippingaddressBinding.edtTxtShopShippingCity.setText("Kolkata")
+
+
+
 
         mFragmentShopshippingaddressBinding.tvShopShippingDiffLoc.setOnClickListener {
-            val action = ShopShippingAddressFragmentDirections.actionShopShippingAddressFragmentToShopBillingAddressFragment()
-            action.custOrdTypId=1003
-            Navigation.findNavController(mView).navigate(action)
+            if(mFragmentShopshippingaddressBinding.edtTxtShopShippingAddress.length()>0 && mFragmentShopshippingaddressBinding.edtTxtShopShippingPincode.length()==6) {
+                val action =
+                    ShopShippingAddressFragmentDirections.actionShopShippingAddressFragmentToShopBillingAddressFragment()
+                action.custOrdTypId = 1003
+                action.shopShippingAddress1=mFragmentShopshippingaddressBinding.edtTxtShopShippingAddress.text.toString()
+                action.shopShippingPincode=mFragmentShopshippingaddressBinding.edtTxtShopShippingPincode.text.toString()
+                action.productOrderId=productOrderId
+                Navigation.findNavController(mView).navigate(action)
+            }else{
+                Toast.makeText(activity,"Address and Pincode should not be blank",Toast.LENGTH_SHORT).show()
+            }
         }
 
         mFragmentShopshippingaddressBinding.tvShopShippingSubmit.setOnClickListener {
@@ -161,8 +227,75 @@ class ShopShippingAddressFragment: BaseFragment() {
                     .setContentText(resources.getString(R.string.please_enter_pincode))
                     .show()
             }else{
+                mShopShippingAddressViewModel.getDeliveryAddress(
+                    productOrderId,
+                    mFragmentShopshippingaddressBinding.edtTxtShopShippingFirstName.getText()
+                        .toString(),
+                    mFragmentShopshippingaddressBinding.edtTxtShopShippingLastName.getText()
+                        .toString(),
+                    mFragmentShopshippingaddressBinding.edtShopBillingMobileNo.getText().toString(),
+                    mFragmentShopshippingaddressBinding.edtTxtShopShippingAddress.getText()
+                        .toString(), "", "",
+                    mFragmentShopshippingaddressBinding.edtTxtShopShippingPincode.getText()
+                        .toString()
+                )!!.observe(activity!!, Observer {
+                    handleDeliveryAddressResponse(it)
 
+                })
             }
         }
     }
+
+    private fun handleDeliveryAddressResponse(resource: Resource<DeliveryAddressModel>?) {
+        if (resource != null) {
+
+            when (resource.status) {
+                Status.ERROR -> {
+                    Log.e("handleDeliveryAddressResponse", "ERROR")
+                    Log.e("handleDeliveryAddressResponse", resource.message)
+                    Log.e("handleDeliveryAddressResponse", resource.status.toString() + "")
+                    Log.e("handleDeliveryAddressResponse", resource.data.toString() + "")
+                    //  if (resource.message != null && resource.data == null) {
+                    if (resource.message != null && resource.data == null) {
+                        val jsonObject: JSONObject
+                        try {
+                            jsonObject = JSONObject(resource.message)
+
+
+
+
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+
+                        }
+
+                    }
+                }
+                Status.LOADING -> {
+                    Log.e("handleDeliveryAddressResponse", "LOADING")
+                    Log.e("handleDeliveryAddressResponse", resource.data.toString() + "")
+
+                }
+                Status.SUCCESS -> {
+                    if (resource.data != null) {
+                        Log.e("handleDeliveryAddressResponse", resource.data.toString())
+                        val gson = Gson()
+                        val json = gson.toJson(resource.data)
+                        Log.e("handleDeliveryAddressResponse_SUCCESS", json.toString())
+                        if (resource.data.returnStatus.equals("SUCCESS")) {
+                            var shippingAddressModel:ShippingAddressModel= resource.data.value!!.shippingAddressModel!!
+                            var billingAddressModel:BillingAddressModel= resource.data.value!!.billingAddressModel!!
+                            var prodCustOrdModel:ProdCustOrdModel= resource.data.value!!.prodCustOrdModel!!
+                            var prodCustOrdDtlModelList: List<ProdCustOrdDtlModel>? = resource.data.value!!.prodCustOrdDtlModelList
+                        }
+                    } else {
+                    }
+
+                }
+                else -> {
+                }
+            }
+        }
+    }
+
 }

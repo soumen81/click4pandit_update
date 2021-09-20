@@ -1346,6 +1346,43 @@
             android:name="productOrderId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <argument
+            android:name="shopShippingPincode"
+            android:defaultValue="-1"
+            app:argType="string" />
+        <argument
+            android:name="shopShippingAddress1"
+            android:defaultValue=""
+            app:argType="string" />
+
+        <argument
+            android:name="shopBillingFName"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="shopBillingLName"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="shopBillingEmail"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="shopBillingMobile"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="shopBillingAddress1"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="shopBillingPincode"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="statusShopBillingId"
+            android:defaultValue="-1"
+            app:argType="integer" />
         <action
             android:id="@+id/action_shopBillingAddressFragment_to_shopShippingAddressFragment"
             app:destination="@id/shopShippingAddressFragment" />
@@ -1362,7 +1399,43 @@
             android:name="productOrderId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <argument
+            android:name="shopShippingPincode"
+            android:defaultValue="-1"
+            app:argType="string" />
+        <argument
+            android:name="shopShippingAddress1"
+            android:defaultValue=""
+            app:argType="string" />
 
+        <argument
+            android:name="shopBillingFName"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="shopBillingLName"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="shopBillingEmail"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="shopBillingMobile"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="shopBillingAddress1"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="shopBillingPincode"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="statusShopBillingId"
+            android:defaultValue="-1"
+            app:argType="integer" />
         <action
             android:id="@+id/action_shopShippingAddressFragment_to_shopBillingAddressFragment"
             app:destination="@id/shopBillingAddressFragment" />

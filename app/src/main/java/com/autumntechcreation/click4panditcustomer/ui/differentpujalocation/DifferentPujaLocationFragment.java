@@ -127,7 +127,8 @@ public class DifferentPujaLocationFragment extends Fragment implements Injectabl
                             .show();
                 }else if (!Patterns.PHONE.matcher(mFragmentDifferentpujalocationBinding.edtShippingMobileNo.getText().toString()).matches()||
 
-                        (mFragmentDifferentpujalocationBinding.edtShippingMobileNo.getText().toString().trim().equals(""))||(mFragmentDifferentpujalocationBinding.edtShippingMobileNo.getText().toString().trim().length()<10)){
+                        (mFragmentDifferentpujalocationBinding.edtShippingMobileNo.getText().toString().trim().equals(""))||
+                        (mFragmentDifferentpujalocationBinding.edtShippingMobileNo.getText().toString().trim().length()<10)){
                     //  Toast.makeText(SettingPageActivity.this,R.string.please_enter_valid_phone_number,Toast.LENGTH_SHORT).show();
 
                     new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)

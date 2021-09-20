@@ -6,6 +6,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
@@ -16,7 +17,6 @@ import com.autumntechcreation.click4panditcustomer.BaseFragment
 import com.autumntechcreation.click4panditcustomer.MainActivity
 import com.autumntechcreation.click4panditcustomer.R
 import com.autumntechcreation.click4panditcustomer.databinding.FragmentShopbillingaddressBinding
-import com.autumntechcreation.click4panditcustomer.ui.newaddtocartlist.NewAddtoCartListFragmentDirections
 import com.google.gson.Gson
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -28,7 +28,9 @@ class ShopBillingAddressFragment: BaseFragment() {
     @Inject
     lateinit var mShopBillingAddressFactory: ShopBillingAddressFactory
     var custOrdTypId:Int = 0
-
+    var prodOrderId:Int = 0
+    var shopShippingAddress1:String = ""
+    var shopShippingPincode:String = ""
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -56,27 +58,25 @@ class ShopBillingAddressFragment: BaseFragment() {
         (activity as MainActivity?)!!.setToolbar(true, true, false, true)
 
         mFragmentShopbillingaddressBinding.viewModel = mShopBillingAddressViewModel
-
+        mFragmentShopbillingaddressBinding.edtTxtShopBillingState.setText("West Bengal")
+        mFragmentShopbillingaddressBinding.edtTxtShopBillingState.isEnabled=false
+        mFragmentShopbillingaddressBinding.edtTxtShopBillingCity.setText("Kolkata")
+        mFragmentShopbillingaddressBinding.edtTxtShopBillingCity.isEnabled=false
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val args: ShopBillingAddressFragmentArgs by navArgs()
-        /* val pujaSamagriCategoryId = args.pujaSamagriCategoryId
-         Log.e("VALUE",pujaSamagriCategoryId.toString())*/
-
-
-        // args = UpdateGateOutwardFragmentArgs.fromBundle(arguments).myArg
-
-        //Toast.makeText(activity, args!!.vehicleNo.toString(),Toast.LENGTH_SHORT).show()
 
         val bundle = arguments
         val gson = Gson()
         Log.e("OBJECT",gson.toJson(args))
         val custOrdTypIdd=args
         custOrdTypId=args.custOrdTypId
-
+        prodOrderId=args.productOrderId
+        shopShippingAddress1=args.shopShippingAddress1
+        shopShippingPincode=args.shopShippingPincode
 
         mFragmentShopbillingaddressBinding.tvShopBillingSubmit.setOnClickListener {
 
@@ -111,7 +111,12 @@ class ShopBillingAddressFragment: BaseFragment() {
                     .setTitleText(resources.getString(R.string.validation_error))
                     .setContentText(resources.getString(R.string.please_enter_valid_phone_number))
                     .show()
-            }  else if (!Patterns.PHONE.matcher(
+            }
+
+
+
+
+           /* else if (!Patterns.PHONE.matcher(
                     mFragmentShopbillingaddressBinding.edtShopBillingAlternateMobileNo.getText().toString()
                 ).matches() ||
                 mFragmentShopbillingaddressBinding.edtShopBillingAlternateMobileNo.getText().toString().trim()
@@ -123,7 +128,7 @@ class ShopBillingAddressFragment: BaseFragment() {
                     .setTitleText(resources.getString(R.string.validation_error))
                     .setContentText(resources.getString(R.string.please_enter_valid_phone_number))
                     .show()
-            }
+            }*/
             else if (mFragmentShopbillingaddressBinding.edtTxtShopBillingAddress.getText().toString().trim()
                     .equals("")
             ) {
@@ -154,10 +159,26 @@ class ShopBillingAddressFragment: BaseFragment() {
                     .setContentText(resources.getString(R.string.please_enter_pincode))
                     .show()
             }else{
-
-
-
-
+                if(mFragmentShopbillingaddressBinding.edtTxtShopBillingAddress.length()>0 && mFragmentShopbillingaddressBinding.edtTxtShopBillingPincode.length()==6) {
+                    val action =
+                        ShopBillingAddressFragmentDirections.actionShopBillingAddressFragmentToShopShippingAddressFragment()
+                    action.shopBillingFName =
+                        mFragmentShopbillingaddressBinding.edtTxtShopBillingFirstName.text.toString()
+                    action.shopBillingLName =
+                        mFragmentShopbillingaddressBinding.edtTxtShopBillingLastName.text.toString()
+                    action.shopBillingEmail =
+                        mFragmentShopbillingaddressBinding.edtTxtShopBillingEmail.text.toString()
+                    action.shopBillingMobile =
+                        mFragmentShopbillingaddressBinding.edtShopBillingMobileNo.text.toString()
+                    action.shopBillingAddress1 =
+                        mFragmentShopbillingaddressBinding.edtTxtShopBillingAddress.text.toString()
+                    action.shopBillingPincode =
+                        mFragmentShopbillingaddressBinding.edtTxtShopBillingPincode.text.toString()
+                    action.productOrderId=prodOrderId
+                    Navigation.findNavController(mView).navigate(action)
+                }else{
+                    Toast.makeText(activity,"Address and Pincode should not be blank", Toast.LENGTH_SHORT).show()
+                }
             }
 
         }

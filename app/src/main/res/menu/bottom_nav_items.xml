@@ -38,7 +38,7 @@
     </group>
     <group
         android:id="@+id/grp5"
-        android:visible="false"
+        android:visible="true"
         android:checkableBehavior="single">
 
         <item
@@ -48,7 +48,7 @@
     </group>
     <group
         android:id="@+id/grp6"
-        android:visible="false"
+        android:visible="true"
         android:checkableBehavior="single">
 
         <item

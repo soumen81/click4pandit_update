@@ -3,6 +3,7 @@ package com.autumntechcreation.click4panditcustomer.di.module;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.autumntechcreation.click4panditcustomer.AddtoCartValueStoreViewModel;
 import com.autumntechcreation.click4panditcustomer.MainViewModel;
 import com.autumntechcreation.click4panditcustomer.di.qualifiers.ViewModelKey;
 import com.autumntechcreation.click4panditcustomer.intro.IntroductionViewModel;
@@ -328,6 +329,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ShopShippingAddressViewModel.class)
     abstract ViewModel bindShopShippingAddressViewModel(ShopShippingAddressViewModel shopShippingAddressViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddtoCartValueStoreViewModel.class)
+    abstract ViewModel bindAddtoCartValueStoreViewModel(AddtoCartValueStoreViewModel addtoCartValueStoreViewModel);
 
 
 

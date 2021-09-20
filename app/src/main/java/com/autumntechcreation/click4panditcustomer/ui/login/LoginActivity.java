@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.autumntechcreation.click4panditcustomer.AddtoCartValueStoreViewModel;
 import com.autumntechcreation.click4panditcustomer.MainActivity;
 import com.autumntechcreation.click4panditcustomer.R;
 import com.autumntechcreation.click4panditcustomer.databinding.ActivityLoginBinding;
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding mActivityLoginBinding;
     LoginViewModel mLoginViewModel;
     SharedPreferences sp;
+    private AddtoCartValueStoreViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +100,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
+       /* viewModel = new ViewModelProvider(this).get(AddtoCartValueStoreViewModel.class);
+        viewModel.getSelectedItem().observe(this, item -> {
+            // Perform an action with the latest item data
+        });*/
 
     }
 
